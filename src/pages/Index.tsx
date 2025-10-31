@@ -64,7 +64,7 @@ const Index = () => {
           </div>
           
           <h1 className="neon-text-glow">
-            FlowOS
+            FlowXsell
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
