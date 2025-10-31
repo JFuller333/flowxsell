@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { FrameworkCard } from "@/components/FrameworkCard";
+import { ProjectCard } from "@/components/ProjectCard";
 import { Search, Target, Cog, TrendingUp, ArrowRight, Mail } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -83,6 +84,41 @@ const Index = () => {
               Learn More
             </Button>
           </div>
+        </div>
+      </section>
+
+      {/* Systems & Projects Section */}
+      <section className="px-4 py-24 max-w-7xl mx-auto border-t border-primary/10">
+        <div className="mb-16 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
+            SYSTEMS & PROJECTS
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Tools and frameworks built to help founders scale with clarity and structure.
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-6">
+          <ProjectCard
+            title="FlowOS Framework"
+            description="A 4-phase operating system for ecommerce founders: Audit, Align, Automate, XSell. Designed to transform fragmented growth into systematic scaling."
+            tags={["Strategy", "Ecommerce", "Operations"]}
+          />
+          <ProjectCard
+            title="Flow Health Score"
+            description="Diagnostic tool that identifies where your systems break down. Get a clarity score and actionable next steps in under 5 minutes."
+            tags={["Assessment", "Analytics", "Growth"]}
+          />
+          <ProjectCard
+            title="Campaign Architecture System"
+            description="Strategic framework for building scalable marketing campaigns that compound over time instead of burning budgets."
+            tags={["Marketing", "Systems", "ROI"]}
+          />
+          <ProjectCard
+            title="Tech Stack Optimizer"
+            description="Curated integration maps for connecting Shopify, email, analytics, and automation tools without the tech debt."
+            tags={["Integration", "Automation", "Shopify"]}
+          />
         </div>
       </section>
 
