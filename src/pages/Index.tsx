@@ -4,6 +4,10 @@ import { Input } from "@/components/ui/input";
 import { FrameworkCard } from "@/components/FrameworkCard";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Search, Target, Cog, TrendingUp, ArrowRight, Mail } from "lucide-react";
+import flowosImage from "@/assets/flowos-framework.jpg";
+import healthScoreImage from "@/assets/flow-health-score.jpg";
+import campaignImage from "@/assets/campaign-architecture.jpg";
+import techStackImage from "@/assets/tech-stack-optimizer.jpg";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -103,21 +107,25 @@ const Index = () => {
             title="FlowOS Framework"
             description="A 4-phase operating system for ecommerce founders: Audit, Align, Automate, XSell. Designed to transform fragmented growth into systematic scaling."
             tags={["Strategy", "Ecommerce", "Operations"]}
+            image={flowosImage}
           />
           <ProjectCard
             title="Flow Health Score"
             description="Diagnostic tool that identifies where your systems break down. Get a clarity score and actionable next steps in under 5 minutes."
             tags={["Assessment", "Analytics", "Growth"]}
+            image={healthScoreImage}
           />
           <ProjectCard
             title="Campaign Architecture System"
             description="Strategic framework for building scalable marketing campaigns that compound over time instead of burning budgets."
             tags={["Marketing", "Systems", "ROI"]}
+            image={campaignImage}
           />
           <ProjectCard
             title="Tech Stack Optimizer"
             description="Curated integration maps for connecting Shopify, email, analytics, and automation tools without the tech debt."
             tags={["Integration", "Automation", "Shopify"]}
+            image={techStackImage}
           />
         </div>
       </section>
