@@ -10,10 +10,8 @@ import campaignImage from "@/assets/campaign-architecture.jpg";
 import techStackImage from "@/assets/tech-stack-optimizer.jpg";
 import { useState } from "react";
 import { toast } from "sonner";
-
 const Index = () => {
   const [email, setEmail] = useState("");
-
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
@@ -21,36 +19,28 @@ const Index = () => {
       setEmail("");
     }
   };
-
-  const frameworks = [
-    {
-      phase: "Phase 01",
-      title: "Audit",
-      description: "Flow Disrupter Quiz + Flow Health Score. Diagnostic entrypoint to identify where your system breaks.",
-      icon: Search,
-    },
-    {
-      phase: "Phase 02",
-      title: "Align",
-      description: "Repositioning strategy across the customer journey. Emotional clarity and storytelling alignment.",
-      icon: Target,
-    },
-    {
-      phase: "Phase 03",
-      title: "Automate",
-      description: "Systems that connect Shopify, Marketing, & Analytics. Emphasize calm tech stacks.",
-      icon: Cog,
-    },
-    {
-      phase: "Phase 04",
-      title: "XSell",
-      description: "Optimization loops and sales multiplication. Scalable leverage tools.",
-      icon: TrendingUp,
-    },
-  ];
-
-  return (
-    <div className="min-h-screen bg-background">
+  const frameworks = [{
+    phase: "Phase 01",
+    title: "Audit",
+    description: "Flow Disrupter Quiz + Flow Health Score. Diagnostic entrypoint to identify where your system breaks.",
+    icon: Search
+  }, {
+    phase: "Phase 02",
+    title: "Align",
+    description: "Repositioning strategy across the customer journey. Emotional clarity and storytelling alignment.",
+    icon: Target
+  }, {
+    phase: "Phase 03",
+    title: "Automate",
+    description: "Systems that connect Shopify, Marketing, & Analytics. Emphasize calm tech stacks.",
+    icon: Cog
+  }, {
+    phase: "Phase 04",
+    title: "XSell",
+    description: "Optimization loops and sales multiplication. Scalable leverage tools.",
+    icon: TrendingUp
+  }];
+  return <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
@@ -63,28 +53,20 @@ const Index = () => {
             </span>
           </div>
           
-          <h1 className="neon-text-glow">
-            FlowXsell
-          </h1>
+          <h1 className="neon-text-glow text-7xl">FLOWXSELL</h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            A clarity companion for solo ecommerce founders. When your systems flow, your sales grow.
-          </p>
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">A clarity companion for multiprenerus & solo founders. When your systems flow, your sales grow.</p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
-            <Button 
-              size="lg" 
-              className="group"
-              onClick={() => document.getElementById('framework')?.scrollIntoView({ behavior: 'smooth' })}
-            >
+            <Button size="lg" className="group" onClick={() => document.getElementById('framework')?.scrollIntoView({
+            behavior: 'smooth'
+          })}>
               Understand the Flow Framework
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button 
-              size="lg" 
-              variant="neon"
-              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-            >
+            <Button size="lg" variant="neon" onClick={() => document.getElementById('about')?.scrollIntoView({
+            behavior: 'smooth'
+          })}>
               Learn More
             </Button>
           </div>
@@ -103,30 +85,10 @@ const Index = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <ProjectCard
-            title="FlowOS Framework"
-            description="A 4-phase operating system for ecommerce founders: Audit, Align, Automate, XSell. Designed to transform fragmented growth into systematic scaling."
-            tags={["Strategy", "Ecommerce", "Operations"]}
-            image={flowosImage}
-          />
-          <ProjectCard
-            title="Flow Health Score"
-            description="Diagnostic tool that identifies where your systems break down. Get a clarity score and actionable next steps in under 5 minutes."
-            tags={["Assessment", "Analytics", "Growth"]}
-            image={healthScoreImage}
-          />
-          <ProjectCard
-            title="Campaign Architecture System"
-            description="Strategic framework for building scalable marketing campaigns that compound over time instead of burning budgets."
-            tags={["Marketing", "Systems", "ROI"]}
-            image={campaignImage}
-          />
-          <ProjectCard
-            title="Tech Stack Optimizer"
-            description="Curated integration maps for connecting Shopify, email, analytics, and automation tools without the tech debt."
-            tags={["Integration", "Automation", "Shopify"]}
-            image={techStackImage}
-          />
+          <ProjectCard title="FlowOS Framework" description="A 4-phase operating system for ecommerce founders: Audit, Align, Automate, XSell. Designed to transform fragmented growth into systematic scaling." tags={["Strategy", "Ecommerce", "Operations"]} image={flowosImage} />
+          <ProjectCard title="Flow Health Score" description="Diagnostic tool that identifies where your systems break down. Get a clarity score and actionable next steps in under 5 minutes." tags={["Assessment", "Analytics", "Growth"]} image={healthScoreImage} />
+          <ProjectCard title="Campaign Architecture System" description="Strategic framework for building scalable marketing campaigns that compound over time instead of burning budgets." tags={["Marketing", "Systems", "ROI"]} image={campaignImage} />
+          <ProjectCard title="Tech Stack Optimizer" description="Curated integration maps for connecting Shopify, email, analytics, and automation tools without the tech debt." tags={["Integration", "Automation", "Shopify"]} image={techStackImage} />
         </div>
       </section>
 
@@ -144,9 +106,7 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {frameworks.map((framework, index) => (
-              <FrameworkCard key={index} {...framework} />
-            ))}
+            {frameworks.map((framework, index) => <FrameworkCard key={index} {...framework} />)}
           </div>
         </div>
       </section>
@@ -257,14 +217,7 @@ const Index = () => {
               </p>
               
               <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-4">
-                <Input
-                  type="email"
-                  placeholder="your@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="flex-1 bg-background/50 border-primary/20 focus:border-primary"
-                />
+                <Input type="email" placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} required className="flex-1 bg-background/50 border-primary/20 focus:border-primary" />
                 <Button type="submit" size="lg">
                   Get Access
                 </Button>
@@ -291,8 +244,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
