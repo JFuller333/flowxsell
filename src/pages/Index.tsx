@@ -98,7 +98,7 @@ const Index = () => {
         
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="neon-text-glow">The Flow Framework</h2>
+            <h2 className="neon-text-glow">The Xsell Framework</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Four phases to transform scattered effort into strategic growth
             </p>
