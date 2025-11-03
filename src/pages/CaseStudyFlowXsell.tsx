@@ -474,16 +474,16 @@ const CaseStudyFlowXsell = () => {
                     </div>
                     <div className="flex gap-3 items-center pr-2">
                       <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                        Shopify Plus
+                        React
                       </span>
                       <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                        Liquid
+                        Next.js
                       </span>
                       <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                        Node.js
+                        Hydrogen
                       </span>
                       <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                        APIs
+                        Remix
                       </span>
                     </div>
                   </div>
@@ -524,10 +524,10 @@ const CaseStudyFlowXsell = () => {
                         <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
                           <div className="text-sm font-semibold text-primary mb-2">Languages</div>
                           <div className="flex flex-wrap gap-2">
-                            <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Liquid</span>
-                            <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Node.js</span>
                             <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">React</span>
-                            <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">GraphQL</span>
+                            <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Next.js</span>
+                            <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Hydrogen</span>
+                            <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Remix</span>
                           </div>
                         </div>
                         <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
