@@ -174,8 +174,10 @@ const CaseStudyFlowXsell = () => {
             <AccordionTrigger className="hover:no-underline py-6">
               <div className="flex items-center justify-between w-full gap-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-xl font-bold text-primary">1</span>
+                  <div className="w-16 h-16 rounded-lg bg-background border border-primary/20 flex items-center justify-center flex-shrink-0 p-2">
+                    <div className="w-full h-full bg-muted rounded flex items-center justify-center text-xs text-muted-foreground">
+                      Logo
+                    </div>
                   </div>
                   <div className="text-left">
                     <h3 className="text-xl font-bold">Client Name - Industry</h3>
@@ -263,8 +265,10 @@ const CaseStudyFlowXsell = () => {
             <AccordionTrigger className="hover:no-underline py-6">
               <div className="flex items-center justify-between w-full gap-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-xl font-bold text-primary">2</span>
+                  <div className="w-16 h-16 rounded-lg bg-background border border-primary/20 flex items-center justify-center flex-shrink-0 p-2">
+                    <div className="w-full h-full bg-muted rounded flex items-center justify-center text-xs text-muted-foreground">
+                      Logo
+                    </div>
                   </div>
                   <div className="text-left">
                     <h3 className="text-xl font-bold">Client Name - Industry</h3>
@@ -352,8 +356,10 @@ const CaseStudyFlowXsell = () => {
             <AccordionTrigger className="hover:no-underline py-6">
               <div className="flex items-center justify-between w-full gap-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-xl font-bold text-primary">3</span>
+                  <div className="w-16 h-16 rounded-lg bg-background border border-primary/20 flex items-center justify-center flex-shrink-0 p-2">
+                    <div className="w-full h-full bg-muted rounded flex items-center justify-center text-xs text-muted-foreground">
+                      Logo
+                    </div>
                   </div>
                   <div className="text-left">
                     <h3 className="text-xl font-bold">Client Name - Industry</h3>
