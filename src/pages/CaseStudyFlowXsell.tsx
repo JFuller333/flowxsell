@@ -180,22 +180,22 @@ const CaseStudyFlowXsell = () => {
                     </div>
                   </div>
                   <div className="text-left">
-                    <h3 className="text-xl font-bold">Client Name - Industry</h3>
-                    <p className="text-sm text-muted-foreground">Brief tagline or specialty</p>
+                    <h3 className="text-xl font-bold">TRU Supplements</h3>
+                    <p className="text-sm text-muted-foreground">Influencer-led supplement brand</p>
                   </div>
                 </div>
                 <div className="flex gap-6 items-center pr-2">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">00%</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 1</div>
+                    <div className="text-2xl font-bold text-primary">$150k</div>
+                    <div className="text-xs text-muted-foreground whitespace-nowrap">Challenge Revenue</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">0x</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 2</div>
+                    <div className="text-2xl font-bold text-primary">130+</div>
+                    <div className="text-xs text-muted-foreground whitespace-nowrap">Bundles/30 Days</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">$00k</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 3</div>
+                    <div className="text-2xl font-bold text-primary">$15k</div>
+                    <div className="text-xs text-muted-foreground whitespace-nowrap">Landing Page Rev</div>
                   </div>
                 </div>
               </div>
@@ -206,7 +206,7 @@ const CaseStudyFlowXsell = () => {
                 <div>
                   <h4 className="text-lg font-semibold mb-2 text-primary">The Challenge</h4>
                   <p className="text-muted-foreground">
-                    Specific challenge this client was facing. What was broken in their system? What pain points were they experiencing?
+                    Scaling an influencer-led supplement brand (@MassyArias, 3.1M+ followers) required structured systems and optimized digital operations to convert massive social reach into sustainable e-commerce revenue.
                   </p>
                 </div>
 
@@ -214,17 +214,20 @@ const CaseStudyFlowXsell = () => {
                 <div>
                   <h4 className="text-lg font-semibold mb-2 text-primary">The Solution</h4>
                   <p className="text-muted-foreground mb-3">
-                    How you implemented FlowXsell for this specific client. What tools did you connect? What automations did you build?
+                    Implemented comprehensive FlowXsell framework connecting Shopify, email marketing automation, and subscription management. Built high-converting landing pages, optimized product pages with video testimonials, and structured bundle subscription flows with flexible purchase options.
                   </p>
                   <div className="flex flex-wrap gap-2">
                     <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
                       Shopify
                     </span>
                     <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Klaviyo
+                      Email Marketing
                     </span>
                     <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Tool 3
+                      Subscription Flows
+                    </span>
+                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                      Landing Pages
                     </span>
                   </div>
                 </div>
@@ -234,27 +237,21 @@ const CaseStudyFlowXsell = () => {
                   <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
                   <div className="grid grid-cols-3 gap-4 mb-4">
                     <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">00%</div>
-                      <div className="text-xs text-muted-foreground">Metric 1</div>
+                      <div className="text-2xl font-bold text-primary mb-1">$150k</div>
+                      <div className="text-xs text-muted-foreground">Sculpt Challenge Revenue</div>
                     </div>
                     <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">0x</div>
-                      <div className="text-xs text-muted-foreground">Metric 2</div>
+                      <div className="text-2xl font-bold text-primary mb-1">130+</div>
+                      <div className="text-xs text-muted-foreground">Bundles in 30 Days</div>
                     </div>
                     <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">$00k</div>
-                      <div className="text-xs text-muted-foreground">Metric 3</div>
+                      <div className="text-2xl font-bold text-primary mb-1">$15k+</div>
+                      <div className="text-xs text-muted-foreground">Landing Page Rev (30d)</div>
                     </div>
                   </div>
-                </div>
-
-                {/* Optional Testimonial */}
-                <div className="border-l-2 border-primary/30 pl-4 py-2">
-                  <Quote className="w-5 h-5 text-primary mb-2" />
-                  <p className="text-muted-foreground italic">
-                    "Add client testimonial quote here if available."
+                  <p className="text-muted-foreground text-sm">
+                    Weekly email campaigns consistently generated $1K+ in revenue while the subscription flow created predictable recurring revenue through "Try Once" and "Subscribe & Save" options.
                   </p>
-                  <p className="text-sm text-muted-foreground mt-2">— Client Name, Title</p>
                 </div>
               </div>
             </AccordionContent>
@@ -271,22 +268,22 @@ const CaseStudyFlowXsell = () => {
                     </div>
                   </div>
                   <div className="text-left">
-                    <h3 className="text-xl font-bold">Client Name - Industry</h3>
-                    <p className="text-sm text-muted-foreground">Brief tagline or specialty</p>
+                    <h3 className="text-xl font-bold">Metpure Inc</h3>
+                    <p className="text-sm text-muted-foreground">Enterprise e-commerce platform</p>
                   </div>
                 </div>
                 <div className="flex gap-6 items-center pr-2">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">00%</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 1</div>
+                    <div className="text-2xl font-bold text-primary">3,000+</div>
+                    <div className="text-xs text-muted-foreground whitespace-nowrap">Products</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">0x</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 2</div>
+                    <div className="text-2xl font-bold text-primary">B2B+B2C</div>
+                    <div className="text-xs text-muted-foreground whitespace-nowrap">Dual Channel</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">$00k</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 3</div>
+                    <div className="text-2xl font-bold text-primary">Custom</div>
+                    <div className="text-xs text-muted-foreground whitespace-nowrap">Development</div>
                   </div>
                 </div>
               </div>
@@ -297,7 +294,7 @@ const CaseStudyFlowXsell = () => {
                 <div>
                   <h4 className="text-lg font-semibold mb-2 text-primary">The Challenge</h4>
                   <p className="text-muted-foreground">
-                    Specific challenge this client was facing. What was broken in their system? What pain points were they experiencing?
+                    Managing 3,000+ product listings across both wholesale and retail channels required custom development and sophisticated automation. Standard Shopify features couldn't handle the complexity of dual-channel operations.
                   </p>
                 </div>
 
@@ -305,17 +302,20 @@ const CaseStudyFlowXsell = () => {
                 <div>
                   <h4 className="text-lg font-semibold mb-2 text-primary">The Solution</h4>
                   <p className="text-muted-foreground mb-3">
-                    How you implemented FlowXsell for this specific client. What tools did you connect? What automations did you build?
+                    Built custom Shopify functionality using HTML, CSS, JavaScript, Liquid, Node.js, and GitHub. Developed wholesale and retail dual-channel features, custom product pages, automated invoicing, quotes, packing slips, and customer communications. Implemented comprehensive SEO optimization and marketing automation.
                   </p>
                   <div className="flex flex-wrap gap-2">
                     <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Tool 1
+                      Shopify
                     </span>
                     <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Tool 2
+                      Custom Development
                     </span>
                     <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Tool 3
+                      SEO Optimization
+                    </span>
+                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                      Marketing Automation
                     </span>
                   </div>
                 </div>
@@ -325,27 +325,21 @@ const CaseStudyFlowXsell = () => {
                   <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
                   <div className="grid grid-cols-3 gap-4 mb-4">
                     <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">00%</div>
-                      <div className="text-xs text-muted-foreground">Metric 1</div>
+                      <div className="text-2xl font-bold text-primary mb-1">3,000+</div>
+                      <div className="text-xs text-muted-foreground">Optimized Products</div>
                     </div>
                     <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">0x</div>
-                      <div className="text-xs text-muted-foreground">Metric 2</div>
+                      <div className="text-2xl font-bold text-primary mb-1">B2B+B2C</div>
+                      <div className="text-xs text-muted-foreground">Unified Platform</div>
                     </div>
                     <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">$00k</div>
-                      <div className="text-xs text-muted-foreground">Metric 3</div>
+                      <div className="text-2xl font-bold text-primary mb-1">100%</div>
+                      <div className="text-xs text-muted-foreground">Custom Automation</div>
                     </div>
                   </div>
-                </div>
-
-                {/* Optional Testimonial */}
-                <div className="border-l-2 border-primary/30 pl-4 py-2">
-                  <Quote className="w-5 h-5 text-primary mb-2" />
-                  <p className="text-muted-foreground italic">
-                    "Add client testimonial quote here if available."
+                  <p className="text-muted-foreground text-sm">
+                    Custom-coded features enabled seamless wholesale and retail operations on a single platform, with automated documentation and marketing channels driving consistent growth.
                   </p>
-                  <p className="text-sm text-muted-foreground mt-2">— Client Name, Title</p>
                 </div>
               </div>
             </AccordionContent>
@@ -362,21 +356,21 @@ const CaseStudyFlowXsell = () => {
                     </div>
                   </div>
                   <div className="text-left">
-                    <h3 className="text-xl font-bold">Client Name - Industry</h3>
-                    <p className="text-sm text-muted-foreground">Brief tagline or specialty</p>
+                    <h3 className="text-xl font-bold">CurlsMonthly</h3>
+                    <p className="text-sm text-muted-foreground">Subscription box service</p>
                   </div>
                 </div>
                 <div className="flex gap-6 items-center pr-2">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">00%</div>
+                    <div className="text-2xl font-bold text-primary">TBD</div>
                     <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 1</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">0x</div>
+                    <div className="text-2xl font-bold text-primary">TBD</div>
                     <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 2</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">$00k</div>
+                    <div className="text-2xl font-bold text-primary">TBD</div>
                     <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 3</div>
                   </div>
                 </div>
