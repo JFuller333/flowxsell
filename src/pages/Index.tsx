@@ -213,7 +213,7 @@ const Index = () => {
               <h3 className="text-3xl font-bold">Want the FlowOS playbook?</h3>
               
               <p className="text-muted-foreground">
-                Get the full PDF and worksheet delivered weekly-ish.
+                Get the full PDF and worksheet delivered weeklyish.
               </p>
               
               <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-4">
@@ -239,7 +239,7 @@ const Index = () => {
               © 2025 FlowOS. <span className="text-primary">Built for founders, by a founder.</span>
             </div>
             <div className="text-xs text-muted-foreground font-mono">
-              This isn't a funnel—it's a system.
+              This isn't a funnel, it's a system.
             </div>
           </div>
         </div>
