@@ -67,42 +67,26 @@ const CaseStudyFlowXsell = () => {
         </div>
       </section>
 
-      {/* Tabs Section */}
-      <section className="px-4 py-12 max-w-7xl mx-auto">
-        <Tabs defaultValue="strategy" className="w-full">
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-12">
-            <TabsTrigger value="strategy" className="flex items-center gap-2">
-              <TrendingUp className="w-4 h-4" />
-              Strategy & Results
-            </TabsTrigger>
-            <TabsTrigger value="technical" className="flex items-center gap-2">
-              <Code2 className="w-4 h-4" />
-              Technical Implementation
-            </TabsTrigger>
-          </TabsList>
+      {/* Challenge Section */}
+      <section className="px-4 py-20 max-w-7xl mx-auto">
+        <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-12">
+          <h2 className="text-3xl font-bold mb-6">The Challenge</h2>
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Ecommerce founders were drowning in disconnected tools. Shopify for sales, Klaviyo for email, 
+              Google Analytics for tracking, Zapier for automation. Each tool worked in isolation, creating 
+              data silos and manual busywork.
+            </p>
+            <p>
+              The result? Missed opportunities, duplicate customer records, and founders spending 15+ hours 
+              weekly on manual data tasks instead of growing their business.
+            </p>
+          </div>
+        </Card>
+      </section>
 
-          {/* Strategy & Results Tab */}
-          <TabsContent value="strategy" className="space-y-20">
-            {/* Challenge Section */}
-            <div>
-              <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-12">
-                <h2 className="text-3xl font-bold mb-6">The Challenge</h2>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    Ecommerce founders were drowning in disconnected tools. Shopify for sales, Klaviyo for email, 
-                    Google Analytics for tracking, Zapier for automation. Each tool worked in isolation, creating 
-                    data silos and manual busywork.
-                  </p>
-                  <p>
-                    The result? Missed opportunities, duplicate customer records, and founders spending 15+ hours 
-                    weekly on manual data tasks instead of growing their business.
-                  </p>
-                </div>
-              </Card>
-            </div>
-
-            {/* Solution Section */}
-            <div>
+      {/* Solution Section */}
+      <section className="px-4 py-20 max-w-7xl mx-auto">
         <div className="mb-12">
           <h2 className="text-3xl font-bold mb-4">The Solution</h2>
           <p className="text-xl text-muted-foreground">
@@ -141,10 +125,10 @@ const CaseStudyFlowXsell = () => {
             </p>
           </Card>
         </div>
-      </div>
+      </section>
 
       {/* Results Section */}
-      <div>
+      <section className="px-4 py-20 max-w-7xl mx-auto">
         <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-12">
           <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
             <TrendingUp className="w-8 h-8 text-primary" />
@@ -176,607 +160,479 @@ const CaseStudyFlowXsell = () => {
             </p>
           </div>
         </Card>
-      </div>
+      </section>
 
-      {/* Client Stories Section */}
-      <div>
+      {/* Client Success Stories Section */}
+      <section className="px-4 py-20 max-w-7xl mx-auto">
         <div className="mb-12 text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border border-primary/30 mb-6">
             <Building2 className="w-8 h-8 text-primary" />
           </div>
           <h2 className="text-4xl font-bold mb-4">Client Success Stories</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Real implementations, real results. Explore how 3 different businesses transformed their operations with FlowXsell.
+            Real implementations, real results across strategy and technical development.
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="space-y-4">
-          {/* Client 1 */}
-          <AccordionItem value="client-1" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
-            <AccordionTrigger className="hover:no-underline py-6">
-              <div className="flex items-center justify-between w-full gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
-                    <img src={truLogo} alt="TRU Supplements" className="w-full h-full object-contain" />
-                  </div>
-                  <div className="text-left">
-                    <h3 className="text-xl font-bold">TRU Supplements</h3>
-                    <p className="text-sm text-muted-foreground">Influencer-led supplement brand</p>
-                  </div>
-                </div>
-                <div className="flex gap-6 items-center pr-2">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">$150k</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Challenge Revenue</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">130+</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Bundles/30 Days</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">$15k</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Landing Page Rev</div>
-                  </div>
-                </div>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="pt-2 pb-6">
-              <div className="space-y-6 ml-16">
-                {/* Challenge */}
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-primary">The Challenge</h4>
-                  <p className="text-muted-foreground">
-                    Scaling an influencer-led supplement brand (@MassyArias, 3.1M+ followers) required structured systems and optimized digital operations to convert massive social reach into sustainable e-commerce revenue.
-                  </p>
-                </div>
+        <Tabs defaultValue="strategy" className="w-full">
+          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-12">
+            <TabsTrigger value="strategy" className="flex items-center gap-2">
+              <TrendingUp className="w-4 h-4" />
+              Strategy & Results
+            </TabsTrigger>
+            <TabsTrigger value="technical" className="flex items-center gap-2">
+              <Code2 className="w-4 h-4" />
+              Technical Development
+            </TabsTrigger>
+          </TabsList>
 
-                {/* Solution */}
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-primary">The Solution</h4>
-                  <p className="text-muted-foreground mb-3">
-                    Implemented comprehensive FlowXsell framework connecting Shopify, email marketing automation, and subscription management. Built high-converting landing pages, optimized product pages with video testimonials, and structured bundle subscription flows with flexible purchase options.
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Shopify
-                    </span>
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Email Marketing
-                    </span>
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Subscription Flows
-                    </span>
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Landing Pages
-                    </span>
-                  </div>
-                </div>
-
-                {/* Results */}
-                <div>
-                  <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
-                  <div className="grid grid-cols-3 gap-4 mb-4">
-                    <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">$150k</div>
-                      <div className="text-xs text-muted-foreground">Sculpt Challenge Revenue</div>
+          {/* Strategy & Results Clients */}
+          <TabsContent value="strategy" className="space-y-4">
+            <Accordion type="single" collapsible className="space-y-4">
+              {/* Client 1 */}
+              <AccordionItem value="client-1" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
+                <AccordionTrigger className="hover:no-underline py-6">
+                  <div className="flex items-center justify-between w-full gap-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
+                        <img src={truLogo} alt="TRU Supplements" className="w-full h-full object-contain" />
+                      </div>
+                      <div className="text-left">
+                        <h3 className="text-xl font-bold">TRU Supplements</h3>
+                        <p className="text-sm text-muted-foreground">Influencer-led supplement brand</p>
+                      </div>
                     </div>
-                    <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">130+</div>
-                      <div className="text-xs text-muted-foreground">Bundles in 30 Days</div>
-                    </div>
-                    <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">$15k+</div>
-                      <div className="text-xs text-muted-foreground">Landing Page Rev (30d)</div>
+                    <div className="flex gap-6 items-center pr-2">
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary">$150k</div>
+                        <div className="text-xs text-muted-foreground whitespace-nowrap">Challenge Revenue</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary">130+</div>
+                        <div className="text-xs text-muted-foreground whitespace-nowrap">Bundles/30 Days</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary">$15k</div>
+                        <div className="text-xs text-muted-foreground whitespace-nowrap">Landing Page Rev</div>
+                      </div>
                     </div>
                   </div>
-                  <p className="text-muted-foreground text-sm">
-                    Weekly email campaigns consistently generated $1K+ in revenue while the subscription flow created predictable recurring revenue through "Try Once" and "Subscribe & Save" options.
-                  </p>
-                </div>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
-          {/* Client 2 */}
-          <AccordionItem value="client-2" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
-            <AccordionTrigger className="hover:no-underline py-6">
-              <div className="flex items-center justify-between w-full gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
-                    <img src={metpureLogo} alt="Metpure Inc" className="w-full h-full object-contain" />
-                  </div>
-                  <div className="text-left">
-                    <h3 className="text-xl font-bold">Metpure Inc</h3>
-                    <p className="text-sm text-muted-foreground">Enterprise e-commerce platform</p>
-                  </div>
-                </div>
-                <div className="flex gap-6 items-center pr-2">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">3,000+</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Products</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">B2B+B2C</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Dual Channel</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">Custom</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Development</div>
-                  </div>
-                </div>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="pt-2 pb-6">
-              <div className="space-y-6 ml-16">
-                {/* Challenge */}
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-primary">The Challenge</h4>
-                  <p className="text-muted-foreground">
-                    Managing 3,000+ product listings across both wholesale and retail channels required custom development and sophisticated automation. Standard Shopify features couldn't handle the complexity of dual-channel operations.
-                  </p>
-                </div>
-
-                {/* Solution */}
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-primary">The Solution</h4>
-                  <p className="text-muted-foreground mb-3">
-                    Built custom Shopify functionality using HTML, CSS, JavaScript, Liquid, Node.js, and GitHub. Developed wholesale and retail dual-channel features, custom product pages, automated invoicing, quotes, packing slips, and customer communications. Implemented comprehensive SEO optimization and marketing automation.
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Shopify
-                    </span>
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Custom Development
-                    </span>
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      SEO Optimization
-                    </span>
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Marketing Automation
-                    </span>
-                  </div>
-                </div>
-
-                {/* Results */}
-                <div>
-                  <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
-                  <div className="grid grid-cols-3 gap-4 mb-4">
-                    <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">3,000+</div>
-                      <div className="text-xs text-muted-foreground">Optimized Products</div>
+                </AccordionTrigger>
+                <AccordionContent className="pt-2 pb-6">
+                  <div className="space-y-6 ml-16">
+                    {/* Challenge */}
+                    <div>
+                      <h4 className="text-lg font-semibold mb-2 text-primary">The Challenge</h4>
+                      <p className="text-muted-foreground">
+                        Scaling an influencer-led supplement brand (@MassyArias, 3.1M+ followers) required structured systems and optimized digital operations to convert massive social reach into sustainable e-commerce revenue.
+                      </p>
                     </div>
-                    <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">B2B+B2C</div>
-                      <div className="text-xs text-muted-foreground">Unified Platform</div>
+
+                    {/* Solution */}
+                    <div>
+                      <h4 className="text-lg font-semibold mb-2 text-primary">The Solution</h4>
+                      <p className="text-muted-foreground mb-3">
+                        Implemented comprehensive FlowXsell framework connecting Shopify, email marketing automation, and subscription management. Built high-converting landing pages, optimized product pages with video testimonials, and structured bundle subscription flows with flexible purchase options.
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                          Shopify
+                        </span>
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                          Email Marketing
+                        </span>
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                          Subscription Flows
+                        </span>
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                          Landing Pages
+                        </span>
+                      </div>
                     </div>
-                    <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">100%</div>
-                      <div className="text-xs text-muted-foreground">Custom Automation</div>
+
+                    {/* Results */}
+                    <div>
+                      <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
+                      <div className="grid grid-cols-3 gap-4 mb-4">
+                        <div className="text-center p-4 rounded-lg bg-background/50">
+                          <div className="text-2xl font-bold text-primary mb-1">$150k</div>
+                          <div className="text-xs text-muted-foreground">Sculpt Challenge Revenue</div>
+                        </div>
+                        <div className="text-center p-4 rounded-lg bg-background/50">
+                          <div className="text-2xl font-bold text-primary mb-1">130+</div>
+                          <div className="text-xs text-muted-foreground">Bundles in 30 Days</div>
+                        </div>
+                        <div className="text-center p-4 rounded-lg bg-background/50">
+                          <div className="text-2xl font-bold text-primary mb-1">$15k+</div>
+                          <div className="text-xs text-muted-foreground">Landing Page Rev (30d)</div>
+                        </div>
+                      </div>
+                      <p className="text-muted-foreground text-sm">
+                        Weekly email campaigns consistently generated $1K+ in revenue while the subscription flow created predictable recurring revenue through "Try Once" and "Subscribe & Save" options.
+                      </p>
                     </div>
                   </div>
-                  <p className="text-muted-foreground text-sm">
-                    Custom-coded features enabled seamless wholesale and retail operations on a single platform, with automated documentation and marketing channels driving consistent growth.
-                  </p>
-                </div>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
+                </AccordionContent>
+              </AccordionItem>
 
-          {/* Client 3 */}
-          <AccordionItem value="client-3" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
-            <AccordionTrigger className="hover:no-underline py-6">
-              <div className="flex items-center justify-between w-full gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
-                    <img src={curlsmonthlyLogo} alt="CurlsMonthly" className="w-full h-full object-contain" />
-                  </div>
-                  <div className="text-left">
-                    <h3 className="text-xl font-bold">CurlsMonthly</h3>
-                    <p className="text-sm text-muted-foreground">Subscription box service</p>
-                  </div>
-                </div>
-                <div className="flex gap-6 items-center pr-2">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">TBD</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 1</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">TBD</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 2</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">TBD</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 3</div>
-                  </div>
-                </div>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="pt-2 pb-6">
-              <div className="space-y-6 ml-16">
-                {/* Challenge */}
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-primary">The Challenge</h4>
-                  <p className="text-muted-foreground">
-                    Specific challenge this client was facing. What was broken in their system? What pain points were they experiencing?
-                  </p>
-                </div>
-
-                {/* Solution */}
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-primary">The Solution</h4>
-                  <p className="text-muted-foreground mb-3">
-                    How you implemented FlowXsell for this specific client. What tools did you connect? What automations did you build?
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Tool 1
-                    </span>
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Tool 2
-                    </span>
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Tool 3
-                    </span>
-                  </div>
-                </div>
-
-                {/* Results */}
-                <div>
-                  <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
-                  <div className="grid grid-cols-3 gap-4 mb-4">
-                    <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">00%</div>
-                      <div className="text-xs text-muted-foreground">Metric 1</div>
+              {/* Client 2 */}
+              <AccordionItem value="client-2" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
+                <AccordionTrigger className="hover:no-underline py-6">
+                  <div className="flex items-center justify-between w-full gap-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
+                        <img src={metpureLogo} alt="Metpure Inc" className="w-full h-full object-contain" />
+                      </div>
+                      <div className="text-left">
+                        <h3 className="text-xl font-bold">Metpure Inc</h3>
+                        <p className="text-sm text-muted-foreground">Enterprise e-commerce platform</p>
+                      </div>
                     </div>
-                    <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">0x</div>
-                      <div className="text-xs text-muted-foreground">Metric 2</div>
-                    </div>
-                    <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">$00k</div>
-                      <div className="text-xs text-muted-foreground">Metric 3</div>
+                    <div className="flex gap-6 items-center pr-2">
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary">3,000+</div>
+                        <div className="text-xs text-muted-foreground whitespace-nowrap">Products</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary">B2B+B2C</div>
+                        <div className="text-xs text-muted-foreground whitespace-nowrap">Dual Channel</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary">Custom</div>
+                        <div className="text-xs text-muted-foreground whitespace-nowrap">Development</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-
-                {/* Optional Testimonial */}
-                <div className="border-l-2 border-primary/30 pl-4 py-2">
-                  <Quote className="w-5 h-5 text-primary mb-2" />
-                  <p className="text-muted-foreground italic">
-                    "Add client testimonial quote here if available."
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-2">— Client Name, Title</p>
-                </div>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
-          {/* Client 4 - LRT */}
-          <AccordionItem value="client-4" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
-            <AccordionTrigger className="hover:no-underline py-6">
-              <div className="flex items-center justify-between w-full gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
-                    <img src={lrtLogo} alt="Let's Rebuild Tuskegee" className="w-full h-full object-contain" />
-                  </div>
-                  <div className="text-left">
-                    <h3 className="text-xl font-bold">Let's Rebuild Tuskegee</h3>
-                    <p className="text-sm text-muted-foreground">Community rebuilding initiative</p>
-                  </div>
-                </div>
-                <div className="flex gap-6 items-center pr-2">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">TBD</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 1</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">TBD</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 2</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">TBD</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 3</div>
-                  </div>
-                </div>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="pt-2 pb-6">
-              <div className="space-y-6 ml-16">
-                {/* Challenge */}
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-primary">The Challenge</h4>
-                  <p className="text-muted-foreground">
-                    Specific challenge this client was facing. What was broken in their system? What pain points were they experiencing?
-                  </p>
-                </div>
-
-                {/* Solution */}
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-primary">The Solution</h4>
-                  <p className="text-muted-foreground mb-3">
-                    How you implemented FlowXsell for this specific client. What tools did you connect? What automations did you build?
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Tool 1
-                    </span>
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Tool 2
-                    </span>
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Tool 3
-                    </span>
-                  </div>
-                </div>
-
-                {/* Results */}
-                <div>
-                  <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
-                  <div className="grid grid-cols-3 gap-4 mb-4">
-                    <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">TBD</div>
-                      <div className="text-xs text-muted-foreground">Metric 1</div>
+                </AccordionTrigger>
+                <AccordionContent className="pt-2 pb-6">
+                  <div className="space-y-6 ml-16">
+                    {/* Challenge */}
+                    <div>
+                      <h4 className="text-lg font-semibold mb-2 text-primary">The Challenge</h4>
+                      <p className="text-muted-foreground">
+                        Managing 3,000+ product listings across both wholesale and retail channels required custom development and sophisticated automation. Standard Shopify features couldn't handle the complexity of dual-channel operations.
+                      </p>
                     </div>
-                    <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">TBD</div>
-                      <div className="text-xs text-muted-foreground">Metric 2</div>
+
+                    {/* Solution */}
+                    <div>
+                      <h4 className="text-lg font-semibold mb-2 text-primary">The Solution</h4>
+                      <p className="text-muted-foreground mb-3">
+                        Built custom Shopify functionality using HTML, CSS, JavaScript, Liquid, Node.js, and GitHub. Developed wholesale and retail dual-channel features, custom product pages, automated invoicing, quotes, packing slips, and customer communications. Implemented comprehensive SEO optimization and marketing automation.
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                          Shopify
+                        </span>
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                          Custom Development
+                        </span>
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                          SEO Optimization
+                        </span>
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                          Marketing Automation
+                        </span>
+                      </div>
                     </div>
-                    <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">TBD</div>
-                      <div className="text-xs text-muted-foreground">Metric 3</div>
+
+                    {/* Results */}
+                    <div>
+                      <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
+                      <div className="grid grid-cols-3 gap-4 mb-4">
+                        <div className="text-center p-4 rounded-lg bg-background/50">
+                          <div className="text-2xl font-bold text-primary mb-1">3,000+</div>
+                          <div className="text-xs text-muted-foreground">Optimized Products</div>
+                        </div>
+                        <div className="text-center p-4 rounded-lg bg-background/50">
+                          <div className="text-2xl font-bold text-primary mb-1">B2B+B2C</div>
+                          <div className="text-xs text-muted-foreground">Unified Platform</div>
+                        </div>
+                        <div className="text-center p-4 rounded-lg bg-background/50">
+                          <div className="text-2xl font-bold text-primary mb-1">100%</div>
+                          <div className="text-xs text-muted-foreground">Custom Automation</div>
+                        </div>
+                      </div>
+                      <p className="text-muted-foreground text-sm">
+                        Custom-coded features enabled seamless wholesale and retail operations on a single platform, with automated documentation and marketing channels driving consistent growth.
+                      </p>
                     </div>
                   </div>
-                </div>
-
-                {/* Optional Testimonial */}
-                <div className="border-l-2 border-primary/30 pl-4 py-2">
-                  <Quote className="w-5 h-5 text-primary mb-2" />
-                  <p className="text-muted-foreground italic">
-                    "Add client testimonial quote here if available."
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-2">— Client Name, Title</p>
-                </div>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
-          {/* Client 5 - InstaBalloons */}
-          <AccordionItem value="client-5" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
-            <AccordionTrigger className="hover:no-underline py-6">
-              <div className="flex items-center justify-between w-full gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
-                    <img src={instaballoonsLogo} alt="InstaBalloons Wholesale" className="w-full h-full object-contain" />
-                  </div>
-                  <div className="text-left">
-                    <h3 className="text-xl font-bold">InstaBalloons Wholesale</h3>
-                    <p className="text-sm text-muted-foreground">Party supplies wholesale</p>
-                  </div>
-                </div>
-                <div className="flex gap-6 items-center pr-2">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">TBD</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 1</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">TBD</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 2</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">TBD</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 3</div>
-                  </div>
-                </div>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="pt-2 pb-6">
-              <div className="space-y-6 ml-16">
-                {/* Challenge */}
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-primary">The Challenge</h4>
-                  <p className="text-muted-foreground">
-                    Specific challenge this client was facing. What was broken in their system? What pain points were they experiencing?
-                  </p>
-                </div>
-
-                {/* Solution */}
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-primary">The Solution</h4>
-                  <p className="text-muted-foreground mb-3">
-                    How you implemented FlowXsell for this specific client. What tools did you connect? What automations did you build?
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Tool 1
-                    </span>
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Tool 2
-                    </span>
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                      Tool 3
-                    </span>
-                  </div>
-                </div>
-
-                {/* Results */}
-                <div>
-                  <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
-                  <div className="grid grid-cols-3 gap-4 mb-4">
-                    <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">TBD</div>
-                      <div className="text-xs text-muted-foreground">Metric 1</div>
-                    </div>
-                    <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">TBD</div>
-                      <div className="text-xs text-muted-foreground">Metric 2</div>
-                    </div>
-                    <div className="text-center p-4 rounded-lg bg-background/50">
-                      <div className="text-2xl font-bold text-primary mb-1">TBD</div>
-                      <div className="text-xs text-muted-foreground">Metric 3</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Optional Testimonial */}
-                <div className="border-l-2 border-primary/30 pl-4 py-2">
-                  <Quote className="w-5 h-5 text-primary mb-2" />
-                  <p className="text-muted-foreground italic">
-                    "Add client testimonial quote here if available."
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-2">— Client Name, Title</p>
-                </div>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-            </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </TabsContent>
 
-          {/* Technical Implementation Tab */}
-          <TabsContent value="technical" className="space-y-20">
-            {/* Technical Overview */}
-            <div>
-              <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-12">
-                <h2 className="text-3xl font-bold mb-6">Technical Implementation</h2>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    Behind every successful ecommerce strategy is robust technical implementation. 
-                    Here's how we build and optimize systems at the code level.
-                  </p>
-                </div>
-              </Card>
-            </div>
-
-            {/* Tech Stack */}
-            <div>
-              <div className="mb-12">
-                <h2 className="text-3xl font-bold mb-4">Core Technologies</h2>
-                <p className="text-xl text-muted-foreground">
-                  Full-stack development across platforms and frameworks
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                    <Code2 className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">Frontend Development</h3>
-                  <div className="space-y-2 text-muted-foreground">
-                    <p>• HTML, CSS, JavaScript (ES6+)</p>
-                    <p>• Liquid templating (Shopify)</p>
-                    <p>• jQuery for legacy integrations</p>
-                    <p>• Responsive design & mobile optimization</p>
-                  </div>
-                </Card>
-
-                <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                    <Code2 className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">Backend & APIs</h3>
-                  <div className="space-y-2 text-muted-foreground">
-                    <p>• Node.js for server-side logic</p>
-                    <p>• JSON data structures</p>
-                    <p>• RESTful API integrations</p>
-                    <p>• Webhook automation</p>
-                  </div>
-                </Card>
-
-                <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                    <Code2 className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">Ecommerce Platforms</h3>
-                  <div className="space-y-2 text-muted-foreground">
-                    <p>• Shopify (Liquid, Theme Kit)</p>
-                    <p>• Shopify Plus customization</p>
-                    <p>• Custom checkout experiences</p>
-                    <p>• Subscription app integrations</p>
-                  </div>
-                </Card>
-
-                <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                    <Code2 className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">Development Tools</h3>
-                  <div className="space-y-2 text-muted-foreground">
-                    <p>• GitHub version control</p>
-                    <p>• Chrome DevTools debugging</p>
-                    <p>• Postman API testing</p>
-                    <p>• SEO optimization tools</p>
-                  </div>
-                </Card>
-              </div>
-            </div>
-
-            {/* Custom Development Examples */}
-            <div>
-              <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-12">
-                <h2 className="text-3xl font-bold mb-8">Custom Development Capabilities</h2>
-                
-                <div className="space-y-8">
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 text-primary">Custom Product Pages</h3>
-                    <p className="text-muted-foreground mb-3">
-                      Built dynamic product displays with video testimonials, bundle options, and 
-                      subscription variants using HTML, CSS, JavaScript, and Liquid.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                        Liquid
-                      </span>
-                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                        JavaScript
-                      </span>
-                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                        CSS
-                      </span>
+          {/* Technical Development Clients */}
+          <TabsContent value="technical" className="space-y-4">
+            <Accordion type="single" collapsible className="space-y-4">
+              {/* Client 3 */}
+              <AccordionItem value="client-3" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
+                <AccordionTrigger className="hover:no-underline py-6">
+                  <div className="flex items-center justify-between w-full gap-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
+                        <img src={curlsmonthlyLogo} alt="CurlsMonthly" className="w-full h-full object-contain" />
+                      </div>
+                      <div className="text-left">
+                        <h3 className="text-xl font-bold">CurlsMonthly</h3>
+                        <p className="text-sm text-muted-foreground">Subscription box service</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-6 items-center pr-2">
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary">TBD</div>
+                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 1</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary">TBD</div>
+                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 2</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary">TBD</div>
+                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 3</div>
+                      </div>
                     </div>
                   </div>
+                </AccordionTrigger>
+                <AccordionContent className="pt-2 pb-6">
+                  <div className="space-y-6 ml-16">
+                    {/* Challenge */}
+                    <div>
+                      <h4 className="text-lg font-semibold mb-2 text-primary">The Challenge</h4>
+                      <p className="text-muted-foreground">
+                        Specific challenge this client was facing. What was broken in their system? What pain points were they experiencing?
+                      </p>
+                    </div>
 
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 text-primary">Wholesale & Retail Dual Channel</h3>
-                    <p className="text-muted-foreground mb-3">
-                      Developed custom features to handle both B2B and B2C operations on a single 
-                      Shopify instance with conditional pricing and checkout flows.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                        Node.js
-                      </span>
-                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                        Shopify API
-                      </span>
-                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                        JSON
-                      </span>
+                    {/* Solution */}
+                    <div>
+                      <h4 className="text-lg font-semibold mb-2 text-primary">The Solution</h4>
+                      <p className="text-muted-foreground mb-3">
+                        How you implemented FlowXsell for this specific client. What tools did you connect? What automations did you build?
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                          Tool 1
+                        </span>
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                          Tool 2
+                        </span>
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                          Tool 3
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Results */}
+                    <div>
+                      <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
+                      <div className="grid grid-cols-3 gap-4 mb-4">
+                        <div className="text-center p-4 rounded-lg bg-background/50">
+                          <div className="text-2xl font-bold text-primary mb-1">00%</div>
+                          <div className="text-xs text-muted-foreground">Metric 1</div>
+                        </div>
+                        <div className="text-center p-4 rounded-lg bg-background/50">
+                          <div className="text-2xl font-bold text-primary mb-1">0x</div>
+                          <div className="text-xs text-muted-foreground">Metric 2</div>
+                        </div>
+                        <div className="text-center p-4 rounded-lg bg-background/50">
+                          <div className="text-2xl font-bold text-primary mb-1">$00k</div>
+                          <div className="text-xs text-muted-foreground">Metric 3</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Optional Testimonial */}
+                    <div className="border-l-2 border-primary/30 pl-4 py-2">
+                      <Quote className="w-5 h-5 text-primary mb-2" />
+                      <p className="text-muted-foreground italic">
+                        "Add client testimonial quote here if available."
+                      </p>
+                      <p className="text-sm text-muted-foreground mt-2">— Client Name, Title</p>
                     </div>
                   </div>
+                </AccordionContent>
+              </AccordionItem>
 
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 text-primary">Automated Documentation</h3>
-                    <p className="text-muted-foreground mb-3">
-                      Custom-coded invoices, quotes, packing slips, and customer email templates 
-                      with dynamic data population.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                        Liquid
-                      </span>
-                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                        HTML/CSS
-                      </span>
-                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                        Email Templates
-                      </span>
+              {/* Client 4 - LRT */}
+              <AccordionItem value="client-4" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
+                <AccordionTrigger className="hover:no-underline py-6">
+                  <div className="flex items-center justify-between w-full gap-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
+                        <img src={lrtLogo} alt="Let's Rebuild Tuskegee" className="w-full h-full object-contain" />
+                      </div>
+                      <div className="text-left">
+                        <h3 className="text-xl font-bold">Let's Rebuild Tuskegee</h3>
+                        <p className="text-sm text-muted-foreground">Community rebuilding initiative</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-6 items-center pr-2">
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary">TBD</div>
+                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 1</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary">TBD</div>
+                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 2</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary">TBD</div>
+                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 3</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Card>
-            </div>
+                </AccordionTrigger>
+                <AccordionContent className="pt-2 pb-6">
+                  <div className="space-y-6 ml-16">
+                    {/* Challenge */}
+                    <div>
+                      <h4 className="text-lg font-semibold mb-2 text-primary">The Challenge</h4>
+                      <p className="text-muted-foreground">
+                        Specific challenge this client was facing. What was broken in their system? What pain points were they experiencing?
+                      </p>
+                    </div>
+
+                    {/* Solution */}
+                    <div>
+                      <h4 className="text-lg font-semibold mb-2 text-primary">The Solution</h4>
+                      <p className="text-muted-foreground mb-3">
+                        How you implemented FlowXsell for this specific client. What tools did you connect? What automations did you build?
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                          Tool 1
+                        </span>
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                          Tool 2
+                        </span>
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                          Tool 3
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Results */}
+                    <div>
+                      <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
+                      <div className="grid grid-cols-3 gap-4 mb-4">
+                        <div className="text-center p-4 rounded-lg bg-background/50">
+                          <div className="text-2xl font-bold text-primary mb-1">TBD</div>
+                          <div className="text-xs text-muted-foreground">Metric 1</div>
+                        </div>
+                        <div className="text-center p-4 rounded-lg bg-background/50">
+                          <div className="text-2xl font-bold text-primary mb-1">TBD</div>
+                          <div className="text-xs text-muted-foreground">Metric 2</div>
+                        </div>
+                        <div className="text-center p-4 rounded-lg bg-background/50">
+                          <div className="text-2xl font-bold text-primary mb-1">TBD</div>
+                          <div className="text-xs text-muted-foreground">Metric 3</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Optional Testimonial */}
+                    <div className="border-l-2 border-primary/30 pl-4 py-2">
+                      <Quote className="w-5 h-5 text-primary mb-2" />
+                      <p className="text-muted-foreground italic">
+                        "Add client testimonial quote here if available."
+                      </p>
+                      <p className="text-sm text-muted-foreground mt-2">— Client Name, Title</p>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              {/* Client 5 - InstaBalloons */}
+              <AccordionItem value="client-5" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
+                <AccordionTrigger className="hover:no-underline py-6">
+                  <div className="flex items-center justify-between w-full gap-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
+                        <img src={instaballoonsLogo} alt="InstaBalloons Wholesale" className="w-full h-full object-contain" />
+                      </div>
+                      <div className="text-left">
+                        <h3 className="text-xl font-bold">InstaBalloons Wholesale</h3>
+                        <p className="text-sm text-muted-foreground">Party supplies wholesale</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-6 items-center pr-2">
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary">TBD</div>
+                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 1</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary">TBD</div>
+                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 2</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary">TBD</div>
+                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 3</div>
+                      </div>
+                    </div>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pt-2 pb-6">
+                  <div className="space-y-6 ml-16">
+                    {/* Challenge */}
+                    <div>
+                      <h4 className="text-lg font-semibold mb-2 text-primary">The Challenge</h4>
+                      <p className="text-muted-foreground">
+                        Specific challenge this client was facing. What was broken in their system? What pain points were they experiencing?
+                      </p>
+                    </div>
+
+                    {/* Solution */}
+                    <div>
+                      <h4 className="text-lg font-semibold mb-2 text-primary">The Solution</h4>
+                      <p className="text-muted-foreground mb-3">
+                        How you implemented FlowXsell for this specific client. What tools did you connect? What automations did you build?
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                          Tool 1
+                        </span>
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                          Tool 2
+                        </span>
+                        <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                          Tool 3
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Results */}
+                    <div>
+                      <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
+                      <div className="grid grid-cols-3 gap-4 mb-4">
+                        <div className="text-center p-4 rounded-lg bg-background/50">
+                          <div className="text-2xl font-bold text-primary mb-1">TBD</div>
+                          <div className="text-xs text-muted-foreground">Metric 1</div>
+                        </div>
+                        <div className="text-center p-4 rounded-lg bg-background/50">
+                          <div className="text-2xl font-bold text-primary mb-1">TBD</div>
+                          <div className="text-xs text-muted-foreground">Metric 2</div>
+                        </div>
+                        <div className="text-center p-4 rounded-lg bg-background/50">
+                          <div className="text-2xl font-bold text-primary mb-1">TBD</div>
+                          <div className="text-xs text-muted-foreground">Metric 3</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Optional Testimonial */}
+                    <div className="border-l-2 border-primary/30 pl-4 py-2">
+                      <Quote className="w-5 h-5 text-primary mb-2" />
+                      <p className="text-muted-foreground italic">
+                        "Add client testimonial quote here if available."
+                      </p>
+                      <p className="text-sm text-muted-foreground mt-2">— Client Name, Title</p>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </TabsContent>
         </Tabs>
       </section>
