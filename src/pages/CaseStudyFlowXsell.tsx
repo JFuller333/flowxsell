@@ -9,6 +9,7 @@ import truLogo from "@/assets/tru-logo-original.png";
 import metpureLogo from "@/assets/metpure-logo-original.svg";
 import curlsmonthlyLogo from "@/assets/curlsmonthly-logo-original.webp";
 import lrtLogo from "@/assets/lrt-logo.png";
+import instaballoonsLogo from "@/assets/instaballoons-logo.svg";
 
 const CaseStudyFlowXsell = () => {
   const navigate = useNavigate();
@@ -462,6 +463,95 @@ const CaseStudyFlowXsell = () => {
                   <div className="text-left">
                     <h3 className="text-xl font-bold">Let's Rebuild Tuskegee</h3>
                     <p className="text-sm text-muted-foreground">Community rebuilding initiative</p>
+                  </div>
+                </div>
+                <div className="flex gap-6 items-center pr-2">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-primary">TBD</div>
+                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 1</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-primary">TBD</div>
+                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 2</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-primary">TBD</div>
+                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 3</div>
+                  </div>
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="pt-2 pb-6">
+              <div className="space-y-6 ml-16">
+                {/* Challenge */}
+                <div>
+                  <h4 className="text-lg font-semibold mb-2 text-primary">The Challenge</h4>
+                  <p className="text-muted-foreground">
+                    Specific challenge this client was facing. What was broken in their system? What pain points were they experiencing?
+                  </p>
+                </div>
+
+                {/* Solution */}
+                <div>
+                  <h4 className="text-lg font-semibold mb-2 text-primary">The Solution</h4>
+                  <p className="text-muted-foreground mb-3">
+                    How you implemented FlowXsell for this specific client. What tools did you connect? What automations did you build?
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                      Tool 1
+                    </span>
+                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                      Tool 2
+                    </span>
+                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                      Tool 3
+                    </span>
+                  </div>
+                </div>
+
+                {/* Results */}
+                <div>
+                  <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
+                  <div className="grid grid-cols-3 gap-4 mb-4">
+                    <div className="text-center p-4 rounded-lg bg-background/50">
+                      <div className="text-2xl font-bold text-primary mb-1">TBD</div>
+                      <div className="text-xs text-muted-foreground">Metric 1</div>
+                    </div>
+                    <div className="text-center p-4 rounded-lg bg-background/50">
+                      <div className="text-2xl font-bold text-primary mb-1">TBD</div>
+                      <div className="text-xs text-muted-foreground">Metric 2</div>
+                    </div>
+                    <div className="text-center p-4 rounded-lg bg-background/50">
+                      <div className="text-2xl font-bold text-primary mb-1">TBD</div>
+                      <div className="text-xs text-muted-foreground">Metric 3</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Optional Testimonial */}
+                <div className="border-l-2 border-primary/30 pl-4 py-2">
+                  <Quote className="w-5 h-5 text-primary mb-2" />
+                  <p className="text-muted-foreground italic">
+                    "Add client testimonial quote here if available."
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-2">— Client Name, Title</p>
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          {/* Client 5 - InstaBalloons */}
+          <AccordionItem value="client-5" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
+            <AccordionTrigger className="hover:no-underline py-6">
+              <div className="flex items-center justify-between w-full gap-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
+                    <img src={instaballoonsLogo} alt="InstaBalloons Wholesale" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="text-left">
+                    <h3 className="text-xl font-bold">InstaBalloons Wholesale</h3>
+                    <p className="text-sm text-muted-foreground">Party supplies wholesale</p>
                   </div>
                 </div>
                 <div className="flex gap-6 items-center pr-2">
