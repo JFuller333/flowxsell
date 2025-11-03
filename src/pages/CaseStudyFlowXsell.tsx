@@ -121,9 +121,9 @@ const CaseStudyFlowXsell = () => {
         </div>
       </section>
 
-      {/* Results Section */}
+      {/* Client Success Stories & Results Section */}
       <section className="px-4 py-20 max-w-7xl mx-auto">
-        <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-12">
+        <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-12 mb-12">
           <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
             <TrendingUp className="w-8 h-8 text-primary" />
             The Results
@@ -154,17 +154,15 @@ const CaseStudyFlowXsell = () => {
             </p>
           </div>
         </Card>
-      </section>
 
-      {/* Client Stories Section */}
-      <section className="px-4 py-20 max-w-7xl mx-auto">
+        {/* Client Stories */}
         <div className="mb-12 text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border border-primary/30 mb-6">
             <Building2 className="w-8 h-8 text-primary" />
           </div>
-          <h2 className="text-4xl font-bold mb-4">Client Success Stories</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Real implementations, real results. Explore how 3 different businesses transformed their operations with FlowXsell.
+          <h3 className="text-3xl font-bold mb-4">Real Client Implementations</h3>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Explore how 3 different businesses transformed their operations with FlowXsell.
           </p>
         </div>
 
