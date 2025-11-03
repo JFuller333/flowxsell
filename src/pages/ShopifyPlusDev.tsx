@@ -138,110 +138,111 @@ const ShopifyPlusDev = () => {
       </section>
 
       {/* Features Developed */}
-      <section className="px-4 py-20 max-w-7xl mx-auto">
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold mb-4">Features Developed</h2>
-          <p className="text-xl text-muted-foreground">
-            Technical implementations and custom solutions
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-6 hover:border-primary/40 transition-all">
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                <Code2 className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-bold">Custom Subscription Logic</h3>
-              <p className="text-sm text-muted-foreground">
-                Built flexible subscription flows with dynamic pricing, skip/pause functionality, and custom billing cycles using Liquid and JavaScript.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary">Liquid</span>
-                <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary">JavaScript</span>
-              </div>
+      <section className="relative px-4 py-20">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
+        
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div className="mb-16 text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border border-primary/30 mb-6">
+              <CheckCircle2 className="w-8 h-8 text-primary" />
             </div>
-          </Card>
+            <h2 className="text-4xl font-bold mb-4">Features Developed</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Production-ready solutions built for real businesses
+            </p>
+          </div>
 
-          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-6 hover:border-primary/40 transition-all">
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                <Zap className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-bold">Headless Cart System</h3>
-              <p className="text-sm text-muted-foreground">
-                Developed custom cart experience with Storefront API, real-time updates, and optimistic UI for instant feedback using React and GraphQL.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary">React</span>
-                <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary">GraphQL</span>
-              </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <Card className="relative border-primary/20 bg-background/95 backdrop-blur-sm p-8 hover:scale-105 transition-all duration-300">
+                <Code2 className="w-10 h-10 text-primary mb-4" />
+                <h3 className="text-xl font-bold mb-3">Custom Subscription Logic</h3>
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  Built flexible subscription flows with dynamic pricing, skip/pause functionality, and custom billing cycles using Liquid and JavaScript.
+                </p>
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-primary/10">
+                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary">Liquid</span>
+                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary">JavaScript</span>
+                </div>
+              </Card>
             </div>
-          </Card>
 
-          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-6 hover:border-primary/40 transition-all">
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                <Layers className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-bold">B2B Wholesale Portal</h3>
-              <p className="text-sm text-muted-foreground">
-                Created tiered pricing system with bulk ordering, customer-specific catalogs, and custom checkout flows for wholesale operations.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary">Liquid</span>
-                <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary">Theme Kit</span>
-              </div>
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <Card className="relative border-primary/20 bg-background/95 backdrop-blur-sm p-8 hover:scale-105 transition-all duration-300">
+                <Zap className="w-10 h-10 text-primary mb-4" />
+                <h3 className="text-xl font-bold mb-3">Headless Cart System</h3>
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  Developed custom cart experience with Storefront API, real-time updates, and optimistic UI for instant feedback using React and GraphQL.
+                </p>
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-primary/10">
+                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary">React</span>
+                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary">GraphQL</span>
+                </div>
+              </Card>
             </div>
-          </Card>
 
-          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-6 hover:border-primary/40 transition-all">
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                <GitBranch className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-bold">Dynamic Product Bundles</h3>
-              <p className="text-sm text-muted-foreground">
-                Implemented intelligent bundling with cross-sell recommendations, dynamic pricing rules, and inventory synchronization across bundle items.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary">JavaScript</span>
-                <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary">Liquid</span>
-              </div>
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <Card className="relative border-primary/20 bg-background/95 backdrop-blur-sm p-8 hover:scale-105 transition-all duration-300">
+                <Layers className="w-10 h-10 text-primary mb-4" />
+                <h3 className="text-xl font-bold mb-3">B2B Wholesale Portal</h3>
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  Created tiered pricing system with bulk ordering, customer-specific catalogs, and custom checkout flows for wholesale operations.
+                </p>
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-primary/10">
+                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary">Liquid</span>
+                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary">Theme Kit</span>
+                </div>
+              </Card>
             </div>
-          </Card>
 
-          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-6 hover:border-primary/40 transition-all">
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                <Terminal className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-bold">Custom App Integrations</h3>
-              <p className="text-sm text-muted-foreground">
-                Built Shopify apps with Node.js connecting to external APIs, webhooks for real-time sync, and custom admin interfaces with Polaris.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary">Node.js</span>
-                <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary">Polaris</span>
-              </div>
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <Card className="relative border-primary/20 bg-background/95 backdrop-blur-sm p-8 hover:scale-105 transition-all duration-300">
+                <GitBranch className="w-10 h-10 text-primary mb-4" />
+                <h3 className="text-xl font-bold mb-3">Dynamic Product Bundles</h3>
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  Implemented intelligent bundling with cross-sell recommendations, dynamic pricing rules, and inventory synchronization across bundle items.
+                </p>
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-primary/10">
+                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary">JavaScript</span>
+                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary">Liquid</span>
+                </div>
+              </Card>
             </div>
-          </Card>
 
-          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-6 hover:border-primary/40 transition-all">
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                <CheckCircle2 className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-bold">Performance Optimization</h3>
-              <p className="text-sm text-muted-foreground">
-                Optimized store performance with lazy loading, code splitting, image optimization, and critical CSS extraction achieving 90+ Lighthouse scores.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary">Hydrogen</span>
-                <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary">Remix</span>
-              </div>
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <Card className="relative border-primary/20 bg-background/95 backdrop-blur-sm p-8 hover:scale-105 transition-all duration-300">
+                <Terminal className="w-10 h-10 text-primary mb-4" />
+                <h3 className="text-xl font-bold mb-3">Custom App Integrations</h3>
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  Built Shopify apps with Node.js connecting to external APIs, webhooks for real-time sync, and custom admin interfaces with Polaris.
+                </p>
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-primary/10">
+                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary">Node.js</span>
+                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary">Polaris</span>
+                </div>
+              </Card>
             </div>
-          </Card>
+
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <Card className="relative border-primary/20 bg-background/95 backdrop-blur-sm p-8 hover:scale-105 transition-all duration-300">
+                <CheckCircle2 className="w-10 h-10 text-primary mb-4" />
+                <h3 className="text-xl font-bold mb-3">Performance Optimization</h3>
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  Optimized store performance with lazy loading, code splitting, image optimization, and critical CSS extraction achieving 90+ Lighthouse scores.
+                </p>
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-primary/10">
+                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary">Hydrogen</span>
+                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary">Remix</span>
+                </div>
+              </Card>
+            </div>
+          </div>
         </div>
       </section>
 
