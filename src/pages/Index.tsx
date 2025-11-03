@@ -53,7 +53,7 @@ const Index = () => {
             </span>
           </div>
           
-          <h1 className="neon-text-glow text-7xl">FlowXSell</h1>
+          <h1 className="neon-text-glow text-7xl">FlowXsell</h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">A clarity companion for multiprenerus & solo founders. When your systems flow, your sales grow.</p>
           
