@@ -21,6 +21,11 @@ const ShopifyPlusDev = () => {
 
   const capabilities = [
     {
+      title: "Headless Development",
+      description: "Decouple frontend from Shopify backend for maximum flexibility. Build blazing-fast storefronts with modern frameworks while leveraging Shopify's powerful commerce engine.",
+      technologies: ["Hydrogen", "Remix", "Next.js", "Storefront API", "GraphQL"]
+    },
+    {
       title: "Custom Storefront Development",
       description: "Headless commerce solutions using React, Hydrogen, and Storefront API for lightning-fast, custom shopping experiences.",
       technologies: ["React", "Hydrogen", "Next.js", "Storefront API"]
