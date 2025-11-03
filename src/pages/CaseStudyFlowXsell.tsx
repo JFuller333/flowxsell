@@ -528,6 +528,7 @@ const CaseStudyFlowXsell = () => {
                             <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Next.js</span>
                             <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Hydrogen</span>
                             <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Remix</span>
+                            <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Storefront API</span>
                           </div>
                         </div>
                         <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
