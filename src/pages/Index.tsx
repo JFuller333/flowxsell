@@ -86,11 +86,11 @@ const Index = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <ProjectCard 
-            title="FlowXsell Ecommerce Framework" 
-            description="Curated integration maps for connecting Shopify, email, analytics, and automation tools without the tech debt." 
-            tags={["Ecommerce", "Automation", "Shopify"]} 
+            title="Shopify Plus Development" 
+            description="Custom technical development for enterprise e-commerce. Headless storefronts, complex integrations, and scalable solutions." 
+            tags={["Shopify Plus", "React", "Headless"]} 
             image={techStackImage}
-            caseStudyLink="/case-study/flowxsell"
+            caseStudyLink="/shopify-plus-development"
           />
           <ProjectCard 
             title="AFL Mastery Framework" 

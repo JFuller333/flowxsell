@@ -656,11 +656,18 @@ const CaseStudyFlowXsell = () => {
         <div className="space-y-6">
           <h2 className="text-4xl font-bold">Ready to optimize your tech stack?</h2>
           <p className="text-xl text-muted-foreground">
-            Let's audit your systems and build your custom integration framework.
+            Whether you need strategic integration mapping or custom technical development, let's build the right solution.
           </p>
-          <Button size="lg" variant="neon" className="mt-6">
-            Start Your Audit
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <Button size="lg" variant="neon" className="group">
+              Start a Strategy Project
+              <ArrowLeft className="w-4 h-4 ml-2 rotate-180 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            <Button size="lg" variant="outline" className="group" onClick={() => navigate("/shopify-plus-development")}>
+              View Technical Services
+              <ArrowLeft className="w-4 h-4 ml-2 rotate-180 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
         </div>
       </section>
     </div>
