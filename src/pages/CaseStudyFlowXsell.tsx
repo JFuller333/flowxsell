@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft, CheckCircle2, TrendingUp } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ArrowLeft, CheckCircle2, TrendingUp, Building2, Quote } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import techStackImage from "@/assets/tech-stack-optimizer.jpg";
 
@@ -153,6 +154,240 @@ const CaseStudyFlowXsell = () => {
             </p>
           </div>
         </Card>
+      </section>
+
+      {/* Client Stories Section */}
+      <section className="px-4 py-20 max-w-7xl mx-auto">
+        <div className="mb-12 text-center">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border border-primary/30 mb-6">
+            <Building2 className="w-8 h-8 text-primary" />
+          </div>
+          <h2 className="text-4xl font-bold mb-4">Client Success Stories</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Real implementations, real results. Explore how 3 different businesses transformed their operations with FlowXsell.
+          </p>
+        </div>
+
+        <Accordion type="single" collapsible className="space-y-4">
+          {/* Client 1 */}
+          <AccordionItem value="client-1" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
+            <AccordionTrigger className="hover:no-underline py-6">
+              <div className="flex items-center gap-4 text-left">
+                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl font-bold text-primary">1</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold">Client Name - Industry</h3>
+                  <p className="text-sm text-muted-foreground">Brief tagline or specialty</p>
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="pt-2 pb-6">
+              <div className="space-y-6 ml-16">
+                {/* Challenge */}
+                <div>
+                  <h4 className="text-lg font-semibold mb-2 text-primary">The Challenge</h4>
+                  <p className="text-muted-foreground">
+                    Specific challenge this client was facing. What was broken in their system? What pain points were they experiencing?
+                  </p>
+                </div>
+
+                {/* Solution */}
+                <div>
+                  <h4 className="text-lg font-semibold mb-2 text-primary">The Solution</h4>
+                  <p className="text-muted-foreground mb-3">
+                    How you implemented FlowXsell for this specific client. What tools did you connect? What automations did you build?
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                      Shopify
+                    </span>
+                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                      Klaviyo
+                    </span>
+                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                      Tool 3
+                    </span>
+                  </div>
+                </div>
+
+                {/* Results */}
+                <div>
+                  <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
+                  <div className="grid grid-cols-3 gap-4 mb-4">
+                    <div className="text-center p-4 rounded-lg bg-background/50">
+                      <div className="text-2xl font-bold text-primary mb-1">00%</div>
+                      <div className="text-xs text-muted-foreground">Metric 1</div>
+                    </div>
+                    <div className="text-center p-4 rounded-lg bg-background/50">
+                      <div className="text-2xl font-bold text-primary mb-1">0x</div>
+                      <div className="text-xs text-muted-foreground">Metric 2</div>
+                    </div>
+                    <div className="text-center p-4 rounded-lg bg-background/50">
+                      <div className="text-2xl font-bold text-primary mb-1">$00k</div>
+                      <div className="text-xs text-muted-foreground">Metric 3</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Optional Testimonial */}
+                <div className="border-l-2 border-primary/30 pl-4 py-2">
+                  <Quote className="w-5 h-5 text-primary mb-2" />
+                  <p className="text-muted-foreground italic">
+                    "Add client testimonial quote here if available."
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-2">— Client Name, Title</p>
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          {/* Client 2 */}
+          <AccordionItem value="client-2" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
+            <AccordionTrigger className="hover:no-underline py-6">
+              <div className="flex items-center gap-4 text-left">
+                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl font-bold text-primary">2</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold">Client Name - Industry</h3>
+                  <p className="text-sm text-muted-foreground">Brief tagline or specialty</p>
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="pt-2 pb-6">
+              <div className="space-y-6 ml-16">
+                {/* Challenge */}
+                <div>
+                  <h4 className="text-lg font-semibold mb-2 text-primary">The Challenge</h4>
+                  <p className="text-muted-foreground">
+                    Specific challenge this client was facing. What was broken in their system? What pain points were they experiencing?
+                  </p>
+                </div>
+
+                {/* Solution */}
+                <div>
+                  <h4 className="text-lg font-semibold mb-2 text-primary">The Solution</h4>
+                  <p className="text-muted-foreground mb-3">
+                    How you implemented FlowXsell for this specific client. What tools did you connect? What automations did you build?
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                      Tool 1
+                    </span>
+                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                      Tool 2
+                    </span>
+                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                      Tool 3
+                    </span>
+                  </div>
+                </div>
+
+                {/* Results */}
+                <div>
+                  <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
+                  <div className="grid grid-cols-3 gap-4 mb-4">
+                    <div className="text-center p-4 rounded-lg bg-background/50">
+                      <div className="text-2xl font-bold text-primary mb-1">00%</div>
+                      <div className="text-xs text-muted-foreground">Metric 1</div>
+                    </div>
+                    <div className="text-center p-4 rounded-lg bg-background/50">
+                      <div className="text-2xl font-bold text-primary mb-1">0x</div>
+                      <div className="text-xs text-muted-foreground">Metric 2</div>
+                    </div>
+                    <div className="text-center p-4 rounded-lg bg-background/50">
+                      <div className="text-2xl font-bold text-primary mb-1">$00k</div>
+                      <div className="text-xs text-muted-foreground">Metric 3</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Optional Testimonial */}
+                <div className="border-l-2 border-primary/30 pl-4 py-2">
+                  <Quote className="w-5 h-5 text-primary mb-2" />
+                  <p className="text-muted-foreground italic">
+                    "Add client testimonial quote here if available."
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-2">— Client Name, Title</p>
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          {/* Client 3 */}
+          <AccordionItem value="client-3" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
+            <AccordionTrigger className="hover:no-underline py-6">
+              <div className="flex items-center gap-4 text-left">
+                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl font-bold text-primary">3</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold">Client Name - Industry</h3>
+                  <p className="text-sm text-muted-foreground">Brief tagline or specialty</p>
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="pt-2 pb-6">
+              <div className="space-y-6 ml-16">
+                {/* Challenge */}
+                <div>
+                  <h4 className="text-lg font-semibold mb-2 text-primary">The Challenge</h4>
+                  <p className="text-muted-foreground">
+                    Specific challenge this client was facing. What was broken in their system? What pain points were they experiencing?
+                  </p>
+                </div>
+
+                {/* Solution */}
+                <div>
+                  <h4 className="text-lg font-semibold mb-2 text-primary">The Solution</h4>
+                  <p className="text-muted-foreground mb-3">
+                    How you implemented FlowXsell for this specific client. What tools did you connect? What automations did you build?
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                      Tool 1
+                    </span>
+                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                      Tool 2
+                    </span>
+                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                      Tool 3
+                    </span>
+                  </div>
+                </div>
+
+                {/* Results */}
+                <div>
+                  <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
+                  <div className="grid grid-cols-3 gap-4 mb-4">
+                    <div className="text-center p-4 rounded-lg bg-background/50">
+                      <div className="text-2xl font-bold text-primary mb-1">00%</div>
+                      <div className="text-xs text-muted-foreground">Metric 1</div>
+                    </div>
+                    <div className="text-center p-4 rounded-lg bg-background/50">
+                      <div className="text-2xl font-bold text-primary mb-1">0x</div>
+                      <div className="text-xs text-muted-foreground">Metric 2</div>
+                    </div>
+                    <div className="text-center p-4 rounded-lg bg-background/50">
+                      <div className="text-2xl font-bold text-primary mb-1">$00k</div>
+                      <div className="text-xs text-muted-foreground">Metric 3</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Optional Testimonial */}
+                <div className="border-l-2 border-primary/30 pl-4 py-2">
+                  <Quote className="w-5 h-5 text-primary mb-2" />
+                  <p className="text-muted-foreground italic">
+                    "Add client testimonial quote here if available."
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-2">— Client Name, Title</p>
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </section>
 
       {/* CTA Section */}
