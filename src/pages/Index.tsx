@@ -85,7 +85,7 @@ const Index = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <ProjectCard title="FlowXSell Ecommerce Framework" description="Curated integration maps for connecting Shopify, email, analytics, and automation tools without the tech debt." tags={["Ecommerce", "Automation", "Shopify"]} image={techStackImage} />
+          <ProjectCard title="FlowXsell Ecommerce Framework" description="Curated integration maps for connecting Shopify, email, analytics, and automation tools without the tech debt." tags={["Ecommerce", "Automation", "Shopify"]} image={techStackImage} />
           <ProjectCard title="AFL Mastery Framework" description="Strategic framework for building scalable marketing campaigns that compound over time instead of burning budgets." tags={["Wealth", "Health", "Balance", "Purpose"]} image={campaignImage} />
           <ProjectCard title="LRB Donor & Investor Dashboard" description="Diagnostic tool that identifies where your systems break down. Get a clarity score and actionable next steps in under 5 minutes." tags={["ROI", "Real Estate", "Community Development"]} image={healthScoreImage} />
           <ProjectCard title="Children's Book Development" description="A 4-phase operating system for ecommerce founders: Audit, Align, Automate, XSell. Designed to transform fragmented growth into systematic scaling." tags={["Strategy", "Ecommerce", "Physical Products"]} image={flowosImage} />
