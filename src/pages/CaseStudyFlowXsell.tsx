@@ -379,19 +379,19 @@ const CaseStudyFlowXsell = () => {
                         <p className="text-sm text-muted-foreground">Subscription box service</p>
                       </div>
                     </div>
-                    <div className="flex gap-6 items-center pr-2">
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">TBD</div>
-                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 1</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">TBD</div>
-                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 2</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">TBD</div>
-                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 3</div>
-                      </div>
+                    <div className="flex gap-3 items-center pr-2">
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        Shopify Plus
+                      </span>
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        Liquid
+                      </span>
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        JavaScript
+                      </span>
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        CSS
+                      </span>
                     </div>
                   </div>
                 </AccordionTrigger>
@@ -424,21 +424,25 @@ const CaseStudyFlowXsell = () => {
                       </div>
                     </div>
 
-                    {/* Results */}
+                    {/* Languages & Features */}
                     <div>
-                      <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
-                      <div className="grid grid-cols-3 gap-4 mb-4">
-                        <div className="text-center p-4 rounded-lg bg-background/50">
-                          <div className="text-2xl font-bold text-primary mb-1">00%</div>
-                          <div className="text-xs text-muted-foreground">Metric 1</div>
+                      <h4 className="text-lg font-semibold mb-3 text-primary">Languages & Features Developed</h4>
+                      <div className="grid md:grid-cols-2 gap-3 mb-4">
+                        <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
+                          <div className="text-sm font-semibold text-primary mb-2">Languages</div>
+                          <div className="flex flex-wrap gap-2">
+                            <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Liquid</span>
+                            <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">JavaScript</span>
+                            <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">HTML/CSS</span>
+                          </div>
                         </div>
-                        <div className="text-center p-4 rounded-lg bg-background/50">
-                          <div className="text-2xl font-bold text-primary mb-1">0x</div>
-                          <div className="text-xs text-muted-foreground">Metric 2</div>
-                        </div>
-                        <div className="text-center p-4 rounded-lg bg-background/50">
-                          <div className="text-2xl font-bold text-primary mb-1">$00k</div>
-                          <div className="text-xs text-muted-foreground">Metric 3</div>
+                        <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
+                          <div className="text-sm font-semibold text-primary mb-2">Features Built</div>
+                          <ul className="text-xs text-muted-foreground space-y-1">
+                            <li>• Custom subscription flow</li>
+                            <li>• Product page enhancements</li>
+                            <li>• Cart functionality upgrades</li>
+                          </ul>
                         </div>
                       </div>
                     </div>
@@ -468,19 +472,19 @@ const CaseStudyFlowXsell = () => {
                         <p className="text-sm text-muted-foreground">Community rebuilding initiative</p>
                       </div>
                     </div>
-                    <div className="flex gap-6 items-center pr-2">
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">TBD</div>
-                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 1</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">TBD</div>
-                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 2</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">TBD</div>
-                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 3</div>
-                      </div>
+                    <div className="flex gap-3 items-center pr-2">
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        Shopify Plus
+                      </span>
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        Liquid
+                      </span>
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        Node.js
+                      </span>
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        React
+                      </span>
                     </div>
                   </div>
                 </AccordionTrigger>
@@ -513,21 +517,26 @@ const CaseStudyFlowXsell = () => {
                       </div>
                     </div>
 
-                    {/* Results */}
+                    {/* Languages & Features */}
                     <div>
-                      <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
-                      <div className="grid grid-cols-3 gap-4 mb-4">
-                        <div className="text-center p-4 rounded-lg bg-background/50">
-                          <div className="text-2xl font-bold text-primary mb-1">TBD</div>
-                          <div className="text-xs text-muted-foreground">Metric 1</div>
+                      <h4 className="text-lg font-semibold mb-3 text-primary">Languages & Features Developed</h4>
+                      <div className="grid md:grid-cols-2 gap-3 mb-4">
+                        <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
+                          <div className="text-sm font-semibold text-primary mb-2">Languages</div>
+                          <div className="flex flex-wrap gap-2">
+                            <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Liquid</span>
+                            <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Node.js</span>
+                            <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">React</span>
+                            <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">GraphQL</span>
+                          </div>
                         </div>
-                        <div className="text-center p-4 rounded-lg bg-background/50">
-                          <div className="text-2xl font-bold text-primary mb-1">TBD</div>
-                          <div className="text-xs text-muted-foreground">Metric 2</div>
-                        </div>
-                        <div className="text-center p-4 rounded-lg bg-background/50">
-                          <div className="text-2xl font-bold text-primary mb-1">TBD</div>
-                          <div className="text-xs text-muted-foreground">Metric 3</div>
+                        <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
+                          <div className="text-sm font-semibold text-primary mb-2">Features Built</div>
+                          <ul className="text-xs text-muted-foreground space-y-1">
+                            <li>• Custom app development</li>
+                            <li>• API integrations</li>
+                            <li>• Donation platform features</li>
+                          </ul>
                         </div>
                       </div>
                     </div>
@@ -557,19 +566,19 @@ const CaseStudyFlowXsell = () => {
                         <p className="text-sm text-muted-foreground">Party supplies wholesale</p>
                       </div>
                     </div>
-                    <div className="flex gap-6 items-center pr-2">
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">TBD</div>
-                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 1</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">TBD</div>
-                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 2</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">TBD</div>
-                        <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 3</div>
-                      </div>
+                    <div className="flex gap-3 items-center pr-2">
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        Shopify Plus
+                      </span>
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        Liquid
+                      </span>
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        JavaScript
+                      </span>
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        APIs
+                      </span>
                     </div>
                   </div>
                 </AccordionTrigger>
@@ -602,21 +611,25 @@ const CaseStudyFlowXsell = () => {
                       </div>
                     </div>
 
-                    {/* Results */}
+                    {/* Languages & Features */}
                     <div>
-                      <h4 className="text-lg font-semibold mb-3 text-primary">The Results</h4>
-                      <div className="grid grid-cols-3 gap-4 mb-4">
-                        <div className="text-center p-4 rounded-lg bg-background/50">
-                          <div className="text-2xl font-bold text-primary mb-1">TBD</div>
-                          <div className="text-xs text-muted-foreground">Metric 1</div>
+                      <h4 className="text-lg font-semibold mb-3 text-primary">Languages & Features Developed</h4>
+                      <div className="grid md:grid-cols-2 gap-3 mb-4">
+                        <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
+                          <div className="text-sm font-semibold text-primary mb-2">Languages</div>
+                          <div className="flex flex-wrap gap-2">
+                            <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Liquid</span>
+                            <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">JavaScript</span>
+                            <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">HTML/CSS</span>
+                          </div>
                         </div>
-                        <div className="text-center p-4 rounded-lg bg-background/50">
-                          <div className="text-2xl font-bold text-primary mb-1">TBD</div>
-                          <div className="text-xs text-muted-foreground">Metric 2</div>
-                        </div>
-                        <div className="text-center p-4 rounded-lg bg-background/50">
-                          <div className="text-2xl font-bold text-primary mb-1">TBD</div>
-                          <div className="text-xs text-muted-foreground">Metric 3</div>
+                        <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
+                          <div className="text-sm font-semibold text-primary mb-2">Features Built</div>
+                          <ul className="text-xs text-muted-foreground space-y-1">
+                            <li>• B2B wholesale portal</li>
+                            <li>• Bulk ordering system</li>
+                            <li>• Custom pricing tiers</li>
+                          </ul>
                         </div>
                       </div>
                     </div>
