@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { ExternalLink } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface ProjectCardProps {
   title: string;
@@ -7,11 +8,23 @@ interface ProjectCardProps {
   tags: string[];
   link?: string;
   image: string;
+  caseStudyLink?: string;
 }
 
-export const ProjectCard = ({ title, description, tags, link, image }: ProjectCardProps) => {
+export const ProjectCard = ({ title, description, tags, link, image, caseStudyLink }: ProjectCardProps) => {
+  const navigate = useNavigate();
+  
+  const handleClick = () => {
+    if (caseStudyLink) {
+      navigate(caseStudyLink);
+    }
+  };
+
   return (
-    <Card className="group relative overflow-hidden border-primary/20 bg-background transition-all duration-300 hover:border-primary hover:shadow-[0_0_25px_hsla(var(--neon-glow),0.3)]">
+    <Card 
+      className="group relative overflow-hidden border-primary/20 bg-background transition-all duration-300 hover:border-primary hover:shadow-[0_0_25px_hsla(var(--neon-glow),0.3)] cursor-pointer"
+      onClick={handleClick}
+    >
       {/* Image Section */}
       <div className="relative aspect-video w-full overflow-hidden bg-card">
         <img 
