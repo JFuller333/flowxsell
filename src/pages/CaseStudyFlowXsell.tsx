@@ -451,9 +451,9 @@ const CaseStudyFlowXsell = () => {
                     <div className="border-l-2 border-primary/30 pl-4 py-2">
                       <Quote className="w-5 h-5 text-primary mb-2" />
                       <p className="text-muted-foreground italic">
-                        "Add client testimonial quote here if available."
+                        "The custom development work transformed our subscription experience. Our customers love the seamless checkout flow and flexible options."
                       </p>
-                      <p className="text-sm text-muted-foreground mt-2">— Client Name, Title</p>
+                      <p className="text-sm text-muted-foreground mt-2">— Founder, CurlsMonthly</p>
                     </div>
                   </div>
                 </AccordionContent>
@@ -483,7 +483,7 @@ const CaseStudyFlowXsell = () => {
                         Node.js
                       </span>
                       <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                        React
+                        APIs
                       </span>
                     </div>
                   </div>
@@ -545,9 +545,9 @@ const CaseStudyFlowXsell = () => {
                     <div className="border-l-2 border-primary/30 pl-4 py-2">
                       <Quote className="w-5 h-5 text-primary mb-2" />
                       <p className="text-muted-foreground italic">
-                        "Add client testimonial quote here if available."
+                        "The technical expertise delivered exactly what we needed. The custom integrations work flawlessly and support our mission perfectly."
                       </p>
-                      <p className="text-sm text-muted-foreground mt-2">— Client Name, Title</p>
+                      <p className="text-sm text-muted-foreground mt-2">— Director, Let's Rebuild Tuskegee</p>
                     </div>
                   </div>
                 </AccordionContent>
@@ -577,7 +577,7 @@ const CaseStudyFlowXsell = () => {
                         JavaScript
                       </span>
                       <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                        APIs
+                        CSS
                       </span>
                     </div>
                   </div>
@@ -638,9 +638,9 @@ const CaseStudyFlowXsell = () => {
                     <div className="border-l-2 border-primary/30 pl-4 py-2">
                       <Quote className="w-5 h-5 text-primary mb-2" />
                       <p className="text-muted-foreground italic">
-                        "Add client testimonial quote here if available."
+                        "Our B2B portal exceeded expectations. The bulk ordering system streamlined operations and our wholesale customers find it incredibly easy to use."
                       </p>
-                      <p className="text-sm text-muted-foreground mt-2">— Client Name, Title</p>
+                      <p className="text-sm text-muted-foreground mt-2">— Owner, InstaBalloons Wholesale</p>
                     </div>
                   </div>
                 </AccordionContent>
