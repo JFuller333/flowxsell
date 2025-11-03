@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ArrowLeft, CheckCircle2, TrendingUp, Building2, Quote } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ArrowLeft, CheckCircle2, TrendingUp, Building2, Quote, Code2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import techStackImage from "@/assets/tech-stack-optimizer.jpg";
 import truLogo from "@/assets/tru-logo-original.png";
@@ -64,26 +65,42 @@ const CaseStudyFlowXsell = () => {
         </div>
       </section>
 
-      {/* Challenge Section */}
-      <section className="px-4 py-20 max-w-7xl mx-auto">
-        <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-12">
-          <h2 className="text-3xl font-bold mb-6">The Challenge</h2>
-          <div className="space-y-4 text-muted-foreground leading-relaxed">
-            <p>
-              Ecommerce founders were drowning in disconnected tools. Shopify for sales, Klaviyo for email, 
-              Google Analytics for tracking, Zapier for automation. Each tool worked in isolation, creating 
-              data silos and manual busywork.
-            </p>
-            <p>
-              The result? Missed opportunities, duplicate customer records, and founders spending 15+ hours 
-              weekly on manual data tasks instead of growing their business.
-            </p>
-          </div>
-        </Card>
-      </section>
+      {/* Tabs Section */}
+      <section className="px-4 py-12 max-w-7xl mx-auto">
+        <Tabs defaultValue="strategy" className="w-full">
+          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-12">
+            <TabsTrigger value="strategy" className="flex items-center gap-2">
+              <TrendingUp className="w-4 h-4" />
+              Strategy & Results
+            </TabsTrigger>
+            <TabsTrigger value="technical" className="flex items-center gap-2">
+              <Code2 className="w-4 h-4" />
+              Technical Implementation
+            </TabsTrigger>
+          </TabsList>
 
-      {/* Solution Section */}
-      <section className="px-4 py-20 max-w-7xl mx-auto">
+          {/* Strategy & Results Tab */}
+          <TabsContent value="strategy" className="space-y-20">
+            {/* Challenge Section */}
+            <div>
+              <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-12">
+                <h2 className="text-3xl font-bold mb-6">The Challenge</h2>
+                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                  <p>
+                    Ecommerce founders were drowning in disconnected tools. Shopify for sales, Klaviyo for email, 
+                    Google Analytics for tracking, Zapier for automation. Each tool worked in isolation, creating 
+                    data silos and manual busywork.
+                  </p>
+                  <p>
+                    The result? Missed opportunities, duplicate customer records, and founders spending 15+ hours 
+                    weekly on manual data tasks instead of growing their business.
+                  </p>
+                </div>
+              </Card>
+            </div>
+
+            {/* Solution Section */}
+            <div>
         <div className="mb-12">
           <h2 className="text-3xl font-bold mb-4">The Solution</h2>
           <p className="text-xl text-muted-foreground">
@@ -122,10 +139,10 @@ const CaseStudyFlowXsell = () => {
             </p>
           </Card>
         </div>
-      </section>
+      </div>
 
       {/* Results Section */}
-      <section className="px-4 py-20 max-w-7xl mx-auto">
+      <div>
         <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-12">
           <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
             <TrendingUp className="w-8 h-8 text-primary" />
@@ -157,10 +174,10 @@ const CaseStudyFlowXsell = () => {
             </p>
           </div>
         </Card>
-      </section>
+      </div>
 
       {/* Client Stories Section */}
-      <section className="px-4 py-20 max-w-7xl mx-auto">
+      <div>
         <div className="mb-12 text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border border-primary/30 mb-6">
             <Building2 className="w-8 h-8 text-primary" />
@@ -433,6 +450,155 @@ const CaseStudyFlowXsell = () => {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+            </div>
+          </TabsContent>
+
+          {/* Technical Implementation Tab */}
+          <TabsContent value="technical" className="space-y-20">
+            {/* Technical Overview */}
+            <div>
+              <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-12">
+                <h2 className="text-3xl font-bold mb-6">Technical Implementation</h2>
+                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                  <p>
+                    Behind every successful ecommerce strategy is robust technical implementation. 
+                    Here's how we build and optimize systems at the code level.
+                  </p>
+                </div>
+              </Card>
+            </div>
+
+            {/* Tech Stack */}
+            <div>
+              <div className="mb-12">
+                <h2 className="text-3xl font-bold mb-4">Core Technologies</h2>
+                <p className="text-xl text-muted-foreground">
+                  Full-stack development across platforms and frameworks
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                    <Code2 className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">Frontend Development</h3>
+                  <div className="space-y-2 text-muted-foreground">
+                    <p>• HTML, CSS, JavaScript (ES6+)</p>
+                    <p>• Liquid templating (Shopify)</p>
+                    <p>• jQuery for legacy integrations</p>
+                    <p>• Responsive design & mobile optimization</p>
+                  </div>
+                </Card>
+
+                <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                    <Code2 className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">Backend & APIs</h3>
+                  <div className="space-y-2 text-muted-foreground">
+                    <p>• Node.js for server-side logic</p>
+                    <p>• JSON data structures</p>
+                    <p>• RESTful API integrations</p>
+                    <p>• Webhook automation</p>
+                  </div>
+                </Card>
+
+                <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                    <Code2 className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">Ecommerce Platforms</h3>
+                  <div className="space-y-2 text-muted-foreground">
+                    <p>• Shopify (Liquid, Theme Kit)</p>
+                    <p>• Shopify Plus customization</p>
+                    <p>• Custom checkout experiences</p>
+                    <p>• Subscription app integrations</p>
+                  </div>
+                </Card>
+
+                <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                    <Code2 className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">Development Tools</h3>
+                  <div className="space-y-2 text-muted-foreground">
+                    <p>• GitHub version control</p>
+                    <p>• Chrome DevTools debugging</p>
+                    <p>• Postman API testing</p>
+                    <p>• SEO optimization tools</p>
+                  </div>
+                </Card>
+              </div>
+            </div>
+
+            {/* Custom Development Examples */}
+            <div>
+              <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-12">
+                <h2 className="text-3xl font-bold mb-8">Custom Development Capabilities</h2>
+                
+                <div className="space-y-8">
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-primary">Custom Product Pages</h3>
+                    <p className="text-muted-foreground mb-3">
+                      Built dynamic product displays with video testimonials, bundle options, and 
+                      subscription variants using HTML, CSS, JavaScript, and Liquid.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        Liquid
+                      </span>
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        JavaScript
+                      </span>
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        CSS
+                      </span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-primary">Wholesale & Retail Dual Channel</h3>
+                    <p className="text-muted-foreground mb-3">
+                      Developed custom features to handle both B2B and B2C operations on a single 
+                      Shopify instance with conditional pricing and checkout flows.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        Node.js
+                      </span>
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        Shopify API
+                      </span>
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        JSON
+                      </span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-primary">Automated Documentation</h3>
+                    <p className="text-muted-foreground mb-3">
+                      Custom-coded invoices, quotes, packing slips, and customer email templates 
+                      with dynamic data population.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        Liquid
+                      </span>
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        HTML/CSS
+                      </span>
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        Email Templates
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </TabsContent>
+        </Tabs>
       </section>
 
       {/* CTA Section */}
