@@ -4,9 +4,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { ArrowLeft, CheckCircle2, TrendingUp, Building2, Quote } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import techStackImage from "@/assets/tech-stack-optimizer.jpg";
-import truLogoWhite from "@/assets/tru-logo-white.png";
+import truLogoWhite from "@/assets/tru-logo-transparent.png";
 import metpureLogoWhite from "@/assets/metpure-logo-white.svg";
-import curlsmonthlyLogoWhite from "@/assets/curlsmonthly-logo-white.png";
+import curlsmonthlyLogoWhite from "@/assets/curlsmonthly-logo-transparent.png";
 
 const CaseStudyFlowXsell = () => {
   const navigate = useNavigate();
@@ -177,7 +177,7 @@ const CaseStudyFlowXsell = () => {
             <AccordionTrigger className="hover:no-underline py-6">
               <div className="flex items-center justify-between w-full gap-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 p-3">
+                  <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
                     <img src={truLogoWhite} alt="TRU Supplements" className="w-full h-full object-contain" />
                   </div>
                   <div className="text-left">
@@ -263,7 +263,7 @@ const CaseStudyFlowXsell = () => {
             <AccordionTrigger className="hover:no-underline py-6">
               <div className="flex items-center justify-between w-full gap-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 p-3">
+                  <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
                     <img src={metpureLogoWhite} alt="Metpure Inc" className="w-full h-full object-contain" />
                   </div>
                   <div className="text-left">
@@ -349,7 +349,7 @@ const CaseStudyFlowXsell = () => {
             <AccordionTrigger className="hover:no-underline py-6">
               <div className="flex items-center justify-between w-full gap-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 p-3">
+                  <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
                     <img src={curlsmonthlyLogoWhite} alt="CurlsMonthly" className="w-full h-full object-contain" />
                   </div>
                   <div className="text-left">
