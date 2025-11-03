@@ -210,7 +210,7 @@ const Index = () => {
                 <Mail className="w-8 h-8 text-primary" />
               </div>
               
-              <h3 className="text-3xl font-bold">Want the FlowOS playbook?</h3>
+              <h3 className="text-3xl font-bold">Want the FlowXsell playbook?</h3>
               
               <p className="text-muted-foreground">
                 Get the full PDF and worksheet delivered weeklyish.
@@ -236,7 +236,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="text-sm text-muted-foreground">
-              © 2025 FlowOS. <span className="text-primary">Built for founders, by a founder.</span>
+              © 2025 FlowXsell. <span className="text-primary">Built for founders, by a founder.</span>
             </div>
             <div className="text-xs text-muted-foreground font-mono">
               This isn't a funnel, it's a system.
