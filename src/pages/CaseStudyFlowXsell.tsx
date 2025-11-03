@@ -121,9 +121,9 @@ const CaseStudyFlowXsell = () => {
         </div>
       </section>
 
-      {/* Client Success Stories & Results Section */}
+      {/* Results Section */}
       <section className="px-4 py-20 max-w-7xl mx-auto">
-        <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-12 mb-12">
+        <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-12">
           <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
             <TrendingUp className="w-8 h-8 text-primary" />
             The Results
@@ -154,15 +154,17 @@ const CaseStudyFlowXsell = () => {
             </p>
           </div>
         </Card>
+      </section>
 
-        {/* Client Stories */}
+      {/* Client Stories Section */}
+      <section className="px-4 py-20 max-w-7xl mx-auto">
         <div className="mb-12 text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border border-primary/30 mb-6">
             <Building2 className="w-8 h-8 text-primary" />
           </div>
-          <h3 className="text-3xl font-bold mb-4">Real Client Implementations</h3>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Explore how 3 different businesses transformed their operations with FlowXsell.
+          <h2 className="text-4xl font-bold mb-4">Client Success Stories</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Real implementations, real results. Explore how 3 different businesses transformed their operations with FlowXsell.
           </p>
         </div>
 
@@ -170,29 +172,13 @@ const CaseStudyFlowXsell = () => {
           {/* Client 1 */}
           <AccordionItem value="client-1" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
             <AccordionTrigger className="hover:no-underline py-6">
-              <div className="flex items-center justify-between w-full gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-xl font-bold text-primary">1</span>
-                  </div>
-                  <div className="text-left">
-                    <h3 className="text-xl font-bold">Client Name - Industry</h3>
-                    <p className="text-sm text-muted-foreground">Brief tagline or specialty</p>
-                  </div>
+              <div className="flex items-center gap-4 text-left">
+                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl font-bold text-primary">1</span>
                 </div>
-                <div className="flex gap-6 items-center pr-2">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">00%</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 1</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">0x</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 2</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">$00k</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 3</div>
-                  </div>
+                <div>
+                  <h3 className="text-xl font-bold">Client Name - Industry</h3>
+                  <p className="text-sm text-muted-foreground">Brief tagline or specialty</p>
                 </div>
               </div>
             </AccordionTrigger>
@@ -259,29 +245,13 @@ const CaseStudyFlowXsell = () => {
           {/* Client 2 */}
           <AccordionItem value="client-2" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
             <AccordionTrigger className="hover:no-underline py-6">
-              <div className="flex items-center justify-between w-full gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-xl font-bold text-primary">2</span>
-                  </div>
-                  <div className="text-left">
-                    <h3 className="text-xl font-bold">Client Name - Industry</h3>
-                    <p className="text-sm text-muted-foreground">Brief tagline or specialty</p>
-                  </div>
+              <div className="flex items-center gap-4 text-left">
+                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl font-bold text-primary">2</span>
                 </div>
-                <div className="flex gap-6 items-center pr-2">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">00%</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 1</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">0x</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 2</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">$00k</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 3</div>
-                  </div>
+                <div>
+                  <h3 className="text-xl font-bold">Client Name - Industry</h3>
+                  <p className="text-sm text-muted-foreground">Brief tagline or specialty</p>
                 </div>
               </div>
             </AccordionTrigger>
@@ -348,29 +318,13 @@ const CaseStudyFlowXsell = () => {
           {/* Client 3 */}
           <AccordionItem value="client-3" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
             <AccordionTrigger className="hover:no-underline py-6">
-              <div className="flex items-center justify-between w-full gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-xl font-bold text-primary">3</span>
-                  </div>
-                  <div className="text-left">
-                    <h3 className="text-xl font-bold">Client Name - Industry</h3>
-                    <p className="text-sm text-muted-foreground">Brief tagline or specialty</p>
-                  </div>
+              <div className="flex items-center gap-4 text-left">
+                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl font-bold text-primary">3</span>
                 </div>
-                <div className="flex gap-6 items-center pr-2">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">00%</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 1</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">0x</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 2</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">$00k</div>
-                    <div className="text-xs text-muted-foreground whitespace-nowrap">Metric 3</div>
-                  </div>
+                <div>
+                  <h3 className="text-xl font-bold">Client Name - Industry</h3>
+                  <p className="text-sm text-muted-foreground">Brief tagline or specialty</p>
                 </div>
               </div>
             </AccordionTrigger>
