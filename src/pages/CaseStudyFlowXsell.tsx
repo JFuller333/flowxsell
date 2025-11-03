@@ -4,9 +4,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { ArrowLeft, CheckCircle2, TrendingUp, Building2, Quote } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import techStackImage from "@/assets/tech-stack-optimizer.jpg";
-import truLogoWhite from "@/assets/tru-logo-transparent.png";
-import metpureLogoWhite from "@/assets/metpure-logo-white.svg";
-import curlsmonthlyLogoWhite from "@/assets/curlsmonthly-logo-transparent.png";
+import truLogo from "@/assets/tru-logo-original.png";
+import metpureLogo from "@/assets/metpure-logo-original.svg";
+import curlsmonthlyLogo from "@/assets/curlsmonthly-logo-original.webp";
 
 const CaseStudyFlowXsell = () => {
   const navigate = useNavigate();
@@ -178,7 +178,7 @@ const CaseStudyFlowXsell = () => {
               <div className="flex items-center justify-between w-full gap-6">
                 <div className="flex items-center gap-4">
                   <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
-                    <img src={truLogoWhite} alt="TRU Supplements" className="w-full h-full object-contain" />
+                    <img src={truLogo} alt="TRU Supplements" className="w-full h-full object-contain" />
                   </div>
                   <div className="text-left">
                     <h3 className="text-xl font-bold">TRU Supplements</h3>
@@ -264,7 +264,7 @@ const CaseStudyFlowXsell = () => {
               <div className="flex items-center justify-between w-full gap-6">
                 <div className="flex items-center gap-4">
                   <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
-                    <img src={metpureLogoWhite} alt="Metpure Inc" className="w-full h-full object-contain" />
+                    <img src={metpureLogo} alt="Metpure Inc" className="w-full h-full object-contain" />
                   </div>
                   <div className="text-left">
                     <h3 className="text-xl font-bold">Metpure Inc</h3>
@@ -350,7 +350,7 @@ const CaseStudyFlowXsell = () => {
               <div className="flex items-center justify-between w-full gap-6">
                 <div className="flex items-center gap-4">
                   <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
-                    <img src={curlsmonthlyLogoWhite} alt="CurlsMonthly" className="w-full h-full object-contain" />
+                    <img src={curlsmonthlyLogo} alt="CurlsMonthly" className="w-full h-full object-contain" />
                   </div>
                   <div className="text-left">
                     <h3 className="text-xl font-bold">CurlsMonthly</h3>
