@@ -11,6 +11,7 @@ import CaseStudyLRB from "./pages/CaseStudyLRB";
 import CaseStudyChildrensBook from "./pages/CaseStudyChildrensBook";
 import ShopifyPlusDev from "./pages/ShopifyPlusDev";
 import PowerPointBackgrounds from "./pages/PowerPointBackgrounds";
+import YouTubeCallouts from "./pages/YouTubeCallouts";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/case-study/childrens-book" element={<CaseStudyChildrensBook />} />
           <Route path="/shopify-plus-development" element={<ShopifyPlusDev />} />
           <Route path="/powerpoint-backgrounds" element={<PowerPointBackgrounds />} />
+          <Route path="/youtube-callouts" element={<YouTubeCallouts />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
