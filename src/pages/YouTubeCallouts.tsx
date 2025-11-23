@@ -1,13 +1,64 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ThumbsUp, Bell, Share2, MessageCircle, Play, ArrowRight, Star, Zap } from "lucide-react";
+import { ThumbsUp, Bell, Share2, MessageCircle, Play, ArrowRight, Star, Zap, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 
 const YouTubeCallouts = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
+  const topics = [
+    "Introduction to YouTube Graphics",
+    "Lower Third Name Plates",
+    "Subscribe Button Animations",
+    "Engagement Callout Icons",
+    "Text Bubble Techniques",
+    "Special Effect Overlays",
+    "Recording Best Practices",
+    "Export Settings & Tips"
+  ];
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex">
+      {/* Sidebar with Animated Topics */}
+      <aside className="w-80 border-r border-primary/20 bg-card/30 backdrop-blur-sm p-6 sticky top-0 h-screen overflow-y-auto">
+        <div className="mb-8">
+          <h3 className="text-xl font-bold uppercase tracking-wider text-primary neon-text-glow mb-2">
+            Topics
+          </h3>
+          <div className="w-12 h-1 bg-primary neon-glow" />
+        </div>
+        
+        <ul className="space-y-4">
+          {topics.map((topic, index) => (
+            <li 
+              key={index}
+              className="flex items-start gap-3 group animate-in slide-in-from-left"
+              style={{ 
+                animationDelay: `${index * 100}ms`,
+                animationDuration: '600ms',
+                animationFillMode: 'backwards'
+              }}
+            >
+              <div className="mt-1 transition-all duration-300 group-hover:scale-110">
+                <CheckCircle2 className="w-5 h-5 text-primary group-hover:text-primary group-hover:drop-shadow-[0_0_8px_rgba(181,255,46,0.6)]" />
+              </div>
+              <span className="text-foreground/80 group-hover:text-foreground transition-colors duration-300 text-sm leading-relaxed">
+                {topic}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-12 p-4 border border-primary/30 rounded-lg bg-background/50">
+          <p className="text-xs text-muted-foreground uppercase tracking-widest mb-2">Pro Tip</p>
+          <p className="text-sm text-foreground/70">
+            Click any callout to see it in action. Record your favorites for your next video!
+          </p>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <div className="flex-1">
       {/* Header */}
       <section className="px-4 py-12 border-b border-primary/10">
         <div className="max-w-7xl mx-auto">
@@ -270,6 +321,7 @@ const YouTubeCallouts = () => {
           </div>
         </Card>
       </section>
+      </div>
     </div>
   );
 };
