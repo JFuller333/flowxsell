@@ -56,6 +56,83 @@ const YouTubeCallouts = () => {
     }
   };
 
+  const handleVideoDownload = async (elementId: string, fileName: string, duration: number = 5000) => {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+
+    try {
+      toast.info(`Recording ${duration / 1000} seconds of animation...`);
+      
+      // @ts-ignore - HTML2Canvas types
+      const canvas = document.createElement('canvas');
+      const rect = element.getBoundingClientRect();
+      canvas.width = rect.width * 2;
+      canvas.height = rect.height * 2;
+      
+      const stream = canvas.captureStream(30); // 30 FPS
+      const mediaRecorder = new MediaRecorder(stream, {
+        mimeType: 'video/webm;codecs=vp9',
+        videoBitsPerSecond: 5000000
+      });
+      
+      const chunks: Blob[] = [];
+      mediaRecorder.ondataavailable = (e) => {
+        if (e.data.size > 0) chunks.push(e.data);
+      };
+      
+      mediaRecorder.onstop = () => {
+        const blob = new Blob(chunks, { type: 'video/webm' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.download = `${fileName}.webm`;
+        link.href = url;
+        link.click();
+        URL.revokeObjectURL(url);
+        toast.success("Video downloaded successfully!");
+      };
+      
+      // Capture frames
+      mediaRecorder.start();
+      const ctx = canvas.getContext('2d');
+      
+      const captureFrame = () => {
+        if (ctx && element instanceof HTMLElement) {
+          // Draw element to canvas
+          const elementCanvas = document.createElement('canvas');
+          elementCanvas.width = rect.width * 2;
+          elementCanvas.height = rect.height * 2;
+          const elementCtx = elementCanvas.getContext('2d');
+          
+          if (elementCtx) {
+            toPng(element, {
+              quality: 1,
+              pixelRatio: 2,
+              backgroundColor: '#000000'
+            }).then(dataUrl => {
+              const img = new Image();
+              img.onload = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+              };
+              img.src = dataUrl;
+            });
+          }
+        }
+      };
+      
+      const frameInterval = setInterval(captureFrame, 1000 / 30); // 30 FPS
+      
+      setTimeout(() => {
+        clearInterval(frameInterval);
+        mediaRecorder.stop();
+      }, duration);
+      
+    } catch (error) {
+      console.error('Error recording video:', error);
+      toast.error("Failed to record video. Your browser may not support this feature.");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -64,7 +141,7 @@ const YouTubeCallouts = () => {
           <div className="text-center space-y-4">
             <h1 className="text-5xl font-bold neon-text-glow">YouTube Callout Graphics</h1>
             <p className="text-muted-foreground text-lg">
-              Animated callouts for your video content. Click download buttons to save as PNG files.
+              Animated callouts for your video content. Download as PNG (single frame) or Video (with animation).
             </p>
           </div>
         </div>
@@ -114,9 +191,16 @@ const YouTubeCallouts = () => {
             </div>
             <div className="p-4 flex items-center justify-between border-t border-primary/20">
               <span className="text-sm text-muted-foreground">Lower Third Name Plate</span>
-              <Button size="sm" variant="ghost" onClick={() => handleDownload('lower-third', 'youtube-lower-third')}>
-                <Download className="w-4 h-4" />
-              </Button>
+              <div className="flex gap-2">
+                <Button size="sm" variant="ghost" onClick={() => handleDownload('lower-third', 'youtube-lower-third')}>
+                  <Download className="w-4 h-4 mr-1" />
+                  PNG
+                </Button>
+                <Button size="sm" variant="default" onClick={() => handleVideoDownload('lower-third', 'youtube-lower-third', 5000)}>
+                  <Play className="w-4 h-4 mr-1" />
+                  Video
+                </Button>
+              </div>
             </div>
           </Card>
         </div>
@@ -142,9 +226,14 @@ const YouTubeCallouts = () => {
               </div>
               <div className="p-3 flex items-center justify-between border-t border-primary/20">
                 <span className="text-xs text-muted-foreground">Pulse</span>
-                <Button size="sm" variant="ghost" onClick={() => handleDownload('subscribe-pulse', 'subscribe-pulse')}>
-                  <Download className="w-3 h-3" />
-                </Button>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="ghost" onClick={() => handleDownload('subscribe-pulse', 'subscribe-pulse')}>
+                    <Download className="w-3 h-3" />
+                  </Button>
+                  <Button size="sm" variant="default" onClick={() => handleVideoDownload('subscribe-pulse', 'subscribe-pulse', 5000)}>
+                    <Play className="w-3 h-3" />
+                  </Button>
+                </div>
               </div>
             </Card>
 
@@ -170,9 +259,14 @@ const YouTubeCallouts = () => {
               </div>
               <div className="p-3 flex items-center justify-between border-t border-primary/20">
                 <span className="text-xs text-muted-foreground">Bounce</span>
-                <Button size="sm" variant="ghost" onClick={() => handleDownload('subscribe-bounce', 'subscribe-bounce')}>
-                  <Download className="w-3 h-3" />
-                </Button>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="ghost" onClick={() => handleDownload('subscribe-bounce', 'subscribe-bounce')}>
+                    <Download className="w-3 h-3" />
+                  </Button>
+                  <Button size="sm" variant="default" onClick={() => handleVideoDownload('subscribe-bounce', 'subscribe-bounce', 5000)}>
+                    <Play className="w-3 h-3" />
+                  </Button>
+                </div>
               </div>
             </Card>
 
@@ -191,9 +285,14 @@ const YouTubeCallouts = () => {
               </div>
               <div className="p-3 flex items-center justify-between border-t border-primary/20">
                 <span className="text-xs text-muted-foreground">Arrow</span>
-                <Button size="sm" variant="ghost" onClick={() => handleDownload('subscribe-arrow', 'subscribe-arrow')}>
-                  <Download className="w-3 h-3" />
-                </Button>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="ghost" onClick={() => handleDownload('subscribe-arrow', 'subscribe-arrow')}>
+                    <Download className="w-3 h-3" />
+                  </Button>
+                  <Button size="sm" variant="default" onClick={() => handleVideoDownload('subscribe-arrow', 'subscribe-arrow', 5000)}>
+                    <Play className="w-3 h-3" />
+                  </Button>
+                </div>
               </div>
             </Card>
           </div>
@@ -220,9 +319,12 @@ const YouTubeCallouts = () => {
                 </div>
                 <span className="text-lg font-bold uppercase tracking-wider">Like</span>
               </div>
-              <div className="p-2 flex items-center justify-center border-t border-primary/20">
+              <div className="p-2 flex items-center justify-center border-t border-primary/20 gap-2">
                 <Button size="sm" variant="ghost" onClick={() => handleDownload('engagement-like', 'engagement-like')}>
                   <Download className="w-3 h-3" />
+                </Button>
+                <Button size="sm" variant="default" onClick={() => handleVideoDownload('engagement-like', 'engagement-like', 5000)}>
+                  <Play className="w-3 h-3" />
                 </Button>
               </div>
             </Card>
@@ -240,9 +342,12 @@ const YouTubeCallouts = () => {
                 </div>
                 <span className="text-lg font-bold uppercase tracking-wider">Comment</span>
               </div>
-              <div className="p-2 flex items-center justify-center border-t border-primary/20">
+              <div className="p-2 flex items-center justify-center border-t border-primary/20 gap-2">
                 <Button size="sm" variant="ghost" onClick={() => handleDownload('engagement-comment', 'engagement-comment')}>
                   <Download className="w-3 h-3" />
+                </Button>
+                <Button size="sm" variant="default" onClick={() => handleVideoDownload('engagement-comment', 'engagement-comment', 5000)}>
+                  <Play className="w-3 h-3" />
                 </Button>
               </div>
             </Card>
@@ -260,9 +365,12 @@ const YouTubeCallouts = () => {
                 </div>
                 <span className="text-lg font-bold uppercase tracking-wider">Share</span>
               </div>
-              <div className="p-2 flex items-center justify-center border-t border-primary/20">
+              <div className="p-2 flex items-center justify-center border-t border-primary/20 gap-2">
                 <Button size="sm" variant="ghost" onClick={() => handleDownload('engagement-share', 'engagement-share')}>
                   <Download className="w-3 h-3" />
+                </Button>
+                <Button size="sm" variant="default" onClick={() => handleVideoDownload('engagement-share', 'engagement-share', 5000)}>
+                  <Play className="w-3 h-3" />
                 </Button>
               </div>
             </Card>
@@ -280,9 +388,12 @@ const YouTubeCallouts = () => {
                 </div>
                 <span className="text-lg font-bold uppercase tracking-wider">Watch</span>
               </div>
-              <div className="p-2 flex items-center justify-center border-t border-primary/20">
+              <div className="p-2 flex items-center justify-center border-t border-primary/20 gap-2">
                 <Button size="sm" variant="ghost" onClick={() => handleDownload('engagement-watch', 'engagement-watch')}>
                   <Download className="w-3 h-3" />
+                </Button>
+                <Button size="sm" variant="default" onClick={() => handleVideoDownload('engagement-watch', 'engagement-watch', 5000)}>
+                  <Play className="w-3 h-3" />
                 </Button>
               </div>
             </Card>
@@ -326,9 +437,14 @@ const YouTubeCallouts = () => {
               </div>
               <div className="p-3 flex items-center justify-between border-t border-primary/20">
                 <span className="text-xs text-muted-foreground">Top Left Bubble</span>
-                <Button size="sm" variant="ghost" onClick={() => handleDownload('text-top-left', 'text-top-left')}>
-                  <Download className="w-3 h-3" />
-                </Button>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="ghost" onClick={() => handleDownload('text-top-left', 'text-top-left')}>
+                    <Download className="w-3 h-3" />
+                  </Button>
+                  <Button size="sm" variant="default" onClick={() => handleVideoDownload('text-top-left', 'text-top-left', 5000)}>
+                    <Play className="w-3 h-3" />
+                  </Button>
+                </div>
               </div>
             </Card>
 
@@ -361,9 +477,14 @@ const YouTubeCallouts = () => {
               </div>
               <div className="p-3 flex items-center justify-between border-t border-primary/20">
                 <span className="text-xs text-muted-foreground">Center Highlight</span>
-                <Button size="sm" variant="ghost" onClick={() => handleDownload('text-center-highlight', 'text-center-highlight')}>
-                  <Download className="w-3 h-3" />
-                </Button>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="ghost" onClick={() => handleDownload('text-center-highlight', 'text-center-highlight')}>
+                    <Download className="w-3 h-3" />
+                  </Button>
+                  <Button size="sm" variant="default" onClick={() => handleVideoDownload('text-center-highlight', 'text-center-highlight', 5000)}>
+                    <Play className="w-3 h-3" />
+                  </Button>
+                </div>
               </div>
             </Card>
 
@@ -400,9 +521,14 @@ const YouTubeCallouts = () => {
               </div>
               <div className="p-3 flex items-center justify-between border-t border-primary/20">
                 <span className="text-xs text-muted-foreground">Side Note</span>
-                <Button size="sm" variant="ghost" onClick={() => handleDownload('text-side-note', 'text-side-note')}>
-                  <Download className="w-3 h-3" />
-                </Button>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="ghost" onClick={() => handleDownload('text-side-note', 'text-side-note')}>
+                    <Download className="w-3 h-3" />
+                  </Button>
+                  <Button size="sm" variant="default" onClick={() => handleVideoDownload('text-side-note', 'text-side-note', 5000)}>
+                    <Play className="w-3 h-3" />
+                  </Button>
+                </div>
               </div>
             </Card>
 
@@ -437,9 +563,14 @@ const YouTubeCallouts = () => {
               </div>
               <div className="p-3 flex items-center justify-between border-t border-primary/20">
                 <span className="text-xs text-muted-foreground">Bottom Banner</span>
-                <Button size="sm" variant="ghost" onClick={() => handleDownload('text-bottom-banner', 'text-bottom-banner')}>
-                  <Download className="w-3 h-3" />
-                </Button>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="ghost" onClick={() => handleDownload('text-bottom-banner', 'text-bottom-banner')}>
+                    <Download className="w-3 h-3" />
+                  </Button>
+                  <Button size="sm" variant="default" onClick={() => handleVideoDownload('text-bottom-banner', 'text-bottom-banner', 5000)}>
+                    <Play className="w-3 h-3" />
+                  </Button>
+                </div>
               </div>
             </Card>
           </div>
@@ -506,9 +637,14 @@ const YouTubeCallouts = () => {
               </div>
               <div className="p-3 flex items-center justify-between border-t border-primary/20">
                 <span className="text-xs text-muted-foreground">Bullet List</span>
-                <Button size="sm" variant="ghost" onClick={() => handleDownload('sidebar-bullets', 'sidebar-bullets')}>
-                  <Download className="w-3 h-3" />
-                </Button>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="ghost" onClick={() => handleDownload('sidebar-bullets', 'sidebar-bullets')}>
+                    <Download className="w-3 h-3" />
+                  </Button>
+                  <Button size="sm" variant="default" onClick={() => handleVideoDownload('sidebar-bullets', 'sidebar-bullets', 5000)}>
+                    <Play className="w-3 h-3" />
+                  </Button>
+                </div>
               </div>
             </Card>
 
@@ -564,9 +700,14 @@ const YouTubeCallouts = () => {
               </div>
               <div className="p-3 flex items-center justify-between border-t border-primary/20">
                 <span className="text-xs text-muted-foreground">Numbered List</span>
-                <Button size="sm" variant="ghost" onClick={() => handleDownload('sidebar-numbers', 'sidebar-numbers')}>
-                  <Download className="w-3 h-3" />
-                </Button>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="ghost" onClick={() => handleDownload('sidebar-numbers', 'sidebar-numbers')}>
+                    <Download className="w-3 h-3" />
+                  </Button>
+                  <Button size="sm" variant="default" onClick={() => handleVideoDownload('sidebar-numbers', 'sidebar-numbers', 5000)}>
+                    <Play className="w-3 h-3" />
+                  </Button>
+                </div>
               </div>
             </Card>
           </div>
@@ -601,9 +742,14 @@ const YouTubeCallouts = () => {
               </div>
               <div className="p-3 flex items-center justify-between border-t border-primary/20">
                 <span className="text-xs text-muted-foreground">New Badge</span>
-                <Button size="sm" variant="ghost" onClick={() => handleDownload('special-badge', 'special-badge')}>
-                  <Download className="w-3 h-3" />
-                </Button>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="ghost" onClick={() => handleDownload('special-badge', 'special-badge')}>
+                    <Download className="w-3 h-3" />
+                  </Button>
+                  <Button size="sm" variant="default" onClick={() => handleVideoDownload('special-badge', 'special-badge', 5000)}>
+                    <Play className="w-3 h-3" />
+                  </Button>
+                </div>
               </div>
             </Card>
 
@@ -627,9 +773,14 @@ const YouTubeCallouts = () => {
               </div>
               <div className="p-3 flex items-center justify-between border-t border-primary/20">
                 <span className="text-xs text-muted-foreground">Attention Frame</span>
-                <Button size="sm" variant="ghost" onClick={() => handleDownload('special-attention', 'special-attention')}>
-                  <Download className="w-3 h-3" />
-                </Button>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="ghost" onClick={() => handleDownload('special-attention', 'special-attention')}>
+                    <Download className="w-3 h-3" />
+                  </Button>
+                  <Button size="sm" variant="default" onClick={() => handleVideoDownload('special-attention', 'special-attention', 5000)}>
+                    <Play className="w-3 h-3" />
+                  </Button>
+                </div>
               </div>
             </Card>
           </div>
