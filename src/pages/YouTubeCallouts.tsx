@@ -455,6 +455,23 @@ const YouTubeCallouts = () => {
             
             {/* Sidebar with Bullet Points */}
             <Card className="border-primary/20 bg-card/50 backdrop-blur-sm overflow-hidden">
+              <div className="p-4 space-y-2 border-b border-primary/20">
+                <Label className="text-sm text-muted-foreground">Edit Topics</Label>
+                {topicsList.map((topic, index) => (
+                  <Input 
+                    key={index}
+                    value={topic}
+                    onChange={(e) => {
+                      const newTopics = [...topicsList];
+                      newTopics[index] = e.target.value;
+                      setTopicsList(newTopics);
+                    }}
+                    placeholder={`Topic ${index + 1}`}
+                    maxLength={30}
+                    className="text-sm"
+                  />
+                ))}
+              </div>
               <div id="sidebar-bullets" className="bg-background p-8 h-96 relative overflow-hidden">
                 <div className="absolute left-8 top-8 bottom-8 w-64">
                   <div className="mb-6">
@@ -497,6 +514,23 @@ const YouTubeCallouts = () => {
 
             {/* Sidebar with Numbers */}
             <Card className="border-primary/20 bg-card/50 backdrop-blur-sm overflow-hidden">
+              <div className="p-4 space-y-2 border-b border-primary/20">
+                <Label className="text-sm text-muted-foreground">Edit Agenda Items</Label>
+                {agendaList.map((item, index) => (
+                  <Input 
+                    key={index}
+                    value={item}
+                    onChange={(e) => {
+                      const newAgenda = [...agendaList];
+                      newAgenda[index] = e.target.value;
+                      setAgendaList(newAgenda);
+                    }}
+                    placeholder={`Agenda ${index + 1}`}
+                    maxLength={30}
+                    className="text-sm"
+                  />
+                ))}
+              </div>
               <div id="sidebar-numbers" className="bg-background p-8 h-96 relative overflow-hidden">
                 <div className="absolute left-8 top-8 bottom-8 w-64">
                   <div className="mb-6">
