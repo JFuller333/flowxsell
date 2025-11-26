@@ -3,9 +3,11 @@ import { Card } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
+import { Input } from "@/components/ui/input";
 import { ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
 
 interface Question {
   id: string;
@@ -132,6 +134,9 @@ const FlowXsellQuiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [isComplete, setIsComplete] = useState(false);
+  const [webhookUrl, setWebhookUrl] = useState("");
+  const [email, setEmail] = useState("");
+  const [isSending, setIsSending] = useState(false);
 
   const progress = ((currentQuestion + 1) / questions.length) * 100;
   const currentQ = questions[currentQuestion];
@@ -142,11 +147,74 @@ const FlowXsellQuiz = () => {
     setAnswers({ ...answers, [currentQ.id]: numValue });
   };
 
+  const sendToZapier = async (webhookUrl: string, quizData: any) => {
+    try {
+      await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors",
+        body: JSON.stringify(quizData),
+      });
+      return true;
+    } catch (error) {
+      console.error("Error sending to Zapier:", error);
+      return false;
+    }
+  };
+
   const handleNext = () => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setIsComplete(true);
+    }
+  };
+
+  const handleSubmitToSheet = async () => {
+    if (!webhookUrl || !email) {
+      toast.error("Please enter your email and webhook URL");
+      return;
+    }
+
+    setIsSending(true);
+
+    // Calculate scores by section
+    const alignmentScore = questions
+      .slice(0, 4)
+      .reduce((sum, q) => sum + (answers[q.id] || 0), 0);
+    
+    const conversionScore = questions
+      .slice(4, 8)
+      .reduce((sum, q) => sum + (answers[q.id] || 0), 0);
+    
+    const retentionScore = questions
+      .slice(8, 12)
+      .reduce((sum, q) => sum + (answers[q.id] || 0), 0);
+
+    const quizData = {
+      email,
+      timestamp: new Date().toISOString(),
+      alignment_flow_score: alignmentScore,
+      conversion_flow_score: conversionScore,
+      retention_flow_score: retentionScore,
+      total_score: alignmentScore + conversionScore + retentionScore,
+      // Individual answers
+      ...questions.reduce((acc, q, idx) => {
+        acc[`q${idx + 1}_answer`] = answers[q.id] === 1 ? "Yes" : "No/Unsure";
+        return acc;
+      }, {} as Record<string, string>),
+    };
+
+    const success = await sendToZapier(webhookUrl, quizData);
+    
+    setIsSending(false);
+
+    if (success) {
+      toast.success("Response sent to Google Sheets!");
+    } else {
+      toast.error("Failed to send. Check your webhook URL.");
     }
   };
 
@@ -165,22 +233,62 @@ const FlowXsellQuiz = () => {
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse" />
         
         <Card className="relative z-10 max-w-2xl w-full border-primary/20 bg-card/50 backdrop-blur-sm p-12">
-          <div className="text-center space-y-6">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 border-2 border-primary/30 mb-4">
-              <CheckCircle2 className="w-10 h-10 text-primary" />
+          <div className="space-y-6">
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 border-2 border-primary/30 mb-4">
+                <CheckCircle2 className="w-10 h-10 text-primary" />
+              </div>
+              
+              <h2 className="text-4xl font-bold neon-text-glow">Quiz Complete!</h2>
+              
+              <p className="text-lg text-muted-foreground mt-4">
+                Enter your details below to send your responses to Google Sheets
+              </p>
+            </div>
+
+            <div className="space-y-4 max-w-md mx-auto">
+              <div className="space-y-2">
+                <Label htmlFor="email">Email Address</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="your@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="bg-background/50 border-primary/20"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="webhook">Zapier Webhook URL</Label>
+                <Input
+                  id="webhook"
+                  type="url"
+                  placeholder="https://hooks.zapier.com/hooks/catch/..."
+                  value={webhookUrl}
+                  onChange={(e) => setWebhookUrl(e.target.value)}
+                  className="bg-background/50 border-primary/20"
+                />
+                <p className="text-xs text-muted-foreground">
+                  Create a Zap with Webhook → Google Sheets to capture responses
+                </p>
+              </div>
             </div>
             
-            <h2 className="text-4xl font-bold neon-text-glow">Quiz Complete!</h2>
-            
-            <p className="text-lg text-muted-foreground">
-              Thank you for completing the FlowXsell Business Quiz. Your responses have been recorded.
-            </p>
-            
-            <div className="pt-8 flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="neon" asChild>
+            <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="lg" 
+                variant="neon" 
+                onClick={handleSubmitToSheet}
+                disabled={isSending || !email || !webhookUrl}
+              >
+                {isSending ? "Sending..." : "Send to Google Sheets"}
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+              
+              <Button size="lg" variant="outline" asChild>
                 <Link to="/">
                   Return Home
-                  <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
               </Button>
             </div>
