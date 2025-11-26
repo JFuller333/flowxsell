@@ -170,18 +170,12 @@ const FlowXsellQuiz = () => {
         headers: {
           "Content-Type": "application/json",
         },
+        mode: "no-cors",
         body: JSON.stringify(quizData),
       });
       
-      console.log("📡 Response status:", response.status);
-      
-      if (response.ok) {
-        console.log("✅ Successfully sent to Zapier");
-        return true;
-      } else {
-        console.error("❌ Zapier returned error status:", response.status);
-        return false;
-      }
+      console.log("✅ Webhook request sent (no-cors mode, cannot verify status)");
+      return true;
     } catch (error) {
       console.error("❌ Error sending to Zapier:", error);
       return false;
