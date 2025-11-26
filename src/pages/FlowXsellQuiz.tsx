@@ -226,74 +226,168 @@ const FlowXsellQuiz = () => {
 
   const canProceed = answers[currentQ?.id] !== undefined;
 
+  // Calculate scores for results display
+  const alignmentScore = questions
+    .slice(0, 4)
+    .reduce((sum, q) => sum + (answers[q.id] || 0), 0);
+  
+  const conversionScore = questions
+    .slice(4, 8)
+    .reduce((sum, q) => sum + (answers[q.id] || 0), 0);
+  
+  const retentionScore = questions
+    .slice(8, 12)
+    .reduce((sum, q) => sum + (answers[q.id] || 0), 0);
+
+  const getHealthStatus = (score: number) => {
+    if (score >= 3.5) return { label: "Excellent Flow", color: "text-green-500", bg: "bg-green-500/10" };
+    if (score >= 2.5) return { label: "Good Flow", color: "text-yellow-500", bg: "bg-yellow-500/10" };
+    if (score >= 1.5) return { label: "Needs Attention", color: "text-orange-500", bg: "bg-orange-500/10" };
+    return { label: "Major Flow Break", color: "text-red-500", bg: "bg-red-500/10" };
+  };
+
+  const flowSections = [
+    { name: "Alignment Flow", score: alignmentScore, description: "Brand & Market Fit" },
+    { name: "Conversion Flow", score: conversionScore, description: "User Journey & Trust" },
+    { name: "Retention Flow", score: retentionScore, description: "Post-Purchase Experience" },
+  ];
+
+  const primaryDisrupter = flowSections.reduce((min, flow) => 
+    flow.score < min.score ? flow : min
+  );
+
   if (isComplete) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center px-4 py-20">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse" />
         
-        <Card className="relative z-10 max-w-2xl w-full border-primary/20 bg-card/50 backdrop-blur-sm p-12">
-          <div className="space-y-6">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 border-2 border-primary/30 mb-4">
-                <CheckCircle2 className="w-10 h-10 text-primary" />
-              </div>
-              
-              <h2 className="text-4xl font-bold neon-text-glow">Quiz Complete!</h2>
-              
-              <p className="text-lg text-muted-foreground mt-4">
-                Enter your details below to send your responses to Google Sheets
-              </p>
-            </div>
-
-            <div className="space-y-4 max-w-md mx-auto">
-              <div className="space-y-2">
-                <Label htmlFor="email">Email Address</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="your@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="bg-background/50 border-primary/20"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="webhook">Zapier Webhook URL</Label>
-                <Input
-                  id="webhook"
-                  type="url"
-                  placeholder="https://hooks.zapier.com/hooks/catch/..."
-                  value={webhookUrl}
-                  onChange={(e) => setWebhookUrl(e.target.value)}
-                  className="bg-background/50 border-primary/20"
-                />
-                <p className="text-xs text-muted-foreground">
-                  Create a Zap with Webhook → Google Sheets to capture responses
+        <div className="relative z-10 max-w-4xl w-full space-y-8">
+          {/* Results Card */}
+          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8 md:p-12">
+            <div className="space-y-8">
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 border-2 border-primary/30 mb-4">
+                  <CheckCircle2 className="w-10 h-10 text-primary" />
+                </div>
+                
+                <h2 className="text-4xl font-bold neon-text-glow">Your Flow Health Results</h2>
+                
+                <p className="text-lg text-muted-foreground mt-4">
+                  Here's your personalized assessment across all three flows
                 </p>
               </div>
+
+              {/* Flow Scores */}
+              <div className="space-y-6">
+                {flowSections.map((flow) => {
+                  const health = getHealthStatus(flow.score);
+                  const percentage = (flow.score / 4) * 100;
+                  
+                  return (
+                    <div key={flow.name} className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h3 className="text-xl font-semibold">{flow.name}</h3>
+                          <p className="text-sm text-muted-foreground">{flow.description}</p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-2xl font-bold">{flow.score.toFixed(1)}/4</div>
+                          <div className={`text-sm font-medium ${health.color}`}>{health.label}</div>
+                        </div>
+                      </div>
+                      
+                      <div className="h-3 bg-secondary rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-gradient-to-r from-primary to-primary/60 transition-all duration-500"
+                          style={{ width: `${percentage}%` }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Primary Disrupter */}
+              <div className="border border-primary/30 rounded-lg p-6 bg-primary/5">
+                <h3 className="text-lg font-semibold mb-2">🎯 Primary Flow Disrupter</h3>
+                <p className="text-foreground/90">
+                  <span className="font-bold text-primary">{primaryDisrupter.name}</span> scored lowest at {primaryDisrupter.score.toFixed(1)}/4. 
+                  This is your biggest opportunity for improvement and should be your first priority.
+                </p>
+              </div>
+
+              {/* Overall Interpretation */}
+              <div className="bg-muted/30 rounded-lg p-6">
+                <h3 className="text-lg font-semibold mb-3">📊 Overall Flow Health</h3>
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <p><strong>4–5:</strong> Excellent - Flow is strong and automated; focus on optimization</p>
+                  <p><strong>2.5–3.9:</strong> Moderate - Flow is partially aligned but inconsistent</p>
+                  <p><strong>1–2.4:</strong> Disrupted - Flow breaks or misalignments are slowing growth</p>
+                </div>
+              </div>
             </div>
-            
-            <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                variant="neon" 
-                onClick={handleSubmitToSheet}
-                disabled={isSending || !email || !webhookUrl}
-              >
-                {isSending ? "Sending..." : "Send to Google Sheets"}
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
+          </Card>
+
+          {/* Google Sheets Integration Card */}
+          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8">
+            <div className="space-y-6">
+              <div className="text-center">
+                <h3 className="text-2xl font-bold">Save Your Results</h3>
+                <p className="text-muted-foreground mt-2">
+                  Send your assessment to Google Sheets for tracking and analysis
+                </p>
+              </div>
+
+              <div className="space-y-4 max-w-md mx-auto">
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email Address</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="bg-background/50 border-primary/20"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="webhook">Zapier Webhook URL</Label>
+                  <Input
+                    id="webhook"
+                    type="url"
+                    placeholder="https://hooks.zapier.com/hooks/catch/..."
+                    value={webhookUrl}
+                    onChange={(e) => setWebhookUrl(e.target.value)}
+                    className="bg-background/50 border-primary/20"
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Create a Zap with Webhook → Google Sheets to capture responses
+                  </p>
+                </div>
+              </div>
               
-              <Button size="lg" variant="outline" asChild>
-                <Link to="/">
-                  Return Home
-                </Link>
-              </Button>
+              <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
+                <Button 
+                  size="lg" 
+                  variant="neon" 
+                  onClick={handleSubmitToSheet}
+                  disabled={isSending || !email || !webhookUrl}
+                >
+                  {isSending ? "Sending..." : "Send to Google Sheets"}
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+                
+                <Button size="lg" variant="outline" asChild>
+                  <Link to="/">
+                    Return Home
+                  </Link>
+                </Button>
+              </div>
             </div>
-          </div>
-        </Card>
+          </Card>
+        </div>
       </div>
     );
   }
