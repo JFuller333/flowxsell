@@ -215,9 +215,11 @@ const Index = () => {
           </div>
           
           <div className="pt-8">
-            <Button size="lg" variant="neon" className="group">
-              Work with me
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <Button size="lg" variant="neon" className="group" asChild>
+              <a href="/flowxsell-quiz">
+                Take FlowXsell Quiz
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
             </Button>
           </div>
         </div>
