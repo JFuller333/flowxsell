@@ -367,7 +367,7 @@ const FlowXsellQuiz = () => {
 
               <div className="space-y-4 max-w-md mx-auto">
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email Address</Label>
+                  <Label htmlFor="email">Email Address *</Label>
                   <Input
                     id="email"
                     type="email"
@@ -375,7 +375,13 @@ const FlowXsellQuiz = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="bg-background/50 border-primary/20"
+                    required
                   />
+                  {!email && (
+                    <p className="text-xs text-muted-foreground">
+                      Required to send results
+                    </p>
+                  )}
                 </div>
 
                 <div className="space-y-2">
