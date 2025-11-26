@@ -4,7 +4,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { Input } from "@/components/ui/input";
-import { ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle2, Mail } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
@@ -146,7 +146,8 @@ const FlowXsellQuiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [isComplete, setIsComplete] = useState(false);
-  const [webhookUrl, setWebhookUrl] = useState("https://hooks.zapier.com/hooks/catch/25120721/uky71vx/");
+  const [showEmailCapture, setShowEmailCapture] = useState(false);
+  const [webhookUrl] = useState("https://hooks.zapier.com/hooks/catch/25120721/uky71vx/");
   const [email, setEmail] = useState("");
   const [isSending, setIsSending] = useState(false);
 
@@ -195,8 +196,8 @@ const FlowXsellQuiz = () => {
     console.log("Email:", email);
     console.log("Webhook URL:", webhookUrl);
     
-    if (!webhookUrl || !email) {
-      toast.error("Please enter your email and webhook URL");
+    if (!email) {
+      toast.error("Please enter your email");
       return;
     }
 
@@ -282,6 +283,58 @@ const FlowXsellQuiz = () => {
     flow.score < min.score ? flow : min
   );
 
+  // Email capture screen
+  if (showEmailCapture) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center px-4 py-20">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse" />
+        
+        <div className="relative z-10 max-w-2xl w-full">
+          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8 md:p-12">
+            <div className="space-y-6 text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border-2 border-primary/30 mb-4 mx-auto">
+                <Mail className="w-8 h-8 text-primary" />
+              </div>
+              
+              <h2 className="text-3xl font-bold">Get Your Results</h2>
+              <p className="text-muted-foreground">
+                Enter your email to receive your Flow Health assessment
+              </p>
+              
+              <form onSubmit={(e) => { e.preventDefault(); handleSubmitToSheet(); }} className="space-y-4 max-w-md mx-auto pt-4">
+                <Input
+                  type="email"
+                  placeholder="your@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="bg-background/50 border-primary/20 text-lg py-6"
+                />
+                
+                <Button 
+                  type="submit"
+                  size="lg" 
+                  variant="neon" 
+                  className="w-full"
+                  disabled={isSending || !email}
+                >
+                  {isSending ? "Submitting..." : "Submit Results"}
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </form>
+              
+              <p className="text-xs text-muted-foreground pt-4">
+                We'll email you a detailed breakdown of your assessment
+              </p>
+            </div>
+          </Card>
+        </div>
+      </div>
+    );
+  }
+
+  // Results screen
   if (isComplete) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center px-4 py-20">
@@ -289,7 +342,6 @@ const FlowXsellQuiz = () => {
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse" />
         
         <div className="relative z-10 max-w-4xl w-full space-y-8">
-          {/* Results Card */}
           <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8 md:p-12">
             <div className="space-y-8">
               <div className="text-center">
@@ -352,62 +404,14 @@ const FlowXsellQuiz = () => {
                   <p><strong>1–2.4:</strong> Disrupted - Flow breaks or misalignments are slowing growth</p>
                 </div>
               </div>
-            </div>
-          </Card>
-
-          {/* Google Sheets Integration Card */}
-          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8">
-            <div className="space-y-6">
-              <div className="text-center">
-                <h3 className="text-2xl font-bold">Save Your Results</h3>
-                <p className="text-muted-foreground mt-2">
-                  Send your assessment to Google Sheets for tracking and analysis
-                </p>
-              </div>
-
-              <div className="space-y-4 max-w-md mx-auto">
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email Address *</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="your@email.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="bg-background/50 border-primary/20"
-                    required
-                  />
-                  {!email && (
-                    <p className="text-xs text-muted-foreground">
-                      Required to send results
-                    </p>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="webhook">Zapier Webhook URL</Label>
-                  <Input
-                    id="webhook"
-                    type="url"
-                    placeholder="https://hooks.zapier.com/hooks/catch/..."
-                    value={webhookUrl}
-                    onChange={(e) => setWebhookUrl(e.target.value)}
-                    className="bg-background/50 border-primary/20"
-                  />
-                  <p className="text-xs text-muted-foreground">
-                    Create a Zap with Webhook → Google Sheets to capture responses
-                  </p>
-                </div>
-              </div>
               
               <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 
                   size="lg" 
                   variant="neon" 
-                  onClick={handleSubmitToSheet}
-                  disabled={isSending || !email || !webhookUrl}
+                  onClick={() => setShowEmailCapture(true)}
                 >
-                  {isSending ? "Sending..." : "Send to Google Sheets"}
+                  Continue to Submit
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
                 
