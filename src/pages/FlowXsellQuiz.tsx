@@ -146,7 +146,7 @@ const FlowXsellQuiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [isComplete, setIsComplete] = useState(false);
-  const [webhookUrl, setWebhookUrl] = useState("");
+  const [webhookUrl, setWebhookUrl] = useState("https://hooks.zapier.com/hooks/catch/25120721/uky71vx/");
   const [email, setEmail] = useState("");
   const [isSending, setIsSending] = useState(false);
 
