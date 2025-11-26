@@ -24,7 +24,8 @@ const questions: Question[] = [
     text: "Can a first-time visitor instantly tell what problem your product solves?",
     options: [
       { label: "Yes", value: 1 },
-      { label: "No", value: 0.5 },
+      { label: "Unsure", value: 0.5 },
+      { label: "No", value: 0 },
     ],
   },
   {
@@ -33,7 +34,8 @@ const questions: Question[] = [
     text: "Do all your ads, emails, and pages communicate the same core promise?",
     options: [
       { label: "Yes", value: 1 },
-      { label: "No", value: 0.5 },
+      { label: "Unsure", value: 0.5 },
+      { label: "No", value: 0 },
     ],
   },
   {
@@ -42,7 +44,8 @@ const questions: Question[] = [
     text: "When customers describe your product, do they use the same words you use in your marketing?",
     options: [
       { label: "Yes", value: 1 },
-      { label: "No", value: 0.5 },
+      { label: "Unsure", value: 0.5 },
+      { label: "No", value: 0 },
     ],
   },
   {
@@ -51,7 +54,8 @@ const questions: Question[] = [
     text: "Does your offer connect emotionally—not just functionally—with your audience?",
     options: [
       { label: "Yes", value: 1 },
-      { label: "No", value: 0.5 },
+      { label: "Unsure", value: 0.5 },
+      { label: "No", value: 0 },
     ],
   },
   // Conversion Flow
@@ -61,7 +65,8 @@ const questions: Question[] = [
     text: "Do your ad visuals and landing pages feel consistent in tone and message?",
     options: [
       { label: "Yes", value: 1 },
-      { label: "No", value: 0.5 },
+      { label: "Unsure", value: 0.5 },
+      { label: "No", value: 0 },
     ],
   },
   {
@@ -71,6 +76,7 @@ const questions: Question[] = [
     options: [
       { label: "Yes", value: 1 },
       { label: "Unsure", value: 0.5 },
+      { label: "No", value: 0 },
     ],
   },
   {
@@ -80,6 +86,7 @@ const questions: Question[] = [
     options: [
       { label: "Yes", value: 1 },
       { label: "Unsure", value: 0.5 },
+      { label: "No", value: 0 },
     ],
   },
   {
@@ -88,7 +95,8 @@ const questions: Question[] = [
     text: "Are testimonials, reviews, or social proof visible before the purchase decision?",
     options: [
       { label: "Yes", value: 1 },
-      { label: "No", value: 0.5 },
+      { label: "Unsure", value: 0.5 },
+      { label: "No", value: 0 },
     ],
   },
   // Retention Flow
@@ -98,7 +106,8 @@ const questions: Question[] = [
     text: "Do customers receive helpful or educational follow-ups after buying?",
     options: [
       { label: "Yes", value: 1 },
-      { label: "No", value: 0.5 },
+      { label: "Unsure", value: 0.5 },
+      { label: "No", value: 0 },
     ],
   },
   {
@@ -107,7 +116,8 @@ const questions: Question[] = [
     text: "Do you have automated re-engagement or refill flows in place?",
     options: [
       { label: "Yes", value: 1 },
-      { label: "No", value: 0.5 },
+      { label: "Unsure", value: 0.5 },
+      { label: "No", value: 0 },
     ],
   },
   {
@@ -116,7 +126,8 @@ const questions: Question[] = [
     text: "Do customers have reasons to return (loyalty points, new drops, community, education)?",
     options: [
       { label: "Yes", value: 1 },
-      { label: "No", value: 0.5 },
+      { label: "Unsure", value: 0.5 },
+      { label: "No", value: 0 },
     ],
   },
   {
@@ -125,7 +136,8 @@ const questions: Question[] = [
     text: "Is your repeat-purchase rate or subscription retention steadily improving?",
     options: [
       { label: "Yes", value: 1 },
-      { label: "No", value: 0.5 },
+      { label: "Unsure", value: 0.5 },
+      { label: "No", value: 0 },
     ],
   },
 ];
@@ -202,7 +214,8 @@ const FlowXsellQuiz = () => {
       total_score: alignmentScore + conversionScore + retentionScore,
       // Individual answers
       ...questions.reduce((acc, q, idx) => {
-        acc[`q${idx + 1}_answer`] = answers[q.id] === 1 ? "Yes" : "No/Unsure";
+        const answer = answers[q.id];
+        acc[`q${idx + 1}_answer`] = answer === 1 ? "Yes" : answer === 0.5 ? "Unsure" : "No";
         return acc;
       }, {} as Record<string, string>),
     };
