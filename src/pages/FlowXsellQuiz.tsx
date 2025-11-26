@@ -216,6 +216,16 @@ const FlowXsellQuiz = () => {
       .slice(8, 12)
       .reduce((sum, q) => sum + (answers[q.id] || 0), 0);
 
+    // Determine primary flow disrupter
+    const flowScores = [
+      { name: "Alignment Flow", score: alignmentScore },
+      { name: "Conversion Flow", score: conversionScore },
+      { name: "Retention Flow", score: retentionScore },
+    ];
+    const primaryDisrupter = flowScores.reduce((min, flow) => 
+      flow.score < min.score ? flow : min
+    );
+
     const quizData = {
       email,
       timestamp: new Date().toISOString(),
@@ -223,6 +233,7 @@ const FlowXsellQuiz = () => {
       conversion_flow_score: conversionScore,
       retention_flow_score: retentionScore,
       total_score: alignmentScore + conversionScore + retentionScore,
+      primary_flow_disrupter: primaryDisrupter.name,
       // Individual answers
       ...questions.reduce((acc, q, idx) => {
         const answer = answers[q.id];
