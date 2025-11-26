@@ -160,8 +160,12 @@ const FlowXsellQuiz = () => {
   };
 
   const sendToZapier = async (webhookUrl: string, quizData: any) => {
+    console.log("🚀 Starting webhook send...");
+    console.log("📍 Webhook URL:", webhookUrl);
+    console.log("📦 Quiz Data:", quizData);
+    
     try {
-      await fetch(webhookUrl, {
+      const response = await fetch(webhookUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -169,9 +173,11 @@ const FlowXsellQuiz = () => {
         mode: "no-cors",
         body: JSON.stringify(quizData),
       });
+      
+      console.log("✅ Webhook request sent (no-cors mode, cannot verify status)");
       return true;
     } catch (error) {
-      console.error("Error sending to Zapier:", error);
+      console.error("❌ Error sending to Zapier:", error);
       return false;
     }
   };
@@ -185,6 +191,10 @@ const FlowXsellQuiz = () => {
   };
 
   const handleSubmitToSheet = async () => {
+    console.log("🎯 Submit button clicked");
+    console.log("Email:", email);
+    console.log("Webhook URL:", webhookUrl);
+    
     if (!webhookUrl || !email) {
       toast.error("Please enter your email and webhook URL");
       return;
@@ -220,13 +230,16 @@ const FlowXsellQuiz = () => {
       }, {} as Record<string, string>),
     };
 
+    console.log("📤 Sending to Zapier...");
     const success = await sendToZapier(webhookUrl, quizData);
     
     setIsSending(false);
 
     if (success) {
+      console.log("✅ Success response");
       toast.success("Response sent to Google Sheets!");
     } else {
+      console.log("❌ Failed response");
       toast.error("Failed to send. Check your webhook URL.");
     }
   };
