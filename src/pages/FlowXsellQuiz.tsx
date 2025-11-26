@@ -145,8 +145,8 @@ const questions: Question[] = [
 const FlowXsellQuiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
-  const [isComplete, setIsComplete] = useState(false);
   const [showEmailCapture, setShowEmailCapture] = useState(false);
+  const [showResults, setShowResults] = useState(false);
   const [webhookUrl] = useState("https://hooks.zapier.com/hooks/catch/25120721/uky71vx/");
   const [email, setEmail] = useState("");
   const [isSending, setIsSending] = useState(false);
@@ -187,7 +187,7 @@ const FlowXsellQuiz = () => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      setIsComplete(true);
+      setShowEmailCapture(true);
     }
   };
 
@@ -239,9 +239,10 @@ const FlowXsellQuiz = () => {
     if (success) {
       console.log("✅ Success response");
       toast.success("Response sent to Google Sheets!");
+      setShowResults(true);
     } else {
       console.log("❌ Failed response");
-      toast.error("Failed to send. Check your webhook URL.");
+      toast.error("Failed to send. Please try again.");
     }
   };
 
@@ -283,8 +284,8 @@ const FlowXsellQuiz = () => {
     flow.score < min.score ? flow : min
   );
 
-  // Email capture screen
-  if (showEmailCapture) {
+  // Email capture screen (shown after last question)
+  if (showEmailCapture && !showResults) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center px-4 py-20">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
@@ -294,12 +295,12 @@ const FlowXsellQuiz = () => {
           <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8 md:p-12">
             <div className="space-y-6 text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border-2 border-primary/30 mb-4 mx-auto">
-                <Mail className="w-8 h-8 text-primary" />
+                <CheckCircle2 className="w-8 h-8 text-primary" />
               </div>
               
-              <h2 className="text-3xl font-bold">Get Your Results</h2>
+              <h2 className="text-3xl font-bold">Quiz Complete!</h2>
               <p className="text-muted-foreground">
-                Enter your email to receive your Flow Health assessment
+                Enter your email to view your personalized Flow Health results
               </p>
               
               <form onSubmit={(e) => { e.preventDefault(); handleSubmitToSheet(); }} className="space-y-4 max-w-md mx-auto pt-4">
@@ -319,13 +320,13 @@ const FlowXsellQuiz = () => {
                   className="w-full"
                   disabled={isSending || !email}
                 >
-                  {isSending ? "Submitting..." : "Submit Results"}
+                  {isSending ? "Submitting..." : "View Results"}
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </form>
               
               <p className="text-xs text-muted-foreground pt-4">
-                We'll email you a detailed breakdown of your assessment
+                Your results will also be emailed to you
               </p>
             </div>
           </Card>
@@ -334,8 +335,8 @@ const FlowXsellQuiz = () => {
     );
   }
 
-  // Results screen
-  if (isComplete) {
+  // Results screen (shown after email submission)
+  if (showResults) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center px-4 py-20">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
@@ -405,19 +406,11 @@ const FlowXsellQuiz = () => {
                 </div>
               </div>
               
-              <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  size="lg" 
-                  variant="neon" 
-                  onClick={() => setShowEmailCapture(true)}
-                >
-                  Continue to Submit
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-                
-                <Button size="lg" variant="outline" asChild>
+              <div className="pt-4 flex justify-center">
+                <Button size="lg" variant="neon" asChild>
                   <Link to="/">
                     Return Home
+                    <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
               </div>
