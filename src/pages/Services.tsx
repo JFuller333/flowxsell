@@ -163,7 +163,7 @@ const Services = () => {
                   </div>
                 </div>
 
-                <Button size="sm" className="bg-lime-500 text-black hover:bg-lime-400">
+                <Button size="sm" className="bg-lime-400 text-black hover:bg-lime-300">
                   Let's Talk
                 </Button>
               </div>
