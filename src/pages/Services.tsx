@@ -16,7 +16,7 @@ const Services = () => {
       id: "headless",
       icon: Zap,
       flowType: "Conversion Flow",
-      title: "FlowX Headless Storefront",
+      title: "Shopify Headless Storefront",
       tagline: "For brands that have outgrown traditional Shopify themes",
       symptoms: [
         "Slow load times & high bounce rates",
@@ -33,7 +33,7 @@ const Services = () => {
       id: "custom",
       icon: Layers,
       flowType: "Alignment Flow",
-      title: "FlowX Custom App / Portal",
+      title: "Shopify Custom App / Portal",
       tagline: "For businesses that need custom engineering, not more apps",
       symptoms: [
         "Features themes/apps cannot support",
@@ -50,7 +50,7 @@ const Services = () => {
       id: "maintain",
       icon: Settings,
       flowType: "Retention Flow",
-      title: "FlowX Maintain™",
+      title: "Shopify Maintain™",
       tagline: "Monthly technical retainer for system stability",
       symptoms: [
         "Recurring bugs & broken automations",
@@ -67,7 +67,7 @@ const Services = () => {
       id: "secure",
       icon: Shield,
       flowType: "All Flows",
-      title: "FlowXSecure™ Lite Audit",
+      title: "Shopify Secure™ Lite Audit",
       tagline: "Security review for serious brands",
       symptoms: [
         "Unknown security vulnerabilities",
