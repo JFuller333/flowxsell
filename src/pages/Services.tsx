@@ -67,7 +67,7 @@ const Services = () => {
       id: "secure",
       icon: Shield,
       flowType: "All Flows",
-      title: "Shopify Secure™ Lite Audit",
+      title: "Shopify Secure™ Audit",
       tagline: "Security review for serious brands",
       symptoms: [
         "Unknown security vulnerabilities",
