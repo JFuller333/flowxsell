@@ -144,9 +144,9 @@ const Services = () => {
                 <div className="relative">
                   {/* Header */}
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-8">
-                    <div className="flex items-start gap-4">
-                      <div className={`p-4 rounded-xl bg-gradient-to-br ${solution.color} shadow-lg`}>
-                        <solution.icon className="w-8 h-8 text-white" />
+                    <div className="flex items-start gap-3">
+                      <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
+                        <solution.icon className="w-5 h-5 text-primary" />
                       </div>
                       <div>
                         <span className="text-sm font-mono text-muted-foreground uppercase tracking-widest">
@@ -158,7 +158,7 @@ const Services = () => {
                         <p className="text-primary font-medium mt-1">{solution.tagline}</p>
                       </div>
                     </div>
-                    <span className="text-6xl font-bold text-muted-foreground/10 font-mono">
+                    <span className="text-6xl font-bold text-lime-400/30 font-mono">
                       0{index + 1}
                     </span>
                   </div>
@@ -215,8 +215,8 @@ const Services = () => {
             <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl" />
             
             <div className="relative text-center">
-              <div className="inline-flex p-4 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg mb-6">
-                <Shield className="w-8 h-8 text-white" />
+              <div className="inline-flex p-2 rounded-lg bg-amber-500/10 border border-amber-500/20 mb-6">
+                <Shield className="w-5 h-5 text-amber-500" />
               </div>
               
               <span className="block text-sm font-mono text-amber-500 uppercase tracking-widest mb-2">
