@@ -62,6 +62,23 @@ const Services = () => {
         "API & webhook monitoring",
         "Preventative maintenance"
       ]
+    },
+    {
+      id: "secure",
+      icon: Shield,
+      flowType: "All Flows",
+      title: "FlowXSecure™ Lite Audit",
+      tagline: "Security review for serious brands",
+      symptoms: [
+        "Unknown security vulnerabilities",
+        "Unaudited authentication flows",
+        "Risk exposure in checkout & APIs"
+      ],
+      benefits: [
+        "Full security assessment",
+        "CI/CD & endpoint review",
+        "Risk scoring & remediation"
+      ]
     }
   ];
 
@@ -110,7 +127,7 @@ const Services = () => {
                   <div className="flex items-center gap-3">
                     <Icon className="w-5 h-5 text-primary" />
                     <span className="text-xs font-mono text-muted-foreground uppercase tracking-wide">
-                      Low {solution.flowType}
+                      {solution.flowType === "All Flows" ? solution.flowType : `Low ${solution.flowType}`}
                     </span>
                   </div>
                   <span className="text-4xl font-bold text-lime-400/40 font-mono">
@@ -121,7 +138,7 @@ const Services = () => {
                 <h2 className="text-xl md:text-2xl font-bold mb-1">{solution.title}</h2>
                 <p className="text-sm text-muted-foreground mb-6">{solution.tagline}</p>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <p className="text-xs font-mono text-muted-foreground mb-3 uppercase tracking-wide">Symptoms</p>
                     <ul className="space-y-2">
@@ -145,26 +162,13 @@ const Services = () => {
                     </ul>
                   </div>
                 </div>
+
+                <Button variant="outline" size="sm">
+                  Let's Talk
+                </Button>
               </div>
             );
           })}
-        </div>
-      </section>
-
-      {/* FlowXSecure */}
-      <section className="py-12 px-6 border-t border-border/30">
-        <div className="container mx-auto max-w-3xl text-center">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Shield className="w-4 h-4 text-amber-500" />
-            <span className="text-xs font-mono text-amber-500 uppercase tracking-wide">Universal Add-On</span>
-          </div>
-          <h2 className="text-2xl font-bold mb-2">FlowXSecure™ Lite Audit</h2>
-          <p className="text-muted-foreground text-sm mb-6">
-            Security review of authentication, APIs, checkout, and endpoints.
-          </p>
-          <Button variant="outline" size="sm" className="border-amber-500/30 text-amber-500 hover:bg-amber-500/10">
-            Learn More
-          </Button>
         </div>
       </section>
 
