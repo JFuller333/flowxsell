@@ -50,7 +50,7 @@ const Services = () => {
       id: "maintain",
       icon: Settings,
       flowType: "Retention Flow",
-      title: "Shopify Maintain™",
+      title: "Shopify Maintenance™",
       tagline: "Monthly technical retainer for system stability",
       symptoms: [
         "Recurring bugs & broken automations",
