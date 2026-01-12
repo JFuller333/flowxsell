@@ -14,6 +14,7 @@ import PowerPointBackgrounds from "./pages/PowerPointBackgrounds";
 import YouTubeCallouts from "./pages/YouTubeCallouts";
 import FlowXsellQuiz from "./pages/FlowXsellQuiz";
 import Services from "./pages/Services";
+import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/youtube-callouts" element={<YouTubeCallouts />} />
           <Route path="/flowxsell-quiz" element={<FlowXsellQuiz />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

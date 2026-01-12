@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { FrameworkCard } from "@/components/FrameworkCard";
 import { ProjectCard } from "@/components/ProjectCard";
+import { ParticleBackground } from "@/components/ParticleBackground";
 import { Search, Target, Cog, TrendingUp, ArrowRight, Mail } from "lucide-react";
 import flowosImage from "@/assets/flowos-framework.jpg";
 import healthScoreImage from "@/assets/flow-health-score.jpg";
@@ -43,6 +44,7 @@ const Index = () => {
   return <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
+        <ParticleBackground />
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse" />
         
