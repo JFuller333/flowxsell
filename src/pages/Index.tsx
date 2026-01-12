@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { FrameworkCard } from "@/components/FrameworkCard";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ParticleBackground } from "@/components/ParticleBackground";
+import { Navbar } from "@/components/Navbar";
 import { Search, Target, Cog, TrendingUp, ArrowRight, Mail } from "lucide-react";
 import flowosImage from "@/assets/flowos-framework.jpg";
 import healthScoreImage from "@/assets/flow-health-score.jpg";
@@ -42,6 +43,7 @@ const Index = () => {
     icon: TrendingUp
   }];
   return <div className="min-h-screen bg-background">
+      <Navbar />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
         <ParticleBackground />
