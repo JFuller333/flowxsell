@@ -57,7 +57,7 @@ const Index = () => {
             </span>
           </div>
           
-          <h1 className="neon-text-glow text-7xl">FlowXsell</h1>
+          <h1 className="neon-text-glow text-4xl sm:text-5xl md:text-7xl">FlowXsell</h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">A clarity companion for multiprenerus & solo founders. When your systems flow, your sales grow.</p>
           
@@ -126,7 +126,7 @@ const Index = () => {
         
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="neon-text-glow">The Xsell Framework</h2>
+            <h2 className="neon-text-glow text-3xl md:text-4xl">The Xsell Framework</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Four phases to transform scattered effort into strategic growth
             </p>
@@ -142,11 +142,11 @@ const Index = () => {
       {/* Why It Matters Section */}
       <section className="px-4 py-32 relative">
         <div className="max-w-4xl mx-auto">
-          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-12 relative overflow-hidden">
+          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-6 md:p-12 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
             
             <div className="relative space-y-6">
-              <h2 className="mb-8">Why It Matters</h2>
+              <h2 className="mb-8 text-2xl md:text-3xl font-bold">Why It Matters</h2>
               
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p className="text-xl text-foreground font-medium">
@@ -232,7 +232,7 @@ const Index = () => {
       {/* Email Capture Section */}
       <section className="px-4 py-32 relative">
         <div className="max-w-2xl mx-auto">
-          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-12 relative overflow-hidden">
+          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-6 md:p-12 relative overflow-hidden">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
             
             <div className="relative text-center space-y-6">
@@ -240,7 +240,7 @@ const Index = () => {
                 <Mail className="w-8 h-8 text-primary" />
               </div>
               
-              <h3 className="text-3xl font-bold">Want the FlowXsell playbook?</h3>
+              <h3 className="text-2xl md:text-3xl font-bold">Want the FlowXsell playbook?</h3>
               
               <p className="text-muted-foreground">
                 Get the full PDF and worksheet delivered weeklyish.

@@ -40,7 +40,7 @@ const Contact = () => {
             </span>
           </div>
           
-          <h1 className="neon-text-glow text-5xl md:text-6xl">Contact</h1>
+          <h1 className="neon-text-glow text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Contact</h1>
           
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Ready to build systems that scale? Let's talk about your project.

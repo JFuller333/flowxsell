@@ -19,7 +19,7 @@ const CaseStudyLRB = () => {
               <span className="text-sm font-mono text-primary uppercase tracking-[0.3em] px-4 py-2 border border-primary/30 rounded-full inline-block">
                 Case Study
               </span>
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                 LRB Donor & Investor Dashboard
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
@@ -50,7 +50,7 @@ const CaseStudyLRB = () => {
 
       {/* Challenge Section */}
       <section className="px-4 py-20 max-w-7xl mx-auto">
-        <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-12">
+        <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-6 md:p-12">
           <h2 className="text-3xl font-bold mb-6">The Challenge</h2>
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
@@ -110,7 +110,7 @@ const CaseStudyLRB = () => {
 
       {/* Results Section */}
       <section className="px-4 py-20 max-w-7xl mx-auto">
-        <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-12">
+        <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-6 md:p-12">
           <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
             <TrendingUp className="w-8 h-8 text-primary" />
             The Results
@@ -146,7 +146,7 @@ const CaseStudyLRB = () => {
       {/* CTA Section */}
       <section className="px-4 py-20 max-w-4xl mx-auto text-center">
         <div className="space-y-6">
-          <h2 className="text-4xl font-bold">Ready to build stakeholder trust?</h2>
+          <h2 className="text-2xl md:text-4xl font-bold">Ready to build stakeholder trust?</h2>
           <p className="text-xl text-muted-foreground">
             Let's audit your communication systems and create your dashboard.
           </p>
