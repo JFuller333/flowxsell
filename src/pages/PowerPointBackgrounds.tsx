@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
+import { Navbar } from "@/components/Navbar";
 
 const PowerPointBackgrounds = () => {
   const handleDownload = (slideNumber: number) => {
@@ -10,11 +11,13 @@ const PowerPointBackgrounds = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navbar />
+      
       {/* Header */}
-      <section className="px-4 py-12 border-b border-primary/10">
+      <section className="px-4 pt-24 md:pt-28 pb-8 md:pb-12 border-b border-primary/10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-4">
-            <h1 className="text-5xl font-bold neon-text-glow">PowerPoint Backgrounds</h1>
+            <h1 className="text-3xl md:text-5xl font-bold neon-text-glow">PowerPoint Backgrounds</h1>
             <p className="text-muted-foreground text-lg">
               10 professionally designed slides in the FlowXsell aesthetic. 
               Right-click and save each slide for your presentations.

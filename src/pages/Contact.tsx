@@ -2,11 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { ArrowLeft, Mail, Send } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Link } from "react-router-dom";
 import { ParticleBackground } from "@/components/ParticleBackground";
+import { Navbar } from "@/components/Navbar";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -26,20 +26,14 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navbar />
+      
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center justify-center px-4 py-20 overflow-hidden">
+      <section className="relative min-h-[50vh] flex items-center justify-center px-4 pt-24 md:pt-20 pb-12 overflow-hidden">
         <ParticleBackground />
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
         
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
-          <Link 
-            to="/" 
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Home
-          </Link>
-          
           <div className="inline-block mb-4">
             <span className="text-sm font-mono text-primary uppercase tracking-[0.3em] px-4 py-2 border border-primary/30 rounded-full">
               Get In Touch

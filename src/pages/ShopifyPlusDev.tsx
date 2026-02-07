@@ -1,14 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ArrowLeft, Code2, Zap, Layers, GitBranch, Terminal, CheckCircle2 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Code2, Zap, Layers, GitBranch, Terminal, CheckCircle2, ArrowRight } from "lucide-react";
 import curlsmonthlyLogo from "@/assets/curlsmonthly-logo-original.webp";
 import lrtLogo from "@/assets/lrt-logo.png";
 import instaballoonsLogo from "@/assets/instaballoons-logo.svg";
+import { Navbar } from "@/components/Navbar";
 
 const ShopifyPlusDev = () => {
-  const navigate = useNavigate();
 
   const techStack = [
     { name: "Shopify Plus", icon: Layers, description: "Enterprise e-commerce platform" },
@@ -49,20 +48,10 @@ const ShopifyPlusDev = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Back Button */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <Button
-          variant="ghost"
-          onClick={() => navigate("/")}
-          className="group"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-          Back to Home
-        </Button>
-      </div>
+      <Navbar />
 
       {/* Hero Section */}
-      <section className="relative px-4 py-20">
+      <section className="relative px-4 pt-24 md:pt-28 pb-12 md:pb-20">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent" />
         
         <div className="relative z-10 max-w-7xl mx-auto">
@@ -543,7 +532,7 @@ const PRODUCT_QUERY = \`
           </p>
           <Button size="lg" variant="neon" className="group">
             Start a Project
-            <ArrowLeft className="w-4 h-4 ml-2 rotate-180 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </section>
