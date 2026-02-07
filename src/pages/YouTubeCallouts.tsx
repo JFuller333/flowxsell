@@ -7,6 +7,7 @@ import { ThumbsUp, Bell, Share2, MessageCircle, Play, ArrowRight, Star, Zap, Che
 import { useState } from "react";
 import { toPng } from "html-to-image";
 import { toast } from "sonner";
+import { Navbar } from "@/components/Navbar";
 
 const YouTubeCallouts = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -135,11 +136,13 @@ const YouTubeCallouts = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navbar />
+      
       {/* Header */}
-      <section className="px-4 py-12 border-b border-primary/10">
+      <section className="px-4 pt-24 md:pt-28 pb-8 md:pb-12 border-b border-primary/10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-4">
-            <h1 className="text-5xl font-bold neon-text-glow">YouTube Callout Graphics</h1>
+            <h1 className="text-3xl md:text-5xl font-bold neon-text-glow">YouTube Callout Graphics</h1>
             <p className="text-muted-foreground text-lg">
               Animated callouts for your video content. Download as PNG (single frame) or Video (with animation).
             </p>

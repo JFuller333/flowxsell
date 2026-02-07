@@ -2,34 +2,23 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, CheckCircle2, TrendingUp, Building2, Quote, Code2 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { CheckCircle2, TrendingUp, Building2, Code2, Quote, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import techStackImage from "@/assets/tech-stack-optimizer.jpg";
 import truLogo from "@/assets/tru-logo-original.png";
 import metpureLogo from "@/assets/metpure-logo-original.svg";
 import curlsmonthlyLogo from "@/assets/curlsmonthly-logo-original.webp";
 import lrtLogo from "@/assets/lrt-logo.png";
 import instaballoonsLogo from "@/assets/instaballoons-logo.svg";
+import { Navbar } from "@/components/Navbar";
 
 const CaseStudyFlowXsell = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="min-h-screen bg-background">
-      {/* Back Button */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <Button
-          variant="ghost"
-          onClick={() => navigate("/")}
-          className="group"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-          Back to Home
-        </Button>
-      </div>
+      <Navbar />
 
       {/* Hero Section */}
-      <section className="relative px-4 py-20">
+      <section className="relative px-4 pt-24 md:pt-28 pb-12 md:pb-20">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent" />
         
         <div className="relative z-10 max-w-7xl mx-auto">
@@ -661,11 +650,13 @@ const CaseStudyFlowXsell = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Button size="lg" variant="neon" className="group">
               Start a Strategy Project
-              <ArrowLeft className="w-4 h-4 ml-2 rotate-180 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button size="lg" variant="outline" className="group" onClick={() => navigate("/shopify-plus-development")}>
-              View Technical Services
-              <ArrowLeft className="w-4 h-4 ml-2 rotate-180 group-hover:translate-x-1 transition-transform" />
+            <Button size="lg" variant="outline" className="group" asChild>
+              <Link to="/shopify-plus-development">
+                View Technical Services
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </Button>
           </div>
         </div>

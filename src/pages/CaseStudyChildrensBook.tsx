@@ -1,28 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft, CheckCircle2, TrendingUp } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { CheckCircle2, TrendingUp } from "lucide-react";
 import flowosImage from "@/assets/flowos-framework.jpg";
+import { Navbar } from "@/components/Navbar";
 
 const CaseStudyChildrensBook = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="min-h-screen bg-background">
-      {/* Back Button */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <Button
-          variant="ghost"
-          onClick={() => navigate("/")}
-          className="group"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-          Back to Home
-        </Button>
-      </div>
+      <Navbar />
 
       {/* Hero Section */}
-      <section className="relative px-4 py-20">
+      <section className="relative px-4 pt-24 md:pt-28 pb-12 md:pb-20">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent" />
         
         <div className="relative z-10 max-w-7xl mx-auto">
