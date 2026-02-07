@@ -59,7 +59,7 @@ const ShopifyPlusDev = () => {
             <span className="text-sm font-mono text-primary uppercase tracking-[0.3em] px-4 py-2 border border-primary/30 rounded-full inline-block">
               Technical Services
             </span>
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               Shopify Plus Development
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
@@ -237,7 +237,7 @@ const ShopifyPlusDev = () => {
 
       {/* Code Example Section */}
       <section className="px-4 py-20 max-w-7xl mx-auto">
-        <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-12">
+        <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-4 md:p-12">
           <div className="flex items-center gap-3 mb-6">
             <Terminal className="w-6 h-6 text-primary" />
             <h2 className="text-3xl font-bold">Modern Shopify Development</h2>
@@ -246,8 +246,8 @@ const ShopifyPlusDev = () => {
           <div className="space-y-6">
             <div>
               <div className="text-sm font-mono text-muted-foreground mb-2">Headless Storefront with Hydrogen</div>
-              <div className="bg-background/50 border border-primary/20 rounded-lg p-6 overflow-x-auto">
-                <pre className="text-sm font-mono text-primary">
+              <div className="bg-background/50 border border-primary/20 rounded-lg p-3 md:p-6 overflow-x-auto">
+                <pre className="text-xs md:text-sm font-mono text-primary whitespace-pre-wrap break-words md:whitespace-pre">
 {`// Product Query with Storefront API
 const PRODUCT_QUERY = \`
   query ProductByHandle($handle: String!) {
@@ -279,8 +279,8 @@ const PRODUCT_QUERY = \`
 
             <div>
               <div className="text-sm font-mono text-muted-foreground mb-2">Custom Liquid Components</div>
-              <div className="bg-background/50 border border-primary/20 rounded-lg p-6 overflow-x-auto">
-                <pre className="text-sm font-mono text-primary">
+              <div className="bg-background/50 border border-primary/20 rounded-lg p-3 md:p-6 overflow-x-auto">
+                <pre className="text-xs md:text-sm font-mono text-primary whitespace-pre-wrap break-words md:whitespace-pre">
 {`{% # Custom Product Card %}
 {% liquid
   assign product_url = product.url | within: collection
@@ -316,33 +316,33 @@ const PRODUCT_QUERY = \`
 
         <Accordion type="single" collapsible className="space-y-4">
           {/* CurlsMonthly */}
-          <AccordionItem value="client-1" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
-            <AccordionTrigger className="hover:no-underline py-6">
-              <div className="flex items-center justify-between w-full gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
+          <AccordionItem value="client-1" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-4 md:px-8 data-[state=open]:bg-primary/5">
+            <AccordionTrigger className="hover:no-underline py-4 md:py-6">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-3 md:gap-6">
+                <div className="flex items-center gap-3 md:gap-4">
+                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-1 md:p-2">
                     <img src={curlsmonthlyLogo} alt="CurlsMonthly" className="w-full h-full object-contain" />
                   </div>
                   <div className="text-left">
-                    <h3 className="text-xl font-bold">CurlsMonthly</h3>
-                    <p className="text-sm text-muted-foreground">Subscription box service</p>
+                    <h3 className="text-base md:text-xl font-bold">CurlsMonthly</h3>
+                    <p className="text-xs md:text-sm text-muted-foreground">Subscription box service</p>
                   </div>
                 </div>
-                <div className="flex gap-3 items-center pr-2">
-                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                <div className="flex flex-wrap gap-2 md:gap-3 items-center md:pr-2">
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
                     Shopify Plus
                   </span>
-                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
                     Liquid
                   </span>
-                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
                     JavaScript
                   </span>
                 </div>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pt-2 pb-6">
-              <div className="space-y-6 ml-16">
+              <div className="space-y-6 ml-0 md:ml-16">
                 <div>
                   <h4 className="text-lg font-semibold mb-2 text-primary">Technical Challenge</h4>
                   <p className="text-muted-foreground">
@@ -384,33 +384,33 @@ const PRODUCT_QUERY = \`
           </AccordionItem>
 
           {/* Let's Rebuild Tuskegee */}
-          <AccordionItem value="client-2" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
-            <AccordionTrigger className="hover:no-underline py-6">
-              <div className="flex items-center justify-between w-full gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
+          <AccordionItem value="client-2" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-4 md:px-8 data-[state=open]:bg-primary/5">
+            <AccordionTrigger className="hover:no-underline py-4 md:py-6">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-3 md:gap-6">
+                <div className="flex items-center gap-3 md:gap-4">
+                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-1 md:p-2">
                     <img src={lrtLogo} alt="Let's Rebuild Tuskegee" className="w-full h-full object-contain" />
                   </div>
                   <div className="text-left">
-                    <h3 className="text-xl font-bold">Let's Rebuild Tuskegee</h3>
-                    <p className="text-sm text-muted-foreground">Community rebuilding initiative</p>
+                    <h3 className="text-base md:text-xl font-bold">Let's Rebuild Tuskegee</h3>
+                    <p className="text-xs md:text-sm text-muted-foreground">Community rebuilding initiative</p>
                   </div>
                 </div>
-                <div className="flex gap-3 items-center pr-2">
-                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                <div className="flex flex-wrap gap-2 md:gap-3 items-center md:pr-2">
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
                     React
                   </span>
-                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
                     Hydrogen
                   </span>
-                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
                     Storefront API
                   </span>
                 </div>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pt-2 pb-6">
-              <div className="space-y-6 ml-16">
+              <div className="space-y-6 ml-0 md:ml-16">
                 <div>
                   <h4 className="text-lg font-semibold mb-2 text-primary">Technical Challenge</h4>
                   <p className="text-muted-foreground">
@@ -454,33 +454,33 @@ const PRODUCT_QUERY = \`
           </AccordionItem>
 
           {/* InstaBalloons */}
-          <AccordionItem value="client-3" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-8 data-[state=open]:bg-primary/5">
-            <AccordionTrigger className="hover:no-underline py-6">
-              <div className="flex items-center justify-between w-full gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
+          <AccordionItem value="client-3" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-4 md:px-8 data-[state=open]:bg-primary/5">
+            <AccordionTrigger className="hover:no-underline py-4 md:py-6">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-3 md:gap-6">
+                <div className="flex items-center gap-3 md:gap-4">
+                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-1 md:p-2">
                     <img src={instaballoonsLogo} alt="InstaBalloons Wholesale" className="w-full h-full object-contain" />
                   </div>
                   <div className="text-left">
-                    <h3 className="text-xl font-bold">InstaBalloons Wholesale</h3>
-                    <p className="text-sm text-muted-foreground">Party supplies wholesale</p>
+                    <h3 className="text-base md:text-xl font-bold">InstaBalloons Wholesale</h3>
+                    <p className="text-xs md:text-sm text-muted-foreground">Party supplies wholesale</p>
                   </div>
                 </div>
-                <div className="flex gap-3 items-center pr-2">
-                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                <div className="flex flex-wrap gap-2 md:gap-3 items-center md:pr-2">
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
                     Shopify Plus
                   </span>
-                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
                     Liquid
                   </span>
-                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
                     JavaScript
                   </span>
                 </div>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pt-2 pb-6">
-              <div className="space-y-6 ml-16">
+              <div className="space-y-6 ml-0 md:ml-16">
                 <div>
                   <h4 className="text-lg font-semibold mb-2 text-primary">Technical Challenge</h4>
                   <p className="text-muted-foreground">
