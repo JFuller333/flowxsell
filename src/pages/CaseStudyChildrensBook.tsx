@@ -75,8 +75,8 @@ const CaseStudyChildrensBook = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-6">
-          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-8">
             <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
               <CheckCircle2 className="w-6 h-6 text-primary" />
             </div>
@@ -121,23 +121,23 @@ const CaseStudyChildrensBook = () => {
       {/* Results Section */}
       <section className="px-4 py-20 max-w-7xl mx-auto">
         <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-6 md:p-12">
-          <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-            <TrendingUp className="w-8 h-8 text-primary" />
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 flex flex-wrap items-center gap-3">
+            <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-primary flex-shrink-0" />
             The Results
           </h2>
           
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">250%</div>
-              <div className="text-muted-foreground">revenue growth in 12 months</div>
+              <div className="text-2xl sm:text-4xl font-bold text-primary mb-2">250%</div>
+              <div className="text-muted-foreground text-sm sm:text-base">revenue growth in 12 months</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">12</div>
-              <div className="text-muted-foreground">new physical products launched</div>
+              <div className="text-2xl sm:text-4xl font-bold text-primary mb-2">12</div>
+              <div className="text-muted-foreground text-sm sm:text-base">new physical products launched</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">4.2x</div>
-              <div className="text-muted-foreground">increase in average order value</div>
+              <div className="text-2xl sm:text-4xl font-bold text-primary mb-2">4.2x</div>
+              <div className="text-muted-foreground text-sm sm:text-base">increase in average order value</div>
             </div>
           </div>
 
@@ -154,10 +154,10 @@ const CaseStudyChildrensBook = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="px-4 py-20 max-w-4xl mx-auto text-center">
+      <section className="px-4 py-12 sm:py-20 max-w-4xl mx-auto text-center">
         <div className="space-y-6">
-          <h2 className="text-2xl md:text-4xl font-bold">Ready to scale your product business?</h2>
-          <p className="text-xl text-muted-foreground">
+          <h2 className="text-xl sm:text-2xl md:text-4xl font-bold">Ready to scale your product business?</h2>
+          <p className="text-base sm:text-xl text-muted-foreground">
             Let's audit your operations and build your custom framework.
           </p>
           <Button size="lg" variant="neon" className="mt-6">

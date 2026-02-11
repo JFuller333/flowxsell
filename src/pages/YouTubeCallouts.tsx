@@ -142,8 +142,8 @@ const YouTubeCallouts = () => {
       <section className="px-4 pt-24 md:pt-28 pb-8 md:pb-12 border-b border-primary/10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-4">
-            <h1 className="text-3xl md:text-5xl font-bold neon-text-glow">YouTube Callout Graphics</h1>
-            <p className="text-muted-foreground text-lg">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold neon-text-glow">YouTube Callout Graphics</h1>
+            <p className="text-muted-foreground text-sm sm:text-lg">
               Animated callouts for your video content. Download as PNG (single frame) or Video (with animation).
             </p>
           </div>
@@ -151,15 +151,15 @@ const YouTubeCallouts = () => {
       </section>
 
       {/* Callouts Grid */}
-      <section className="px-4 py-16 max-w-7xl mx-auto space-y-16">
+      <section className="px-4 py-8 sm:py-16 max-w-7xl mx-auto space-y-10 sm:space-y-16">
         
         {/* Lower Third - Name/Title */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-3xl font-bold">Lower Third</h2>
-            <Badge variant="outline" className="text-primary border-primary/30">Animated</Badge>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <h2 className="text-2xl sm:text-3xl font-bold">Lower Third</h2>
+            <Badge variant="outline" className="text-primary border-primary/30 w-fit">Animated</Badge>
           </div>
-          <div className="grid grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <div>
               <Label htmlFor="lowerThirdName" className="text-sm text-muted-foreground mb-2">Name</Label>
               <Input 
@@ -182,10 +182,10 @@ const YouTubeCallouts = () => {
             </div>
           </div>
           <Card className="border-primary/20 bg-card/50 backdrop-blur-sm overflow-hidden">
-            <div id="lower-third" className="bg-background p-8 relative overflow-hidden h-64">
-              <div className="absolute bottom-8 left-8 animate-in slide-in-from-left duration-700 space-y-1">
-                <div className="bg-primary px-6 py-2 neon-glow">
-                  <h3 className="text-xl font-bold text-black uppercase tracking-wider">{lowerThirdName}</h3>
+            <div id="lower-third" className="bg-background p-4 sm:p-8 relative overflow-hidden h-48 sm:h-64">
+              <div className="absolute bottom-4 left-4 sm:bottom-8 sm:left-8 animate-in slide-in-from-left duration-700 space-y-1">
+                <div className="bg-primary px-4 py-1.5 sm:px-6 sm:py-2 neon-glow max-w-[90vw] sm:max-w-none">
+                  <h3 className="text-base sm:text-xl font-bold text-black uppercase tracking-wider truncate">{lowerThirdName}</h3>
                 </div>
                 <div className="bg-card/90 backdrop-blur-sm px-6 py-1.5 border-l-4 border-primary">
                   <p className="text-sm text-muted-foreground uppercase tracking-wide">{lowerThirdTitle}</p>
@@ -210,9 +210,9 @@ const YouTubeCallouts = () => {
 
         {/* Subscribe Button Animations */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-3xl font-bold">Subscribe Callouts</h2>
-            <Badge variant="outline" className="text-primary border-primary/30">3 Variants</Badge>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <h2 className="text-2xl sm:text-3xl font-bold">Subscribe Callouts</h2>
+            <Badge variant="outline" className="text-primary border-primary/30 w-fit">3 Variants</Badge>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
@@ -303,9 +303,9 @@ const YouTubeCallouts = () => {
 
         {/* Social Engagement Callouts */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-3xl font-bold">Engagement Callouts</h2>
-            <Badge variant="outline" className="text-primary border-primary/30">Interactive</Badge>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <h2 className="text-2xl sm:text-3xl font-bold">Engagement Callouts</h2>
+            <Badge variant="outline" className="text-primary border-primary/30 w-fit">Interactive</Badge>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             
@@ -405,9 +405,9 @@ const YouTubeCallouts = () => {
 
         {/* Text Callout Bubbles */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-3xl font-bold">Text Callouts</h2>
-            <Badge variant="outline" className="text-primary border-primary/30">Speech Bubbles</Badge>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <h2 className="text-2xl sm:text-3xl font-bold">Text Callouts</h2>
+            <Badge variant="outline" className="text-primary border-primary/30 w-fit">Speech Bubbles</Badge>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
@@ -581,9 +581,9 @@ const YouTubeCallouts = () => {
 
         {/* Topic Sidebar Callouts */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-3xl font-bold">Topic Sidebar</h2>
-            <Badge variant="outline" className="text-primary border-primary/30">Animated List</Badge>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <h2 className="text-2xl sm:text-3xl font-bold">Topic Sidebar</h2>
+            <Badge variant="outline" className="text-primary border-primary/30 w-fit">Animated List</Badge>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
@@ -718,9 +718,9 @@ const YouTubeCallouts = () => {
 
         {/* Special Effects */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-3xl font-bold">Special Effects</h2>
-            <Badge variant="outline" className="text-primary border-primary/30">Attention Grabbers</Badge>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <h2 className="text-2xl sm:text-3xl font-bold">Special Effects</h2>
+            <Badge variant="outline" className="text-primary border-primary/30 w-fit">Attention Grabbers</Badge>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
@@ -792,9 +792,9 @@ const YouTubeCallouts = () => {
       </section>
 
       {/* Instructions */}
-      <section className="px-4 py-16 max-w-4xl mx-auto">
-        <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8">
-          <h3 className="text-2xl font-bold mb-4">How to Use These Graphics</h3>
+      <section className="px-4 py-8 sm:py-16 max-w-4xl mx-auto">
+        <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-8">
+          <h3 className="text-xl sm:text-2xl font-bold mb-4">How to Use These Graphics</h3>
           <div className="space-y-4 text-muted-foreground">
             <div>
               <h4 className="text-foreground font-semibold mb-2">How to Use:</h4>

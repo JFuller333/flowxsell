@@ -6,6 +6,7 @@ import { useState } from "react";
 const navLinks = [
   { title: "Home", url: "/" },
   { title: "Services", url: "/services" },
+  { title: "Blog", url: "/blog" },
   { title: "Shopify Plus", url: "/shopify-plus-development" },
   { title: "Contact", url: "/contact" },
 ];

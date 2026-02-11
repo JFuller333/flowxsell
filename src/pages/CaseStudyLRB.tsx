@@ -111,23 +111,23 @@ const CaseStudyLRB = () => {
       {/* Results Section */}
       <section className="px-4 py-20 max-w-7xl mx-auto">
         <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-6 md:p-12">
-          <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-            <TrendingUp className="w-8 h-8 text-primary" />
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 flex flex-wrap items-center gap-3">
+            <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-primary flex-shrink-0" />
             The Results
           </h2>
           
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">85%</div>
-              <div className="text-muted-foreground">increase in stakeholder satisfaction</div>
+              <div className="text-2xl sm:text-4xl font-bold text-primary mb-2">85%</div>
+              <div className="text-muted-foreground text-sm sm:text-base">increase in stakeholder satisfaction</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">40%</div>
-              <div className="text-muted-foreground">faster investment decisions</div>
+              <div className="text-2xl sm:text-4xl font-bold text-primary mb-2">40%</div>
+              <div className="text-muted-foreground text-sm sm:text-base">faster investment decisions</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">$2M+</div>
-              <div className="text-muted-foreground">in new capital raised</div>
+              <div className="text-2xl sm:text-4xl font-bold text-primary mb-2">$2M+</div>
+              <div className="text-muted-foreground text-sm sm:text-base">in new capital raised</div>
             </div>
           </div>
 
@@ -144,10 +144,10 @@ const CaseStudyLRB = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="px-4 py-20 max-w-4xl mx-auto text-center">
+      <section className="px-4 py-12 sm:py-20 max-w-4xl mx-auto text-center">
         <div className="space-y-6">
-          <h2 className="text-2xl md:text-4xl font-bold">Ready to build stakeholder trust?</h2>
-          <p className="text-xl text-muted-foreground">
+          <h2 className="text-xl sm:text-2xl md:text-4xl font-bold">Ready to build stakeholder trust?</h2>
+          <p className="text-base sm:text-xl text-muted-foreground">
             Let's audit your communication systems and create your dashboard.
           </p>
           <Button size="lg" variant="neon" className="mt-6">

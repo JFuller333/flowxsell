@@ -362,9 +362,9 @@ const FlowXsellQuiz = () => {
                   <CheckCircle2 className="w-10 h-10 text-primary" />
                 </div>
                 
-                <h2 className="text-4xl font-bold neon-text-glow">Your Flow Health Results</h2>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold neon-text-glow">Your Flow Health Results</h2>
                 
-                <p className="text-lg text-muted-foreground mt-4">
+                <p className="text-base sm:text-lg text-muted-foreground mt-4">
                   Here's your personalized assessment across all three flows
                 </p>
               </div>
@@ -377,13 +377,13 @@ const FlowXsellQuiz = () => {
                   
                   return (
                     <div key={flow.name} className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h3 className="text-xl font-semibold">{flow.name}</h3>
+                      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                        <div className="min-w-0">
+                          <h3 className="text-lg sm:text-xl font-semibold">{flow.name}</h3>
                           <p className="text-sm text-muted-foreground">{flow.description}</p>
                         </div>
-                        <div className="text-right">
-                          <div className="text-2xl font-bold">{flow.score.toFixed(1)}/4</div>
+                        <div className="text-left sm:text-right flex-shrink-0">
+                          <div className="text-xl sm:text-2xl font-bold">{flow.score.toFixed(1)}/4</div>
                           <div className={`text-sm font-medium ${health.color}`}>{health.label}</div>
                         </div>
                       </div>
@@ -400,8 +400,8 @@ const FlowXsellQuiz = () => {
               </div>
 
               {/* Primary Disrupter */}
-              <div className="border border-primary/30 rounded-lg p-6 bg-primary/5">
-                <h3 className="text-lg font-semibold mb-2">🎯 Primary Flow Disrupter</h3>
+              <div className="border border-primary/30 rounded-lg p-4 sm:p-6 bg-primary/5">
+                <h3 className="text-base sm:text-lg font-semibold mb-2">🎯 Primary Flow Disrupter</h3>
                 <p className="text-foreground/90">
                   <span className="font-bold text-primary">{primaryDisrupter.name}</span> scored lowest at {primaryDisrupter.score.toFixed(1)}/4. 
                   This is your biggest opportunity for improvement and should be your first priority.
@@ -409,8 +409,8 @@ const FlowXsellQuiz = () => {
               </div>
 
               {/* Overall Interpretation */}
-              <div className="bg-muted/30 rounded-lg p-6">
-                <h3 className="text-lg font-semibold mb-3">📊 Overall Flow Health</h3>
+              <div className="bg-muted/30 rounded-lg p-4 sm:p-6">
+                <h3 className="text-base sm:text-lg font-semibold mb-3">📊 Overall Flow Health</h3>
                 <div className="space-y-2 text-sm text-muted-foreground">
                   <p><strong>4–5:</strong> Excellent - Flow is strong and automated; focus on optimization</p>
                   <p><strong>2.5–3.9:</strong> Moderate - Flow is partially aligned but inconsistent</p>

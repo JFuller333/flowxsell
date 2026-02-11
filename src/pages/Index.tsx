@@ -52,14 +52,14 @@ const Index = () => {
         
         <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8">
           <div className="inline-block mb-4">
-            <span className="text-sm font-mono text-primary uppercase tracking-[0.3em] px-4 py-2 border border-primary/30 rounded-full">
+            <span className="text-xs sm:text-sm font-mono text-primary uppercase tracking-[0.2em] sm:tracking-[0.3em] px-3 py-1.5 sm:px-4 sm:py-2 border border-primary/30 rounded-full">
               Strategic Framework
             </span>
           </div>
           
-          <h1 className="neon-text-glow text-4xl sm:text-5xl md:text-7xl">FlowXsell</h1>
+          <h1 className="neon-text-glow text-3xl sm:text-5xl md:text-7xl break-words">FlowXsell</h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">A clarity companion for multiprenerus & solo founders. When your systems flow, your sales grow.</p>
+          <p className="text-base sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-0">A clarity companion for multiprenerus & solo founders. When your systems flow, your sales grow.</p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
             <Button size="lg" className="group" onClick={() => document.getElementById('framework')?.scrollIntoView({
@@ -80,10 +80,10 @@ const Index = () => {
       {/* Systems & Projects Section */}
       <section className="px-4 py-24 max-w-7xl mx-auto border-t border-primary/10">
         <div className="mb-16 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight px-2">
             SYSTEMS & PROJECTS
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-2">
             Tools and frameworks built to help founders scale with clarity and structure.
           </p>
         </div>
@@ -121,12 +121,12 @@ const Index = () => {
       </section>
 
       {/* Framework Section */}
-      <section id="framework" className="px-4 py-32 relative">
+      <section id="framework" className="px-4 py-16 sm:py-24 md:py-32 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
         
         <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="neon-text-glow text-3xl md:text-4xl">The Xsell Framework</h2>
+          <div className="text-center mb-10 sm:mb-16 space-y-4">
+            <h2 className="neon-text-glow text-2xl sm:text-3xl md:text-4xl">The Xsell Framework</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Four phases to transform scattered effort into strategic growth
             </p>
@@ -140,13 +140,13 @@ const Index = () => {
       </section>
 
       {/* Why It Matters Section */}
-      <section className="px-4 py-32 relative">
+      <section className="px-4 py-16 sm:py-24 md:py-32 relative">
         <div className="max-w-4xl mx-auto">
-          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-6 md:p-12 relative overflow-hidden">
+          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-12 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
             
             <div className="relative space-y-6">
-              <h2 className="mb-8 text-2xl md:text-3xl font-bold">Why It Matters</h2>
+              <h2 className="mb-6 sm:mb-8 text-xl sm:text-2xl md:text-3xl font-bold">Why It Matters</h2>
               
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p className="text-xl text-foreground font-medium">
@@ -192,17 +192,17 @@ const Index = () => {
       </section>
 
       {/* Founder Note Section */}
-      <section id="about" className="px-4 py-32 relative">
+      <section id="about" className="px-4 py-16 sm:py-24 md:py-32 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/5" />
         
-        <div className="relative z-10 max-w-3xl mx-auto text-center space-y-8">
+        <div className="relative z-10 max-w-3xl mx-auto text-center space-y-6 sm:space-y-8">
           <div className="inline-block mb-4">
-            <span className="text-sm font-mono text-primary uppercase tracking-[0.3em] px-4 py-2 border border-primary/30 rounded-full">
+            <span className="text-xs sm:text-sm font-mono text-primary uppercase tracking-[0.2em] sm:tracking-[0.3em] px-3 py-1.5 sm:px-4 sm:py-2 border border-primary/30 rounded-full">
               Founder Note
             </span>
           </div>
           
-          <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+          <div className="space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
             <p>
               I've built and scaled systems for ecommerce founders who were drowning in complexity. 
               The ones who were working 80-hour weeks but couldn't see where the growth was coming from.
@@ -230,9 +230,9 @@ const Index = () => {
       </section>
 
       {/* Email Capture Section */}
-      <section className="px-4 py-32 relative">
+      <section className="px-4 py-16 sm:py-24 md:py-32 relative">
         <div className="max-w-2xl mx-auto">
-          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-6 md:p-12 relative overflow-hidden">
+          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-12 relative overflow-hidden">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
             
             <div className="relative text-center space-y-6">
@@ -240,7 +240,7 @@ const Index = () => {
                 <Mail className="w-8 h-8 text-primary" />
               </div>
               
-              <h3 className="text-2xl md:text-3xl font-bold">Want the FlowXsell playbook?</h3>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold">Want the FlowXsell playbook?</h3>
               
               <p className="text-muted-foreground">
                 Get the full PDF and worksheet delivered weeklyish.
@@ -262,9 +262,9 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-primary/10 px-4 py-12">
+      <footer className="border-t border-primary/10 px-4 py-8 sm:py-12">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
             <div className="text-sm text-muted-foreground">
               © 2025 FlowXsell. <span className="text-primary">Built for founders, by a founder.</span>
             </div>

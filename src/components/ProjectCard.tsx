@@ -36,9 +36,9 @@ export const ProjectCard = ({ title, description, tags, link, image, caseStudyLi
       </div>
       
       {/* Content Section */}
-      <div className="p-6">
-        <div className="flex items-start justify-between mb-3">
-          <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+      <div className="p-4 sm:p-6">
+        <div className="flex items-start justify-between gap-2 mb-3 min-w-0">
+          <h3 className="text-lg sm:text-xl font-bold text-foreground group-hover:text-primary transition-colors break-words flex-1 min-w-0">
             {title}
           </h3>
           {link && (
@@ -57,7 +57,7 @@ export const ProjectCard = ({ title, description, tags, link, image, caseStudyLi
           {description}
         </p>
         
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 min-w-0">
           {tags.map((tag) => (
             <span 
               key={tag}

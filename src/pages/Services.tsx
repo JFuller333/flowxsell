@@ -89,11 +89,11 @@ const Services = () => {
       {/* Hero */}
       <section className="pt-24 md:pt-28 pb-12 md:pb-16 px-4 md:px-6">
         <div className="container mx-auto max-w-4xl text-center">
-          <p className="text-sm font-mono text-primary mb-4 tracking-wide">FLOWXSELL SOLUTIONS</p>
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">
+          <p className="text-xs sm:text-sm font-mono text-primary mb-4 tracking-wide">FLOWXSELL SOLUTIONS</p>
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">
             Your Flow Results Point to Your Solution
           </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
+          <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto mb-6">
             Your lowest score reveals your Primary Flow Disrupter — the core system limiting growth.
           </p>
           <Link to="/flowxsell-quiz">
@@ -106,31 +106,31 @@ const Services = () => {
       </section>
 
       {/* Solutions */}
-      <section className="py-12 px-6">
+      <section className="py-12 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl space-y-6">
           {solutions.map((solution, index) => {
             const Icon = solution.icon;
             return (
               <div 
                 key={solution.id}
-                className="border border-border/50 rounded-lg p-6 md:p-8 hover:border-border transition-colors"
+                className="border border-border/50 rounded-lg p-4 sm:p-6 md:p-8 hover:border-border transition-colors"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <Icon className="w-5 h-5 text-primary" />
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <Icon className="w-5 h-5 text-primary flex-shrink-0" />
                     <span className="text-xs font-mono text-muted-foreground uppercase tracking-wide">
                       {solution.flowType === "All Flows" ? solution.flowType : `Low ${solution.flowType}`}
                     </span>
                   </div>
-                  <span className="text-4xl font-bold text-lime-400/40 font-mono">
+                  <span className="text-3xl sm:text-4xl font-bold text-lime-400/40 font-mono">
                     0{index + 1}
                   </span>
                 </div>
 
-                <h2 className="text-xl md:text-2xl font-bold mb-1">{solution.title}</h2>
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-1">{solution.title}</h2>
                 <p className="text-sm text-muted-foreground mb-6">{solution.tagline}</p>
 
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6">
                   <div>
                     <p className="text-xs font-mono text-muted-foreground mb-3 uppercase tracking-wide">Symptoms</p>
                     <ul className="space-y-2">
@@ -165,9 +165,9 @@ const Services = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-6 border-t border-border/30">
+      <section className="py-12 sm:py-16 px-4 sm:px-6 border-t border-border/30">
         <div className="container mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-bold mb-3">Not Sure Which Solution You Need?</h2>
+          <h2 className="text-xl sm:text-2xl font-bold mb-3">Not Sure Which Solution You Need?</h2>
           <p className="text-muted-foreground mb-6">
             Take our quiz to discover your Primary Flow Disrupter.
           </p>

@@ -51,7 +51,7 @@ const Contact = () => {
       {/* Contact Form Section */}
       <section className="px-4 py-24">
         <div className="max-w-2xl mx-auto">
-          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8 md:p-12 relative overflow-hidden">
+          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-12 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
             
             <form onSubmit={handleSubmit} className="relative space-y-6">

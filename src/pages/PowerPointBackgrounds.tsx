@@ -17,8 +17,8 @@ const PowerPointBackgrounds = () => {
       <section className="px-4 pt-24 md:pt-28 pb-8 md:pb-12 border-b border-primary/10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-4">
-            <h1 className="text-3xl md:text-5xl font-bold neon-text-glow">PowerPoint Backgrounds</h1>
-            <p className="text-muted-foreground text-lg">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold neon-text-glow">PowerPoint Backgrounds</h1>
+            <p className="text-muted-foreground text-sm sm:text-lg">
               10 professionally designed slides in the FlowXsell aesthetic. 
               Right-click and save each slide for your presentations.
             </p>
@@ -27,8 +27,8 @@ const PowerPointBackgrounds = () => {
       </section>
 
       {/* Slides Grid */}
-      <section className="px-4 py-16 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <section className="px-4 py-8 sm:py-16 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
           
           {/* Slide 1: Title Slide */}
           <Card className="group relative overflow-hidden border-primary/20 bg-card/50 backdrop-blur-sm hover:border-primary transition-all duration-300">
@@ -36,13 +36,13 @@ const PowerPointBackgrounds = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
               <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
               
-              <div className="relative h-full flex flex-col items-center justify-center text-center px-12 space-y-6">
+              <div className="relative h-full flex flex-col items-center justify-center text-center px-4 sm:px-8 md:px-12 space-y-4 sm:space-y-6">
                 <div className="inline-block">
-                  <span className="text-xs font-mono text-primary uppercase tracking-[0.3em] px-3 py-1.5 border border-primary/30 rounded-full">
+                  <span className="text-[10px] sm:text-xs font-mono text-primary uppercase tracking-[0.2em] sm:tracking-[0.3em] px-2 py-1 sm:px-3 sm:py-1.5 border border-primary/30 rounded-full">
                     Presentation Title
                   </span>
                 </div>
-                <h2 className="text-4xl font-bold neon-text-glow uppercase tracking-wider">Your Title Here</h2>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold neon-text-glow uppercase tracking-wider">Your Title Here</h2>
                 <p className="text-muted-foreground text-sm">Subtitle or tagline</p>
               </div>
             </div>
@@ -61,9 +61,9 @@ const PowerPointBackgrounds = () => {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
               
               <div className="relative h-full flex items-center justify-center">
-                <div className="text-center space-y-4">
-                  <span className="text-sm font-mono text-primary uppercase tracking-[0.3em]">Phase 01</span>
-                  <h3 className="text-5xl font-bold uppercase tracking-wider">Section Title</h3>
+                <div className="text-center space-y-4 px-4">
+                  <span className="text-xs sm:text-sm font-mono text-primary uppercase tracking-[0.3em]">Phase 01</span>
+                  <h3 className="text-2xl sm:text-4xl md:text-5xl font-bold uppercase tracking-wider">Section Title</h3>
                 </div>
               </div>
             </div>
@@ -80,8 +80,8 @@ const PowerPointBackgrounds = () => {
             <div className="aspect-video bg-background relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
               
-              <div className="relative h-full p-12 flex flex-col">
-                <h3 className="text-3xl font-bold mb-8 border-b border-primary/20 pb-4">Content Title</h3>
+              <div className="relative h-full p-4 sm:p-6 md:p-12 flex flex-col">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-8 border-b border-primary/20 pb-4">Content Title</h3>
                 <div className="space-y-4 flex-1">
                   <div className="flex items-start gap-3">
                     <span className="text-primary mt-1">→</span>
@@ -111,9 +111,9 @@ const PowerPointBackgrounds = () => {
             <div className="aspect-video bg-background relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
               
-              <div className="relative h-full p-12">
-                <h3 className="text-3xl font-bold mb-8">Two Column Layout</h3>
-                <div className="grid grid-cols-2 gap-8 h-[calc(100%-5rem)]">
+              <div className="relative h-full p-4 sm:p-6 md:p-12">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-8">Two Column Layout</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 min-h-0">
                   <div className="border-r border-primary/20 pr-6">
                     <div className="space-y-3">
                       <div className="h-2 w-3/4 bg-primary/20 rounded" />
@@ -145,10 +145,10 @@ const PowerPointBackgrounds = () => {
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-[100px]" />
               
-              <div className="relative h-full flex items-center justify-center px-16">
-                <div className="text-center space-y-6">
-                  <div className="text-6xl text-primary/30 font-serif">"</div>
-                  <p className="text-2xl font-medium leading-relaxed">
+              <div className="relative h-full flex items-center justify-center px-4 sm:px-8 md:px-16">
+                <div className="text-center space-y-4 sm:space-y-6">
+                  <div className="text-4xl sm:text-6xl text-primary/30 font-serif">"</div>
+                  <p className="text-base sm:text-xl md:text-2xl font-medium leading-relaxed">
                     Your powerful quote or key message goes here
                   </p>
                   <div className="pt-4">
@@ -170,19 +170,19 @@ const PowerPointBackgrounds = () => {
             <div className="aspect-video bg-background relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
               
-              <div className="relative h-full p-12">
-                <h3 className="text-3xl font-bold mb-10 text-center">Key Metrics</h3>
-                <div className="grid grid-cols-3 gap-6">
-                  <div className="text-center space-y-2 p-6 border border-primary/20 rounded-lg bg-card/30">
-                    <div className="text-4xl font-bold text-primary neon-text-glow">87%</div>
+              <div className="relative h-full p-4 sm:p-6 md:p-12">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-10 text-center">Key Metrics</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6">
+                  <div className="text-center space-y-2 p-4 sm:p-6 border border-primary/20 rounded-lg bg-card/30">
+                    <div className="text-2xl sm:text-4xl font-bold text-primary neon-text-glow">87%</div>
                     <p className="text-xs text-muted-foreground uppercase tracking-wider">Metric One</p>
                   </div>
-                  <div className="text-center space-y-2 p-6 border border-primary/20 rounded-lg bg-card/30">
-                    <div className="text-4xl font-bold text-primary neon-text-glow">2.4x</div>
+                  <div className="text-center space-y-2 p-4 sm:p-6 border border-primary/20 rounded-lg bg-card/30">
+                    <div className="text-2xl sm:text-4xl font-bold text-primary neon-text-glow">2.4x</div>
                     <p className="text-xs text-muted-foreground uppercase tracking-wider">Metric Two</p>
                   </div>
-                  <div className="text-center space-y-2 p-6 border border-primary/20 rounded-lg bg-card/30">
-                    <div className="text-4xl font-bold text-primary neon-text-glow">$1M+</div>
+                  <div className="text-center space-y-2 p-4 sm:p-6 border border-primary/20 rounded-lg bg-card/30">
+                    <div className="text-2xl sm:text-4xl font-bold text-primary neon-text-glow">$1M+</div>
                     <p className="text-xs text-muted-foreground uppercase tracking-wider">Metric Three</p>
                   </div>
                 </div>
@@ -201,12 +201,12 @@ const PowerPointBackgrounds = () => {
             <div className="aspect-video bg-background relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent top-1/2" />
               
-              <div className="relative h-full p-12">
-                <h3 className="text-3xl font-bold mb-10">Process Timeline</h3>
-                <div className="flex items-center justify-between relative">
+              <div className="relative h-full p-4 sm:p-6 md:p-12">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-10">Process Timeline</h3>
+                <div className="flex flex-wrap items-center justify-center sm:justify-between gap-4 sm:gap-0 relative">
                   {[1, 2, 3, 4].map((step) => (
                     <div key={step} className="flex flex-col items-center space-y-3 z-10">
-                      <div className="w-12 h-12 rounded-full border-2 border-primary bg-background flex items-center justify-center neon-glow">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-primary bg-background flex items-center justify-center neon-glow">
                         <span className="text-primary font-bold">{step}</span>
                       </div>
                       <span className="text-xs text-muted-foreground uppercase tracking-wider">Step {step}</span>
@@ -227,15 +227,15 @@ const PowerPointBackgrounds = () => {
           {/* Slide 8: Image Left, Text Right */}
           <Card className="group relative overflow-hidden border-primary/20 bg-card/50 backdrop-blur-sm hover:border-primary transition-all duration-300">
             <div className="aspect-video bg-background relative overflow-hidden">
-              <div className="relative h-full grid grid-cols-2">
-                <div className="bg-gradient-to-br from-primary/10 to-primary/5 border-r border-primary/20 flex items-center justify-center">
+              <div className="relative h-full grid grid-cols-1 sm:grid-cols-2">
+                <div className="bg-gradient-to-br from-primary/10 to-primary/5 sm:border-r border-primary/20 flex items-center justify-center p-4">
                   <div className="text-center space-y-2">
-                    <div className="w-32 h-32 mx-auto rounded-lg border-2 border-primary/30 bg-card/50" />
+                    <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-lg border-2 border-primary/30 bg-card/50" />
                     <p className="text-xs text-muted-foreground">Image / Chart Area</p>
                   </div>
                 </div>
-                <div className="p-8 flex flex-col justify-center space-y-4">
-                  <h3 className="text-2xl font-bold">Content Title</h3>
+                <div className="p-4 sm:p-6 md:p-8 flex flex-col justify-center space-y-4">
+                  <h3 className="text-xl sm:text-2xl font-bold">Content Title</h3>
                   <div className="space-y-3 text-sm text-muted-foreground">
                     <div className="h-2 w-full bg-muted/20 rounded" />
                     <div className="h-2 w-5/6 bg-muted/20 rounded" />
@@ -258,12 +258,12 @@ const PowerPointBackgrounds = () => {
               <div className="absolute inset-0 bg-primary/10" />
               <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-primary/20 rounded-full blur-[150px]" />
               
-              <div className="relative h-full flex items-center justify-center px-16">
-                <div className="text-center space-y-6">
-                  <div className="inline-block p-4 rounded-lg border border-primary/30 bg-background/50 backdrop-blur-sm">
-                    <div className="w-16 h-16 bg-primary/20 rounded" />
+              <div className="relative h-full flex items-center justify-center px-4 sm:px-8 md:px-16">
+                <div className="text-center space-y-4 sm:space-y-6">
+                  <div className="inline-block p-3 sm:p-4 rounded-lg border border-primary/30 bg-background/50 backdrop-blur-sm">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/20 rounded" />
                   </div>
-                  <h3 className="text-4xl font-bold uppercase tracking-wider">Bold Statement</h3>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-wider">Bold Statement</h3>
                   <p className="text-muted-foreground">Supporting detail or subtitle</p>
                 </div>
               </div>
@@ -282,8 +282,8 @@ const PowerPointBackgrounds = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
               
-              <div className="relative h-full flex flex-col items-center justify-center space-y-8">
-                <h2 className="text-5xl font-bold uppercase tracking-wider neon-text-glow">Thank You</h2>
+              <div className="relative h-full flex flex-col items-center justify-center space-y-6 sm:space-y-8 px-4">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-wider neon-text-glow">Thank You</h2>
                 <div className="space-y-2 text-center">
                   <p className="text-sm text-muted-foreground">Your Name</p>
                   <p className="text-sm text-primary font-mono">contact@email.com</p>
@@ -303,9 +303,9 @@ const PowerPointBackgrounds = () => {
       </section>
 
       {/* Instructions */}
-      <section className="px-4 py-16 max-w-4xl mx-auto">
-        <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8">
-          <h3 className="text-2xl font-bold mb-4">How to Use These Backgrounds</h3>
+      <section className="px-4 py-8 sm:py-16 max-w-4xl mx-auto">
+        <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-8">
+          <h3 className="text-xl sm:text-2xl font-bold mb-4">How to Use These Backgrounds</h3>
           <div className="space-y-3 text-muted-foreground">
             <p>1. <strong className="text-foreground">Right-click</strong> on any slide preview above and select "Save Image As..."</p>
             <p>2. <strong className="text-foreground">Import</strong> the image into PowerPoint as a background</p>

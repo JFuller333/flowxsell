@@ -27,10 +27,10 @@ const CaseStudyFlowXsell = () => {
               <span className="text-sm font-mono text-primary uppercase tracking-[0.3em] px-4 py-2 border border-primary/30 rounded-full inline-block">
                 Case Study
               </span>
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                 FlowXsell Ecommerce Framework
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed">
+              <p className="text-base sm:text-xl text-muted-foreground leading-relaxed">
                 Curated integration maps for connecting Shopify, email, analytics, and automation tools without the tech debt.
               </p>
               <div className="flex flex-wrap gap-2">
@@ -57,9 +57,9 @@ const CaseStudyFlowXsell = () => {
       </section>
 
       {/* Challenge Section */}
-      <section className="px-4 py-20 max-w-7xl mx-auto">
-        <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-12">
-          <h2 className="text-3xl font-bold mb-6">The Challenge</h2>
+      <section className="px-4 py-12 sm:py-20 max-w-7xl mx-auto">
+        <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-12">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">The Challenge</h2>
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
               Ecommerce founders were drowning in disconnected tools. Shopify for sales, Klaviyo for email, 
@@ -75,16 +75,16 @@ const CaseStudyFlowXsell = () => {
       </section>
 
       {/* Solution Section */}
-      <section className="px-4 py-20 max-w-7xl mx-auto">
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold mb-4">The Solution</h2>
-          <p className="text-xl text-muted-foreground">
+      <section className="px-4 py-12 sm:py-20 max-w-7xl mx-auto">
+        <div className="mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">The Solution</h2>
+          <p className="text-base sm:text-xl text-muted-foreground">
             A systematic integration framework that connects your entire tech stack
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-8">
             <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
               <CheckCircle2 className="w-6 h-6 text-primary" />
             </div>
@@ -94,7 +94,7 @@ const CaseStudyFlowXsell = () => {
             </p>
           </Card>
 
-          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8">
+          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-8">
             <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
               <CheckCircle2 className="w-6 h-6 text-primary" />
             </div>
@@ -104,7 +104,7 @@ const CaseStudyFlowXsell = () => {
             </p>
           </Card>
 
-          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-8">
+          <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-8">
             <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
               <CheckCircle2 className="w-6 h-6 text-primary" />
             </div>
@@ -117,25 +117,25 @@ const CaseStudyFlowXsell = () => {
       </section>
 
       {/* Results Section */}
-      <section className="px-4 py-20 max-w-7xl mx-auto">
-        <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-12">
-          <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-            <TrendingUp className="w-8 h-8 text-primary" />
+      <section className="px-4 py-12 sm:py-20 max-w-7xl mx-auto">
+        <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent p-4 sm:p-6 md:p-12">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 flex flex-wrap items-center gap-3">
+            <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-primary flex-shrink-0" />
             The Results
           </h2>
           
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">15 hrs</div>
-              <div className="text-muted-foreground">saved per week on manual tasks</div>
+              <div className="text-2xl sm:text-4xl font-bold text-primary mb-2">15 hrs</div>
+              <div className="text-muted-foreground text-sm sm:text-base">saved per week on manual tasks</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">98%</div>
-              <div className="text-muted-foreground">data accuracy across platforms</div>
+              <div className="text-2xl sm:text-4xl font-bold text-primary mb-2">98%</div>
+              <div className="text-muted-foreground text-sm sm:text-base">data accuracy across platforms</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">3x</div>
-              <div className="text-muted-foreground">faster campaign deployment</div>
+              <div className="text-2xl sm:text-4xl font-bold text-primary mb-2">3x</div>
+              <div className="text-muted-foreground text-sm sm:text-base">faster campaign deployment</div>
             </div>
           </div>
 
@@ -152,13 +152,13 @@ const CaseStudyFlowXsell = () => {
       </section>
 
       {/* Client Success Stories Section */}
-      <section className="px-4 py-20 max-w-7xl mx-auto">
-        <div className="mb-12 text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border border-primary/30 mb-6">
-            <Building2 className="w-8 h-8 text-primary" />
+      <section className="px-4 py-12 sm:py-20 max-w-7xl mx-auto">
+        <div className="mb-8 sm:mb-12 text-center">
+          <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/10 border border-primary/30 mb-4 sm:mb-6">
+            <Building2 className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
           </div>
-          <h2 className="text-4xl font-bold mb-4">Client Success Stories</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Client Success Stories</h2>
+          <p className="text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
             Real implementations, real results across strategy and technical development.
           </p>
         </div>
@@ -643,8 +643,8 @@ const CaseStudyFlowXsell = () => {
       {/* CTA Section */}
       <section className="px-4 py-20 max-w-4xl mx-auto text-center">
         <div className="space-y-6">
-          <h2 className="text-4xl font-bold">Ready to optimize your tech stack?</h2>
-          <p className="text-xl text-muted-foreground">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Ready to optimize your tech stack?</h2>
+          <p className="text-base sm:text-xl text-muted-foreground">
             Whether you need strategic integration mapping or custom technical development, let's build the right solution.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
