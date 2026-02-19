@@ -5,6 +5,8 @@ import { Code2, Zap, Layers, GitBranch, Terminal, CheckCircle2, ArrowRight } fro
 import curlsmonthlyLogo from "@/assets/curlsmonthly-logo-original.webp";
 import lrtLogo from "@/assets/lrt-logo.png";
 import instaballoonsLogo from "@/assets/instaballoons-logo.svg";
+import truLogo from "@/assets/tru-logo-original.png";
+import metpureLogo from "@/assets/metpure-logo-original.svg";
 import { Navbar } from "@/components/Navbar";
 
 const ShopifyPlusDev = () => {
@@ -241,12 +243,146 @@ const ShopifyPlusDev = () => {
             </AccordionContent>
           </AccordionItem>
 
+          {/* TRU Supplements */}
+          <AccordionItem value="client-4" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-4 md:px-8 data-[state=open]:bg-primary/5">
+            <AccordionTrigger className="hover:no-underline py-4 md:py-6">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-3 md:gap-6">
+                <div className="flex items-center gap-3 md:gap-4">
+                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-1 md:p-2">
+                    <img src={truLogo} alt="TRU Supplements" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="text-left">
+                    <h3 className="text-base md:text-xl font-bold">TRU Supplements</h3>
+                    <p className="text-xs md:text-sm text-muted-foreground">Supplements & wellness storefront</p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2 md:gap-3 items-center md:pr-2">
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                    Shopify Plus
+                  </span>
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                    Liquid
+                  </span>
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                    JavaScript
+                  </span>
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="pt-2 pb-6">
+              <div className="space-y-6 ml-0 md:ml-16">
+                <div>
+                  <h4 className="text-lg font-semibold mb-2 text-primary">Technical Challenge</h4>
+                  <p className="text-muted-foreground">
+                    Needed a conversion-focused supplements storefront at scale (two sites totaling 1.3M+ users), with custom bundle building, modular sections, and a redesigned sister-company experience—all while maintaining fast mobile performance.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold mb-2 text-primary">Development Solution</h4>
+                  <p className="text-muted-foreground mb-3">
+                    Created a custom bundle feature with tailored Liquid + JavaScript logic, built reusable custom sections for rapid merchandising updates, and redesigned the sister company’s website—optimizing PDP and cart flows for upsells without adding checkout friction.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold mb-3 text-primary">Technologies & Features</h4>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
+                      <div className="text-sm font-semibold text-primary mb-2">Languages</div>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Liquid</span>
+                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">JavaScript</span>
+                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">HTML/CSS</span>
+                      </div>
+                    </div>
+                    <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
+                      <div className="text-sm font-semibold text-primary mb-2">Features Built</div>
+                      <ul className="text-xs text-muted-foreground space-y-1">
+                        <li>• Custom bundle feature</li>
+                        <li>• Custom Liquid sections</li>
+                        <li>• Sister-company site redesign</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          {/* Metpue Inc */}
+          <AccordionItem value="client-5" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-4 md:px-8 data-[state=open]:bg-primary/5">
+            <AccordionTrigger className="hover:no-underline py-4 md:py-6">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-3 md:gap-6">
+                <div className="flex items-center gap-3 md:gap-4">
+                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-1 md:p-2">
+                    <img src={metpureLogo} alt="Metpue Inc" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="text-left">
+                    <h3 className="text-base md:text-xl font-bold">Metpue Inc</h3>
+                    <p className="text-xs md:text-sm text-muted-foreground">B2B wholesale purchasing</p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2 md:gap-3 items-center md:pr-2">
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                    Shopify Plus
+                  </span>
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                    Liquid
+                  </span>
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                    JavaScript
+                  </span>
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="pt-2 pb-6">
+              <div className="space-y-6 ml-0 md:ml-16">
+                <div>
+                  <h4 className="text-lg font-semibold mb-2 text-primary">Technical Challenge</h4>
+                  <p className="text-muted-foreground">
+                    Needed a wholesale discount experience that only applies to approved B2B customers, plus a frictionless account registration and signup flow that captures business details for vetting.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold mb-2 text-primary">Development Solution</h4>
+                  <p className="text-muted-foreground mb-3">
+                    Built a gated B2B signup experience with custom registration fields and an approval-ready customer tagging workflow, then wired pricing visibility and cart behavior to wholesale eligibility.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold mb-3 text-primary">Technologies & Features</h4>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
+                      <div className="text-sm font-semibold text-primary mb-2">Languages</div>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Liquid</span>
+                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">JavaScript</span>
+                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">HTML/CSS</span>
+                      </div>
+                    </div>
+                    <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
+                      <div className="text-sm font-semibold text-primary mb-2">Features Built</div>
+                      <ul className="text-xs text-muted-foreground space-y-1">
+                        <li>• B2B account registration + signup flow</li>
+                        <li>• Approval-ready customer tagging & segmentation</li>
+                        <li>• Wholesale discount rules & eligibility gating</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
           {/* InstaBalloons */}
           <AccordionItem value="client-3" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-4 md:px-8 data-[state=open]:bg-primary/5">
             <AccordionTrigger className="hover:no-underline py-4 md:py-6">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-3 md:gap-6">
                 <div className="flex items-center gap-3 md:gap-4">
-                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-1 md:p-2">
+                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-lg bg-white/95 border border-primary/10 flex items-center justify-center flex-shrink-0 p-1 md:p-2">
                     <img src={instaballoonsLogo} alt="InstaBalloons Wholesale" className="w-full h-full object-contain" />
                   </div>
                   <div className="text-left">
@@ -279,7 +415,7 @@ const ShopifyPlusDev = () => {
                 <div>
                   <h4 className="text-lg font-semibold mb-2 text-primary">Development Solution</h4>
                   <p className="text-muted-foreground mb-3">
-                    Built custom B2B portal using Liquid and JavaScript, implementing bulk ordering workflows, 
+                    Built custom B2B portal using Liquid and JavaScript, implementing bulk ordering workflows,
                     customer-specific pricing, and streamlined wholesale operations.
                   </p>
                 </div>

@@ -548,7 +548,7 @@ const CaseStudyFlowXsell = () => {
                 <AccordionTrigger className="hover:no-underline py-6">
                   <div className="flex items-center justify-between w-full gap-6">
                     <div className="flex items-center gap-4">
-                      <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
+                      <div className="w-24 h-24 rounded-lg bg-white/95 border border-primary/10 flex items-center justify-center flex-shrink-0 p-2">
                         <img src={instaballoonsLogo} alt="InstaBalloons Wholesale" className="w-full h-full object-contain" />
                       </div>
                       <div className="text-left">
