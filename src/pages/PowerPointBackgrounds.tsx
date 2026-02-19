@@ -101,9 +101,9 @@ const PowerPointBackgrounds = () => {
                 Downloadable
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">One‑Page Technical Resume</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Jazlyn Fuller – Shopify Development Resume</h2>
             <p className="text-muted-foreground text-sm sm:text-base max-w-2xl">
-              Built in the same FlowXsell branding. Download as a 1‑page image (perfect for saving as PDF from Preview/Print).
+              Recruiters: download my one‑page resume instantly as a PDF (or PNG) for easy sharing and printing.
             </p>
           </div>
 
