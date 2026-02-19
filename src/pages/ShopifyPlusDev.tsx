@@ -105,146 +105,8 @@ const ShopifyPlusDev = () => {
         </div>
 
         <Accordion type="single" collapsible className="space-y-4">
-          {/* CurlsMonthly */}
-          <AccordionItem value="client-1" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-4 md:px-8 data-[state=open]:bg-primary/5">
-            <AccordionTrigger className="hover:no-underline py-4 md:py-6">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-3 md:gap-6">
-                <div className="flex items-center gap-3 md:gap-4">
-                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-1 md:p-2">
-                    <img src={curlsmonthlyLogo} alt="CurlsMonthly" className="w-full h-full object-contain" />
-                  </div>
-                  <div className="text-left">
-                    <h3 className="text-base md:text-xl font-bold">CurlsMonthly</h3>
-                    <p className="text-xs md:text-sm text-muted-foreground">Subscription box service</p>
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-2 md:gap-3 items-center md:pr-2">
-                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                    Shopify Plus
-                  </span>
-                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                    Liquid
-                  </span>
-                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                    JavaScript
-                  </span>
-                </div>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="pt-2 pb-6">
-              <div className="space-y-6 ml-0 md:ml-16">
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-primary">Technical Challenge</h4>
-                  <p className="text-muted-foreground">
-                    Required custom subscription flow with flexible purchase options and seamless cart experience for recurring orders.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-primary">Development Solution</h4>
-                  <p className="text-muted-foreground mb-3">
-                    Built custom Liquid templates with JavaScript enhancements for subscription management, 
-                    dynamic cart updates, and conversion-optimized product pages.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-lg font-semibold mb-3 text-primary">Technologies & Features</h4>
-                  <div className="grid md:grid-cols-2 gap-3">
-                    <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
-                      <div className="text-sm font-semibold text-primary mb-2">Languages</div>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Liquid</span>
-                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">JavaScript</span>
-                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">HTML/CSS</span>
-                      </div>
-                    </div>
-                    <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
-                      <div className="text-sm font-semibold text-primary mb-2">Features Built</div>
-                      <ul className="text-xs text-muted-foreground space-y-1">
-                        <li>• Custom subscription flow</li>
-                        <li>• Product page enhancements</li>
-                        <li>• Cart functionality upgrades</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
-          {/* Let's Rebuild Tuskegee */}
-          <AccordionItem value="client-2" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-4 md:px-8 data-[state=open]:bg-primary/5">
-            <AccordionTrigger className="hover:no-underline py-4 md:py-6">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-3 md:gap-6">
-                <div className="flex items-center gap-3 md:gap-4">
-                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-1 md:p-2">
-                    <img src={lrtLogo} alt="Let's Rebuild Tuskegee" className="w-full h-full object-contain" />
-                  </div>
-                  <div className="text-left">
-                    <h3 className="text-base md:text-xl font-bold">Let's Rebuild Tuskegee</h3>
-                    <p className="text-xs md:text-sm text-muted-foreground">Community rebuilding initiative</p>
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-2 md:gap-3 items-center md:pr-2">
-                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                    React
-                  </span>
-                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                    Hydrogen
-                  </span>
-                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                    Storefront API
-                  </span>
-                </div>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="pt-2 pb-6">
-              <div className="space-y-6 ml-0 md:ml-16">
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-primary">Technical Challenge</h4>
-                  <p className="text-muted-foreground">
-                    Needed a modern, performant storefront with donation features and custom integrations for community engagement.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-lg font-semibold mb-2 text-primary">Development Solution</h4>
-                  <p className="text-muted-foreground mb-3">
-                    Developed headless commerce solution using React frameworks and Storefront API, 
-                    with custom donation platform features and seamless API integrations.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-lg font-semibold mb-3 text-primary">Technologies & Features</h4>
-                  <div className="grid md:grid-cols-2 gap-3">
-                    <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
-                      <div className="text-sm font-semibold text-primary mb-2">Languages</div>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">React</span>
-                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Next.js</span>
-                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Hydrogen</span>
-                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Remix</span>
-                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Storefront API</span>
-                      </div>
-                    </div>
-                    <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
-                      <div className="text-sm font-semibold text-primary mb-2">Features Built</div>
-                      <ul className="text-xs text-muted-foreground space-y-1">
-                        <li>• Custom app development</li>
-                        <li>• API integrations</li>
-                        <li>• Donation platform features</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
           {/* TRU Supplements */}
-          <AccordionItem value="client-4" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-4 md:px-8 data-[state=open]:bg-primary/5">
+          <AccordionItem value="client-1" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-4 md:px-8 data-[state=open]:bg-primary/5">
             <AccordionTrigger className="hover:no-underline py-4 md:py-6">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-3 md:gap-6">
                 <div className="flex items-center gap-3 md:gap-4">
@@ -254,11 +116,21 @@ const ShopifyPlusDev = () => {
                   <div className="text-left">
                     <h3 className="text-base md:text-xl font-bold">TRU Supplements</h3>
                     <p className="text-xs md:text-sm text-muted-foreground">Supplements & wellness storefront</p>
+                    <a
+                      href="https://gettrusupps.com/"
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      onKeyDown={(e) => e.stopPropagation()}
+                      className="mt-1 inline-block text-xs font-mono text-primary hover:underline"
+                    >
+                      gettrusupps.com
+                    </a>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2 md:gap-3 items-center md:pr-2">
                   <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                    Shopify Plus
+                   Shopify Plus
                   </span>
                   <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
                     Liquid
@@ -311,7 +183,7 @@ const ShopifyPlusDev = () => {
           </AccordionItem>
 
           {/* Metpue Inc */}
-          <AccordionItem value="client-5" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-4 md:px-8 data-[state=open]:bg-primary/5">
+          <AccordionItem value="client-2" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-4 md:px-8 data-[state=open]:bg-primary/5">
             <AccordionTrigger className="hover:no-underline py-4 md:py-6">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-3 md:gap-6">
                 <div className="flex items-center gap-3 md:gap-4">
@@ -321,11 +193,21 @@ const ShopifyPlusDev = () => {
                   <div className="text-left">
                     <h3 className="text-base md:text-xl font-bold">Metpue Inc</h3>
                     <p className="text-xs md:text-sm text-muted-foreground">B2B wholesale purchasing</p>
+                    <a
+                      href="https://metpure.com/"
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      onKeyDown={(e) => e.stopPropagation()}
+                      className="mt-1 inline-block text-xs font-mono text-primary hover:underline"
+                    >
+                      metpure.com
+                    </a>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2 md:gap-3 items-center md:pr-2">
                   <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                    Shopify Plus
+                    Wholesale Storefront
                   </span>
                   <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
                     Liquid
@@ -377,8 +259,169 @@ const ShopifyPlusDev = () => {
             </AccordionContent>
           </AccordionItem>
 
-          {/* InstaBalloons */}
+          {/* Let's Rebuild Tuskegee */}
           <AccordionItem value="client-3" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-4 md:px-8 data-[state=open]:bg-primary/5">
+            <AccordionTrigger className="hover:no-underline py-4 md:py-6">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-3 md:gap-6">
+                <div className="flex items-center gap-3 md:gap-4">
+                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-1 md:p-2">
+                    <img src={lrtLogo} alt="Let's Rebuild Tuskegee" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="text-left">
+                    <h3 className="text-base md:text-xl font-bold">Let's Rebuild Tuskegee</h3>
+                    <p className="text-xs md:text-sm text-muted-foreground">Community rebuilding initiative</p>
+                    <a
+                      href="https://donate.rebuildtuskegee.org/"
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      onKeyDown={(e) => e.stopPropagation()}
+                      className="mt-1 inline-block text-xs font-mono text-primary hover:underline"
+                    >
+                      donate.rebuildtuskegee.org
+                    </a>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2 md:gap-3 items-center md:pr-2">
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                    React
+                  </span>
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                    Hydrogen
+                  </span>
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                    Storefront API
+                  </span>
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                    Dedicated Server
+                  </span>
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="pt-2 pb-6">
+              <div className="space-y-6 ml-0 md:ml-16">
+                <div>
+                  <h4 className="text-lg font-semibold mb-2 text-primary">Technical Challenge</h4>
+                  <p className="text-muted-foreground">
+                    Needed a modern, performant storefront with donation features and custom integrations for community engagement.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold mb-2 text-primary">Development Solution</h4>
+                  <p className="text-muted-foreground mb-3">
+                    Developed headless commerce solution using React frameworks and Storefront API, 
+                    with custom donation platform features and seamless API integrations.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold mb-3 text-primary">Technologies & Features</h4>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
+                      <div className="text-sm font-semibold text-primary mb-2">Languages</div>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">React</span>
+                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Next.js</span>
+                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Hydrogen</span>
+                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Remix</span>
+                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Storefront API</span>
+                      </div>
+                    </div>
+                    <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
+                      <div className="text-sm font-semibold text-primary mb-2">Features Built</div>
+                      <ul className="text-xs text-muted-foreground space-y-1">
+                        <li>• Custom app development</li>
+                        <li>• API integrations</li>
+                        <li>• Donation platform features</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          {/* CurlsMonthly */}
+          <AccordionItem value="client-4" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-4 md:px-8 data-[state=open]:bg-primary/5">
+            <AccordionTrigger className="hover:no-underline py-4 md:py-6">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-3 md:gap-6">
+                <div className="flex items-center gap-3 md:gap-4">
+                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-1 md:p-2">
+                    <img src={curlsmonthlyLogo} alt="CurlsMonthly" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="text-left">
+                    <h3 className="text-base md:text-xl font-bold">CurlsMonthly</h3>
+                    <p className="text-xs md:text-sm text-muted-foreground">Subscription box service</p>
+                    <a
+                      href="https://curlsmonthly.com/"
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      onKeyDown={(e) => e.stopPropagation()}
+                      className="mt-1 inline-block text-xs font-mono text-primary hover:underline"
+                    >
+                      curlsmonthly.com
+                    </a>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2 md:gap-3 items-center md:pr-2">
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                    Recharge Subscription
+                  </span>
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                    Liquid
+                  </span>
+                  <span className="text-xs font-mono px-2 md:px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                    JavaScript
+                  </span>
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="pt-2 pb-6">
+              <div className="space-y-6 ml-0 md:ml-16">
+                <div>
+                  <h4 className="text-lg font-semibold mb-2 text-primary">Technical Challenge</h4>
+                  <p className="text-muted-foreground">
+                    Required custom subscription flow with flexible purchase options and seamless cart experience for recurring orders.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold mb-2 text-primary">Development Solution</h4>
+                  <p className="text-muted-foreground mb-3">
+                    Built custom Liquid templates with JavaScript enhancements for subscription management, 
+                    dynamic cart updates, and conversion-optimized product pages.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold mb-3 text-primary">Technologies & Features</h4>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
+                      <div className="text-sm font-semibold text-primary mb-2">Languages</div>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">Liquid</span>
+                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">JavaScript</span>
+                        <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">HTML/CSS</span>
+                      </div>
+                    </div>
+                    <div className="p-4 rounded-lg bg-background/50 border border-primary/10">
+                      <div className="text-sm font-semibold text-primary mb-2">Features Built</div>
+                      <ul className="text-xs text-muted-foreground space-y-1">
+                        <li>• Custom subscription flow</li>
+                        <li>• Product page enhancements</li>
+                        <li>• Cart functionality upgrades</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          {/* InstaBalloons */}
+          <AccordionItem value="client-5" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-4 md:px-8 data-[state=open]:bg-primary/5">
             <AccordionTrigger className="hover:no-underline py-4 md:py-6">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-3 md:gap-6">
                 <div className="flex items-center gap-3 md:gap-4">
@@ -388,6 +431,16 @@ const ShopifyPlusDev = () => {
                   <div className="text-left">
                     <h3 className="text-base md:text-xl font-bold">InstaBalloons Wholesale</h3>
                     <p className="text-xs md:text-sm text-muted-foreground">Party supplies wholesale</p>
+                    <a
+                      href="https://www.instaballoons.com/"
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      onKeyDown={(e) => e.stopPropagation()}
+                      className="mt-1 inline-block text-xs font-mono text-primary hover:underline"
+                    >
+                      instaballoons.com
+                    </a>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2 md:gap-3 items-center md:pr-2">

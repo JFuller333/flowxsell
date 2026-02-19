@@ -275,6 +275,16 @@ const CaseStudyFlowXsell = () => {
                       <div className="text-left">
                         <h3 className="text-xl font-bold">Metpure Inc</h3>
                         <p className="text-sm text-muted-foreground">Enterprise e-commerce platform</p>
+                        <a
+                          href="https://metpure.com/"
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          onKeyDown={(e) => e.stopPropagation()}
+                          className="mt-1 inline-block text-xs font-mono text-primary hover:underline"
+                        >
+                          metpure.com
+                        </a>
                       </div>
                     </div>
                     <div className="flex gap-6 items-center pr-2">
@@ -366,11 +376,21 @@ const CaseStudyFlowXsell = () => {
                       <div className="text-left">
                         <h3 className="text-xl font-bold">CurlsMonthly</h3>
                         <p className="text-sm text-muted-foreground">Subscription box service</p>
+                        <a
+                          href="https://curlsmonthly.com/"
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          onKeyDown={(e) => e.stopPropagation()}
+                          className="mt-1 inline-block text-xs font-mono text-primary hover:underline"
+                        >
+                          curlsmonthly.com
+                        </a>
                       </div>
                     </div>
                     <div className="flex gap-3 items-center pr-2">
                       <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
-                        Shopify Plus
+                        Subscription
                       </span>
                       <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
                         Liquid
@@ -459,6 +479,16 @@ const CaseStudyFlowXsell = () => {
                       <div className="text-left">
                         <h3 className="text-xl font-bold">Let's Rebuild Tuskegee</h3>
                         <p className="text-sm text-muted-foreground">Community rebuilding initiative</p>
+                        <a
+                          href="https://donate.rebuildtuskegee.org/"
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          onKeyDown={(e) => e.stopPropagation()}
+                          className="mt-1 inline-block text-xs font-mono text-primary hover:underline"
+                        >
+                          donate.rebuildtuskegee.org
+                        </a>
                       </div>
                     </div>
                     <div className="flex gap-3 items-center pr-2">
@@ -554,6 +584,16 @@ const CaseStudyFlowXsell = () => {
                       <div className="text-left">
                         <h3 className="text-xl font-bold">InstaBalloons Wholesale</h3>
                         <p className="text-sm text-muted-foreground">Party supplies wholesale</p>
+                        <a
+                          href="https://www.instaballoons.com/"
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          onKeyDown={(e) => e.stopPropagation()}
+                          className="mt-1 inline-block text-xs font-mono text-primary hover:underline"
+                        >
+                          instaballoons.com
+                        </a>
                       </div>
                     </div>
                     <div className="flex gap-3 items-center pr-2">
