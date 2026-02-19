@@ -12,6 +12,7 @@ import CaseStudyChildrensBook from "./pages/CaseStudyChildrensBook";
 import ShopifyPlusDev from "./pages/ShopifyPlusDev";
 import PowerPointBackgrounds from "./pages/PowerPointBackgrounds";
 import YouTubeCallouts from "./pages/YouTubeCallouts";
+import Resume from "./pages/Resume";
 import FlowXsellQuiz from "./pages/FlowXsellQuiz";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/shopify-plus-development" element={<ShopifyPlusDev />} />
           <Route path="/powerpoint-backgrounds" element={<PowerPointBackgrounds />} />
           <Route path="/youtube-callouts" element={<YouTubeCallouts />} />
+          <Route path="/resume" element={<Resume />} />
           <Route path="/flowxsell-quiz" element={<FlowXsellQuiz />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />

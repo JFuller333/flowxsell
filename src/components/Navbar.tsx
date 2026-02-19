@@ -8,7 +8,7 @@ const navLinks = [
   { title: "Services", url: "/services" },
   { title: "Blog", url: "/blog" },
   { title: "Shopify Plus", url: "/shopify-plus-development" },
-  { title: "Resume", url: "/powerpoint-backgrounds#resume" },
+  { title: "Resume", url: "/resume" },
   { title: "Contact", url: "/contact" },
 ];
 
