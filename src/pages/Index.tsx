@@ -59,7 +59,10 @@ const Index = () => {
           
           <h1 className="neon-text-glow text-3xl sm:text-5xl md:text-7xl break-words">FlowXsell</h1>
           
-          <p className="text-base sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-0">A clarity companion for multiprenerus & solo founders. When your systems flow, your sales grow.</p>
+          <p className="text-base sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-0">
+            I help entrepreneurs and start-up companies improve and run technical systems behind their business—When your
+            systems flow, your sales grow.
+          </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
             <Button size="lg" className="group" onClick={() => document.getElementById('framework')?.scrollIntoView({
