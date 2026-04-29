@@ -2,14 +2,14 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { FrameworkCard } from "@/components/FrameworkCard";
-import { ProjectCard } from "@/components/ProjectCard";
 import { ParticleBackground } from "@/components/ParticleBackground";
 import { Navbar } from "@/components/Navbar";
-import { Search, Target, Cog, TrendingUp, ArrowRight, Mail } from "lucide-react";
-import flowosImage from "@/assets/flowos-framework.jpg";
-import healthScoreImage from "@/assets/flow-health-score.jpg";
-import campaignImage from "@/assets/campaign-architecture.jpg";
-import techStackImage from "@/assets/tech-stack-optimizer.jpg";
+import { WebsiteDesignCardMedia } from "@/components/WebsiteDesignCardMedia";
+import abwfsWebsiteVideoUrl from "@/videos/ABWFS_Website.mp4?url";
+import aflWebsiteVideoUrl from "@/videos/AFL_Website.mp4?url";
+import massyAriasWebsiteVideoUrl from "@/videos/MassyArias_Website.mp4?url";
+import aflCampaignImage from "@/assets/campaign-architecture.jpg";
+import { Search, Target, Cog, TrendingUp, ArrowRight, Mail, ExternalLink } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 const Index = () => {
@@ -17,7 +17,7 @@ const Index = () => {
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      toast.success("Thanks! You'll receive the FlowOS playbook soon.");
+      toast.success("Thanks! You'll receive the FlowXsell playbook soon.");
       setEmail("");
     }
   };
@@ -42,10 +42,41 @@ const Index = () => {
     description: "Optimization loops and sales multiplication. Scalable leverage tools.",
     icon: TrendingUp
   }];
-  return <div className="min-h-screen bg-background">
+  const myProjects = [{
+    name: "Massy Arias",
+    url: "https://www.massyarias.com/",
+    niche: "Health + Wellness",
+    summary: "Personal-brand platform combining programs, content, and conversion flows for digital offers.",
+    snapshot: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.massyarias.com%2F?w=1200",
+    bundledVideoUrl: massyAriasWebsiteVideoUrl,
+    bundledVideoCacheBust: "2026-04-29-1"
+  }, {
+    name: "A.Bright Wellness Fashion Studio",
+    url: "https://www.abwfs.com/",
+    niche: "Wellness + Fashion",
+    summary: "Collection-first shopping experience blending wellness storytelling with fashion commerce.",
+    snapshot: "/website-snapshots/abwfs-snapshot.png",
+    bundledVideoUrl: abwfsWebsiteVideoUrl,
+    bundledVideoCacheBust: "2026-04-29-2"
+  }, {
+    name: "Stacked w/ Style Products & Oils",
+    url: "https://stackedwithstyleproducts.com/",
+    niche: "Health + Beauty",
+    summary: "Product-driven Shopify storefront with strong visual merchandising and testimonial-led trust.",
+    snapshot: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fstackedwithstyleproducts.com%2F?w=1200"
+  }, {
+    name: "AFL Mastery Framework",
+    url: "/case-study/afl",
+    niche: "Wealth · Health · Balance · Purpose",
+    summary: "Strategic framework for building scalable marketing campaigns that compound over time instead of burning budgets.",
+    snapshot: aflCampaignImage,
+    bundledVideoUrl: aflWebsiteVideoUrl,
+    bundledVideoCacheBust: "2026-04-29-1"
+  }];
+  return <div className="min-h-[100svh] bg-background">
       <Navbar />
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
+      <section className="relative min-h-[100svh] flex items-center justify-center px-4 py-20 overflow-hidden">
         <ParticleBackground />
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse" />
@@ -80,46 +111,66 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Systems & Projects Section */}
+      {/* Previous "SYSTEMS & PROJECTS" grid (ProjectCard x4) replaced by My Projects below. Shopify + technical work remains on /shopify-plus-development. */}
+
+      {/* My Projects */}
       <section className="px-4 py-24 max-w-7xl mx-auto border-t border-primary/10">
-        <div className="mb-16 text-center">
+        <div className="mb-12 sm:mb-16 text-center">
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight px-2">
-            SYSTEMS & PROJECTS
+            My Projects
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-2">
-            Tools and frameworks built to help founders scale with clarity and structure.
+            Website design and motion previews for health, wellness, beauty, and fashion brands. Deeper Shopify Plus builds and technical case studies are on the Shopify development page.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <ProjectCard 
-            title="Shopify Plus Development" 
-            description="Custom technical development for enterprise e-commerce. Headless storefronts, complex integrations, and scalable solutions." 
-            tags={["Shopify Plus", "React", "Headless"]} 
-            image={techStackImage}
-            caseStudyLink="/shopify-plus-development"
-          />
-          <ProjectCard 
-            title="AFL Mastery Framework" 
-            description="Strategic framework for building scalable marketing campaigns that compound over time instead of burning budgets." 
-            tags={["Wealth", "Health", "Balance", "Purpose"]} 
-            image={campaignImage}
-            caseStudyLink="/case-study/afl"
-          />
-          <ProjectCard 
-            title="LRB Donor & Investor Dashboard" 
-            description="Diagnostic tool that identifies where your systems break down. Get a clarity score and actionable next steps in under 5 minutes." 
-            tags={["ROI", "Real Estate", "Community Development"]} 
-            image={healthScoreImage}
-            caseStudyLink="/case-study/lrb"
-          />
-          <ProjectCard 
-            title="Children's Book Development" 
-            description="A 4-phase operating system for ecommerce founders: Audit, Align, Automate, XSell. Designed to transform fragmented growth into systematic scaling." 
-            tags={["Strategy", "Ecommerce", "Physical Products"]} 
-            image={flowosImage}
-            caseStudyLink="/case-study/childrens-book"
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
+          {myProjects.map((project) => {
+            const isExternal = project.url.startsWith("http");
+            const linkProps = isExternal
+              ? { target: "_blank" as const, rel: "noopener noreferrer" as const }
+              : {};
+            return (
+            <Card key={project.url} className="overflow-hidden border-primary/20 bg-card/50 backdrop-blur-sm hover:border-primary transition-colors">
+              <div className="relative aspect-video w-full overflow-hidden border-b border-primary/10 bg-background">
+                <WebsiteDesignCardMedia
+                  snapshot={project.snapshot}
+                  name={project.name}
+                  bundledVideoUrl={"bundledVideoUrl" in project ? project.bundledVideoUrl : undefined}
+                  bundledVideoCacheBust={
+                    "bundledVideoCacheBust" in project ? project.bundledVideoCacheBust : undefined
+                  }
+                />
+              </div>
+              <div className="space-y-4 p-6">
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="text-lg sm:text-xl font-semibold leading-tight">{project.name}</h3>
+                  <a
+                    href={project.url}
+                    {...linkProps}
+                    className="text-muted-foreground hover:text-primary transition-colors shrink-0"
+                    aria-label={isExternal ? `Open ${project.name} in a new tab` : `Open ${project.name}`}
+                  >
+                    {isExternal ? <ExternalLink className="w-5 h-5" /> : <ArrowRight className="w-5 h-5" />}
+                  </a>
+                </div>
+                <p className="text-xs font-mono uppercase tracking-wider text-primary">{project.niche}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{project.summary}</p>
+                <a href={project.url} {...linkProps} className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
+                  View site
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </Card>
+            );
+          })}
+        </div>
+        <div className="text-center">
+          <Button size="lg" variant="neon" className="group" asChild>
+            <a href="/shopify-plus-development">
+              Shopify development &amp; technical projects
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </Button>
         </div>
       </section>
 
@@ -162,7 +213,7 @@ const Index = () => {
                 </p>
                 
                 <p>
-                  <span className="text-primary font-semibold">FlowOS</span> helps you shift from scattered to strategic:
+                  <span className="text-primary font-semibold">FlowXsell</span> helps you shift from scattered to strategic:
                 </p>
                 
                 <ul className="space-y-3 ml-6">
@@ -216,7 +267,7 @@ const Index = () => {
             </p>
             
             <p>
-              FlowOS is the framework I use to restore clarity, build momentum, and help founders 
+              FlowXsell is the framework I use to restore clarity, build momentum, and help founders 
               scale without burning out. It's not about working harder. It's about working with intention.
             </p>
           </div>

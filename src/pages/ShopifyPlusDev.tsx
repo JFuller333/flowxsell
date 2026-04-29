@@ -1,13 +1,44 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Code2, Zap, Layers, GitBranch, Terminal, CheckCircle2, ArrowRight } from "lucide-react";
+import { Code2, Zap, Layers, GitBranch, Terminal, CheckCircle2, ArrowRight, ExternalLink } from "lucide-react";
 import curlsmonthlyLogo from "@/assets/curlsmonthly-logo-original.webp";
 import lrtLogo from "@/assets/lrt-logo.png";
 import instaballoonsLogo from "@/assets/instaballoons-logo.svg";
 import truLogo from "@/assets/tru-logo-original.png";
 import metpureLogo from "@/assets/metpure-logo-original.svg";
+import abwfsWebsiteVideoUrl from "@/videos/ABWFS_Website.mp4?url";
+import massyAriasWebsiteVideoUrl from "@/videos/MassyArias_Website.mp4?url";
+import { WebsiteDesignCardMedia } from "@/components/WebsiteDesignCardMedia";
 import { Navbar } from "@/components/Navbar";
+
+const websiteDesignExamples = [
+  {
+    name: "Stacked w/ Style Products & Oils",
+    url: "https://stackedwithstyleproducts.com/",
+    niche: "Health + Beauty",
+    summary: "Product-driven Shopify storefront with strong visual merchandising and testimonial-led trust.",
+    snapshot: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fstackedwithstyleproducts.com%2F?w=1200"
+  },
+  {
+    name: "A.Bright Wellness Fashion Studio",
+    url: "https://www.abwfs.com/",
+    niche: "Wellness + Fashion",
+    summary: "Collection-first shopping experience blending wellness storytelling with fashion commerce.",
+    snapshot: "/website-snapshots/abwfs-snapshot.png",
+    bundledVideoUrl: abwfsWebsiteVideoUrl,
+    bundledVideoCacheBust: "2026-04-29-2"
+  },
+  {
+    name: "Massy Arias",
+    url: "https://www.massyarias.com/",
+    niche: "Health + Wellness",
+    summary: "Personal-brand platform combining programs, content, and conversion flows for digital offers.",
+    snapshot: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.massyarias.com%2F?w=1200",
+    bundledVideoUrl: massyAriasWebsiteVideoUrl,
+    bundledVideoCacheBust: "2026-04-29-1"
+  }
+];
 
 const ShopifyPlusDev = () => {
 
@@ -498,6 +529,66 @@ const ShopifyPlusDev = () => {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+      </section>
+
+      {/* Website Design Section */}
+      <section className="px-4 py-20 max-w-7xl mx-auto">
+        <div className="mb-10 sm:mb-14 text-center">
+          <h2 className="text-2xl sm:text-4xl font-bold mb-4 tracking-tight px-2">
+            Website Design for Health, Wellness, Beauty, and Fashion Brands
+          </h2>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-3xl mx-auto px-2">
+            Strategic builds designed to blend brand storytelling with conversion-focused ecommerce UX.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {websiteDesignExamples.map((example) => (
+            <Card
+              key={example.url}
+              className="overflow-hidden border-primary/20 bg-card/50 backdrop-blur-sm hover:border-primary transition-colors"
+            >
+              <div className="relative aspect-video w-full overflow-hidden border-b border-primary/10 bg-background">
+                <WebsiteDesignCardMedia
+                  snapshot={example.snapshot}
+                  gif={"gif" in example ? example.gif : undefined}
+                  video={"video" in example ? example.video : undefined}
+                  videoSources={"videoSources" in example ? example.videoSources : undefined}
+                  bundledVideoUrl={"bundledVideoUrl" in example ? example.bundledVideoUrl : undefined}
+                  bundledVideoCacheBust={
+                    "bundledVideoCacheBust" in example ? example.bundledVideoCacheBust : undefined
+                  }
+                  name={example.name}
+                />
+              </div>
+              <div className="space-y-4 p-6">
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="text-lg sm:text-xl font-semibold leading-tight">{example.name}</h3>
+                  <a
+                    href={example.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    aria-label={`Open ${example.name} website`}
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                  </a>
+                </div>
+                <p className="text-xs font-mono uppercase tracking-wider text-primary">{example.niche}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{example.summary}</p>
+                <a
+                  href={example.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+                >
+                  View Website
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </Card>
+          ))}
+        </div>
       </section>
 
       {/* Development Capabilities */}
