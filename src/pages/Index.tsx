@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { FrameworkCard } from "@/components/FrameworkCard";
 import { ParticleBackground } from "@/components/ParticleBackground";
 import { Navbar } from "@/components/Navbar";
@@ -9,18 +8,8 @@ import abwfsWebsiteVideoUrl from "@/videos/ABWFS_Website.mp4?url";
 import aflWebsiteVideoUrl from "@/videos/AFL_Website.mp4?url";
 import massyAriasWebsiteVideoUrl from "@/videos/MassyArias_Website.mp4?url";
 import aflCampaignImage from "@/assets/campaign-architecture.jpg";
-import { Search, Target, Cog, TrendingUp, ArrowRight, Mail, ExternalLink } from "lucide-react";
-import { useState } from "react";
-import { toast } from "sonner";
+import { Search, Target, Cog, TrendingUp, ArrowRight, Calendar, ExternalLink, Instagram } from "lucide-react";
 const Index = () => {
-  const [email, setEmail] = useState("");
-  const handleEmailSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      toast.success("Thanks! You'll receive the FlowXsell playbook soon.");
-      setEmail("");
-    }
-  };
   const frameworks = [{
     phase: "Phase 01",
     title: "Audit",
@@ -49,7 +38,11 @@ const Index = () => {
     summary: "Personal-brand platform combining programs, content, and conversion flows for digital offers.",
     snapshot: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.massyarias.com%2F?w=1200",
     bundledVideoUrl: massyAriasWebsiteVideoUrl,
-    bundledVideoCacheBust: "2026-04-29-1"
+    bundledVideoCacheBust: "2026-04-29-1",
+    instagram: {
+      followersLabel: "3.1 Mill",
+      href: "https://www.instagram.com/massyarias/"
+    }
   }, {
     name: "A.Bright Wellness Fashion Studio",
     url: "https://www.abwfs.com/",
@@ -143,7 +136,21 @@ const Index = () => {
               </div>
               <div className="space-y-4 p-6">
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-lg sm:text-xl font-semibold leading-tight">{project.name}</h3>
+                  <div className="min-w-0 flex flex-wrap items-center gap-x-2 gap-y-1">
+                    <h3 className="text-lg sm:text-xl font-semibold leading-tight">{project.name}</h3>
+                    {"instagram" in project && project.instagram ? (
+                      <a
+                        href={project.instagram.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors shrink-0"
+                        aria-label={`${project.name} on Instagram, ${project.instagram.followersLabel} followers`}
+                      >
+                        <Instagram className="w-4 h-4 shrink-0 text-primary" aria-hidden />
+                        <span className="font-medium tabular-nums">({project.instagram.followersLabel})</span>
+                      </a>
+                    ) : null}
+                  </div>
                   <a
                     href={project.url}
                     {...linkProps}
@@ -283,7 +290,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Email Capture Section */}
+      {/* Book a call */}
       <section className="px-4 py-16 sm:py-24 md:py-32 relative">
         <div className="max-w-2xl mx-auto">
           <Card className="border-primary/20 bg-card/50 backdrop-blur-sm p-4 sm:p-6 md:p-12 relative overflow-hidden">
@@ -291,25 +298,27 @@ const Index = () => {
             
             <div className="relative text-center space-y-6">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border border-primary/30 mb-4">
-                <Mail className="w-8 h-8 text-primary" />
+                <Calendar className="w-8 h-8 text-primary" />
               </div>
               
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold">Want the FlowXsell playbook?</h3>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold">Book a call.</h3>
               
               <p className="text-muted-foreground">
-                Get the full PDF and worksheet delivered weeklyish.
+                Pick a 30-minute slot and we&apos;ll talk through your store, systems, and what to fix first.
               </p>
               
-              <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-4">
-                <Input type="email" placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} required className="flex-1 bg-background/50 border-primary/20 focus:border-primary" />
-                <Button type="submit" size="lg">
-                  Get Access
+              <div className="pt-2">
+                <Button size="lg" variant="neon" className="group" asChild>
+                  <a
+                    href="https://calendly.com/flowxsell/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Schedule on Calendly
+                    <ExternalLink className="w-4 h-4 ml-2 opacity-80 group-hover:translate-x-0.5 transition-transform" />
+                  </a>
                 </Button>
-              </form>
-              
-              <p className="text-xs text-muted-foreground">
-                No spam. Unsubscribe anytime. Clarity is your new compounding edge.
-              </p>
+              </div>
             </div>
           </Card>
         </div>
