@@ -7,6 +7,7 @@ const navLinks = [
   { title: "Home", url: "/" },
   { title: "Services", url: "/services" },
   { title: "Blog", url: "/blog" },
+  { title: "Merch", url: "/merch" },
   { title: "Shopify Plus", url: "/shopify-plus-development" },
   { title: "Resume", url: "/resume" },
   { title: "Contact", url: "/contact" },
