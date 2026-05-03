@@ -126,7 +126,13 @@ function TierCardView({ tier, stepIndex }: { tier: TierCard; stepIndex: number }
           className="w-full rounded-none bg-[hsl(74,99%,49%)] text-[15px] font-semibold text-black transition-colors hover:bg-[hsl(74,99%,54%)]"
           asChild
         >
-          <Link to="/contact">Book a call</Link>
+          <a
+            href="https://calendly.com/flowxsell/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Book a call
+          </a>
         </Button>
       </div>
     </article>
