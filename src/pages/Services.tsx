@@ -1,190 +1,214 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { 
-  Zap, 
-  Layers, 
-  Settings, 
-  Shield,
-  ArrowRight,
-  Check
-} from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 
-const Services = () => {
-  const solutions = [
-    {
-      id: "headless",
-      icon: Zap,
-      flowType: "Conversion Flow",
-      title: "Shopify Headless Storefront",
-      tagline: "For brands that have outgrown traditional Shopify themes",
-      symptoms: [
-        "Slow load times & high bounce rates",
-        "Theme limitations blocking growth",
-        "Checkout friction & UX issues"
-      ],
-      benefits: [
-        "Modern, app-like shopping experience",
-        "Custom-designed user journeys",
-        "High-performance architecture"
-      ]
-    },
-    {
-      id: "custom",
-      icon: Layers,
-      flowType: "Alignment Flow",
-      title: "Shopify Custom App / Portal",
-      tagline: "For businesses that need custom engineering, not more apps",
-      symptoms: [
-        "Features themes/apps cannot support",
-        "Manual or disconnected processes",
-        "Need for portals or dashboards"
-      ],
-      benefits: [
-        "Custom Shopify apps & portals",
-        "API integrations & automation",
-        "Admin dashboards with role management"
-      ]
-    },
-    {
-      id: "maintain",
-      icon: Settings,
-      flowType: "Retention Flow",
-      title: "Shopify Maintenance™",
-      tagline: "Monthly technical retainer for system stability",
-      symptoms: [
-        "Recurring bugs & broken automations",
-        "Data syncing failures",
-        "Technical debt accumulation"
-      ],
-      benefits: [
-        "Monthly engineering support",
-        "API & webhook monitoring",
-        "Preventative maintenance"
-      ]
-    },
-    {
-      id: "secure",
-      icon: Shield,
-      flowType: "All Flows",
-      title: "Shopify Secure™ Audit",
-      tagline: "Security review for serious brands",
-      symptoms: [
-        "Unknown security vulnerabilities",
-        "Unaudited authentication flows",
-        "Risk exposure in checkout & APIs"
-      ],
-      benefits: [
-        "Full security assessment",
-        "CI/CD & endpoint review",
-        "Risk scoring & remediation"
-      ]
-    }
-  ];
+type TierCard = {
+  label: string;
+  anchorPrice: string;
+  priceIntro: string;
+  title: string;
+  vibe: string;
+  youGet: [string, string, string];
+};
 
+/** Horizontal stroke — soft lime, quiet glow */
+function TierMetaRule() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div
+      className="h-px w-full shrink-0 bg-gradient-to-r from-transparent from-[8%] via-[hsla(74,99%,49%,0.52)] via-50% to-transparent to-[92%] shadow-[0_0_24px_-10px_hsla(74,99%,49%,0.2)]"
+      aria-hidden
+    />
+  );
+}
+
+/** Single lime vertical rule between desktop columns */
+function TierColumnDivider() {
+  return (
+    <div
+      className="hidden shrink-0 md:flex md:w-8 md:flex-col md:items-center md:justify-center md:self-stretch md:py-6"
+      aria-hidden
+    >
+      <span className="h-[19rem] w-px shrink-0 bg-gradient-to-b from-transparent from-[8%] via-[hsla(74,99%,49%,0.52)] via-50% to-transparent to-[92%] shadow-[0_0_24px_-10px_hsla(74,99%,49%,0.2)]" />
+    </div>
+  );
+}
+
+const tiers: TierCard[] = [
+  {
+    label: "Starting",
+    anchorPrice: "$500",
+    priceIntro: "Starting at",
+    title: "Figure it out together",
+    vibe: "New to selling online—we map the basics in plain words.",
+    youGet: [
+      "Starter plan: offer · channel · sequencing",
+      "$150–500 calls, jargon-free",
+      "Short next-steps only",
+    ],
+  },
+  {
+    label: "Growing",
+    anchorPrice: "$2,500",
+    priceIntro: "Starting at",
+    title: "Make sales steadier",
+    vibe: "You’ve got fans—product revenue just won’t behave.",
+    youGet: [
+      "Offers · pricing · checkout tuned",
+      "Clearer buyer path",
+      "Shippable wins ($2K–4K tier)",
+    ],
+  },
+  {
+    label: "Scaling",
+    anchorPrice: "$5,000",
+    priceIntro: "Starting at",
+    title: "Systems that hold volume",
+    vibe: "Big revenue, messy stack—checkout, APIs, workflows.",
+    youGet: [
+      "Map: checkout · APIs · data · owners",
+      "Architecture that survives volume—not hacks",
+      "Plain specs—or hands-on build if engaged",
+    ],
+  },
+];
+
+function TierCardView({ tier, stepIndex }: { tier: TierCard; stepIndex: number }) {
+  return (
+    <article className="flex min-h-0 flex-1 flex-col px-1 pb-14 pt-2 md:px-5 md:pb-4 md:pt-2">
+      <section aria-label={`${tier.label}, tier ${stepIndex}`} className="mb-7">
+        <div className="flex items-center pb-4 md:pb-5">
+          <div
+            className="h-px min-w-0 flex-1 bg-gradient-to-r from-transparent from-[0%] via-[hsla(74,99%,49%,0.28)] via-70% to-[hsla(74,99%,49%,0.45)] to-[100%] shadow-[0_0_24px_-10px_hsla(74,99%,49%,0.2)]"
+            aria-hidden
+          />
+          <span
+            className="relative z-10 shrink-0 bg-black px-3 text-center text-[12px] font-semibold tabular-nums tracking-wide text-primary md:px-4 md:text-[13px]"
+            aria-hidden
+          >
+            {stepIndex}
+          </span>
+          <div
+            className="h-px min-w-0 flex-1 bg-gradient-to-l from-transparent from-[0%] via-[hsla(74,99%,49%,0.28)] via-70% to-[hsla(74,99%,49%,0.45)] to-[100%] shadow-[0_0_24px_-10px_hsla(74,99%,49%,0.2)]"
+            aria-hidden
+          />
+        </div>
+        <div className="flex flex-col items-center justify-center gap-2.5 py-6 text-center md:gap-3 md:py-7">
+          <span
+            className="inline-flex items-center justify-center rounded-none border-[0.5px] border-primary/35 bg-[hsla(74,99%,49%,0.06)] px-3 py-1.5 text-[11px] font-bold leading-none tracking-[0.04em] text-primary neon-text-glow shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] md:px-3.5 md:py-2 md:text-[12px]"
+          >
+            {tier.label}
+          </span>
+          <p className="m-0 max-w-[min(100%,18rem)] text-center text-[14px] font-medium leading-snug text-[#ebeae8] md:text-[15px]">{tier.title}</p>
+        </div>
+        <TierMetaRule />
+      </section>
+      <p className="mb-1 text-center text-[14px] font-medium leading-snug text-[#e8e8e4] md:mb-1.5 md:text-[15px]">
+        {tier.priceIntro}
+      </p>
+      <h2
+        id={`tier-heading-${tier.label}`}
+        className="text-center text-[1.85rem] font-bold tabular-nums leading-[1.1] tracking-tight text-primary neon-text-glow md:text-[2rem]"
+      >
+        {tier.anchorPrice}
+      </h2>
+      <p className="mt-3.5 text-[15px] leading-[1.7] text-white/[0.58]">&ldquo;{tier.vibe}&rdquo;</p>
+      <p className="mt-9 text-[12px] font-medium tracking-[0.12em] text-white/50">What you get</p>
+      <ul className="mt-3 flex flex-1 flex-col gap-3.5 text-[15px] leading-relaxed text-[#ebeae8]">
+        {tier.youGet.map((line, i) => (
+          <li key={`${tier.label}-${i}`} className="flex gap-3">
+            <span className="mt-[0.45rem] h-1 w-1 shrink-0 bg-[hsl(74,99%,49%)]" aria-hidden />
+            <span>{line}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="mt-9 md:mt-10">
+        <Button
+          className="w-full rounded-none bg-[hsl(74,99%,49%)] text-[15px] font-semibold text-black transition-colors hover:bg-[hsl(74,99%,54%)]"
+          asChild
+        >
+          <Link to="/contact">Book a call</Link>
+        </Button>
+      </div>
+    </article>
+  );
+}
+
+const Services = () => {
+  return (
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-[#ebe9e4] via-[#e6e8e1] to-[#dce3d6] text-[#1a1a18]">
+      <div
+        className="pointer-events-none absolute -left-24 top-28 h-80 w-80 rounded-full bg-[hsla(74,55%,62%,0.42)] blur-3xl"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -right-20 top-[36%] h-[22rem] w-[22rem] rounded-full bg-[hsla(74,45%,72%,0.38)] blur-3xl"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-[hsla(74,40%,68%,0.28)] blur-3xl"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[hsla(0,0%,8%,0.06)] to-transparent"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute left-1/2 top-20 h-px w-[min(72%,30rem)] -translate-x-1/2 bg-gradient-to-r from-transparent via-[hsla(74,99%,49%,0.28)] to-transparent"
+        aria-hidden
+      />
+
       <Navbar />
 
-      {/* Hero */}
-      <section className="pt-24 md:pt-28 pb-12 md:pb-16 px-4 md:px-6">
-        <div className="container mx-auto max-w-4xl text-center">
-          <p className="text-xs sm:text-sm font-mono text-primary mb-4 tracking-wide">FLOWXSELL SOLUTIONS</p>
-          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">
-            Your Flow Results Point to Your Solution
-          </h1>
-          <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto mb-6">
-            Your lowest score reveals your Primary Flow Disrupter — the core system limiting growth.
-          </p>
-          <Link to="/flowxsell-quiz">
-            <Button variant="outline" size="sm" className="gap-2">
-              Take the Quiz
-              <ArrowRight className="w-3 h-3" />
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      {/* Solutions */}
-      <section className="py-12 px-4 sm:px-6">
-        <div className="container mx-auto max-w-5xl space-y-6">
-          {solutions.map((solution, index) => {
-            const Icon = solution.icon;
-            return (
-              <div 
-                key={solution.id}
-                className="border border-border/50 rounded-lg p-4 sm:p-6 md:p-8 hover:border-border transition-colors"
+      <main className="relative z-10 pb-24 pt-28 md:pb-32 md:pt-32">
+        <div className="mx-auto max-w-5xl px-4 md:px-6">
+          <header className="mx-auto mb-14 max-w-2xl text-center md:mb-16">
+            <p className="mb-3 text-[12px] font-medium tracking-wide text-[hsl(74,38%,34%)]">Services</p>
+            <h1 className="font-serif text-[2.125rem] font-medium leading-[1.14] tracking-tight text-[#121211] md:text-5xl md:leading-[1.1]">
+              Hi—pick what feels closest
+            </h1>
+            <p className="mx-auto mt-5 max-w-md text-[15px] leading-[1.65] text-[#4d4b46]">
+              Three rough stages. Selling online confused you? Same.{" "}
+              <Link
+                to="/contact"
+                className="font-semibold underline decoration-[hsla(74,99%,49%,0.55)] decoration-2 underline-offset-[5px] transition-colors hover:decoration-[hsl(74,99%,49%)]"
+                style={{ color: "hsl(74, 38%, 28%)" }}
               >
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
-                  <div className="flex items-center gap-3 flex-wrap">
-                    <Icon className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span className="text-xs font-mono text-muted-foreground uppercase tracking-wide">
-                      {solution.flowType === "All Flows" ? solution.flowType : `Low ${solution.flowType}`}
-                    </span>
-                  </div>
-                  <span className="text-3xl sm:text-4xl font-bold text-lime-400/40 font-mono">
-                    0{index + 1}
-                  </span>
-                </div>
-
-                <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-1">{solution.title}</h2>
-                <p className="text-sm text-muted-foreground mb-6">{solution.tagline}</p>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6">
-                  <div>
-                    <p className="text-xs font-mono text-muted-foreground mb-3 uppercase tracking-wide">Symptoms</p>
-                    <ul className="space-y-2">
-                      {solution.symptoms.map((item, i) => (
-                        <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                          <span className="w-1 h-1 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="text-xs font-mono text-primary mb-3 uppercase tracking-wide">What We Solve</p>
-                    <ul className="space-y-2">
-                      {solution.benefits.map((item, i) => (
-                        <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                          <Check className="w-3 h-3 text-primary mt-1 flex-shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <Button size="sm" className="bg-lime-400 text-black hover:bg-lime-300">
-                  Let's Talk
-                </Button>
-              </div>
-            );
-          })}
+                Or just write me.
+              </Link>
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <Button
+                asChild
+                variant="outline"
+                className="rounded-md border-[hsla(74,99%,49%,0.45)] bg-white/90 px-5 font-medium text-[#1a1a18] shadow-[0_0_20px_-8px_hsla(74,99%,49%,0.35)] hover:border-[hsl(74,99%,49%)] hover:bg-white"
+              >
+                <Link to="/flowxsell-quiz">5-min quiz</Link>
+              </Button>
+            </div>
+          </header>
         </div>
-      </section>
 
-      {/* CTA */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6 border-t border-border/30">
-        <div className="container mx-auto max-w-2xl text-center">
-          <h2 className="text-xl sm:text-2xl font-bold mb-3">Not Sure Which Solution You Need?</h2>
-          <p className="text-muted-foreground mb-6">
-            Take our quiz to discover your Primary Flow Disrupter.
-          </p>
-          <Link to="/flowxsell-quiz">
-            <Button className="gap-2">
-              Start the Quiz
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
-        </div>
-      </section>
+        <section
+          aria-label="Service tiers"
+          className="relative mt-2 border-y border-white/[0.08] bg-black text-[#f7f6f4] before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_120%_80%_at_50%_0%,hsla(74,35%,18%,0.12),transparent_55%)] before:content-['']"
+        >
+          <div className="relative z-10 mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20">
+            <div className="mx-auto flex flex-col gap-y-16 md:flex-row md:items-stretch md:justify-center md:gap-y-0">
+              {tiers.flatMap((tier, index) =>
+                index < tiers.length - 1
+                  ? [
+                      <TierCardView key={tier.label} tier={tier} stepIndex={index + 1} />,
+                      <TierColumnDivider key={`divider-after-${tier.label}`} />,
+                    ]
+                  : [<TierCardView key={tier.label} tier={tier} stepIndex={index + 1} />],
+              )}
+            </div>
+          </div>
+        </section>
+      </main>
 
-      {/* Footer */}
-      <footer className="py-6 px-6 border-t border-border/30">
-        <div className="container mx-auto text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} FlowXsell
-        </div>
+      <footer className="relative z-10 border-t border-[hsla(74,99%,49%,0.12)] bg-[hsla(0,0%,100%,0.35)] px-6 py-10 backdrop-blur-[2px]">
+        <p className="text-center text-xs text-[#5c5a54]">&copy; {new Date().getFullYear()} FlowXsell</p>
       </footer>
     </div>
   );
