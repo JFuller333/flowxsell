@@ -19,6 +19,8 @@ import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Merch from "./pages/Merch";
+import MotionGraphicsStudio from "./pages/MotionGraphicsStudio";
+import ShopifyRevenueAudit from "./pages/ShopifyRevenueAudit";
 
 const queryClient = new QueryClient();
 
@@ -40,10 +42,12 @@ const App = () => (
           <Route path="/resume" element={<Resume />} />
           <Route path="/flowxsell-quiz" element={<FlowXsellQuiz />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/shopify-revenue-audit" element={<ShopifyRevenueAudit />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/merch" element={<Merch />} />
+          <Route path="/motion-graphics" element={<MotionGraphicsStudio />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
