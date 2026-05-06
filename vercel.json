@@ -2,9 +2,15 @@
   "functions": {
     "api/audit.js": {
       "maxDuration": 30
+    },
+    "api/email-audit-report.js": {
+      "maxDuration": 15
     }
   },
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
   ]
 }

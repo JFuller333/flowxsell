@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -10,20 +10,10 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Navbar } from "@/components/Navbar";
+import { toast } from "@/components/ui/sonner";
 import { AlertTriangle, CheckCircle2, Loader2, Mail, Search, TrendingDown } from "lucide-react";
-
-import { cn } from "@/lib/utils";
-
-/** Set `true` to re-enable blur + modal email capture before full results. Commented-off behavior for now. */
-const EMAIL_GATE_ENABLED = false;
-
-const EMAIL_GATE_STORAGE = "flowxsell-audit-email";
-const AUDIT_LEADS_LOG = "flowxsell_audit_leads_v1";
-
-function basicEmailOk(s: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.trim());
-}
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -114,6 +104,113 @@ function auditScoreUrgencyBadge(overall: number, max: number): { label: string; 
   if (ratio < 0.5) return { label: "Let’s improve together", cls: "border-red-400/35 bg-red-400/15 text-red-300" };
   if (ratio < 0.75) return { label: "Room to grow", cls: "border-yellow-400/40 bg-yellow-400/15 text-yellow-200" };
   return { label: "Strong start", cls: "border-[#a3e635]/40 bg-[#a3e635]/12 text-[#c8f079]" };
+}
+
+function auditEmailOk(s: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.trim());
+}
+
+function EmailReportButton({ result }: { result: AuditResult }) {
+  const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [formError, setFormError] = useState("");
+  const [sending, setSending] = useState(false);
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = email.trim();
+    if (!auditEmailOk(trimmed)) {
+      setFormError("Please enter a valid email.");
+      return;
+    }
+    setFormError("");
+    setSending(true);
+    try {
+      const res = await fetch("/api/email-audit-report", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ to: trimmed, result }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+      if (!res.ok) {
+        toast.error(typeof data.error === "string" ? data.error : "Couldn't send email. Try again.");
+        return;
+      }
+      toast.success("Report sent — check your inbox.");
+      setOpen(false);
+      setEmail("");
+    } finally {
+      setSending(false);
+    }
+  };
+
+  return (
+    <>
+      <Button
+        type="button"
+        variant="outline"
+        className="gap-2 border-primary/35 bg-background/80 text-sm font-semibold hover:bg-primary/10"
+        onClick={() => setOpen(true)}
+      >
+        <Mail className="h-4 w-4 shrink-0" aria-hidden />
+        Email report
+      </Button>
+      <Dialog
+        open={open}
+        onOpenChange={next => {
+          setOpen(next);
+          if (!next) setFormError("");
+        }}
+      >
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 text-lg">
+              <Mail className="h-5 w-5 shrink-0 text-primary" aria-hidden />
+              Email this report
+            </DialogTitle>
+            <DialogDescription>
+              We&apos;ll send a copy of your scan summary to your inbox. No marketing list — one email with your results.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={e => void submit(e)}>
+            <div className="grid gap-2 py-2">
+              <Label htmlFor="audit-report-email">Email</Label>
+              <Input
+                id="audit-report-email"
+                type="email"
+                name="email"
+                autoComplete="email"
+                inputMode="email"
+                placeholder="you@brand.com"
+                value={email}
+                onChange={e => {
+                  setEmail(e.target.value);
+                  setFormError("");
+                }}
+                className="h-11 text-base"
+                disabled={sending}
+                required
+              />
+              {formError ? (
+                <p className="text-sm text-red-400" role="alert">
+                  {formError}
+                </p>
+              ) : null}
+            </div>
+            <DialogFooter className="gap-2 sm:gap-0">
+              <Button type="button" variant="ghost" disabled={sending} onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+              <Button type="submit" disabled={sending} className="gap-2">
+                {sending ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : null}
+                Send
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+    </>
+  );
 }
 
 function AuditDeepDiveCta({ result, calendlyUrl }: { result: AuditResult; calendlyUrl: string }) {
@@ -220,10 +317,6 @@ const ShopifyAuditTool = () => {
   const [stepIdx, setStepIdx] = useState(0);
   const [result, setResult] = useState<AuditResult | null>(null);
   const [error, setError] = useState("");
-  const [resultsUnlocked, setResultsUnlocked] = useState(false);
-  const [emailGateOpen, setEmailGateOpen] = useState(false);
-  const [captureEmail, setCaptureEmail] = useState("");
-  const [captureError, setCaptureError] = useState("");
   const resultsRef = useRef<HTMLDivElement>(null);
   const stepTimer = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -241,74 +334,6 @@ const ShopifyAuditTool = () => {
     }
   };
 
-  /** New scan resets email gate (when EMAIL_GATE_ENABLED) */
-  useEffect(() => {
-    if (!result) {
-      setResultsUnlocked(false);
-      setEmailGateOpen(false);
-      setCaptureEmail("");
-      setCaptureError("");
-      return;
-    }
-    if (!EMAIL_GATE_ENABLED) {
-      setResultsUnlocked(true);
-      setEmailGateOpen(false);
-      return;
-    }
-    try {
-      if (typeof sessionStorage !== "undefined") {
-        const saved = sessionStorage.getItem(EMAIL_GATE_STORAGE);
-        if (saved && basicEmailOk(saved)) {
-          setResultsUnlocked(true);
-          setEmailGateOpen(false);
-          setCaptureEmail(saved);
-          return;
-        }
-      }
-    } catch {
-      /* ignore */
-    }
-    setResultsUnlocked(false);
-    setEmailGateOpen(true);
-  }, [result]);
-
-  const handleEmailGateSubmit = (e: React.FormEvent) => {
-    if (!EMAIL_GATE_ENABLED) return;
-    e.preventDefault();
-    const trimmed = captureEmail.trim();
-    if (!basicEmailOk(trimmed)) {
-      setCaptureError("Please enter a valid email.");
-      return;
-    }
-    setCaptureError("");
-    try {
-      if (typeof sessionStorage !== "undefined") {
-        sessionStorage.setItem(EMAIL_GATE_STORAGE, trimmed);
-      }
-    } catch {
-      /* ignore */
-    }
-    try {
-      if (typeof localStorage !== "undefined") {
-        const prev = JSON.parse(localStorage.getItem(AUDIT_LEADS_LOG) || "[]") as { email: string; at: string }[];
-        prev.push({ email: trimmed, at: new Date().toISOString() });
-        localStorage.setItem(AUDIT_LEADS_LOG, JSON.stringify(prev.slice(-100)));
-      }
-    } catch {
-      /* ignore */
-    }
-    const hook = typeof import.meta.env !== "undefined" ? import.meta.env.VITE_AUDIT_LEAD_WEBHOOK : undefined;
-    if (hook && typeof hook === "string" && hook.startsWith("http")) {
-      void fetch(hook, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: trimmed, source: "shopify_audit_scan" }),
-      }).catch(() => {});
-    }
-    setResultsUnlocked(true);
-    setEmailGateOpen(false);
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const normalizedUrl = normalizeStoreUrl(url);
@@ -324,13 +349,6 @@ const ShopifyAuditTool = () => {
     setLoading(true);
     setError("");
     setResult(null);
-    if (EMAIL_GATE_ENABLED) {
-      try {
-        if (typeof sessionStorage !== "undefined") sessionStorage.removeItem(EMAIL_GATE_STORAGE);
-      } catch {
-        /* ignore */
-      }
-    }
     startStepCycle();
 
     try {
@@ -429,73 +447,6 @@ const ShopifyAuditTool = () => {
           <div ref={resultsRef}>
             <div className="h-px w-full bg-border" aria-hidden />
 
-            {/* Email gate modal — gated by EMAIL_GATE_ENABLED at top of file */}
-            {EMAIL_GATE_ENABLED && (
-              <Dialog
-                open={emailGateOpen && !resultsUnlocked}
-                onOpenChange={open => {
-                  if (!open && !resultsUnlocked) return;
-                  setEmailGateOpen(open);
-                }}
-              >
-                <DialogContent
-                  className="sm:max-w-md [&>button.absolute]:hidden"
-                  onInteractOutside={e => e.preventDefault()}
-                  onEscapeKeyDown={e => e.preventDefault()}
-                >
-                  <DialogHeader>
-                    <DialogTitle className="flex items-center gap-2 text-lg">
-                      <Mail className="h-5 w-5 shrink-0 text-primary" aria-hidden />
-                      Email to unlock your full scan
-                    </DialogTitle>
-                    <DialogDescription>
-                      We&apos;ll send occasional tips tailored to Shopify founders — no spam. Your results stay private.
-                    </DialogDescription>
-                  </DialogHeader>
-                  <form onSubmit={handleEmailGateSubmit}>
-                    <div className="grid gap-2 py-2">
-                      <label htmlFor="audit-email" className="sr-only">
-                        Email
-                      </label>
-                      <Input
-                        id="audit-email"
-                        type="email"
-                        name="email"
-                        autoComplete="email"
-                        inputMode="email"
-                        placeholder="you@brand.com"
-                        value={captureEmail}
-                        onChange={e => {
-                          setCaptureEmail(e.target.value);
-                          setCaptureError("");
-                        }}
-                        className="h-11 text-base"
-                        required
-                      />
-                      {captureError && (
-                        <p className="text-sm text-red-400" role="alert">
-                          {captureError}
-                        </p>
-                      )}
-                    </div>
-                    <DialogFooter className="gap-2 sm:gap-0">
-                      <Button type="submit" className="w-full sm:w-auto">
-                        Unlock results
-                      </Button>
-                    </DialogFooter>
-                  </form>
-                </DialogContent>
-              </Dialog>
-            )}
-
-            <div className="relative">
-              {/* Subtle veil + blur while email gate is active */}
-              <div
-                className={cn(
-                  "transition-[filter,opacity] duration-300",
-                  EMAIL_GATE_ENABLED && !resultsUnlocked && "pointer-events-none select-none blur-[2px] opacity-[0.92] saturate-[0.96]"
-                )}
-              >
             {/* Store info bar */}
             <div className="bg-card/40 px-4 py-4">
               <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-3">
@@ -515,11 +466,12 @@ const ShopifyAuditTool = () => {
                     <span className="text-base text-muted-foreground">None found — homepage used</span>
                   )}
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className={`inline-flex items-center gap-1.5 rounded border px-3 py-1.5 text-sm font-semibold ${result.shopify.isShopify ? "border-primary/30 bg-primary/10 text-primary" : "border-border bg-card text-muted-foreground"}`}>
                     {result.shopify.isShopify ? <CheckCircle2 className="h-3 w-3" /> : null}
                     {result.shopify.isShopify ? `Shopify · ${result.shopify.confidence} confidence` : "Not Shopify"}
                   </span>
+                  <EmailReportButton result={result} />
                 </div>
               </div>
             </div>
@@ -698,17 +650,6 @@ const ShopifyAuditTool = () => {
 
               {/* CTA */}
               <AuditDeepDiveCta result={result} calendlyUrl={CALENDLY} />
-            </div>
-              </div>
-
-              {EMAIL_GATE_ENABLED && !resultsUnlocked && (
-                <button
-                  type="button"
-                  className="absolute inset-0 z-[1] cursor-pointer bg-transparent"
-                  aria-label="Open email form to reveal full scan results"
-                  onClick={() => setEmailGateOpen(true)}
-                />
-              )}
             </div>
           </div>
         )}
