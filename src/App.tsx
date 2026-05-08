@@ -22,6 +22,7 @@ import Merch from "./pages/Merch";
 import MotionGraphicsStudio from "./pages/MotionGraphicsStudio";
 import ShopifyRevenueAudit from "./pages/ShopifyRevenueAudit";
 import ShopifyAuditTool from "./pages/ShopifyAuditTool";
+import FunnelSnapshot from "./pages/FunnelSnapshot";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +46,7 @@ const App = () => (
           <Route path="/services" element={<Services />} />
           <Route path="/shopify-revenue-audit" element={<ShopifyRevenueAudit />} />
           <Route path="/shopify-audit" element={<ShopifyAuditTool />} />
+          <Route path="/funnel-snapshot" element={<FunnelSnapshot />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />

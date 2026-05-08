@@ -5,6 +5,9 @@
     },
     "api/email-audit-report.js": {
       "maxDuration": 15
+    },
+    "api/funnel-snapshot.js": {
+      "maxDuration": 60
     }
   },
   "rewrites": [

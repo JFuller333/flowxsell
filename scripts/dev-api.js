@@ -1,10 +1,13 @@
-import 'dotenv/config';
+import dotenv from 'dotenv';
 import http from 'http';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
-const PORT = 3001;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// Always load flowxsell/.env (cwd may be repo root when using npm --prefix from parent folder).
+dotenv.config({ path: path.join(__dirname, '..', '.env') });
+
+const PORT = 3001;
 
 function pathOnlyFromRequest(urlPath) {
   if (!urlPath) return '/';
@@ -35,6 +38,10 @@ async function resolveHandler(urlPath) {
   }
   if (pathOnly === '/api/email-audit-report') {
     const { default: handler } = await import('../api/email-audit-report.js');
+    return handler;
+  }
+  if (pathOnly === '/api/funnel-snapshot') {
+    const { default: handler } = await import('../api/funnel-snapshot.js');
     return handler;
   }
   return null;
@@ -112,4 +119,8 @@ server.listen(PORT, () => {
   console.log(`  [api] Local API at http://localhost:${PORT}`);
   console.log(`        POST /api/audit`);
   console.log(`        POST /api/email-audit-report`);
+  console.log(`        POST /api/funnel-snapshot`);
+  console.log(
+    `  [api] PAGESPEED_API_KEY: ${process.env.PAGESPEED_API_KEY ? 'loaded' : 'not set (PSI will use strict quotas)'}`
+  );
 });
