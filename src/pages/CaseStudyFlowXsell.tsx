@@ -270,10 +270,10 @@ const CaseStudyFlowXsell = () => {
                   <div className="flex items-center justify-between w-full gap-6">
                     <div className="flex items-center gap-4">
                       <div className="w-24 h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
-                        <img src={metpureLogo} alt="Metpure Inc" className="w-full h-full object-contain" />
+                        <img src={metpureLogo} alt="MetPure Inc" className="w-full h-full object-contain" />
                       </div>
                       <div className="text-left">
-                        <h3 className="text-xl font-bold">Metpure Inc</h3>
+                        <h3 className="text-xl font-bold">MetPure Inc</h3>
                         <p className="text-sm text-muted-foreground">Enterprise e-commerce platform</p>
                         <a
                           href="https://metpure.com/"

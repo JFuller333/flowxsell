@@ -64,7 +64,7 @@ export interface ClientPdpDashboard {
 export const xsellClientProjects: ClientPdpDashboard[] = [
   {
     slug: "metpure",
-    clientName: "Metpure",
+    clientName: "MetPure",
     projectName: "PDP Flow Optimization Sprint",
     status: "In Progress",
     startDate: "April 10",
