@@ -213,16 +213,16 @@ const ShopifyPlusDev = () => {
             </AccordionContent>
           </AccordionItem>
 
-          {/* Metpue Inc */}
+          {/* Metpure Inc */}
           <AccordionItem value="client-2" className="border border-primary/20 rounded-lg bg-card/50 backdrop-blur-sm px-4 md:px-8 data-[state=open]:bg-primary/5">
             <AccordionTrigger className="hover:no-underline py-4 md:py-6">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-3 md:gap-6">
                 <div className="flex items-center gap-3 md:gap-4">
                   <div className="w-16 h-16 md:w-24 md:h-24 rounded-lg flex items-center justify-center flex-shrink-0 p-1 md:p-2">
-                    <img src={metpureLogo} alt="Metpue Inc" className="w-full h-full object-contain" />
+                    <img src={metpureLogo} alt="Metpure Inc" className="w-full h-full object-contain" />
                   </div>
                   <div className="text-left">
-                    <h3 className="text-base md:text-xl font-bold">Metpue Inc</h3>
+                    <h3 className="text-base md:text-xl font-bold">Metpure Inc</h3>
                     <p className="text-xs md:text-sm text-muted-foreground">B2B wholesale purchasing</p>
                     <a
                       href="https://metpure.com/"

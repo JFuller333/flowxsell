@@ -188,7 +188,7 @@ const Services = () => {
                 variant="outline"
                 className="rounded-md border-[hsla(74,99%,49%,0.45)] bg-white/90 px-5 font-medium text-[#1a1a18] shadow-[0_0_20px_-8px_hsla(74,99%,49%,0.35)] hover:border-[hsl(74,99%,49%)] hover:bg-white"
               >
-                <Link to="/flowxsell-quiz">5-min quiz</Link>
+                <Link to="/shopify-audit">Shopify audit</Link>
               </Button>
             </div>
           </header>

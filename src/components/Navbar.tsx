@@ -9,7 +9,6 @@ const navLinks = [
   { title: "Services", url: "/services" },
   { title: "Blog", url: "/blog" },
   { title: "Shopify Plus", url: "/shopify-plus-development" },
-  { title: "Resume", url: "/resume" },
   { title: "Contact", url: "/contact" },
 ];
 
@@ -66,8 +65,8 @@ export const Navbar = ({ variant = "default" }: NavbarProps) => {
             )}
             asChild
           >
-            <Link to="/flowxsell-quiz">
-              Take Quiz
+            <Link to="/shopify-audit">
+              Shopify Audit
               <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
@@ -115,8 +114,8 @@ export const Navbar = ({ variant = "default" }: NavbarProps) => {
               )}
               asChild
             >
-              <Link to="/flowxsell-quiz" onClick={() => setIsOpen(false)}>
-                Take Quiz
+              <Link to="/shopify-audit" onClick={() => setIsOpen(false)}>
+                Shopify Audit
                 <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>

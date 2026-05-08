@@ -281,8 +281,8 @@ const Index = () => {
           
           <div className="pt-8">
             <Button size="lg" variant="neon" className="group" asChild>
-              <a href="/flowxsell-quiz">
-                Take FlowXsell Quiz
+              <a href="/shopify-audit">
+                Run Shopify Audit
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
