@@ -9,6 +9,8 @@ import aflWebsiteVideoUrl from "@/videos/AFL_Website.mp4?url";
 import massyAriasWebsiteVideoUrl from "@/videos/MassyArias_Website.mp4?url";
 import aflCampaignImage from "@/assets/campaign-architecture.jpg";
 import { Search, Target, Cog, TrendingUp, ArrowRight, Calendar, ExternalLink, Instagram } from "lucide-react";
+import { Link } from "react-router-dom";
+
 const Index = () => {
   const frameworks = [{
     phase: "Phase 01",
@@ -177,6 +179,33 @@ const Index = () => {
               Shopify development &amp; technical projects
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
+          </Button>
+        </div>
+      </section>
+
+      <section className="border-t border-primary/10 px-4 py-16 md:py-20" aria-labelledby="bmf-raffle-heading">
+        <div className="mx-auto flex max-w-md flex-col items-center gap-5 text-center md:max-w-lg md:gap-6">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Limited time</p>
+          <img
+            src="/black-market-flea-logo.png"
+            alt="Black Market Flea"
+            className="h-auto w-full max-w-[220px] rounded-md shadow-md ring-1 ring-black/15 md:max-w-[260px]"
+            loading="lazy"
+            decoding="async"
+          />
+          <div className="space-y-2">
+            <h2 id="bmf-raffle-heading" className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
+              Raffle with Black Market Flea
+            </h2>
+            <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
+              Free, limited-time raffle. Follow the link to see details and enter.
+            </p>
+          </div>
+          <Button size="lg" className="group" asChild>
+            <Link to="/free-website-redesign">
+              Go to raffle
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
           </Button>
         </div>
       </section>

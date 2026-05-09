@@ -31,3 +31,4 @@ scripts/test-resend.js
 
 # Raw video sources exceed GitHub's 100MB limit — host externally or use mp4/webm only in-repo
 src/videos/*.mov
+.vercel

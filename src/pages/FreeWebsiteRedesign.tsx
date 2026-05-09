@@ -8,39 +8,56 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "flowxsell-biz-cards-v1";
-const MAX_STORED_CARDS = 40;
-/** Long edge limit before JPEG compression (keeps localStorage usable). */
+const MAX_STORED_LOCAL = 40;
 const MAX_IMAGE_EDGE_PX = 1600;
 const JPEG_QUALITY = 0.82;
 
-type StoredBusinessCard = {
+type DisplayCard = {
   id: string;
-  imageDataUrl: string;
+  createdAt: string;
+  imageSrc: string;
+};
+
+type PersistedLegacy = {
+  id: string;
+  imageDataUrl?: string;
+  imageSrc?: string;
   createdAt: string;
 };
 
-function loadCards(): StoredBusinessCard[] {
+function loadLocalCards(): DisplayCard[] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
     const parsed = JSON.parse(raw) as unknown;
     if (!Array.isArray(parsed)) return [];
-    return parsed.filter(
-      (item): item is StoredBusinessCard =>
-        typeof item === "object" &&
-        item !== null &&
-        typeof (item as StoredBusinessCard).id === "string" &&
-        typeof (item as StoredBusinessCard).imageDataUrl === "string" &&
-        typeof (item as StoredBusinessCard).createdAt === "string",
-    );
+    const out: DisplayCard[] = [];
+    for (const item of parsed) {
+      if (typeof item !== "object" || item === null) continue;
+      const p = item as PersistedLegacy;
+      const src =
+        typeof p.imageSrc === "string" && p.imageSrc.length > 0
+          ? p.imageSrc
+          : typeof p.imageDataUrl === "string" && p.imageDataUrl.length > 0
+            ? p.imageDataUrl
+            : null;
+      if (typeof p.id !== "string" || typeof p.createdAt !== "string" || !src) continue;
+      out.push({ id: p.id, createdAt: p.createdAt, imageSrc: src });
+    }
+    return out;
   } catch {
     return [];
   }
 }
 
-function persistCards(cards: StoredBusinessCard[]): boolean {
+function persistLocalCards(cards: DisplayCard[]): boolean {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(cards));
+    const normalized = cards.map(({ id, createdAt, imageSrc }) => ({
+      id,
+      createdAt,
+      imageSrc,
+    }));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(normalized));
     return true;
   } catch {
     return false;
@@ -74,11 +91,35 @@ async function compressToJpegDataUrl(input: Blob | File, maxEdge: number): Promi
   }
 }
 
+async function fetchCloudEntries(): Promise<{ ok: boolean; configured: boolean; cards: DisplayCard[] }> {
+  try {
+    const res = await fetch("/api/raffle-entries");
+    if (!res.ok) return { ok: false, configured: false, cards: [] };
+    const data = (await res.json()) as {
+      configured?: boolean;
+      entries?: { id: string; createdAt: string; imageUrl: string }[];
+    };
+    if (data.configured !== true || !Array.isArray(data.entries)) {
+      return { ok: true, configured: false, cards: [] };
+    }
+    return {
+      ok: true,
+      configured: true,
+      cards: data.entries.map((e) => ({
+        id: e.id,
+        createdAt: e.createdAt,
+        imageSrc: e.imageUrl,
+      })),
+    };
+  } catch {
+    return { ok: false, configured: false, cards: [] };
+  }
+}
+
 const FreeWebsiteRedesign = () => {
-  const [cards, setCards] = useState<StoredBusinessCard[]>(() => []);
-  const [hydrated, setHydrated] = useState(false);
+  const [cloudMode, setCloudMode] = useState<boolean | null>(null);
+  const [cards, setCards] = useState<DisplayCard[]>([]);
   const [busy, setBusy] = useState(false);
-  const [cameraActive, setCameraActive] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const captureInputRef = useRef<HTMLInputElement>(null);
@@ -86,50 +127,102 @@ const FreeWebsiteRedesign = () => {
   const streamRef = useRef<MediaStream | null>(null);
 
   useEffect(() => {
-    document.title = "Free website redesign · Business card · FlowXsell";
+    document.title = "BMF Redesign · Business card raffle · FlowXsell";
+  }, []);
+
+  const refreshGallery = useCallback(async () => {
+    const remote = await fetchCloudEntries();
+    if (remote.configured && remote.ok) {
+      setCloudMode(true);
+      setCards(remote.cards);
+      return true;
+    }
+    setCloudMode(false);
+    if (!remote.ok) {
+      toast.error("Could not reach the raffle server. Showing entries saved only on this device.");
+    }
+    setCards(loadLocalCards());
+    return false;
   }, []);
 
   useEffect(() => {
-    setCards(loadCards());
-    setHydrated(true);
-  }, []);
+    void refreshGallery();
+  }, [refreshGallery]);
 
   const stopCamera = useCallback(() => {
     streamRef.current?.getTracks().forEach((t) => t.stop());
     streamRef.current = null;
-    setCameraActive(false);
   }, []);
 
   useEffect(() => () => stopCamera(), [stopCamera]);
 
   const addFromBlob = async (blob: Blob) => {
-    if (loadCards().length >= MAX_STORED_CARDS) {
-      toast.error(`Maximum ${MAX_STORED_CARDS} cards. Remove one to add another.`);
+    if (busy) return;
+
+    const imageDataUrl = await compressToJpegDataUrl(blob, MAX_IMAGE_EDGE_PX).catch(() => null);
+    if (!imageDataUrl) {
+      toast.error("Could not read that image. Try another photo.");
       return;
     }
+
+    /* Resolve mode: prefer cloud once GET says configured */
+    let useCloud = cloudMode === true;
+    if (cloudMode === null) {
+      const remote = await fetchCloudEntries();
+      useCloud = remote.configured && remote.ok;
+      setCloudMode(useCloud);
+      if (!useCloud) setCards(loadLocalCards());
+      else setCards(remote.cards);
+    }
+
     setBusy(true);
     try {
-      const imageDataUrl = await compressToJpegDataUrl(blob, MAX_IMAGE_EDGE_PX);
-      const entry: StoredBusinessCard = {
+      if (useCloud) {
+        const res = await fetch("/api/raffle-upload", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ imageBase64: imageDataUrl }),
+        });
+        let message = "Could not upload.";
+        try {
+          const payload = (await res.json()) as { error?: string };
+          if (!res.ok && payload.error) message = payload.error;
+        } catch {
+          /* keep default message */
+        }
+        if (!res.ok) {
+          toast.error(message);
+          return;
+        }
+        toast.success("Card added — everyone on the site will see your entry in this gallery.");
+        await refreshGallery();
+        return;
+      }
+
+      /* Local fallback */
+      if (loadLocalCards().length >= MAX_STORED_LOCAL) {
+        toast.error(`Maximum ${MAX_STORED_LOCAL} cards locally. Remove one to add another.`);
+        return;
+      }
+
+      const entry: DisplayCard = {
         id: crypto.randomUUID(),
-        imageDataUrl,
+        imageSrc: imageDataUrl,
         createdAt: new Date().toISOString(),
       };
       setCards((prev) => {
-        if (prev.length >= MAX_STORED_CARDS) {
-          toast.error(`Maximum ${MAX_STORED_CARDS} cards. Remove one to add another.`);
+        if (prev.length >= MAX_STORED_LOCAL) {
+          toast.error(`Maximum ${MAX_STORED_LOCAL} cards locally. Remove one to add another.`);
           return prev;
         }
         const next = [entry, ...prev];
-        if (!persistCards(next)) {
+        if (!persistLocalCards(next)) {
           toast.error("Could not save (storage full). Try removing older cards.");
           return prev;
         }
         toast.success("Card saved on this device.");
         return next;
       });
-    } catch {
-      toast.error("Could not read that image. Try another photo.");
     } finally {
       setBusy(false);
     }
@@ -140,6 +233,8 @@ const FreeWebsiteRedesign = () => {
     if (!file || !file.type.startsWith("image/")) return;
     await addFromBlob(file);
   };
+
+  const [cameraActive, setCameraActive] = useState(false);
 
   const startCamera = async () => {
     if (!navigator.mediaDevices?.getUserMedia) {
@@ -182,22 +277,23 @@ const FreeWebsiteRedesign = () => {
     if (!ctx) return;
     ctx.drawImage(video, 0, 0, w, h);
     canvas.toBlob(
-      async (blob) => {
-        if (!blob) {
+      async (b) => {
+        if (!b) {
           toast.error("Capture failed. Try again.");
           return;
         }
+        setCameraActive(false);
         stopCamera();
-        await addFromBlob(blob);
+        await addFromBlob(b);
       },
       "image/jpeg",
       JPEG_QUALITY,
     );
   };
 
-  const removeCard = (id: string) => {
+  const removeCardLocal = (id: string) => {
     const next = cards.filter((c) => c.id !== id);
-    if (!persistCards(next)) {
+    if (!persistLocalCards(next)) {
       toast.error("Could not update storage.");
       return;
     }
@@ -205,13 +301,22 @@ const FreeWebsiteRedesign = () => {
     toast.success("Removed.");
   };
 
-  const clearAll = () => {
+  const clearLocal = () => {
     if (!cards.length) return;
-    if (!confirm("Remove all saved cards from this device?")) return;
+    if (!confirm("Remove all cards saved on this device?")) return;
     localStorage.removeItem(STORAGE_KEY);
     setCards([]);
-    toast.success("All cards cleared.");
+    toast.success("Cleared locally.");
   };
+
+  const showLocalCleanup = cloudMode === false && cards.length > 0;
+
+  const gallerySubtitle =
+    cloudMode === null
+      ? "Checking where entries are saved…"
+      : cloudMode
+        ? "Public gallery — same list for every visitor."
+        : `On this device only (max ${MAX_STORED_LOCAL} cards).`;
 
   return (
     <div className="min-h-screen bg-background">
@@ -233,14 +338,34 @@ const FreeWebsiteRedesign = () => {
                 decoding="async"
               />
             </div>
+            <div className="flex justify-center pt-1">
+              <p
+                className="inline-flex items-baseline gap-2 rounded-full border border-primary/30 bg-background/85 px-4 py-1.5 text-sm shadow-sm backdrop-blur-sm"
+                aria-live="polite"
+              >
+                {cloudMode === null ? (
+                  <span className="text-muted-foreground">…</span>
+                ) : (
+                  <>
+                    <span className="text-lg font-semibold tabular-nums leading-none text-primary">{cards.length}</span>
+                    <span className="text-muted-foreground">
+                      {cloudMode ? "Currently In Raffle" : "on this device (not shared yet)"}
+                    </span>
+                  </>
+                )}
+              </p>
+            </div>
           </div>
           <h1 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[2.85rem]">
-            <span className="neon-text-glow text-primary">Free</span> website redesign for{" "}
+            <span className="neon-text-glow text-primary">BMF</span> website redesign for{" "}
             <span className="text-primary neon-text-glow">revenue optimization</span>
           </h1>
           <p className="mx-auto max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Snap or upload business cards—they’re saved here on your device so you can keep leads organized while you qualify
-            the offer.
+            {cloudMode === true
+              ? "Snap or upload business cards—they’re posted to this page so everyone who visits can see who’s entered the raffle."
+              : cloudMode === false
+                ? "Snap or upload business cards—they’re saved on this device unless the live site database is configured (see setup below)."
+                : "Snap or upload business cards to join the raffle — we’ll show where they appear in a moment."}
           </p>
         </div>
       </section>
@@ -250,8 +375,20 @@ const FreeWebsiteRedesign = () => {
           <CardHeader>
             <CardTitle className="text-xl md:text-2xl">Business card scanner</CardTitle>
             <CardDescription>
-              Use your phone camera in the browser, upload a photo, or open a live camera on desktop.               Images are stored{" "}
-              <span className="font-medium text-foreground/85">only in this browser</span>.
+              Use your phone camera in the browser, upload a photo, or open a live camera on desktop.{" "}
+              {cloudMode === true ? (
+                <span>
+                  Entries are uploaded to the raffle gallery (<span className="font-medium text-foreground/85">visible to visitors</span>).
+                </span>
+              ) : cloudMode === false ? (
+                <span>
+                  This browser is storing images <span className="font-medium text-foreground/85">locally only</span> until{" "}
+                  <span className="font-medium text-foreground/85">Supabase</span> is wired on production (same URL paths as this
+                  build).
+                </span>
+              ) : (
+                <span>Connecting…</span>
+              )}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -262,6 +399,7 @@ const FreeWebsiteRedesign = () => {
                 accept="image/*"
                 capture="environment"
                 className="hidden"
+                disabled={busy || cloudMode === null}
                 onChange={(e) => {
                   void handleFilePick(e.target.files);
                   e.target.value = "";
@@ -272,6 +410,7 @@ const FreeWebsiteRedesign = () => {
                 type="file"
                 accept="image/*"
                 className="hidden"
+                disabled={busy || cloudMode === null}
                 onChange={(e) => {
                   void handleFilePick(e.target.files);
                   e.target.value = "";
@@ -280,7 +419,7 @@ const FreeWebsiteRedesign = () => {
               <Button
                 type="button"
                 size="lg"
-                disabled={busy}
+                disabled={busy || cloudMode === null}
                 className="gap-2"
                 onClick={() => captureInputRef.current?.click()}
               >
@@ -291,7 +430,7 @@ const FreeWebsiteRedesign = () => {
                 type="button"
                 size="lg"
                 variant="secondary"
-                disabled={busy}
+                disabled={busy || cloudMode === null}
                 className="gap-2"
                 onClick={() => fileInputRef.current?.click()}
               >
@@ -299,7 +438,14 @@ const FreeWebsiteRedesign = () => {
                 Upload image
               </Button>
               {!cameraActive ? (
-                <Button type="button" size="lg" variant="outline" disabled={busy} className="gap-2" onClick={startCamera}>
+                <Button
+                  type="button"
+                  size="lg"
+                  variant="outline"
+                  disabled={busy || cloudMode === null}
+                  className="gap-2"
+                  onClick={startCamera}
+                >
                   <Camera className="h-5 w-5" />
                   <span className="hidden sm:inline">Live camera</span>
                   <span className="sm:hidden">Camera</span>
@@ -309,7 +455,7 @@ const FreeWebsiteRedesign = () => {
                   <Button type="button" size="lg" className="gap-2" onClick={captureFromVideo} disabled={busy}>
                     Capture frame
                   </Button>
-                  <Button type="button" size="lg" variant="ghost" onClick={stopCamera}>
+                  <Button type="button" size="lg" variant="ghost" onClick={() => { stopCamera(); setCameraActive(false); }}>
                     Stop camera
                   </Button>
                 </>
@@ -338,46 +484,44 @@ const FreeWebsiteRedesign = () => {
 
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">Saved on this page</h2>
-            <p className="mt-1 text-sm text-muted-foreground">
-              {hydrated ? (
-                <>
-                  {cards.length} card{cards.length === 1 ? "" : "s"} stored locally (max {MAX_STORED_CARDS}).
-                </>
-              ) : (
-                "Loading…"
-              )}
-            </p>
+            <h2 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
+              {cloudMode === true ? "Raffle gallery" : "Saved entries"}
+            </h2>
+            <p className="mt-1 text-sm text-muted-foreground">{gallerySubtitle}</p>
           </div>
-          {cards.length > 0 && (
-            <Button type="button" variant="outline" size="sm" className="gap-2 self-start sm:self-auto" onClick={clearAll}>
+          {showLocalCleanup ? (
+            <Button type="button" variant="outline" size="sm" className="gap-2 self-start sm:self-auto" onClick={clearLocal}>
               <Trash2 className="h-4 w-4" />
-              Clear all
+              Clear all local
             </Button>
-          )}
+          ) : null}
         </div>
 
-        {cards.length === 0 && hydrated ? (
+        {cards.length === 0 && cloudMode !== null ? (
           <Card className="border-dashed border-primary/30 bg-muted/20 p-10 text-center">
-            <p className="text-muted-foreground">No cards yet. Capture your first one above.</p>
+            <p className="text-muted-foreground">{cloudMode ? "No entries yet. Be the first to enter." : "No cards saved on this device yet."}</p>
           </Card>
-        ) : (
+        ) : null}
+
+        {cards.length > 0 ? (
           <ul className="grid gap-4 sm:grid-cols-2">
             {cards.map((c) => (
               <li key={c.id}>
                 <Card className="overflow-hidden border-border/80 bg-card/60">
                   <div className="relative aspect-[1.75/1] bg-black/30">
-                    <img src={c.imageDataUrl} alt="Saved business card" className="h-full w-full object-contain" />
-                    <Button
-                      type="button"
-                      size="icon"
-                      variant="secondary"
-                      className="absolute right-2 top-2 h-9 w-9 rounded-full shadow-md"
-                      onClick={() => removeCard(c.id)}
-                      aria-label="Remove this card"
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
+                    <img src={c.imageSrc} alt="Business card entry" className="h-full w-full object-contain" />
+                    {cloudMode === false ? (
+                      <Button
+                        type="button"
+                        size="icon"
+                        variant="secondary"
+                        className="absolute right-2 top-2 h-9 w-9 rounded-full shadow-md"
+                        onClick={() => removeCardLocal(c.id)}
+                        aria-label="Remove this card"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    ) : null}
                   </div>
                   <CardContent className="py-3">
                     <p className="text-xs text-muted-foreground">
@@ -392,7 +536,7 @@ const FreeWebsiteRedesign = () => {
               </li>
             ))}
           </ul>
-        )}
+        ) : null}
       </section>
     </div>
   );
