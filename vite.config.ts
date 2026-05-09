@@ -7,8 +7,9 @@ import { componentTagger } from "lovable-tagger";
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
-    port: 8080,
-    strictPort: true,
+    /** Avoid clashes with other local apps on 8080/5173; Vite bumps to next free port if busy. */
+    port: 9730,
+    strictPort: false,
     proxy: {
       "/api": {
         target: "http://localhost:3001",

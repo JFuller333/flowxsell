@@ -2,24 +2,19 @@ import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
+import { BookCallCard } from "@/components/BookCallCard";
 import {
   AlertTriangle,
   ArrowDown,
-  CheckCircle2,
   Gauge,
   Globe,
   Loader2,
   Search,
   ShieldCheck,
-  TrendingDown,
-  TrendingUp,
   Zap,
 } from "lucide-react";
 
 const CALENDLY = "https://calendly.com/flowxsell/30min";
-const SNAPSHOT_LIST_PRICE = 500;
-const SNAPSHOT_SALE_PRICE = 250;
-
 type FunnelStage = {
   label: string;
   visitors: number;
@@ -557,73 +552,21 @@ const FunnelSnapshot = () => {
                 </div>
               </section>
 
-              <section className="rounded-md border border-primary/20 bg-primary/[0.04] p-8 md:p-12">
-                <div className="grid gap-10 md:grid-cols-[1fr,min(280px,100%)] md:items-start md:gap-12 lg:grid-cols-[1fr,min(320px,100%)]">
-                  <div className="space-y-6 text-left">
-                    <div>
-                      <h2 className="text-xl font-bold tracking-tight text-foreground md:text-2xl">
-                        Want the deep-dive?
-                        <br />
-                        <span className="text-primary neon-text-glow">
-                          We walk through your snapshot live and prioritize the fixes.
-                        </span>
-                      </h2>
-                      <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-                        ~1 hour: read your snapshot, optionally connect GA for exact numbers, and leave with the top 3
-                        fixes ranked by revenue impact.
-                      </p>
-                    </div>
-                    <ul className="space-y-3 text-base text-muted-foreground md:text-lg">
-                      <li className="flex gap-3">
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-                        <span>Snapshot replaced with real GA4 numbers (optional)</span>
-                      </li>
-                      <li className="flex gap-3">
-                        <TrendingUp className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-                        <span>Top 3 fixes ranked by projected revenue lift</span>
-                      </li>
-                      <li className="flex gap-3">
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-                        <span>Call recording + one-page summary</span>
-                      </li>
-                      <li className="flex gap-3">
-                        <TrendingDown className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-                        <span>Zero-pressure next steps</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <Card className="border-border bg-card/80 p-7 shadow-none backdrop-blur-sm md:p-8">
-                    <div className="text-center">
-                      <div className="rounded-md border border-primary/35 bg-primary/[0.08] px-5 py-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] md:px-6 md:py-5">
-                        <p className="text-xl font-bold leading-tight tracking-tight text-primary neon-text-glow md:text-2xl">
-                          Walk through your snapshot LIVE.
-                        </p>
-                      </div>
-                      <p className="mt-5 text-lg font-semibold text-foreground md:text-xl">Jazlyn Fuller</p>
-                      <p className="mt-1 text-base text-muted-foreground md:text-[17px]">Funnel & Conversion Strategist</p>
-                      <div className="mt-6 flex flex-wrap items-baseline justify-center gap-3">
-                        <span className="text-2xl font-semibold tabular-nums text-muted-foreground line-through decoration-muted-foreground/80 md:text-3xl">
-                          ${SNAPSHOT_LIST_PRICE}
-                        </span>
-                        <span className="text-4xl font-bold tabular-nums text-primary neon-text-glow md:text-5xl">
-                          ${SNAPSHOT_SALE_PRICE}
-                        </span>
-                      </div>
-                      <Button
-                        className="mt-7 w-full items-center justify-center gap-2 rounded-md bg-primary py-7 text-base font-semibold text-primary-foreground shadow-[0_0_24px_-8px_hsla(74,99%,49%,0.45)] transition-colors hover:bg-[hsl(74,99%,54%)] md:text-lg"
-                        asChild
-                      >
-                        <a href={CALENDLY} target="_blank" rel="noopener noreferrer">
-                          <Zap className="h-5 w-5" aria-hidden />
-                          Book the deep-dive
-                        </a>
-                      </Button>
-                      <p className="mt-4 text-sm leading-relaxed text-muted-foreground/80 md:text-base">
-                        No pressure · Your snapshot, your questions, a clear next step
-                      </p>
-                    </div>
-                  </Card>
+              <section className="relative border-t border-primary/20 bg-gradient-to-b from-primary/[0.08] via-background to-background">
+                <div
+                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_55%_at_50%_0%,hsla(74,99%,49%,0.1),transparent_65%)]"
+                  aria-hidden
+                />
+                <div className="relative mx-auto max-w-md px-4 py-14 md:py-20">
+                  <BookCallCard
+                    calendlyUrl={CALENDLY}
+                    highlightTitle="Book a free walkthrough of your snapshot."
+                    personName="Jazlyn Fuller"
+                    personTitle="Funnel & Conversion Strategist"
+                    bookButtonLabel="Book the call"
+                    bookButtonIcon={<Zap className="h-5 w-5" aria-hidden />}
+                    trackingContext="funnel-snapshot"
+                  />
                 </div>
               </section>
             </div>

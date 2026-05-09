@@ -12,6 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Navbar } from "@/components/Navbar";
+import { BookCallCard, JAZLYN_LINKEDIN_URL } from "@/components/BookCallCard";
 import { toast } from "@/components/ui/sonner";
 import { AlertTriangle, CheckCircle2, Loader2, Mail, Search, TrendingDown } from "lucide-react";
 
@@ -37,8 +38,6 @@ type AuditResult = {
 const OVERALL_SCORE_MAX = 4;
 
 const CALENDLY = "https://calendly.com/flowxsell/30min";
-const AUDIT_LIST_PRICE = 500;
-const AUDIT_SALE_PRICE = 250;
 
 /** Accepts pasted domains (e.g. mystore.com) — `type="url"` rejects those in the browser. */
 function normalizeStoreUrl(raw: string): string | null {
@@ -220,7 +219,7 @@ function AuditDeepDiveCta({ result, calendlyUrl }: { result: AuditResult; calend
   const urgency = auditScoreUrgencyBadge(score, maxScore);
 
   return (
-    <section className="rounded-md border border-primary/20 bg-primary/[0.04] p-8 md:p-12">
+    <div className="rounded-md border border-primary/25 bg-card/70 p-8 shadow-[0_0_40px_-20px_hsla(74,99%,49%,0.25)] backdrop-blur-sm md:p-12">
       <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
         <p className="text-base leading-relaxed text-foreground md:text-lg">
           Your store scored{" "}
@@ -236,76 +235,18 @@ function AuditDeepDiveCta({ result, calendlyUrl }: { result: AuditResult; calend
         </span>
       </div>
 
-      <div className="grid gap-10 md:grid-cols-[1fr,min(280px,100%)] md:items-start md:gap-12 lg:grid-cols-[1fr,min(320px,100%)]">
-        <div className="space-y-6 text-left">
-          <div>
-            <h2 className="text-xl font-bold tracking-tight text-foreground md:text-2xl">
-              A lot to take in?
-              <br />
-              <span className="text-primary neon-text-glow">On the call we walk through your scan together — plain English, your pace.</span>
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-              ~1 hour: what your scan says, what to fix first, and a short list for today — questions welcome, no jargon.
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
-              Want <span className="font-medium text-foreground/85">implementation</span> help later? We can sketch options on the
-              same call — zero obligation.
-            </p>
-          </div>
-          <ul className="space-y-3 text-base text-muted-foreground md:text-lg">
-            <li className="flex gap-3">
-              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-              <span>Call recording (yours)</span>
-            </li>
-            <li className="flex gap-3">
-              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-              <span>Top 3 fixes from your scan</span>
-            </li>
-            <li className="flex gap-3">
-              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-              <span>One-page summary</span>
-            </li>
-            <li className="flex gap-3">
-              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-              <span>Clear next steps</span>
-            </li>
-          </ul>
-        </div>
-
-        <Card className="border-border bg-card/80 p-7 shadow-none backdrop-blur-sm md:p-8">
-          <div className="text-center">
-            <div className="rounded-md border border-primary/35 bg-primary/[0.08] px-5 py-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] md:px-6 md:py-5">
-              <p className="text-xl font-bold leading-tight tracking-tight text-primary neon-text-glow md:text-2xl">
-                Review your scan results LIVE.
-              </p>
-            </div>
-            <p className="mt-5 text-lg font-semibold text-foreground md:text-xl">Jazlyn Fuller</p>
-            <p className="mt-1 text-base text-muted-foreground md:text-[17px]">Sr. Shopify Developer</p>
-            <div className="mt-6 flex flex-wrap items-baseline justify-center gap-3">
-              <span className="text-2xl font-semibold tabular-nums text-muted-foreground line-through decoration-muted-foreground/80 md:text-3xl">
-                ${AUDIT_LIST_PRICE}
-              </span>
-              <span className="text-4xl font-bold tabular-nums text-primary neon-text-glow md:text-5xl">${AUDIT_SALE_PRICE}</span>
-            </div>
-            <Button
-              className="mt-7 w-full items-center justify-center gap-2 rounded-md bg-primary py-7 text-base font-semibold text-primary-foreground shadow-[0_0_24px_-8px_hsla(74,99%,49%,0.45)] transition-colors hover:bg-[hsl(74,99%,54%)] md:text-lg"
-              asChild
-            >
-              <a href={calendlyUrl} target="_blank" rel="noopener noreferrer">
-                Book a Call
-              </a>
-            </Button>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground/80 md:text-base">
-              No pressure · Your results, your questions, a clear next step
-            </p>
-            <p className="mt-3 text-xs leading-relaxed text-muted-foreground/75 md:text-sm">
-              Need implementation help too? We can outline what it would take on the same call — you decide if you want to move
-              forward.
-            </p>
-          </div>
-        </Card>
+      <div className="mx-auto max-w-md">
+        <BookCallCard
+          calendlyUrl={calendlyUrl}
+          highlightTitle="Book a free call to walk through your scan."
+          personName="Jazlyn Fuller"
+          personTitle="Sr. Shopify Developer & Ecommerce Manager"
+          bookButtonLabel="Book a call"
+          trackingContext="shopify-audit-results"
+          linkedInUrl={JAZLYN_LINKEDIN_URL}
+        />
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -609,7 +550,7 @@ const ShopifyAuditTool = () => {
               )}
 
               {/* Priority Action List */}
-              <section className="mb-12">
+              <section className="mb-0">
                 <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-primary md:text-sm">Priority Action List</p>
                 <h2 className="mb-6 text-2xl font-bold tracking-tight text-foreground md:text-3xl">What to fix, in order</h2>
                 <div className="space-y-3">
@@ -647,10 +588,27 @@ const ShopifyAuditTool = () => {
                   })}
                 </div>
               </section>
-
-              {/* CTA */}
-              <AuditDeepDiveCta result={result} calendlyUrl={CALENDLY} />
             </div>
+
+            {/* Deep-dive CTA — full-width band so it reads as its own section */}
+            <section
+              aria-labelledby="audit-deep-dive-heading"
+              className="relative mt-12 border-t border-primary/20 bg-gradient-to-b from-primary/[0.07] via-background to-background md:mt-16"
+            >
+              <div
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_0%,hsla(74,99%,49%,0.09),transparent_65%)]"
+                aria-hidden
+              />
+              <div className="relative mx-auto max-w-4xl px-4 pb-16 pt-10 md:pb-20 md:pt-14">
+                <h2
+                  id="audit-deep-dive-heading"
+                  className="mb-6 text-xs font-semibold uppercase tracking-[0.14em] text-primary md:text-sm"
+                >
+                  Next step · book a call
+                </h2>
+                <AuditDeepDiveCta result={result} calendlyUrl={CALENDLY} />
+              </div>
+            </section>
           </div>
         )}
       </main>

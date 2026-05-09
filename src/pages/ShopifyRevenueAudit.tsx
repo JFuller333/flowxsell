@@ -1,11 +1,9 @@
-import { Button } from "@/components/ui/button";
+import { BookCallCard, JAZLYN_LINKEDIN_URL } from "@/components/BookCallCard";
 import { Card } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
 import { TrendingDown, ShoppingCart, Plug, PackageOpen } from "lucide-react";
 
 const CALENDLY_AUDIT = "https://calendly.com/flowxsell/30min";
-const AUDIT_LIST_PRICE = 500;
-const AUDIT_SALE_PRICE = 250;
 
 const symptoms = [
   {
@@ -86,57 +84,18 @@ const ShopifyRevenueAudit = () => {
               <span className="text-primary neon-text-glow">So why isn&apos;t it converting?</span>
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-xl">
-              You don&apos;t have to figure your store out alone. Book a relaxed session to{" "}
-              <span className="font-medium text-foreground/90">review your results</span> — what they mean, what to do first, and
-              how to get sales moving — in language that actually makes sense.
+              Book a time — we&apos;ll walk through what&apos;s going on in plain English.
             </p>
-            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
-              If you&apos;d rather have someone <span className="font-medium text-foreground/85">implement</span> the fixes, we can
-              outline what that could look like on the same call — no obligation to book build work.
-            </p>
-            <div className="mx-auto mt-8 max-w-xl text-center">
-              <div className="rounded-md border border-primary/35 bg-primary/[0.08] px-6 py-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] md:px-7 md:py-6">
-                <p className="text-2xl font-bold leading-tight tracking-tight text-foreground md:text-3xl">
-                  Review your audit results
-                </p>
-                <p className="mt-3 text-xl font-semibold tracking-tight text-primary neon-text-glow md:text-2xl">
-                  Live 1:1 Review w/
-                </p>
-                <p className="mt-3 text-base leading-snug text-muted-foreground md:text-lg">
-                  Sit with your questions — we&apos;ll walk through what you need together.
-                </p>
-              </div>
-              <p className="mt-6 text-lg font-semibold text-foreground md:text-xl">Jazlyn Fuller</p>
-              <p className="mt-1 text-base text-muted-foreground md:text-[17px]">Sr. Shopify Developer</p>
-            </div>
-            <div className="mt-5 flex flex-col items-center gap-1">
-              <div className="flex flex-wrap items-baseline justify-center gap-3">
-                <span className="text-3xl font-semibold tabular-nums text-muted-foreground line-through decoration-muted-foreground/80 md:text-4xl">
-                  ${AUDIT_LIST_PRICE}
-                </span>
-                <span className="text-[3rem] font-bold tabular-nums leading-none text-primary neon-text-glow md:text-[3.5rem]">
-                  ${AUDIT_SALE_PRICE}
-                </span>
-              </div>
-              <span className="text-sm font-medium tracking-wide text-muted-foreground md:text-base">
-                Limited-time rate · 5 spots available
-              </span>
-            </div>
-            <div className="mt-10 flex flex-col items-center gap-3">
-              <Button
-                className="rounded-md bg-primary px-8 py-7 text-base font-semibold text-primary-foreground shadow-[0_0_24px_-8px_hsla(74,99%,49%,0.45)] transition-colors hover:bg-[hsl(74,99%,54%)] md:text-lg"
-                asChild
-              >
-                <a href={CALENDLY_AUDIT} target="_blank" rel="noopener noreferrer">
-                  Book time to review my results
-                </a>
-              </Button>
-              <p className="max-w-md text-center text-sm text-muted-foreground md:text-base">
-                No pressure · Your store, your pace, clear next steps
-              </p>
-              <p className="mx-auto mt-3 max-w-md text-center text-xs text-muted-foreground/85 md:text-sm">
-                Need implementation help later? We&apos;ll map it out if you want — your call.
-              </p>
+            <div className="mx-auto mt-10 max-w-md">
+              <BookCallCard
+                calendlyUrl={CALENDLY_AUDIT}
+                highlightTitle="Book a free call."
+                personName="Jazlyn Fuller"
+                personTitle="Sr. Shopify Developer & Ecommerce Manager"
+                bookButtonLabel="Book a time"
+                trackingContext="shopify-revenue-audit-hero"
+                linkedInUrl={JAZLYN_LINKEDIN_URL}
+              />
             </div>
           </div>
         </section>
@@ -238,36 +197,16 @@ const ShopifyRevenueAudit = () => {
 
         {/* Bottom CTA */}
         <section className="border-t border-border bg-card/40 px-4 py-16 text-center md:py-20">
-          <div className="mx-auto max-w-xl">
-            <h2 className="text-3xl font-bold leading-tight tracking-tight text-foreground md:text-4xl lg:text-5xl">
-              Ready to stop guessing?
-            </h2>
-            <p className="mx-auto mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-              Sit down with Jazlyn to <span className="font-medium text-foreground/90">review your audit results</span> —{" "}
-              {`$${AUDIT_SALE_PRICE}`} for now (usually {`$${AUDIT_LIST_PRICE}`}). Only the first 5 at this rate. Optional: talk
-              through implementation if you&apos;re ready for hands-on help.
-            </p>
-            <div className="mt-8 flex flex-wrap items-baseline justify-center gap-3">
-              <span className="text-2xl font-semibold tabular-nums text-muted-foreground line-through decoration-muted-foreground/80 md:text-3xl">
-                ${AUDIT_LIST_PRICE}
-              </span>
-              <p className="text-3xl font-bold tabular-nums text-primary neon-text-glow md:text-4xl">${AUDIT_SALE_PRICE}</p>
-            </div>
-            <Button
-              className="mt-8 rounded-md bg-primary px-8 py-7 text-base font-semibold text-primary-foreground shadow-[0_0_24px_-8px_hsla(74,99%,49%,0.45)] transition-colors hover:bg-[hsl(74,99%,54%)] md:text-lg"
-              asChild
-            >
-              <a href={CALENDLY_AUDIT} target="_blank" rel="noopener noreferrer">
-                Book time to review my results →
-              </a>
-            </Button>
-            <p className="mt-4 text-sm text-muted-foreground/80 md:text-base">
-              No pressure · Your results, your questions, a clear next step
-            </p>
-            <p className="mx-auto mt-3 max-w-md text-xs text-muted-foreground/85 md:text-sm">
-              Need implementation help too? We can outline what it would take on the same call — you decide when you&apos;re
-              ready.
-            </p>
+          <div className="mx-auto max-w-md">
+            <BookCallCard
+              calendlyUrl={CALENDLY_AUDIT}
+              highlightTitle="Book a free call."
+              personName="Jazlyn Fuller"
+              personTitle="Sr. Shopify Developer & Ecommerce Manager"
+              bookButtonLabel="Book a time →"
+              trackingContext="shopify-revenue-audit-footer"
+              linkedInUrl={JAZLYN_LINKEDIN_URL}
+            />
           </div>
         </section>
       </main>
