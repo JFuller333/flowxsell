@@ -8,6 +8,9 @@
     },
     "api/funnel-snapshot.js": {
       "maxDuration": 60
+    },
+    "api/raffle-delete.js": {
+      "maxDuration": 15
     }
   },
   "rewrites": [

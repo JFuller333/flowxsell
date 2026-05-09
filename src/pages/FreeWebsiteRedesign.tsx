@@ -2,7 +2,7 @@ import { Navbar } from "@/components/Navbar";
 import { ParticleBackground } from "@/components/ParticleBackground";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Camera, Trash2, ImagePlus, Smartphone, Laptop, Loader2 } from "lucide-react";
+import { Camera, Trash2, ImagePlus, Smartphone, Laptop, Loader2, SwitchCamera } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -126,8 +126,28 @@ const FreeWebsiteRedesign = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
 
+  const [adminKey, setAdminKey] = useState<string | null>(null);
+
   useEffect(() => {
     document.title = "BMF Redesign · Business card raffle · FlowXsell";
+  }, []);
+
+  useEffect(() => {
+    try {
+      const url = new URL(window.location.href);
+      const fromUrl = url.searchParams.get("admin");
+      if (fromUrl) {
+        sessionStorage.setItem("flowxsell-raffle-admin", fromUrl);
+        url.searchParams.delete("admin");
+        window.history.replaceState({}, "", url.toString());
+        setAdminKey(fromUrl);
+        return;
+      }
+      const stored = sessionStorage.getItem("flowxsell-raffle-admin");
+      if (stored) setAdminKey(stored);
+    } catch {
+      /* ignore */
+    }
   }, []);
 
   const refreshGallery = useCallback(async () => {
@@ -235,20 +255,36 @@ const FreeWebsiteRedesign = () => {
   };
 
   const [cameraActive, setCameraActive] = useState(false);
+  const [devices, setDevices] = useState<MediaDeviceInfo[]>([]);
+  const [selectedDeviceId, setSelectedDeviceId] = useState<string>("");
 
-  const startCamera = async () => {
+  const startCamera = async (deviceId?: string) => {
     if (!navigator.mediaDevices?.getUserMedia) {
       toast.error("Camera isn’t supported in this browser. Use Take photo / Upload.");
       return;
     }
     setBusy(true);
     try {
+      stopCamera();
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: "environment" },
+        video: deviceId
+          ? { deviceId: { exact: deviceId } }
+          : { facingMode: { ideal: "environment" } },
         audio: false,
       });
       streamRef.current = stream;
       setCameraActive(true);
+
+      try {
+        const all = await navigator.mediaDevices.enumerateDevices();
+        const cams = all.filter((d) => d.kind === "videoinput");
+        setDevices(cams);
+        const activeId = stream.getVideoTracks()[0]?.getSettings().deviceId;
+        setSelectedDeviceId(deviceId ?? activeId ?? "");
+      } catch {
+        /* enumeration optional */
+      }
+
       requestAnimationFrame(() => {
         const v = videoRef.current;
         if (v) {
@@ -262,6 +298,11 @@ const FreeWebsiteRedesign = () => {
     } finally {
       setBusy(false);
     }
+  };
+
+  const switchCamera = async (deviceId: string) => {
+    if (!deviceId || deviceId === selectedDeviceId) return;
+    await startCamera(deviceId);
   };
 
   const captureFromVideo = async () => {
@@ -299,6 +340,45 @@ const FreeWebsiteRedesign = () => {
     }
     setCards(next);
     toast.success("Removed.");
+  };
+
+  const removeCardCloud = async (id: string) => {
+    if (!adminKey) return;
+    if (!confirm("Remove this entry from the public raffle gallery?")) return;
+    setBusy(true);
+    try {
+      const res = await fetch("/api/raffle-delete", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Raffle-Admin": adminKey,
+        },
+        body: JSON.stringify({ id }),
+      });
+      if (res.status === 401) {
+        sessionStorage.removeItem("flowxsell-raffle-admin");
+        setAdminKey(null);
+        toast.error("Admin key rejected. Open the page again with ?admin=<key>.");
+        return;
+      }
+      if (!res.ok) {
+        let msg = "Could not remove entry.";
+        try {
+          const payload = (await res.json()) as { error?: string };
+          if (payload.error) msg = payload.error;
+        } catch {
+          /* keep default */
+        }
+        toast.error(msg);
+        return;
+      }
+      toast.success("Removed from raffle.");
+      await refreshGallery();
+    } catch {
+      toast.error("Network error while removing entry.");
+    } finally {
+      setBusy(false);
+    }
   };
 
   const clearLocal = () => {
@@ -444,7 +524,7 @@ const FreeWebsiteRedesign = () => {
                   variant="outline"
                   disabled={busy || cloudMode === null}
                   className="gap-2"
-                  onClick={startCamera}
+                  onClick={() => void startCamera()}
                 >
                   <Camera className="h-5 w-5" />
                   <span className="hidden sm:inline">Live camera</span>
@@ -455,6 +535,24 @@ const FreeWebsiteRedesign = () => {
                   <Button type="button" size="lg" className="gap-2" onClick={captureFromVideo} disabled={busy}>
                     Capture frame
                   </Button>
+                  {devices.length > 1 ? (
+                    <div className="flex items-center gap-2">
+                      <SwitchCamera className="h-4 w-4 text-muted-foreground" aria-hidden />
+                      <select
+                        value={selectedDeviceId}
+                        onChange={(e) => void switchCamera(e.target.value)}
+                        disabled={busy}
+                        aria-label="Choose camera"
+                        className="h-11 rounded-md border border-input bg-background px-3 text-sm"
+                      >
+                        {devices.map((d, i) => (
+                          <option key={d.deviceId} value={d.deviceId}>
+                            {d.label || `Camera ${i + 1}`}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  ) : null}
                   <Button type="button" size="lg" variant="ghost" onClick={() => { stopCamera(); setCameraActive(false); }}>
                     Stop camera
                   </Button>
@@ -518,6 +616,18 @@ const FreeWebsiteRedesign = () => {
                         className="absolute right-2 top-2 h-9 w-9 rounded-full shadow-md"
                         onClick={() => removeCardLocal(c.id)}
                         aria-label="Remove this card"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    ) : adminKey ? (
+                      <Button
+                        type="button"
+                        size="icon"
+                        variant="destructive"
+                        disabled={busy}
+                        className="absolute right-2 top-2 h-9 w-9 rounded-full shadow-md"
+                        onClick={() => void removeCardCloud(c.id)}
+                        aria-label="Remove this entry from the public raffle"
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>

@@ -52,13 +52,17 @@ async function resolveHandler(urlPath) {
     const { default: handler } = await import('../api/raffle-upload.js');
     return handler;
   }
+  if (pathOnly === '/api/raffle-delete') {
+    const { default: handler } = await import('../api/raffle-delete.js');
+    return handler;
+  }
   return null;
 }
 
 const server = http.createServer(async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Raffle-Secret');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Raffle-Secret, X-Raffle-Admin');
 
   if (req.method === 'OPTIONS') {
     res.writeHead(200);
@@ -130,6 +134,7 @@ server.listen(PORT, () => {
   console.log(`        POST /api/funnel-snapshot`);
   console.log(`        GET  /api/raffle-entries`);
   console.log(`        POST /api/raffle-upload`);
+  console.log(`        POST /api/raffle-delete`);
   console.log(
     `  [api] PAGESPEED_API_KEY: ${process.env.PAGESPEED_API_KEY ? 'loaded' : 'not set (PSI will use strict quotas)'}`
   );
