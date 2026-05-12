@@ -56,6 +56,18 @@ async function resolveHandler(urlPath) {
     const { default: handler } = await import('../api/raffle-delete.js');
     return handler;
   }
+  if (pathOnly === '/api/shopify-metrics') {
+    const { default: handler } = await import('../api/shopify-metrics.js');
+    return handler;
+  }
+  if (pathOnly === '/api/shopify-products') {
+    const { default: handler } = await import('../api/shopify-products.js');
+    return handler;
+  }
+  if (pathOnly === '/api/generate-landing-page') {
+    const { default: handler } = await import('../api/generate-landing-page.js');
+    return handler;
+  }
   return null;
 }
 
@@ -135,6 +147,9 @@ server.listen(PORT, () => {
   console.log(`        GET  /api/raffle-entries`);
   console.log(`        POST /api/raffle-upload`);
   console.log(`        POST /api/raffle-delete`);
+  console.log(`        GET  /api/shopify-metrics?days=30|60|90`);
+  console.log(`        GET  /api/shopify-products`);
+  console.log(`        POST /api/generate-landing-page`);
   console.log(
     `  [api] PAGESPEED_API_KEY: ${process.env.PAGESPEED_API_KEY ? 'loaded' : 'not set (PSI will use strict quotas)'}`
   );

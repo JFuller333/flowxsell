@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { GoogleAnalyticsRouteListener } from "@/components/GoogleAnalyticsRouteListener";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import CaseStudyFlowXsell from "./pages/CaseStudyFlowXsell";
@@ -24,6 +25,9 @@ import ShopifyRevenueAudit from "./pages/ShopifyRevenueAudit";
 import ShopifyAuditTool from "./pages/ShopifyAuditTool";
 import FunnelSnapshot from "./pages/FunnelSnapshot";
 import FreeWebsiteRedesign from "./pages/FreeWebsiteRedesign";
+import AnalyticsDashboard from "./pages/AnalyticsDashboard";
+import AnalyticsGenerate from "./pages/AnalyticsGenerate";
+import AnalyticsSettings from "./pages/AnalyticsSettings";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +37,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <GoogleAnalyticsRouteListener />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/case-study/flowxsell" element={<CaseStudyFlowXsell />} />
@@ -54,6 +59,9 @@ const App = () => (
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/merch" element={<Merch />} />
           <Route path="/motion-graphics" element={<MotionGraphicsStudio />} />
+          <Route path="/analytics" element={<AnalyticsDashboard />} />
+          <Route path="/analytics/generate" element={<AnalyticsGenerate />} />
+          <Route path="/analytics/settings" element={<AnalyticsSettings />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
