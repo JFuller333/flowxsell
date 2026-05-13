@@ -145,7 +145,7 @@ const CaseStudyFlowXsell = () => {
               information flows seamlessly between systems, enabling personalized marketing at scale.
             </p>
             <p className="text-foreground font-medium">
-              The framework doesn't just connect tools—it creates a growth engine that compounds over time.
+              The framework doesn't just connect tools-it creates a growth engine that compounds over time.
             </p>
           </div>
         </Card>
@@ -462,7 +462,7 @@ const CaseStudyFlowXsell = () => {
                       <p className="text-muted-foreground italic">
                         "The custom development work transformed our subscription experience. Our customers love the seamless checkout flow and flexible options."
                       </p>
-                      <p className="text-sm text-muted-foreground mt-2">— Founder, CurlsMonthly</p>
+                      <p className="text-sm text-muted-foreground mt-2">Founder, CurlsMonthly</p>
                     </div>
                   </div>
                 </AccordionContent>
@@ -567,7 +567,7 @@ const CaseStudyFlowXsell = () => {
                       <p className="text-muted-foreground italic">
                         "The technical expertise delivered exactly what we needed. The custom integrations work flawlessly and support our mission perfectly."
                       </p>
-                      <p className="text-sm text-muted-foreground mt-2">— Director, Let's Rebuild Tuskegee</p>
+                      <p className="text-sm text-muted-foreground mt-2">Director, Let's Rebuild Tuskegee</p>
                     </div>
                   </div>
                 </AccordionContent>
@@ -670,7 +670,7 @@ const CaseStudyFlowXsell = () => {
                       <p className="text-muted-foreground italic">
                         "Our B2B portal exceeded expectations. The bulk ordering system streamlined operations and our wholesale customers find it incredibly easy to use."
                       </p>
-                      <p className="text-sm text-muted-foreground mt-2">— Owner, InstaBalloons Wholesale</p>
+                      <p className="text-sm text-muted-foreground mt-2">Owner, InstaBalloons Wholesale</p>
                     </div>
                   </div>
                 </AccordionContent>

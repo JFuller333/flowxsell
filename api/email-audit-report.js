@@ -23,7 +23,7 @@ function isPlainObject(x) {
   return x !== null && typeof x === 'object' && !Array.isArray(x);
 }
 
-/** Light validation — enough to reject garbage / wrong shape. */
+/** Light validation, enough to reject garbage / wrong shape. */
 function isValidAuditPayload(result) {
   if (!isPlainObject(result)) return false;
   if (typeof result.storeUrl !== 'string' || result.storeUrl.length > 2048) return false;
@@ -37,7 +37,7 @@ function isValidAuditPayload(result) {
 
 function buildTextReport(result) {
   const lines = [];
-  lines.push('FlowXsell — Store scan summary');
+  lines.push('FlowXsell, Store scan summary');
   lines.push('');
   lines.push(`Store: ${result.storeUrl}`);
   lines.push(`Product page: ${result.productUrl ?? 'None (homepage used)'}`);
@@ -47,7 +47,7 @@ function buildTextReport(result) {
   lines.push('');
   const overall = result.scores.overall;
   lines.push(
-    `Overall score: ${overall.toFixed(2)} / ${OVERALL_SCORE_MAX.toFixed(2)} — ${scoreLabel(overall)}`
+    `Overall score: ${overall.toFixed(2)} / ${OVERALL_SCORE_MAX.toFixed(2)}, ${scoreLabel(overall)}`
   );
   lines.push('');
   lines.push('Dimensions:');
@@ -62,7 +62,7 @@ function buildTextReport(result) {
     result.leaks.slice(0, 20).forEach((leak, i) => {
       const label = result.itemLabels?.[leak.dim]?.[leak.id] ?? leak.id;
       const dimLabel = result.dimensions[leak.dim]?.label ?? leak.dim;
-      lines.push(`${i + 1}. [${dimLabel}] ${label} — ${leak.leak}`);
+      lines.push(`${i + 1}. [${dimLabel}] ${label}, ${leak.leak}`);
     });
     if (result.leaks.length > 20) {
       lines.push(`…and ${result.leaks.length - 20} more on the full report page.`);
@@ -195,7 +195,7 @@ export default async function handler(req, res) {
     .replace(/^https?:\/\//i, '')
     .split('/')[0]
     .slice(0, 80);
-  const subject = `FlowXsell store scan — ${host || 'your store'}`;
+  const subject = `FlowXsell store scan, ${host || 'your store'}`;
 
   try {
     const resend = new Resend(apiKey);

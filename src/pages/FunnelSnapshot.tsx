@@ -225,7 +225,7 @@ const FunnelSnapshot = () => {
       if (!text.trim()) {
         const hint =
           res.status === 502 || res.status === 503
-            ? " The local API on port 3001 is not running — use npm run dev:full (or start the API separately)."
+            ? " The local API on port 3001 is not running, use npm run dev:full (or start the API separately)."
             : "";
         throw new Error(`Empty response from server (${res.status}).${hint}`);
       }
@@ -275,7 +275,7 @@ const FunnelSnapshot = () => {
               <span className="text-primary neon-text-glow">is bleeding traffic.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-xl">
-              Paste your site. We pull real PageSpeed data, scan your checkout structure, and detect your stack —
+              Paste your site. We pull real PageSpeed data, scan your checkout structure, and detect your stack -
               then model the funnel from those signals. No GA, Shopify, or ad credentials needed.
             </p>
 
@@ -383,20 +383,20 @@ const FunnelSnapshot = () => {
                   {result.performance.mobile ? (
                     <>
                       <div className={`mt-3 text-4xl font-bold tabular-nums leading-none md:text-5xl ${perfColor(result.performance.mobile.score)}`}>
-                        {result.performance.mobile.score ?? "—"}
+                        {result.performance.mobile.score ?? "-"}
                       </div>
                       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                         LCP{" "}
                         <span className="font-semibold text-foreground">
-                          {result.performance.mobile.lcpMs != null ? (result.performance.mobile.lcpMs / 1000).toFixed(1) : "—"}s
+                          {result.performance.mobile.lcpMs != null ? (result.performance.mobile.lcpMs / 1000).toFixed(1) : "-"}s
                         </span>{" "}
                         · CLS{" "}
                         <span className="font-semibold text-foreground">
-                          {result.performance.mobile.clsValue != null ? result.performance.mobile.clsValue.toFixed(3) : "—"}
+                          {result.performance.mobile.clsValue != null ? result.performance.mobile.clsValue.toFixed(3) : "-"}
                         </span>{" "}
                         · TBT{" "}
                         <span className="font-semibold text-foreground">
-                          {result.performance.mobile.tbtMs != null ? Math.round(result.performance.mobile.tbtMs) : "—"}ms
+                          {result.performance.mobile.tbtMs != null ? Math.round(result.performance.mobile.tbtMs) : "-"}ms
                         </span>
                       </p>
                     </>
@@ -418,20 +418,20 @@ const FunnelSnapshot = () => {
                   {result.performance.desktop ? (
                     <>
                       <div className={`mt-3 text-4xl font-bold tabular-nums leading-none md:text-5xl ${perfColor(result.performance.desktop.score)}`}>
-                        {result.performance.desktop.score ?? "—"}
+                        {result.performance.desktop.score ?? "-"}
                       </div>
                       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                         LCP{" "}
                         <span className="font-semibold text-foreground">
-                          {result.performance.desktop.lcpMs != null ? (result.performance.desktop.lcpMs / 1000).toFixed(1) : "—"}s
+                          {result.performance.desktop.lcpMs != null ? (result.performance.desktop.lcpMs / 1000).toFixed(1) : "-"}s
                         </span>{" "}
                         · CLS{" "}
                         <span className="font-semibold text-foreground">
-                          {result.performance.desktop.clsValue != null ? result.performance.desktop.clsValue.toFixed(3) : "—"}
+                          {result.performance.desktop.clsValue != null ? result.performance.desktop.clsValue.toFixed(3) : "-"}
                         </span>{" "}
                         · TBT{" "}
                         <span className="font-semibold text-foreground">
-                          {result.performance.desktop.tbtMs != null ? Math.round(result.performance.desktop.tbtMs) : "—"}ms
+                          {result.performance.desktop.tbtMs != null ? Math.round(result.performance.desktop.tbtMs) : "-"}ms
                         </span>
                       </p>
                     </>

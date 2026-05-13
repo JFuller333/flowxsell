@@ -17,7 +17,7 @@ export function formatShopifyMetricsSnapshot(m: ShopifyMetricsResponse): string 
   );
   if (m.insights?.length) {
     lines.push("Signals:");
-    for (const i of m.insights) lines.push(`- [${i.kind}] ${i.title} — ${i.detail}`);
+    for (const i of m.insights) lines.push(`- [${i.kind}] ${i.title}, ${i.detail}`);
   }
   if (m.topProducts?.length) {
     lines.push("Top products (revenue):");
@@ -32,7 +32,7 @@ export function formatShopifyMetricsSnapshot(m: ShopifyMetricsResponse): string 
     lines.push(`- ${p.date}: revenue $${Math.round(p.revenue)}, sessions ${p.sessions ?? 0}`);
   }
   if (!m.trafficSources?.length) {
-    lines.push("Channel mix: not in Admin export — use GA4 paste if you have it.");
+    lines.push("Channel mix: not in Admin export, use GA4 paste if you have it.");
   }
   return lines.join("\n");
 }

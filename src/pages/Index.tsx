@@ -86,7 +86,7 @@ const Index = () => {
           <h1 className="neon-text-glow text-3xl sm:text-5xl md:text-7xl break-words">FlowXsell</h1>
           
           <p className="text-base sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-0">
-            I help entrepreneurs and start-up companies improve and run technical systems behind their business—When your
+            I help entrepreneurs and start-up companies improve and run technical systems behind their business. When your
             systems flow, your sales grow.
           </p>
           
@@ -244,7 +244,7 @@ const Index = () => {
                 </p>
                 
                 <p>
-                  Most founders aren't failing because they lack effort—they're failing because their growth is fragmented.
+                  Most founders aren't failing because they lack effort. They're failing because their growth is fragmented.
                   Disconnected tools, inconsistent messaging, and no clear operating rhythm.
                 </p>
                 
@@ -273,7 +273,7 @@ const Index = () => {
                 
                 <p className="text-foreground pt-4">
                   This system doesn't just grow your sales.<br />
-                  It grows <em className="text-primary not-italic font-semibold">you</em> as a founder—more focused, more scalable, more in control.
+                  It grows <em className="text-primary not-italic font-semibold">you</em> as a founder: more focused, more scalable, more in control.
                 </p>
               </div>
             </div>
@@ -299,7 +299,7 @@ const Index = () => {
             </p>
             
             <p>
-              What I learned: <span className="text-foreground font-medium">Your growth isn't broken—your system is.</span>
+              What I learned: <span className="text-foreground font-medium">Your growth isn't broken. Your system is.</span>
             </p>
             
             <p>

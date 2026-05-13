@@ -128,7 +128,7 @@ export type AnalyzeTrendsRequest = {
   range: RangeDays;
   framework: BiFrameworkKind;
   industry?: string;
-  /** What we believe we're doing / who we're targeting — validated against data */
+  /** What we believe we're doing / who we're targeting, validated against data */
   targetingClaim?: string;
   question?: string;
   ga4Paste?: string;

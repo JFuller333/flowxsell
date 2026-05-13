@@ -52,7 +52,7 @@ const questions: Question[] = [
   {
     id: "q4",
     section: "Alignment Flow (Brand & Market Fit)",
-    text: "Does your offer connect emotionally—not just functionally—with your audience?",
+    text: "Does your offer connect emotionally, not just functionally, with your audience?",
     options: [
       { label: "Yes", value: 1 },
       { label: "Unsure", value: 0.5 },

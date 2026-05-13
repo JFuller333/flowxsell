@@ -137,7 +137,7 @@ const XsellClientDashboard = () => {
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       {block.items.map((item) => (
                         <li key={item} className="flex gap-2">
-                          <span className="text-primary">—</span>
+                          <span className="text-primary">-</span>
                           <span>{item}</span>
                         </li>
                       ))}

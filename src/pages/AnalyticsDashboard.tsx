@@ -49,7 +49,7 @@ export default function AnalyticsDashboard() {
   }, [range]);
 
   return (
-    <div className="flex min-h-screen bg-background text-foreground">
+    <div className="flex min-h-screen flex-col bg-background text-foreground md:flex-row">
       <AnalyticsSidebar />
       <main className="flex-1 px-6 py-8 md:px-10 md:py-10">
         <header className="mb-6 flex flex-wrap items-end justify-between gap-4">
@@ -87,7 +87,7 @@ export default function AnalyticsDashboard() {
               <strong className="text-foreground/90">Paid</strong> or{" "}
               <strong className="text-foreground/90">Partially paid</strong> in the last {rangeHuman(data.range)}. If
               everything is still <strong className="text-foreground/90">Pending</strong>, or you have no sales in
-              this window, revenue and top products stay at zero — that is real data from Shopify, not a broken
+              this window, revenue and top products stay at zero, that is real data from Shopify, not a broken
               connection.
             </p>
             <p className="mt-2 text-xs">

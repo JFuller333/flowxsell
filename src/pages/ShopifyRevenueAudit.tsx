@@ -9,7 +9,7 @@ const symptoms = [
   {
     icon: TrendingDown,
     title: "Traffic but no sales",
-    body: "People show up — then vanish. Something between the click and the cart is breaking trust.",
+    body: "People show up, then vanish. Something between the click and the cart is breaking trust.",
   },
   {
     icon: ShoppingCart,
@@ -19,7 +19,7 @@ const symptoms = [
   {
     icon: Plug,
     title: "Broken connections",
-    body: "Email, payments, apps — when one link breaks, sales quietly leak out the side.",
+    body: "Email, payments, apps, when one link breaks, sales quietly leak out the side.",
   },
   {
     icon: PackageOpen,
@@ -37,12 +37,12 @@ const steps = [
   {
     num: "02",
     title: "Storefront → Checkout",
-    body: "We find where desire dies — usually one sticky step in the path to cart.",
+    body: "We find where desire dies, usually one sticky step in the path to cart.",
   },
   {
     num: "03",
     title: "Checkout → Payment",
-    body: "Where most stores hemorrhage sales: mobile, fields, trust — the invisible leaks.",
+    body: "Where most stores hemorrhage sales: mobile, fields, trust, the invisible leaks.",
   },
   {
     num: "04",
@@ -52,15 +52,15 @@ const steps = [
   {
     num: "05",
     title: "The verdict",
-    body: "Three fixes, ranked by impact — what to do first, in plain terms.",
+    body: "Three fixes, ranked by impact, what to do first, in plain terms.",
   },
 ];
 
 const deliverables = [
-  "A recording of our chat — yours to keep",
+  "A recording of our chat, yours to keep",
   "Three changes that would help your store most",
   "One simple page that sums things up",
-  "How your tools connect — in plain English",
+  "How your tools connect, in plain English",
   "Friendly next steps",
   "A path forward that feels doable",
 ];
@@ -84,7 +84,7 @@ const ShopifyRevenueAudit = () => {
               <span className="text-primary neon-text-glow">So why isn&apos;t it converting?</span>
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-xl">
-              Book a time — we&apos;ll walk through what&apos;s going on in plain English.
+              Book a time, we&apos;ll walk through what&apos;s going on in plain English.
             </p>
             <div className="mx-auto mt-10 max-w-md">
               <BookCallCard
@@ -107,7 +107,7 @@ const ShopifyRevenueAudit = () => {
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-primary md:text-sm">The problem</p>
           <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl">Sound familiar?</h2>
           <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Four patterns I see again and again — the reason sales never feel steady.
+            Four patterns I see again and again, the reason sales never feel steady.
           </p>
           <div className="mt-10 grid gap-px overflow-hidden rounded-md border border-primary/20 bg-border sm:grid-cols-2">
             {symptoms.map(({ icon: Icon, title, body }) => (
@@ -132,7 +132,7 @@ const ShopifyRevenueAudit = () => {
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-primary md:text-sm">What we cover</p>
           <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl">The audit, step by step</h2>
           <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            You share read-only access before we meet. On the call we fix — we don&apos;t wander.
+            You share read-only access before we meet. On the call we fix, we don&apos;t wander.
           </p>
           <ul className="mt-10 divide-y divide-border border-y border-border">
             {steps.map((step) => (
@@ -174,24 +174,24 @@ const ShopifyRevenueAudit = () => {
           </h2>
           <Card className="mt-8 border-primary/20 bg-card/60 p-6 backdrop-blur-sm md:p-8">
             <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
-              You have <strong className="font-semibold text-foreground">real traffic</strong> — but the numbers don&apos;t match
+              You have <strong className="font-semibold text-foreground">real traffic</strong>, but the numbers don&apos;t match
               the effort. You&apos;ve tweaked, guessed, refreshed. It still feels like a black box.
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
               You don&apos;t need another checklist. You need{" "}
-              <strong className="font-semibold text-foreground">eyes on the whole path</strong> — from first click to post-purchase
-              — and someone to say plainly where the money is going.
+              <strong className="font-semibold text-foreground">eyes on the whole path</strong>, from first click to post-purchase
+             , and someone to say plainly where the money is going.
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-              You want to <strong className="font-semibold text-foreground">move</strong> — not stack more PDFs you never open.
+              You want to <strong className="font-semibold text-foreground">move</strong>, not stack more PDFs you never open.
             </p>
           </Card>
           <div className="mt-8 border-l-2 border-primary bg-primary/5 px-5 py-6 md:px-7">
             <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
-              I&apos;ve built and wired Shopify stores end to end — storefront to checkout to the tools behind them.{" "}
+              I&apos;ve built and wired Shopify stores end to end, storefront to checkout to the tools behind them.{" "}
               <strong className="font-semibold text-foreground">I look where it actually breaks, because I&apos;ve built what lies underneath.</strong>
             </p>
-            <p className="mt-3 text-base font-semibold text-primary md:text-lg">— Jazlyn Fuller, FlowXsell</p>
+            <p className="mt-3 text-base font-semibold text-primary md:text-lg">Jazlyn Fuller, FlowXsell</p>
           </div>
         </section>
 

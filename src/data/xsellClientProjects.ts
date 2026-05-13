@@ -68,7 +68,7 @@ export const xsellClientProjects: ClientPdpDashboard[] = [
     projectName: "PDP Flow Optimization Sprint",
     status: "In Progress",
     startDate: "April 10",
-    currentSprintLabel: "PDP — above-the-fold & trust",
+    currentSprintLabel: "PDP, above-the-fold & trust",
     primaryGoal: "Increase conversion rate",
     flowScores: [
       { label: "PDP", score: 2, max: 4 },
@@ -324,7 +324,7 @@ export const xsellClientProjects: ClientPdpDashboard[] = [
     },
     visualProofCopy: {
       before: "Data inconsistently stored / missing fields",
-      after: "Structured data flow (in progress — to be logged)",
+      after: "Structured data flow (in progress, to be logged)",
     },
   },
 ];

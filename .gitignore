@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 
-# Local secrets — never commit
+# Local secrets: never commit
 .env
 
 # Optional local Resend smoke test (often contains personal test addresses)
@@ -29,6 +29,6 @@ scripts/test-resend.js
 *.sln
 *.sw?
 
-# Raw video sources exceed GitHub's 100MB limit — host externally or use mp4/webm only in-repo
+# Raw video sources exceed GitHub's 100MB limit; host externally or use mp4/webm only in-repo
 src/videos/*.mov
 .vercel

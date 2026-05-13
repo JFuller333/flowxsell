@@ -206,7 +206,7 @@ const MotionGraphicsStudio = () => {
     appendJob(job);
 
     if (!hasApi) {
-      toast.message("Draft saved — API not configured", {
+      toast.message("Draft saved, API not configured", {
         description: "Set VITE_MOTION_GRAPHICS_API_URL in .env and rebuild, or paste the prompt into your generator.",
       });
       return;
@@ -439,7 +439,7 @@ const MotionGraphicsStudio = () => {
               <CardContent className="max-h-[280px] overflow-y-auto space-y-2 pr-1">
                 {jobs.length === 0 ? (
                   <p className="text-sm text-muted-foreground py-6 text-center">
-                    No drafts yet — generate one to populate this list.
+                    No drafts yet, generate one to populate this list.
                   </p>
                 ) : (
                   jobs.map((j) => (
@@ -525,7 +525,7 @@ const MotionGraphicsStudio = () => {
               </CardHeader>
               <CardContent>
                 <pre className="text-[11px] leading-relaxed text-muted-foreground whitespace-pre-wrap break-words max-h-[220px] overflow-y-auto rounded-md bg-secondary/50 border border-primary/10 p-3 font-mono">
-                  {composedPrompt || "—"}
+                  {composedPrompt || "-"}
                 </pre>
               </CardContent>
             </Card>

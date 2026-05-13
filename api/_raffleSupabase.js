@@ -6,7 +6,7 @@ export function isRaffleStorageConfigured() {
   return Boolean(url?.length && key?.length);
 }
 
-/** Admin client — use only inside /api handlers (never in the browser). */
+/** Admin client, use only inside /api handlers (never in the browser). */
 export function getRaffleSupabase() {
   if (!isRaffleStorageConfigured()) return null;
   return createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, {

@@ -2,7 +2,7 @@ import { shopifyCreds, shopifyGraphQL } from './_shopifyClient.js';
 
 // GET /api/shopify-smoke
 // Minimal Admin GraphQL call (one product) to verify domain + token + API version.
-// Uses the same client as /api/shopify-metrics — no Storefront, no VITE_*.
+// Uses the same client as /api/shopify-metrics, no Storefront, no VITE_*.
 
 const SMOKE_QUERY = `
   query Smoke {
@@ -32,7 +32,7 @@ export default async function handler(req, res) {
   const creds = shopifyCreds();
   const { domain, token, configured } = creds;
 
-  /** No secrets — helps spot truncated .env, wrong prefix, or domain/token swap. */
+  /** No secrets, helps spot truncated .env, wrong prefix, or domain/token swap. */
   const diagnostics = {
     hasDomain: Boolean(domain),
     hasToken: Boolean(token),
@@ -71,10 +71,10 @@ export default async function handler(req, res) {
         body: JSON.stringify({ query: '{ products(first: 1) { edges { node { id title } } } }' }),
       },
       decode: {
-        401: 'Token rejected for this host — wrong SHOPIFY_STORE_DOMAIN, wrong token, revoked token, or not Admin API access token.',
-        403: 'Missing Admin scope — enable read_products (and read_orders for metrics) on the custom app, reinstall, rotate token if needed.',
-        404: 'Unknown API version path — bump SHOPIFY_API_VERSION to a supported version (see Shopify API release notes).',
-        402: 'Payment required on shop (rare for GraphQL) — check Shopify account status.',
+        401: 'Token rejected for this host, wrong SHOPIFY_STORE_DOMAIN, wrong token, revoked token, or not Admin API access token.',
+        403: 'Missing Admin scope, enable read_products (and read_orders for metrics) on the custom app, reinstall, rotate token if needed.',
+        404: 'Unknown API version path, bump SHOPIFY_API_VERSION to a supported version (see Shopify API release notes).',
+        402: 'Payment required on shop (rare for GraphQL), check Shopify account status.',
       },
     });
   }

@@ -177,14 +177,14 @@ const ShopifyPlusDev = () => {
                 <div>
                   <h4 className="text-lg font-semibold mb-2 text-primary">Technical Challenge</h4>
                   <p className="text-muted-foreground">
-                    Needed a conversion-focused supplements storefront at scale (two sites totaling 1.3M+ users), with custom bundle building, modular sections, and a redesigned sister-company experience—all while maintaining fast mobile performance.
+                    Needed a conversion-focused supplements storefront at scale (two sites totaling 1.3M+ users), with custom bundle building, modular sections, and a redesigned sister-company experience, all while maintaining fast mobile performance.
                   </p>
                 </div>
 
                 <div>
                   <h4 className="text-lg font-semibold mb-2 text-primary">Development Solution</h4>
                   <p className="text-muted-foreground mb-3">
-                    Created a custom bundle feature with tailored Liquid + JavaScript logic, built reusable custom sections for rapid merchandising updates, and redesigned the sister company’s website—optimizing PDP and cart flows for upsells without adding checkout friction.
+                    Created a custom bundle feature with tailored Liquid + JavaScript logic, built reusable custom sections for rapid merchandising updates, and redesigned the sister company’s website, optimizing PDP and cart flows for upsells without adding checkout friction.
                   </p>
                 </div>
 

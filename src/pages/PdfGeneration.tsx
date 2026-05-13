@@ -17,7 +17,7 @@ const CARD_PREVIEW_CLASS =
 const FTI_CARD_PREVIEW_CLASS =
   "w-full max-w-[420px] aspect-[3.5/2] rounded-lg overflow-hidden border border-[#8a7020]/40 bg-black text-white relative";
 
-/** Letter ratio (8.5″ × 11″) — preview scales; export uses fixed px for sharp PDF. */
+/** Letter ratio (8.5″ × 11″), preview scales; export uses fixed px for sharp PDF. */
 const FLYER_PREVIEW_CLASS =
   "w-full max-w-[560px] aspect-[8.5/11] rounded-lg overflow-hidden border border-neutral-200 bg-white text-neutral-900 shadow-sm relative";
 
@@ -269,7 +269,7 @@ const PdfGeneration = () => {
       pdf.addImage(png, "PNG", 0, 0, pageW, pageH, undefined, "FAST");
 
       pdf.save("FlowXsell_Business_Card.pdf");
-      toast.success("PDF downloaded — logo and contact on one card (3.5″ × 2″).");
+      toast.success("PDF downloaded, logo and contact on one card (3.5″ × 2″).");
     } catch (error) {
       console.error("Error generating business card PDF:", error);
       toast.error("PDF download failed. Try again in a moment.");
@@ -317,7 +317,7 @@ const PdfGeneration = () => {
       pdf.addImage(png, "PNG", 0, 0, pageW, pageH, undefined, "FAST");
 
       pdf.save("Fulltime_Investments_LLC_Business_Card.pdf");
-      toast.success("PDF downloaded — logo and details on one side (3.5″ × 2″).");
+      toast.success("PDF downloaded, logo and details on one side (3.5″ × 2″).");
     } catch (error) {
       console.error("Error generating FTI PDF:", error);
       toast.error("PDF download failed. Try again in a moment.");
@@ -437,7 +437,7 @@ const PdfGeneration = () => {
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">One-sided card</h2>
             <p className="text-muted-foreground text-sm sm:text-base max-w-xl">
-              Logo on the left; company line, tagline, and contact on the right — all on a single 3.5″ × 2″ printable
+              Logo on the left; company line, tagline, and contact on the right, all on a single 3.5″ × 2″ printable
               face. Preview matches the PDF.
             </p>
           </div>

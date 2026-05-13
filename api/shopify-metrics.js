@@ -46,7 +46,7 @@ const ORDERS_QUERY = `
 
 async function fetchAllOrders(days) {
   const cutoff = daysAgoISO(days);
-  // Shopify search syntax: date values must be quoted; OR binds tighter than AND — group explicitly.
+  // Shopify search syntax: date values must be quoted; OR binds tighter than AND, group explicitly.
   const filter = `created_at:>='${cutoff}' AND (financial_status:paid OR financial_status:partially_paid)`;
   const orders = [];
   let after = null;

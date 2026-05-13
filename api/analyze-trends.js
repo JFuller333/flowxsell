@@ -47,7 +47,7 @@ const BI_OUTPUT_SCHEMA = {
     industryAndEmergingContext: {
       type: 'string',
       description:
-        'Typical patterns in the stated industry and emerging trends that could matter — clearly labeled as general context, not verified facts about this merchant.',
+        'Typical patterns in the stated industry and emerging trends that could matter, clearly labeled as general context, not verified facts about this merchant.',
     },
     recommendations: {
       type: 'string',
@@ -70,7 +70,7 @@ const SYSTEM = `You are a principal BI / analytics partner for a commerce team.
 Rules:
 - Do not invent statistics. Only interpret what is in the user payload.
 - Always address whether conclusions are trustworthy given data quality and coverage.
-- Always address whether the merchant's stated targeting/strategy is directionally right given the evidence — or where the data is silent.
+- Always address whether the merchant's stated targeting/strategy is directionally right given the evidence, or where the data is silent.
 - Prefer plain English. Short paragraphs and bullets inside string fields are fine.
 - Return STRICTLY JSON conforming to the provided schema. No prose outside the JSON.`;
 
@@ -122,7 +122,7 @@ function formatShopifyPayloadForPrompt(m) {
   );
   if (Array.isArray(m.insights) && m.insights.length) {
     lines.push('Signals:');
-    for (const i of m.insights) lines.push(`- [${i.kind}] ${i.title} — ${i.detail}`);
+    for (const i of m.insights) lines.push(`- [${i.kind}] ${i.title}, ${i.detail}`);
   }
   if (Array.isArray(m.topProducts) && m.topProducts.length) {
     lines.push('Top products (revenue):');
@@ -138,7 +138,7 @@ function formatShopifyPayloadForPrompt(m) {
     lines.push(`- ${p.date}: revenue $${Math.round(p.revenue)}, sessions ${p.sessions ?? 0}`);
   }
   if (!m.trafficSources?.length) {
-    lines.push('Channel mix: not in Admin export — use GA4 paste if you have it.');
+    lines.push('Channel mix: not in Admin export, use GA4 paste if you have it.');
   }
   return lines.join('\n');
 }
@@ -165,7 +165,7 @@ function mockBiResult(shopifySource, industry, framework) {
   const ind = industry?.trim() ? ` (${industry.trim()})` : '';
   const fw = framework.replace(/_/g, ' ');
   return {
-    executiveSummary: `Demo mode — add ANTHROPIC_API_KEY to flowxsell/.env and restart npm run dev:full for a full structured BI report${ind}. Framework selected: ${fw}.`,
+    executiveSummary: `Demo mode, add ANTHROPIC_API_KEY to flowxsell/.env and restart npm run dev:full for a full structured BI report${ind}. Framework selected: ${fw}.`,
     truthAndDataQuality:
       shopifySource === 'live'
         ? 'Live Shopify metrics were loaded on the server. GA4/Meta blocks depend on what you pasted; missing pastes mean channel conclusions are limited.'
@@ -173,7 +173,7 @@ function mockBiResult(shopifySource, industry, framework) {
           ? 'Shopify text came from the browser (demo fixture or manual paste). Treat all numbers as unverified until reconciled to a system of record.'
           : 'No Shopify payload was available for this demo response.',
     directionVsData:
-      'With demo mode, the model does not run — add the API key to test whether your targeting claim is supported by your real metrics.',
+      'With demo mode, the model does not run, add the API key to test whether your targeting claim is supported by your real metrics.',
     risksAndGaps: 'Without live AI, we cannot stress-test assumptions or list contradictions automatically.',
     industryAndEmergingContext:
       'General industry patterns are not generated in demo mode. After enabling the key, this section will anchor to your stated industry without inventing competitor facts.',
@@ -196,7 +196,7 @@ function buildUserPrompt({
     '',
     '--- USER INPUTS ---',
     `Industry: ${industry?.trim() || '(not specified)'}`,
-    `Targeting / strategy claim (what we believe we are doing): ${targetingClaim?.trim() || '(not specified — say conclusions on direction are limited)'}`,
+    `Targeting / strategy claim (what we believe we are doing): ${targetingClaim?.trim() || '(not specified, say conclusions on direction are limited)'}`,
     `Additional question: ${question?.trim() || '(none)'}`,
     '',
     shopifyText || '(No Shopify block)',

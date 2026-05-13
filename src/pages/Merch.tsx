@@ -15,7 +15,7 @@ const Merch = () => {
 
       <div className="w-full pt-20 md:pt-24">
         <div className="w-full border-b border-primary/10 bg-primary/[0.04] px-3 py-2.5 text-center text-[11px] font-mono uppercase tracking-[0.2em] text-primary sm:text-xs">
-          Demo merch PDP — layout mirrors a full-width Shopify product template
+          Demo merch PDP, layout mirrors a full-width Shopify product template
         </div>
 
         <nav
@@ -91,7 +91,7 @@ const Merch = () => {
               <AccordionItem value="care">
                 <AccordionTrigger className="text-left">Care</AccordionTrigger>
                 <AccordionContent className="text-sm text-muted-foreground">
-                  Machine wash cold, tumble low. Example only — replace with product metafields in Liquid or Storefront.
+                  Machine wash cold, tumble low. Example only, replace with product metafields in Liquid or Storefront.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>

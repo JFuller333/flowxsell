@@ -3,10 +3,10 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-/** Site-wide sticky promo for Metrics to Message (analytics → landing page). Hidden on that route. */
+/** Sticky promo for Metrics to Message, links to the analytics dashboard. Hidden on that route. */
 export function SiteBottomPromoBar() {
   const { pathname } = useLocation();
-  if (pathname === "/analytics/generate") return null;
+  if (pathname === "/analytics") return null;
 
   return (
     <div
@@ -14,10 +14,10 @@ export function SiteBottomPromoBar() {
         "pointer-events-none fixed inset-x-0 bottom-0 z-50 flex justify-center px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2",
       )}
       role="region"
-      aria-label="Metrics to Message: Interpret, Strategize, Ship in one place."
+      aria-label="Metrics to Message: open analytics dashboard"
     >
       <Link
-        to="/analytics/generate"
+        to="/analytics"
         className={cn(
           "pointer-events-auto flex max-w-lg flex-col gap-1 rounded-lg border border-border bg-card/95 px-3 py-2 shadow-lg backdrop-blur-md transition-colors",
           "hover:border-primary/50 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",

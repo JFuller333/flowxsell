@@ -214,7 +214,7 @@ const FreeWebsiteRedesign = () => {
           toast.error(message);
           return;
         }
-        toast.success("Card added — everyone on the site will see your entry in this gallery.");
+        toast.success("Card added, everyone on the site will see your entry in this gallery.");
         await refreshGallery();
         return;
       }
@@ -395,7 +395,7 @@ const FreeWebsiteRedesign = () => {
     cloudMode === null
       ? "Checking where entries are saved…"
       : cloudMode
-        ? "Public gallery — same list for every visitor."
+        ? "Public gallery, same list for every visitor."
         : `On this device only (max ${MAX_STORED_LOCAL} cards).`;
 
   return (
@@ -442,10 +442,10 @@ const FreeWebsiteRedesign = () => {
           </h1>
           <p className="mx-auto max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
             {cloudMode === true
-              ? "Snap or upload business cards—they’re posted to this page so everyone who visits can see who’s entered the raffle."
+              ? "Snap or upload business cards-they’re posted to this page so everyone who visits can see who’s entered the raffle."
               : cloudMode === false
-                ? "Snap or upload business cards—they’re saved on this device unless the live site database is configured (see setup below)."
-                : "Snap or upload business cards to join the raffle — we’ll show where they appear in a moment."}
+                ? "Snap or upload business cards-they’re saved on this device unless the live site database is configured (see setup below)."
+                : "Snap or upload business cards to join the raffle, we’ll show where they appear in a moment."}
           </p>
         </div>
       </section>

@@ -35,7 +35,7 @@ const posts: Record<
       },
       {
         type: "p",
-        text: "We started Let's Rebuild Tuskegee with a clear purpose: to help protect Tuskegee from potential gentrification while actively revitalizing the community—specifically addressing long-standing blight in historically significant neighborhoods.",
+        text: "We started Let's Rebuild Tuskegee with a clear purpose: to help protect Tuskegee from potential gentrification while actively revitalizing the community, specifically addressing long-standing blight in historically significant neighborhoods.",
       },
       {
         type: "p",
@@ -47,7 +47,7 @@ const posts: Record<
       },
       {
         type: "p",
-        text: "Five years later, we reconnected—this time with deeper experience, stronger capabilities, and clearer execution power.",
+        text: "Five years later, we reconnected. This time with deeper experience, stronger capabilities, and clearer execution power.",
       },
       {
         type: "p",
@@ -55,12 +55,12 @@ const posts: Record<
       },
       {
         type: "p",
-        text: "As a registered 501(c)(3), we also recognized a unique opportunity: to re-engage Tuskegee alumni and the broader community by creating transparent, project-based ways for people to participate in community development—not just donate blindly, but follow progress and impact in real time.",
+        text: "As a registered 501(c)(3), we also recognized a unique opportunity: to re-engage Tuskegee alumni and the broader community by creating transparent, project-based ways for people to participate in community development. Not just donate blindly, but follow progress and impact in real time.",
       },
       { type: "h2", text: "What Challenge Were We Facing?" },
       {
         type: "p",
-        text: "One of the biggest challenges we experienced—both in the past and now—was transparency and control.",
+        text: "One of the biggest challenges we experienced, both in the past and now, was transparency and control.",
       },
       {
         type: "p",
@@ -77,7 +77,7 @@ const posts: Record<
       },
       {
         type: "p",
-        text: "We believe many alumni and supporters want to give back to Tuskegee—but often don't have a clear, trusted, or specific way to do so. When donating to large institutions, supporters don't always know how or where their funds are allocated.",
+        text: "We believe many alumni and supporters want to give back to Tuskegee, but often don't have a clear, trusted, or specific way to do so. When donating to large institutions, supporters don't always know how or where their funds are allocated.",
       },
       {
         type: "p",
@@ -110,7 +110,7 @@ const posts: Record<
       },
       {
         type: "p",
-        text: "As a developer, I see platforms as digital land—and when you own the land, you can build anything you want.",
+        text: "As a developer, I see platforms as digital land, and when you own the land, you can build anything you want.",
       },
       {
         type: "p",
@@ -135,7 +135,7 @@ const posts: Record<
       },
       {
         type: "p",
-        text: "The core concept—from idea to a live, functional platform—was built in under one week. Refinements and enhancements took additional weeks, but the foundational system came together incredibly fast compared to traditional development timelines.",
+        text: "The core concept, from idea to a live, functional platform, was built in under one week. Refinements and enhancements took additional weeks, but the foundational system came together incredibly fast compared to traditional development timelines.",
       },
       { type: "h2", text: "What Changed After the Work Was Complete?" },
       {
@@ -144,7 +144,7 @@ const posts: Record<
       },
       {
         type: "p",
-        text: "First, this project showed me the real power of AI-assisted development. What would have traditionally taken six months could now be done in a fraction of the time—without sacrificing quality.",
+        text: "First, this project showed me the real power of AI-assisted development. What would have traditionally taken six months could now be done in a fraction of the time, without sacrificing quality.",
       },
       {
         type: "p",
@@ -152,7 +152,7 @@ const posts: Record<
       },
       {
         type: "p",
-        text: "This platform doesn't just help Let's Rebuild Tuskegee—it gives the community access to funding pathways that didn't previously exist. Alumni and supporters can now participate directly in meaningful, transparent development projects that shape the future of Tuskegee.",
+        text: "This platform doesn't just help Let's Rebuild Tuskegee. It gives the community access to funding pathways that didn't previously exist. Alumni and supporters can now participate directly in meaningful, transparent development projects that shape the future of Tuskegee.",
       },
       {
         type: "p",
@@ -161,7 +161,7 @@ const posts: Record<
       { type: "h2", text: "Key Takeaway" },
       {
         type: "p",
-        text: "I'll be honest—the biggest lesson from this project is that if you know how to strategically use modern tools, you can build almost anything.",
+        text: "I'll be honest: the biggest lesson from this project is that if you know how to strategically use modern tools, you can build almost anything.",
       },
       {
         type: "p",
@@ -169,7 +169,7 @@ const posts: Record<
       },
       {
         type: "p",
-        text: "This project showed me how to build a scalable system that can take this nonprofit to the next level—while also reinforcing a broader truth: in today's environment, the only real limitation is whether you decide to act.",
+        text: "This project showed me how to build a scalable system that can take this nonprofit to the next level, while also reinforcing a broader truth: in today's environment, the only real limitation is whether you decide to act.",
       },
       { type: "h2", text: "A Message from the FlowXsell Team" },
       {
@@ -178,7 +178,7 @@ const posts: Record<
       },
       {
         type: "p",
-        text: "We help founders and organizations build scalable technical systems, not just websites—using a systems-first approach grounded in real business needs. Through the FlowXsell framework, we design and develop custom Shopify solutions that support growth, transparency, and long-term impact.",
+        text: "We help founders and organizations build scalable technical systems, not just websites, using a systems-first approach grounded in real business needs. Through the FlowXsell framework, we design and develop custom Shopify solutions that support growth, transparency, and long-term impact.",
       },
       {
         type: "p",

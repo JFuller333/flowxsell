@@ -11,7 +11,7 @@ type TierCard = {
   youGet: [string, string, string];
 };
 
-/** Horizontal stroke — soft lime, quiet glow */
+/** Horizontal stroke, soft lime, quiet glow */
 function TierMetaRule() {
   return (
     <div
@@ -39,7 +39,7 @@ const tiers: TierCard[] = [
     anchorPrice: "$500",
     priceIntro: "Starting at",
     title: "Figure it out together",
-    vibe: "New to selling online—we map the basics in plain words.",
+    vibe: "New to selling online-we map the basics in plain words.",
     youGet: [
       "Starter plan: offer · channel · sequencing",
       "$150–500 calls, jargon-free",
@@ -51,7 +51,7 @@ const tiers: TierCard[] = [
     anchorPrice: "$2,500",
     priceIntro: "Starting at",
     title: "Make sales steadier",
-    vibe: "You’ve got fans—product revenue just won’t behave.",
+    vibe: "You’ve got fans-product revenue just won’t behave.",
     youGet: [
       "Offers · pricing · checkout tuned",
       "Clearer buyer path",
@@ -63,11 +63,11 @@ const tiers: TierCard[] = [
     anchorPrice: "$5,000",
     priceIntro: "Starting at",
     title: "Systems that hold volume",
-    vibe: "Big revenue, messy stack—checkout, APIs, workflows.",
+    vibe: "Big revenue, messy stack-checkout, APIs, workflows.",
     youGet: [
       "Map: checkout · APIs · data · owners",
-      "Architecture that survives volume—not hacks",
-      "Plain specs—or hands-on build if engaged",
+      "Architecture that survives volume-not hacks",
+      "Plain specs-or hands-on build if engaged",
     ],
   },
 ];
@@ -170,7 +170,7 @@ const Services = () => {
           <header className="mx-auto mb-14 max-w-2xl text-center md:mb-16">
             <p className="mb-3 text-[12px] font-medium tracking-wide text-[hsl(74,38%,34%)]">Services</p>
             <h1 className="font-serif text-[2.125rem] font-medium leading-[1.14] tracking-tight text-[#121211] md:text-5xl md:leading-[1.1]">
-              Hi—pick what feels closest
+              Hi-pick what feels closest
             </h1>
             <p className="mx-auto mt-5 max-w-md text-[15px] leading-[1.65] text-[#4d4b46]">
               Three rough stages. Selling online confused you? Same.{" "}

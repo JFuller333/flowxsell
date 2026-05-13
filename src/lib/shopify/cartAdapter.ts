@@ -11,5 +11,5 @@ export type CartLineInput = {
 
 export async function addLinesToShopifyCart(_lines: CartLineInput[]): Promise<void> {
   // Implement with your storefront proxy or Hydrogen cart handler.
-  throw new Error("Shopify cart not wired yet — use addLinesToCartPlaceholder from cartPlaceholder.ts");
+  throw new Error("Shopify cart not wired yet, use addLinesToCartPlaceholder from cartPlaceholder.ts");
 }

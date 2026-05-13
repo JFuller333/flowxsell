@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 export const JAZLYN_LINKEDIN_URL = "https://www.linkedin.com/in/jazlyn-fuller/";
 
 /**
- * Connection stack — three Unsplash portraits (commonly used inclusive / professional stock)
+ * Connection stack, three Unsplash portraits (commonly used inclusive / professional stock)
  * plus two RandomUser headshots for extra Black representation. Host your own under `public/` anytime.
  */
 const CONNECTION_PREVIEW_PHOTOS = [

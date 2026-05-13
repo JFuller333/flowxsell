@@ -39,7 +39,7 @@ const OVERALL_SCORE_MAX = 4;
 
 const CALENDLY = "https://calendly.com/flowxsell/30min";
 
-/** Accepts pasted domains (e.g. mystore.com) — `type="url"` rejects those in the browser. */
+/** Accepts pasted domains (e.g. mystore.com), `type="url"` rejects those in the browser. */
 function normalizeStoreUrl(raw: string): string | null {
   let s = raw.trim();
   if (!s) return null;
@@ -135,7 +135,7 @@ function EmailReportButton({ result }: { result: AuditResult }) {
         toast.error(typeof data.error === "string" ? data.error : "Couldn't send email. Try again.");
         return;
       }
-      toast.success("Report sent — check your inbox.");
+      toast.success("Report sent, check your inbox.");
       setOpen(false);
       setEmail("");
     } finally {
@@ -168,7 +168,7 @@ function EmailReportButton({ result }: { result: AuditResult }) {
               Email this report
             </DialogTitle>
             <DialogDescription>
-              We&apos;ll send a copy of your scan summary to your inbox. No marketing list — one email with your results.
+              We&apos;ll send a copy of your scan summary to your inbox. No marketing list, one email with your results.
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={e => void submit(e)}>
@@ -226,7 +226,7 @@ function AuditDeepDiveCta({ result, calendlyUrl }: { result: AuditResult; calend
           <span className="font-semibold tabular-nums text-foreground">{score.toFixed(2)}</span> out of{" "}
           <span className="font-semibold tabular-nums text-foreground">{maxScore.toFixed(2)}</span>. We highlighted{" "}
           <span className="font-semibold tabular-nums text-foreground">{leakCount}</span> thing
-          {leakCount === 1 ? "" : "s"} worth going over together — questions welcome.
+          {leakCount === 1 ? "" : "s"} worth going over together, questions welcome.
         </p>
         <span
           className={`inline-flex w-fit shrink-0 rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] ${urgency.cls}`}
@@ -329,7 +329,7 @@ const ShopifyAuditTool = () => {
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-xl">
               Paste your store link. We&apos;ll take a quick, free look at your homepage and a product page and show you where
-              shoppers might be slipping away — usually in under a minute. No login, no jargon.
+              shoppers might be slipping away, usually in under a minute. No login, no jargon.
             </p>
 
             {/* URL Form */}
@@ -404,7 +404,7 @@ const ShopifyAuditTool = () => {
                       {result.productUrl}
                     </a>
                   ) : (
-                    <span className="text-base text-muted-foreground">None found — homepage used</span>
+                    <span className="text-base text-muted-foreground">None found, homepage used</span>
                   )}
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
@@ -426,7 +426,7 @@ const ShopifyAuditTool = () => {
                   {result.scores.overall.toFixed(2)}
                 </div>
                 <div className="mt-2 text-xl font-medium text-muted-foreground md:text-2xl">
-                  / {OVERALL_SCORE_MAX.toFixed(2)} — {scoreLabel(result.scores.overall)}
+                  / {OVERALL_SCORE_MAX.toFixed(2)}, {scoreLabel(result.scores.overall)}
                 </div>
                 {result.leaks.length > 0 && (
                   <div className="mt-4 inline-flex items-center gap-2 rounded border border-primary/25 bg-primary/5 px-4 py-2">
@@ -590,7 +590,7 @@ const ShopifyAuditTool = () => {
               </section>
             </div>
 
-            {/* Deep-dive CTA — full-width band so it reads as its own section */}
+            {/* Deep-dive CTA, full-width band so it reads as its own section */}
             <section
               aria-labelledby="audit-deep-dive-heading"
               className="relative mt-12 border-t border-primary/20 bg-gradient-to-b from-primary/[0.07] via-background to-background md:mt-16"

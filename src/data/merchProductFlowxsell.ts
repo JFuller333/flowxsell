@@ -36,28 +36,28 @@ export const flowxsellMerchProduct: MerchProductPageModel = {
     },
   ],
   descriptionHtml: `
-    <p>A wearable reminder that growth is a system—not a hustle. Cut for everyday wear with a clean chest mark and tonal sleeve detail.</p>
+    <p>A wearable reminder that growth is a system-not a hustle. Cut for everyday wear with a clean chest mark and tonal sleeve detail.</p>
     <p>Designed to pair with the FlowXsell quiz and framework: audit, align, automate, multiply.</p>
   `,
   images: [
     {
       id: "gid://shopify/ProductImage/1",
       url: "https://picsum.photos/seed/fxtee1/960/1200",
-      altText: "FlowXsell Framework Tee — front",
+      altText: "FlowXsell Framework Tee, front",
       width: 960,
       height: 1200,
     },
     {
       id: "gid://shopify/ProductImage/2",
       url: "https://picsum.photos/seed/fxtee2/960/1200",
-      altText: "FlowXsell Framework Tee — detail",
+      altText: "FlowXsell Framework Tee, detail",
       width: 960,
       height: 1200,
     },
     {
       id: "gid://shopify/ProductImage/3",
       url: "https://picsum.photos/seed/fxtee3/960/1200",
-      altText: "FlowXsell Framework Tee — lifestyle",
+      altText: "FlowXsell Framework Tee, lifestyle",
       width: 960,
       height: 1200,
     },

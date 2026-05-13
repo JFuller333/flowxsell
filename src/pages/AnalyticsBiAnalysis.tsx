@@ -125,7 +125,7 @@ export default function AnalyticsBiAnalysis() {
       setShopifySource(r.shopifySource ?? null);
       if (r.llm === "mock") {
         toast.message("Demo mode", {
-          description: "Set ANTHROPIC_API_KEY in flowxsell/.env (server-side) and restart dev for live Claude — same as Generate.",
+          description: "Set ANTHROPIC_API_KEY in flowxsell/.env (server-side) and restart dev for live Claude, same as Generate.",
         });
       } else {
         toast.success("BI analysis generated");
@@ -149,7 +149,7 @@ export default function AnalyticsBiAnalysis() {
   }
 
   return (
-    <div className="flex min-h-screen bg-background text-foreground">
+    <div className="flex min-h-screen flex-col bg-background text-foreground md:flex-row">
       <AnalyticsSidebar />
       <main className="flex-1 px-6 py-8 md:px-10 md:py-10">
         <header className="mb-6">
@@ -158,7 +158,7 @@ export default function AnalyticsBiAnalysis() {
             Structured read on whether your data supports confident conclusions and whether your{" "}
             <strong className="text-foreground/90">targeting and strategy</strong> are directionally right. Shopify loads
             from the same linked store as the dashboard; add GA4/Meta paste for channel context. Pick a framework, then
-            run the report — uses the <strong className="text-foreground/90">same Claude API</strong> as{" "}
+            run the report, uses the <strong className="text-foreground/90">same Claude API</strong> as{" "}
             <Link to="/analytics/generate" className="text-primary underline-offset-2 hover:underline">
               Generate landing page
             </Link>{" "}
@@ -251,7 +251,7 @@ export default function AnalyticsBiAnalysis() {
                 <Textarea
                   id="bi-targeting"
                   className="mt-1.5 min-h-[72px] text-sm"
-                  placeholder="What we believe is working and who we are targeting — the report checks this against the data."
+                  placeholder="What we believe is working and who we are targeting, the report checks this against the data."
                   value={targetingClaim}
                   onChange={(e) => setTargetingClaim(e.target.value)}
                 />
@@ -272,7 +272,7 @@ export default function AnalyticsBiAnalysis() {
 
               <div>
                 <Label htmlFor="bi-ga4" className="text-xs">
-                  GA4 — paste export or summary
+                  GA4, paste export or summary
                 </Label>
                 <Textarea
                   id="bi-ga4"
@@ -286,7 +286,7 @@ export default function AnalyticsBiAnalysis() {
 
               <div>
                 <Label htmlFor="bi-meta" className="text-xs">
-                  Meta / ads — paste summary
+                  Meta / ads, paste summary
                 </Label>
                 <Textarea
                   id="bi-meta"
@@ -357,7 +357,7 @@ export default function AnalyticsBiAnalysis() {
               <div className="grid gap-3">
                 {REPORT_SECTIONS.map(({ key, title }) => (
                   <CopyableSection key={key} title={title} copyText={String(result[key] ?? "").trim()}>
-                    {String(result[key] ?? "").trim() || "—"}
+                    {String(result[key] ?? "").trim() || "-"}
                   </CopyableSection>
                 ))}
               </div>

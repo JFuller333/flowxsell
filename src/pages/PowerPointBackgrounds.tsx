@@ -152,7 +152,7 @@ const PowerPointBackgrounds = () => {
                     Your powerful quote or key message goes here
                   </p>
                   <div className="pt-4">
-                    <p className="text-sm text-primary font-mono uppercase tracking-widest">— Source</p>
+                    <p className="text-sm text-primary font-mono uppercase tracking-widest">- Source</p>
                   </div>
                 </div>
               </div>

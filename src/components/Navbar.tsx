@@ -5,6 +5,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -22,6 +23,7 @@ const contactLink = { title: "Contact", url: "/contact" };
 const toolLinks = [
   { title: "Shopify CRO Audit", url: "/shopify-audit" },
   { title: "Data Analysis", url: "/analytics" },
+  { title: "BI Analysis", url: "/analytics/bi-analysis" },
   { title: "Landing Page Generator", url: "/analytics/generate" },
   { title: "BMF Redesign", url: "/free-website-redesign" },
 ];
@@ -49,15 +51,16 @@ export const Navbar = ({ variant = "default" }: NavbarProps) => {
   );
 
   return (
-    <nav
-      className={cn(
-        "fixed left-0 right-0 top-0 z-50 backdrop-blur-md",
-        isSoft
-          ? "border-b border-[hsla(74,99%,49%,0.22)] bg-[rgba(8,8,8,0.82)]"
-          : "border-b border-primary/10 bg-background/95",
-      )}
-    >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+      <nav
+        className={cn(
+          "fixed left-0 right-0 top-0 z-50 backdrop-blur-md",
+          isSoft
+            ? "border-b border-[hsla(74,99%,49%,0.22)] bg-[rgba(8,8,8,0.82)]"
+            : "border-b border-primary/10 bg-background/95",
+        )}
+      >
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
         <Link
           to="/"
           className={cn(
@@ -109,90 +112,102 @@ export const Navbar = ({ variant = "default" }: NavbarProps) => {
         </div>
 
         <button
-          onClick={() => setIsOpen(!isOpen)}
+          type="button"
+          onClick={() => setIsOpen((open) => !open)}
           className={cn(
-            "p-2 transition-colors md:hidden",
-            isSoft ? "text-white/80 hover:text-[hsl(74,99%,49%)]" : "text-foreground hover:text-primary",
+            "inline-flex min-h-10 min-w-10 items-center justify-center rounded-md border transition-colors md:hidden",
+            isSoft
+              ? "border-white/15 bg-black/40 text-white hover:border-[hsla(74,99%,49%,0.45)] hover:text-[hsl(74,99%,49%)]"
+              : "border-border bg-card/80 text-foreground hover:border-primary/40 hover:text-primary",
           )}
-          aria-label="Toggle menu"
+          aria-expanded={isOpen}
+          aria-controls="mobile-nav-sheet"
+          aria-label={isOpen ? "Close menu" : "Open menu"}
         >
-          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {isOpen ? <X className="h-6 w-6 shrink-0" aria-hidden /> : <Menu className="h-6 w-6 shrink-0" aria-hidden />}
+          <span className="sr-only">{isOpen ? "Close menu" : "Open menu"}</span>
         </button>
       </div>
+      </nav>
 
-      {isOpen && (
-        <div
-          className={cn(
-            "border-b md:hidden",
-            isSoft ? "border-[hsla(74,99%,49%,0.2)] bg-[#0c0c0c]" : "border-primary/10 bg-background",
-          )}
-        >
-          <div className="space-y-1 px-4 py-4">
+      <SheetContent
+        id="mobile-nav-sheet"
+        side="right"
+        className={cn(
+          "flex w-[min(100vw-1rem,20rem)] flex-col gap-0 border-l p-0 pt-12",
+          isSoft
+            ? "border-[hsla(74,99%,49%,0.2)] bg-[#0c0c0c] text-white [&_button[data-radix-dialog-close]]:text-white"
+            : "border-primary/15 bg-background",
+        )}
+      >
+        <SheetTitle className="sr-only">Site menu</SheetTitle>
+        <div className="flex flex-1 flex-col overflow-y-auto px-4 pb-8">
+          <div className="space-y-1">
             {navBeforeTools.map((link) => (
               <Link
                 key={link.url}
                 to={link.url}
                 onClick={() => setIsOpen(false)}
-                className={cn("block py-2 transition-colors", linkClass)}
+                className={cn("block rounded-md py-3 transition-colors", linkClass)}
               >
                 {link.title}
               </Link>
             ))}
+          </div>
+          <div
+            className={cn(
+              "mt-4 border-t pt-4",
+              isSoft ? "border-white/10" : "border-border",
+            )}
+          >
             <div
               className={cn(
-                "border-t pt-3 mt-2",
-                isSoft ? "border-white/10" : "border-border",
+                "mb-2 text-xs font-semibold uppercase tracking-wider",
+                isSoft ? "text-[hsl(74,99%,49%)]" : "text-primary",
               )}
             >
-              <div
-                className={cn(
-                  "mb-2 text-xs font-semibold uppercase tracking-wider",
-                  isSoft ? "text-[hsl(74,99%,49%)]" : "text-primary",
-                )}
-              >
-                Tools
-              </div>
-              <div className="space-y-1 pl-1">
-                {toolLinks.map((t) => (
-                  <Link
-                    key={t.url}
-                    to={t.url}
-                    onClick={() => setIsOpen(false)}
-                    className={cn(
-                      "block border-l-2 py-2 pl-2 text-sm transition-colors",
-                      linkClass,
-                      isSoft ? "border-[hsla(74,99%,49%,0.35)]" : "border-primary/35",
-                    )}
-                  >
-                    {t.title}
-                  </Link>
-                ))}
-              </div>
+              Tools
             </div>
-            <Link
-              to={contactLink.url}
-              onClick={() => setIsOpen(false)}
-              className={cn("block py-2 transition-colors", linkClass)}
-            >
-              {contactLink.title}
-            </Link>
-            <Button
-              size="sm"
-              className={cn(
-                "group mt-4 w-full",
-                isSoft &&
-                  "rounded-md bg-[hsl(74,99%,49%)] font-semibold text-black shadow-[0_0_18px_-4px_hsla(74,99%,49%,0.45)] hover:bg-[hsl(74,99%,54%)]",
-              )}
-              asChild
-            >
-              <Link to="/shopify-audit" onClick={() => setIsOpen(false)}>
-                Shopify Audit
-                <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
+            <div className="space-y-1 pl-1">
+              {toolLinks.map((t) => (
+                <Link
+                  key={t.url}
+                  to={t.url}
+                  onClick={() => setIsOpen(false)}
+                  className={cn(
+                    "block rounded-md border-l-2 py-2.5 pl-3 text-sm transition-colors",
+                    linkClass,
+                    isSoft ? "border-[hsla(74,99%,49%,0.35)]" : "border-primary/35",
+                  )}
+                >
+                  {t.title}
+                </Link>
+              ))}
+            </div>
           </div>
+          <Link
+            to={contactLink.url}
+            onClick={() => setIsOpen(false)}
+            className={cn("mt-2 block rounded-md py-3 transition-colors", linkClass)}
+          >
+            {contactLink.title}
+          </Link>
+          <Button
+            size="sm"
+            className={cn(
+              "group mt-6 w-full",
+              isSoft &&
+                "rounded-md bg-[hsl(74,99%,49%)] font-semibold text-black shadow-[0_0_18px_-4px_hsla(74,99%,49%,0.45)] hover:bg-[hsl(74,99%,54%)]",
+            )}
+            asChild
+          >
+            <Link to="/shopify-audit" onClick={() => setIsOpen(false)}>
+              Shopify Audit
+              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
         </div>
-      )}
-    </nav>
+      </SheetContent>
+    </Sheet>
   );
 };

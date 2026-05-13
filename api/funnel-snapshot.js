@@ -97,7 +97,7 @@ async function runPageSpeed(url, strategy) {
       throw psiHttpError(res.status, rawBody);
     }
     if (!rawBody.trim()) {
-      throw new Error('PSI returned an empty body — check PAGESPEED_API_KEY and quota.');
+      throw new Error('PSI returned an empty body, check PAGESPEED_API_KEY and quota.');
     }
     let data;
     try {
@@ -172,7 +172,7 @@ function buildLeaks({ perf, forms, expressPay, hasStickyCta, vertical }) {
       stage: 'Landing → Product',
       severity: mobileLcp > 6 ? 'critical' : 'high',
       dropEstimate: mobileLcp > 6 ? 65 : 50,
-      reason: `Mobile LCP is ${mobileLcp.toFixed(1)}s. Top-quartile ${vertical} sites load under 2.5s — every extra second drops conversion ~7%.`,
+      reason: `Mobile LCP is ${mobileLcp.toFixed(1)}s. Top-quartile ${vertical} sites load under 2.5s, every extra second drops conversion ~7%.`,
       signal: 'Google PageSpeed Insights',
     });
   } else if (mobileLcp != null && mobileLcp > 2.5) {
@@ -180,7 +180,7 @@ function buildLeaks({ perf, forms, expressPay, hasStickyCta, vertical }) {
       stage: 'Landing → Product',
       severity: 'medium',
       dropEstimate: 30,
-      reason: `Mobile LCP is ${mobileLcp.toFixed(1)}s — slightly above the 2.5s "good" threshold.`,
+      reason: `Mobile LCP is ${mobileLcp.toFixed(1)}s, slightly above the 2.5s "good" threshold.`,
       signal: 'Google PageSpeed Insights',
     });
   }
@@ -268,7 +268,7 @@ export default async function handler(req, res) {
   try {
     siteUrl = new URL(rawUrl.startsWith('http') ? rawUrl : `https://${rawUrl}`).href;
   } catch {
-    return res.status(400).json({ error: 'Invalid URL — please include a full site URL' });
+    return res.status(400).json({ error: 'Invalid URL, please include a full site URL' });
   }
 
   try {

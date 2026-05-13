@@ -35,7 +35,7 @@ const OUTPUT_SCHEMA = {
     layoutRecommendation: {
       type: 'string',
       description:
-        'Two-to-three sentence prescription for the above-the-fold layout — what goes where and why, given traffic source and goal.',
+        'Two-to-three sentence prescription for the above-the-fold layout, what goes where and why, given traffic source and goal.',
     },
     seoTitle: { type: 'string', description: 'SEO title tag, under 60 chars.' },
     seoDescription: { type: 'string', description: 'SEO meta description, 140–160 chars.' },
@@ -71,10 +71,10 @@ async function loadProduct(productId) {
   };
 }
 
-// Mock product table used when Shopify isn't connected — mirrors mock-data.ts entries.
+// Mock product table used when Shopify isn't connected, mirrors mock-data.ts entries.
 const MOCK_PRODUCTS = {
   'gid://shopify/Product/1': {
-    title: "Let's Rebuild Tuskegee — Founders Edition Tee",
+    title: "Let's Rebuild Tuskegee, Founders Edition Tee",
     handle: 'founders-edition-tee',
     description:
       'Premium heavyweight tee honoring the rebuild of Tuskegee. Embroidered crest, ringspun cotton, made for everyday wear.',
@@ -144,7 +144,7 @@ Return STRICTLY JSON conforming to the provided schema. No prose outside the JSO
 function buildUserMessage({ product, goal, trafficSource, hypothesis }) {
   const sourceContext = {
     organic:
-      'Visitors arrive via search with explicit intent — match the query, lead with the clearest specific value claim, and trust signal early.',
+      'Visitors arrive via search with explicit intent, match the query, lead with the clearest specific value claim, and trust signal early.',
     paid_social:
       'Visitors arrive cold from feed scroll. Pattern interrupt with a strong specific claim or surprising angle. Trust must be earned in the fold.',
     email:
@@ -171,8 +171,8 @@ Description: ${product.description || '(no description provided)'}
 
 ${perfLine}
 
-Goal: ${goal} — ${goalContext}
-Traffic source: ${trafficSource} — ${sourceContext}
+Goal: ${goal}, ${goalContext}
+Traffic source: ${trafficSource}, ${sourceContext}
 ${hypothesis ? `Test/Notes (marketer input): ${hypothesis}` : ''}
 
 Return the JSON object now.`;
@@ -188,11 +188,11 @@ function mockLandingForProduct(product) {
   const title = product?.title || 'This product';
   return {
     headlines: [
-      `${title} — built for daily wear`,
-      `Why shoppers keep choosing ${title.split(' — ')[0].slice(0, 40)}`,
+      `${title}, built for daily wear`,
+      `Why shoppers keep choosing ${title.split(', ')[0].slice(0, 40)}`,
       `Same quality. Clearer story. Stronger fold.`,
     ],
-    heroCopy: `Lead with one concrete outcome tied to ${title}. Add a single proof point (material, fit, or origin) in the second sentence — no hype adjectives.`,
+    heroCopy: `Lead with one concrete outcome tied to ${title}. Add a single proof point (material, fit, or origin) in the second sentence, no hype adjectives.`,
     keyPoints: [
       'One specific material or construction detail buyers can verify.',
       'Who it is for (use case) in plain language.',
@@ -202,7 +202,7 @@ function mockLandingForProduct(product) {
     layoutRecommendation:
       'Hero: headline + 2-line subhead + primary CTA + one trust row (reviews or guarantee). Below fold: three bullets, then variant picker. Keep paid-social visitors on one clear action.',
     seoTitle: `${String(title).slice(0, 55)} | Shop`,
-    seoDescription: `Shop ${String(title).slice(0, 80)}. Clear details, easy checkout — configure this meta in your theme or SEO app.`,
+    seoDescription: `Shop ${String(title).slice(0, 80)}. Clear details, easy checkout, configure this meta in your theme or SEO app.`,
   };
 }
 
@@ -253,7 +253,7 @@ export default async function handler(req, res) {
       messages: [{ role: 'user', content: buildUserMessage({ product, goal, trafficSource, hypothesis }) }],
     });
 
-    // Pull the text block — structured outputs put the JSON there (after any thinking blocks).
+    // Pull the text block, structured outputs put the JSON there (after any thinking blocks).
     const textBlock = message.content.find((b) => b.type === 'text');
     if (!textBlock?.text) {
       res.status(502).json({ error: 'Model returned no text content' });

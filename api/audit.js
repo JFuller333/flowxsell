@@ -32,27 +32,27 @@ const ITEM_LABELS = {
 
 const LEAK_RULES = [
   { dim: 'pdp',      id: 'mobile_layout',    threshold: 2,
-    leak: 'Mobile CTA buried — estimated 20–40% mobile revenue loss.' },
+    leak: 'Mobile CTA buried, estimated 20–40% mobile revenue loss.' },
   { dim: 'pdp',      id: 'hero_images',      threshold: 2,
     leak: 'Thin image gallery increases return rate and suppresses add-to-cart.' },
   { dim: 'offer',    id: 'urgency',          threshold: 2,
-    leak: 'No real urgency signals — customers defer purchase and rarely return.' },
+    leak: 'No real urgency signals, customers defer purchase and rarely return.' },
   { dim: 'offer',    id: 'guarantee',        threshold: 2,
     leak: 'Missing guarantee near CTA leaves purchase anxiety unresolved.' },
   { dim: 'offer',    id: 'free_shipping',    threshold: 2,
-    leak: 'Free shipping invisible on PDP — checkout sticker shock drives abandonment.' },
+    leak: 'Free shipping invisible on PDP, checkout sticker shock drives abandonment.' },
   { dim: 'trust',    id: 'reviews_quantity', threshold: 2,
-    leak: 'Under 50 reviews — insufficient social proof for skeptical first-time buyers.' },
+    leak: 'Under 50 reviews, insufficient social proof for skeptical first-time buyers.' },
   { dim: 'trust',    id: 'trust_badges',     threshold: 2,
-    leak: 'Missing security badges near ATC — anxiety at the point of purchase.' },
+    leak: 'Missing security badges near ATC, anxiety at the point of purchase.' },
   { dim: 'friction', id: 'page_weight',      threshold: 2,
-    leak: 'Heavy page signals slow load — every 1s delay costs ~7% conversion rate.' },
+    leak: 'Heavy page signals slow load, every 1s delay costs ~7% conversion rate.' },
   { dim: 'friction', id: 'cta_clarity',      threshold: 2,
     leak: 'Non-sticky or low-contrast CTA reduces impulse purchase completion rate.' },
   { dim: 'friction', id: 'option_overload',  threshold: 2,
-    leak: 'Too many pre-ATC choices — decision fatigue measurably drops conversions.' },
+    leak: 'Too many pre-ATC choices, decision fatigue measurably drops conversions.' },
   { dim: 'checkout', id: 'payment_options',  threshold: 2,
-    leak: 'Limited payment options — BNPL alone can lift AOV 30–50% in qualifying niches.' },
+    leak: 'Limited payment options, BNPL alone can lift AOV 30–50% in qualifying niches.' },
   { dim: 'checkout', id: 'cart_recovery',    threshold: 2,
     leak: '70%+ of carts are abandoned; a recovery sequence recaptures 5–15% of that.' },
 ];
@@ -60,13 +60,13 @@ const LEAK_RULES = [
 const FIXES = {
   pdp: {
     hero_images:    "Shoot lifestyle + detail + scale + in-use images. Embed a 15–30s UGC clip. Serve WebP via Shopify's CDN.",
-    title_clarity:  'Rewrite as: [Brand] [Product Name] — [Key Benefit]. E.g. "AeroFit Bands — Zero Snap, Max Tension".',
+    title_clarity:  'Rewrite as: [Brand] [Product Name], [Key Benefit]. E.g. "AeroFit Bands, Zero Snap, Max Tension".',
     description:    'Use PASTOR framework: Problem → Amplify → Story → Transformation → Offer → Response. Add spec accordion.',
     variants:       'Switch to swatches + size guide modal. Show "Only 3 left" per variant when stock < 5.',
     mobile_layout:  'Add sticky ATC bar (Hextom: Sticky Add To Cart). Stack price → stars → CTA above fold on mobile.',
   },
   offer: {
-    price_value:    'Show crossed-out compare-at price + savings badge ("Save $18 — 30% off"). Justify price near CTA.',
+    price_value:    'Show crossed-out compare-at price + savings badge ("Save $18, 30% off"). Justify price near CTA.',
     urgency:        'Install Hurrify or Countdown Timer Bar. Use real inventory data for stock counters via Klaviyo/LimeSpot.',
     bundles:        'Add "Frequently Bought Together" (FBT app or Bold Bundles). Create tiered savings (buy 2 save 10%).',
     guarantee:      'Place a "30-Day Money-Back" icon row directly under ATC. Link to policy. Say "No questions asked".',
@@ -175,10 +175,10 @@ function analyzePDP(productHtml) {
 
   const titleMatch =
     productHtml.match(/<h1[^>]*>([^<]{4,})<\/h1>/i) ||
-    productHtml.match(/<title[^>]*>([^<|–—]+)/i);
+    productHtml.match(/<title[^>]*>([^<|–-]+)/i);
   const titleText = (titleMatch?.[1] ?? '').trim().replace(/\s+/g, ' ');
   const hasBenefit   = /\b(for|with|without|anti|pro|ultra|max|best|premium|fast|instant|easy|natural|organic)\b/i.test(titleText);
-  const hasSeparator = /[–—:|]/.test(titleText);
+  const hasSeparator = /[–-:|]/.test(titleText);
   const titleScore = titleText.length > 40 && hasBenefit && hasSeparator ? 4 : titleText.length > 25 && hasBenefit ? 3 : titleText.length > 12 ? 2 : 1;
   const titleEvidence = titleText ? `"${titleText.slice(0, 70)}${titleText.length > 70 ? '…' : ''}"` : 'No <h1> title found on page';
 
@@ -347,7 +347,7 @@ function analyzeCheckout(productHtml, homeHtml) {
   const hasSocialLogin = has(all, /google.?sign.?in|apple.?pay|facebook.?login|social.?login/i);
   const hasGuestText   = has(all, /guest.?checkout|checkout.?as.?guest|no account needed/i);
   const guestScore     = hasSocialLogin ? 4 : (hasGuestText || hasShopPay) ? 3 : 3;
-  const guestEvidence  = hasSocialLogin ? 'Social login options detected (frictionless access)' : hasGuestText ? 'Guest checkout text detected on page' : 'Shopify native checkout — guest access available by default';
+  const guestEvidence  = hasSocialLogin ? 'Social login options detected (frictionless access)' : hasGuestText ? 'Guest checkout text detected on page' : 'Shopify native checkout, guest access available by default';
 
   const hasPayPal = has(all, /paypal/i);
   const hasBNPL   = has(all, /klarna|afterpay|affirm|sezzle|\bzip\b|laybuy|buy.?now.?pay.?later/i);
@@ -355,7 +355,7 @@ function analyzeCheckout(productHtml, homeHtml) {
   const hasGoogle = has(all, /google.?pay/i);
   const payScore  = hasBNPL ? 4 : (hasShopPay && hasPayPal) ? 3 : (hasPayPal || hasApple || hasGoogle) ? 2 : 1;
   const bnplName  = all.match(/klarna|afterpay|affirm|sezzle/i)?.[0] ?? 'BNPL';
-  const payEvidence = hasBNPL ? `${bnplName} detected — Card + PayPal + Shop Pay + BNPL` : hasShopPay && hasPayPal ? 'Card + PayPal + Shop Pay detected' : hasPayPal ? 'Card + PayPal detected' : hasApple ? 'Card + Apple Pay detected' : hasGoogle ? 'Card + Google Pay detected' : 'Only card payment detected (payment logos not found on this page)';
+  const payEvidence = hasBNPL ? `${bnplName} detected, Card + PayPal + Shop Pay + BNPL` : hasShopPay && hasPayPal ? 'Card + PayPal + Shop Pay detected' : hasPayPal ? 'Card + PayPal detected' : hasApple ? 'Card + Apple Pay detected' : hasGoogle ? 'Card + Google Pay detected' : 'Only card payment detected (payment logos not found on this page)';
 
   const hasKlaviyo    = has(all, /klaviyo/i);
   const hasSMSTool    = has(all, /postscript|smsbump|attentive|recart|omnisend/i);
@@ -367,7 +367,7 @@ function analyzeCheckout(productHtml, homeHtml) {
   const hasProgress = has(all, /progress.?bar|step.?indicator|checkout.?step/i);
   const hasTrustCO  = has(all, /secure.?checkout|trust.{0,30}checkout/i);
   const summaryScore = hasProgress && hasTrustCO ? 4 : 3;
-  const summaryEvidence = hasProgress && hasTrustCO ? 'Checkout progress bar + trust signals detected' : hasTrustCO ? '"Secure checkout" signal detected' : 'Shopify native checkout — order summary visible by default';
+  const summaryEvidence = hasProgress && hasTrustCO ? 'Checkout progress bar + trust signals detected' : hasTrustCO ? '"Secure checkout" signal detected' : 'Shopify native checkout, order summary visible by default';
 
   return {
     steps_to_checkout: { score: stepsScore,   evidence: stepsEvidence },
@@ -415,7 +415,7 @@ export default async function handler(req, res) {
   try {
     storeUrl = new URL(rawUrl.startsWith('http') ? rawUrl : `https://${rawUrl}`).href;
   } catch {
-    return res.status(400).json({ error: 'Invalid URL — please include the full store URL' });
+    return res.status(400).json({ error: 'Invalid URL, please include the full store URL' });
   }
 
   try {

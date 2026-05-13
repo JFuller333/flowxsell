@@ -97,7 +97,7 @@ export default function AnalyticsGenerate() {
   }
 
   return (
-    <div className="flex min-h-screen bg-background text-foreground">
+    <div className="flex min-h-screen flex-col bg-background text-foreground md:flex-row">
       <AnalyticsSidebar />
       <main className="flex-1 px-6 py-8 md:px-10 md:py-10">
         <header className="mb-6">

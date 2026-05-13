@@ -22,7 +22,7 @@ function seeded(seed: number) {
 const PRODUCTS: ProductOption[] = [
   {
     id: "gid://shopify/Product/1",
-    title: "Let's Rebuild Tuskegee — Founders Edition Tee",
+    title: "Let's Rebuild Tuskegee, Founders Edition Tee",
     handle: "founders-edition-tee",
     price: 42,
     description:
@@ -158,7 +158,7 @@ function buildInsights(topProducts: TopProduct[], topPages: TopPage[]): Insight[
     wins.push({
       kind: "win",
       title: `${best.title} converts ${(best.cvr / storeAvgCvr).toFixed(1)}x site average`,
-      detail: `At ${best.cvr.toFixed(1)}% CVR vs ${storeAvgCvr.toFixed(1)}% store average. Scale paid traffic to this PDP — it's your sharpest conversion surface.`,
+      detail: `At ${best.cvr.toFixed(1)}% CVR vs ${storeAvgCvr.toFixed(1)}% store average. Scale paid traffic to this PDP, it's your sharpest conversion surface.`,
     });
   }
   const warnings: Insight[] = [];
@@ -166,12 +166,12 @@ function buildInsights(topProducts: TopProduct[], topPages: TopPage[]): Insight[
     warnings.push({
       kind: "warning",
       title: `${worst.path} leaks traffic at ${worst.cvr.toFixed(1)}% CVR`,
-      detail: `${worst.visits.toLocaleString()} sessions in window with conversion well below store average. Likely a content-only page being treated as a destination — fix the call-to-action above the fold.`,
+      detail: `${worst.visits.toLocaleString()} sessions in window with conversion well below store average. Likely a content-only page being treated as a destination; fix the call-to-action above the fold.`,
     });
   }
   warnings.push({
     kind: "warning",
-    title: "AOV trending flat — bundle opportunity",
+    title: "AOV trending flat, bundle opportunity",
     detail: "Three top SKUs are commonly bought together but no bundle exists. A two-item discount of 10% projects +$3.40 AOV.",
   });
   return [...wins, ...warnings].slice(0, 3);
