@@ -14,6 +14,7 @@ export function AnalyticsSidebar() {
       <div className="px-6 py-6 border-b border-border">
         <div className="text-xs uppercase tracking-widest text-muted-foreground">FlowXsell</div>
         <div className="mt-1 text-lg font-semibold">Analytics</div>
+        <div className="mt-2 text-base font-semibold tracking-tight text-primary">Metrics to Message</div>
       </div>
       <nav className="flex flex-col gap-1 p-3">
         {NAV.map(({ to, label, icon: Icon, end }) => (
@@ -30,7 +31,7 @@ export function AnalyticsSidebar() {
               )
             }
           >
-            <Icon className="h-4 w-4" />
+            <Icon className="h-4 w-4 shrink-0" />
             <span>{label}</span>
           </NavLink>
         ))}

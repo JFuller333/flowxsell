@@ -28,6 +28,7 @@ import FreeWebsiteRedesign from "./pages/FreeWebsiteRedesign";
 import AnalyticsDashboard from "./pages/AnalyticsDashboard";
 import AnalyticsGenerate from "./pages/AnalyticsGenerate";
 import AnalyticsSettings from "./pages/AnalyticsSettings";
+import { SiteBottomPromoBar } from "@/components/SiteBottomPromoBar";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <GoogleAnalyticsRouteListener />
+        <SiteBottomPromoBar />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/case-study/flowxsell" element={<CaseStudyFlowXsell />} />

@@ -16,10 +16,8 @@ const OUTPUT_SCHEMA = {
   properties: {
     headlines: {
       type: 'array',
-      description: 'Three distinct headline options, each under 12 words.',
+      description: 'Exactly three distinct headline options, each under 12 words. Return exactly 3 items.',
       items: { type: 'string' },
-      minItems: 3,
-      maxItems: 3,
     },
     heroCopy: {
       type: 'string',
@@ -27,10 +25,8 @@ const OUTPUT_SCHEMA = {
     },
     keyPoints: {
       type: 'array',
-      description: 'Three to five concise selling points. Concrete benefits, not vague adjectives.',
+      description: 'Between three and five concise selling points. Concrete benefits, not vague adjectives. Return 3 to 5 items.',
       items: { type: 'string' },
-      minItems: 3,
-      maxItems: 5,
     },
     ctaText: {
       type: 'string',

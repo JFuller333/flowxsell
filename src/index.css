@@ -9,6 +9,7 @@ All colors MUST be HSL.
 @layer base {
   html {
     overflow-x: hidden;
+    scroll-padding-bottom: 5rem;
   }
   body {
     overflow-x: hidden;
