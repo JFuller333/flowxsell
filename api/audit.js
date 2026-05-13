@@ -175,10 +175,10 @@ function analyzePDP(productHtml) {
 
   const titleMatch =
     productHtml.match(/<h1[^>]*>([^<]{4,})<\/h1>/i) ||
-    productHtml.match(/<title[^>]*>([^<|–-]+)/i);
+    productHtml.match(/<title[^>]*>([^<]+)<\/title>/i);
   const titleText = (titleMatch?.[1] ?? '').trim().replace(/\s+/g, ' ');
   const hasBenefit   = /\b(for|with|without|anti|pro|ultra|max|best|premium|fast|instant|easy|natural|organic)\b/i.test(titleText);
-  const hasSeparator = /[–-:|]/.test(titleText);
+  const hasSeparator = /[-:|\u2013\u2014]/.test(titleText);
   const titleScore = titleText.length > 40 && hasBenefit && hasSeparator ? 4 : titleText.length > 25 && hasBenefit ? 3 : titleText.length > 12 ? 2 : 1;
   const titleEvidence = titleText ? `"${titleText.slice(0, 70)}${titleText.length > 70 ? '…' : ''}"` : 'No <h1> title found on page';
 
