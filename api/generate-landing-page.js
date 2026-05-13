@@ -1,14 +1,14 @@
 import Anthropic from '@anthropic-ai/sdk';
-import { shopifyCreds, shopifyGraphQL } from './_shopifyClient.js';
+import { cleanEnv, shopifyCreds, shopifyGraphQL } from './_shopifyClient.js';
 
 // POST /api/generate-landing-page
 // Body: { productId, goal: "conversion"|"awareness"|"upsell",
 //         trafficSource: "organic"|"paid_social"|"email", hypothesis?: string }
 //
-// Returns structured landing-page recommendations using claude-sonnet-4-6.
-// Always returns mock when ANTHROPIC_API_KEY is missing so the demo never blocks.
+// Live: Anthropic Messages API + structured JSON (ANTHROPIC_API_KEY).
+// Without a key: returns static demo copy so /generate still works locally.
 
-const MODEL = 'claude-sonnet-4-6';
+const DEFAULT_MODEL = 'claude-sonnet-4-6';
 
 const OUTPUT_SCHEMA = {
   type: 'object',
@@ -187,6 +187,29 @@ function readBody(req) {
   return {};
 }
 
+/** Placeholder landing output when ANTHROPIC_API_KEY is unset (matches LandingPageOutput shape). */
+function mockLandingForProduct(product) {
+  const title = product?.title || 'This product';
+  return {
+    headlines: [
+      `${title} — built for daily wear`,
+      `Why shoppers keep choosing ${title.split(' — ')[0].slice(0, 40)}`,
+      `Same quality. Clearer story. Stronger fold.`,
+    ],
+    heroCopy: `Lead with one concrete outcome tied to ${title}. Add a single proof point (material, fit, or origin) in the second sentence — no hype adjectives.`,
+    keyPoints: [
+      'One specific material or construction detail buyers can verify.',
+      'Who it is for (use case) in plain language.',
+      'Shipping / returns / trust line appropriate to your store policy.',
+    ],
+    ctaText: 'Add to cart',
+    layoutRecommendation:
+      'Hero: headline + 2-line subhead + primary CTA + one trust row (reviews or guarantee). Below fold: three bullets, then variant picker. Keep paid-social visitors on one clear action.',
+    seoTitle: `${String(title).slice(0, 55)} | Shop`,
+    seoDescription: `Shop ${String(title).slice(0, 80)}. Clear details, easy checkout — configure this meta in your theme or SEO app.`,
+  };
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'POST required' });
@@ -200,12 +223,6 @@ export default async function handler(req, res) {
     return;
   }
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
-    res.status(503).json({ error: 'ANTHROPIC_API_KEY not configured' });
-    return;
-  }
-
   // Try live Shopify product first, fall back to the demo catalog so /generate works during demos.
   let product = await loadProduct(productId);
   if (!product) product = MOCK_PRODUCTS[productId];
@@ -214,12 +231,23 @@ export default async function handler(req, res) {
     return;
   }
 
+  const apiKey = cleanEnv(process.env.ANTHROPIC_API_KEY || '');
+  if (!apiKey) {
+    res.status(200).json({
+      isDemo: true,
+      llm: 'mock',
+      result: mockLandingForProduct(product),
+    });
+    return;
+  }
+
+  const model = cleanEnv(process.env.ANTHROPIC_MODEL || '') || DEFAULT_MODEL;
   const client = new Anthropic({ apiKey });
 
   try {
     const message = await client.messages.create({
-      model: MODEL,
-      max_tokens: 4096,
+      model,
+      max_tokens: 8192,
       thinking: { type: 'adaptive' },
       output_config: {
         effort: 'medium',
@@ -229,7 +257,7 @@ export default async function handler(req, res) {
       messages: [{ role: 'user', content: buildUserMessage({ product, goal, trafficSource, hypothesis }) }],
     });
 
-    // Pull the text block — structured outputs put the JSON there.
+    // Pull the text block — structured outputs put the JSON there (after any thinking blocks).
     const textBlock = message.content.find((b) => b.type === 'text');
     if (!textBlock?.text) {
       res.status(502).json({ error: 'Model returned no text content' });
@@ -245,10 +273,16 @@ export default async function handler(req, res) {
       return;
     }
 
-    res.status(200).json({ isDemo: !shopifyCreds().configured, result: parsed });
+    res.status(200).json({
+      isDemo: !shopifyCreds().configured,
+      llm: 'anthropic',
+      model,
+      result: parsed,
+    });
   } catch (err) {
     console.error('[generate-landing-page] Anthropic error:', err);
-    const status = err?.status || 500;
-    res.status(status).json({ error: err?.message || 'Anthropic call failed' });
+    const status = typeof err?.status === 'number' ? err.status : 500;
+    const msg = err?.message || 'Anthropic call failed';
+    res.status(status >= 400 && status < 600 ? status : 500).json({ error: msg });
   }
 }

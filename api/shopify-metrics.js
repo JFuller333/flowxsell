@@ -1,14 +1,15 @@
 import { shopifyCreds, shopifyGraphQL } from './_shopifyClient.js';
 
-// GET /api/shopify-metrics?days=30|60|90
+// GET /api/shopify-metrics?days=30|60|90|180|270
 // Pulls orders + line items via Admin GraphQL and reduces to the dashboard shape.
-// Falls back to mock fixtures when credentials are missing.
+// Sessions: ShopifyQL `FROM sessions` (requires read_reports); otherwise estimated from orders.
+// Falls back to mock fixtures when credentials are missing (client-side).
 
 function parseDays(req) {
   const u = new URL(req.url, 'http://localhost');
   const raw = parseInt(u.searchParams.get('days') || '30', 10);
-  if (raw === 60) return 60;
-  if (raw === 90) return 90;
+  const allowed = [30, 60, 90, 180, 270];
+  if (allowed.includes(raw)) return raw;
   return 30;
 }
 
@@ -45,11 +46,12 @@ const ORDERS_QUERY = `
 
 async function fetchAllOrders(days) {
   const cutoff = daysAgoISO(days);
-  const filter = `created_at:>=${cutoff} financial_status:paid OR financial_status:partially_paid`;
+  // Shopify search syntax: date values must be quoted; OR binds tighter than AND — group explicitly.
+  const filter = `created_at:>='${cutoff}' AND (financial_status:paid OR financial_status:partially_paid)`;
   const orders = [];
   let after = null;
-  // Cap pagination to protect against runaway loops on busy stores.
-  for (let i = 0; i < 20; i++) {
+  const maxPages = days > 90 ? 50 : 20;
+  for (let i = 0; i < maxPages; i++) {
     const r = await shopifyGraphQL(ORDERS_QUERY, { first: 100, query: filter, after });
     if (!r.ok) return r;
     const edges = r.data?.orders?.edges || [];
@@ -79,8 +81,124 @@ function bucketByDay(orders, days) {
   return Array.from(map.entries()).map(([date, v]) => ({
     date,
     revenue: Math.round(v.revenue),
-    sessions: 0, // Admin API does not expose sessions; populated client-side fallback or estimated below.
+    sessions: 0, // Filled from ShopifyQL (read_reports) or estimated in the handler.
   }));
+}
+
+/** ShopifyQL → YYYY-MM-DD for merging with order buckets (UTC keys). */
+function shopifyqlDayToDateKey(value) {
+  if (value == null) return null;
+  const s = String(value).trim();
+  if (/^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(0, 10);
+  const t = Date.parse(s);
+  if (Number.isNaN(t)) return null;
+  return new Date(t).toISOString().slice(0, 10);
+}
+
+function parseSessionCount(raw) {
+  if (raw == null) return null;
+  if (typeof raw === 'number' && Number.isFinite(raw)) return Math.round(raw);
+  const n = parseFloat(String(raw).replace(/,/g, ''));
+  return Number.isFinite(n) ? Math.round(n) : null;
+}
+
+/**
+ * Build Map(date → sessions) from shopifyqlQuery tableData.rows (JSON objects per row).
+ * Tolerates column naming variants across ShopifyQL versions.
+ */
+function sessionMapFromShopifyqlTable(tableData) {
+  const map = new Map();
+  const cols = tableData?.columns;
+  const rows = tableData?.rows;
+  if (!Array.isArray(cols) || !cols.length || !Array.isArray(rows)) return map;
+
+  const names = cols.map((c) => c?.name).filter(Boolean);
+  const timeCol =
+    names.find((n) => n === 'day') ||
+    names.find((n) => n === 'month' || n === 'week' || n === 'hour') ||
+    names[0];
+  const sessionCol =
+    names.find((n) => n === 'sessions') ||
+    names.find((n) => n === 'online_store_visitors') ||
+    names.find((n) => n !== timeCol && /session|visitor|visit/i.test(n)) ||
+    names.find((n) => n !== timeCol);
+
+  if (!timeCol || !sessionCol) return map;
+
+  for (const row of rows) {
+    if (!row || typeof row !== 'object' || Array.isArray(row)) continue;
+    const day = shopifyqlDayToDateKey(row[timeCol]);
+    if (!day) continue;
+    const n = parseSessionCount(row[sessionCol]);
+    if (n == null) continue;
+    map.set(day, n);
+  }
+  return map;
+}
+
+const SHOPIFYQL_SESSIONS_QUERY = `
+  query ShopifyqlSessions($shopifyql: String!) {
+    shopifyqlQuery(query: $shopifyql) {
+      parseErrors
+      tableData {
+        columns { name dataType }
+        rows
+      }
+    }
+  }
+`;
+
+/**
+ * Daily session counts from Shopify Analytics via ShopifyQL (requires read_reports on the custom app).
+ * Tries `sessions`, then `online_store_visitors`, if Shopify renames the metric.
+ * @returns {{ ok: true, map: Map<string, number> } | { ok: false, error: string }}
+ */
+async function fetchSessionsByDayShopifyQL(days) {
+  const metrics = ['sessions', 'online_store_visitors'];
+  let lastError = '';
+
+  for (const metric of metrics) {
+    const shopifyql = [
+      'FROM sessions',
+      `  SHOW ${metric}`,
+      `  SINCE startOfDay(-${days}d) UNTIL today`,
+      '  TIMESERIES day',
+    ].join('\n');
+
+    const r = await shopifyGraphQL(SHOPIFYQL_SESSIONS_QUERY, { shopifyql });
+    if (!r.ok) {
+      lastError = r.error || 'shopifyql request failed';
+      break;
+    }
+
+    const root = r.data?.shopifyqlQuery;
+    if (!root) {
+      lastError = 'empty shopifyqlQuery response';
+      break;
+    }
+
+    const parseErrors = root.parseErrors || [];
+    if (parseErrors.length) {
+      const msg = parseErrors.join('; ');
+      lastError = msg;
+      if (metric === 'sessions' && /column not found|not found/i.test(msg)) continue;
+      return { ok: false, error: msg };
+    }
+
+    const td = root.tableData;
+    if (!td) return { ok: true, map: new Map() };
+
+    return { ok: true, map: sessionMapFromShopifyqlTable(td) };
+  }
+
+  return { ok: false, error: lastError || 'shopifyql sessions unavailable' };
+}
+
+function applyEstimatedSessions(timeseries, totalOrders, range) {
+  const estSessions = totalOrders > 0 ? Math.round(totalOrders / 0.015) : 0;
+  timeseries.forEach((d) => {
+    d.sessions = d.orders > 0 ? Math.round(d.orders / 0.015) : Math.round(estSessions / range);
+  });
 }
 
 function topProductsFromOrders(orders) {
@@ -110,7 +228,7 @@ function topProductsFromOrders(orders) {
     .map((p) => ({
       ...p,
       revenue: Math.round(p.revenue),
-      // CVR per product requires session attribution — Admin API can't deliver this.
+      // CVR per product uses totalSessions from ShopifyQL when available.
       // We estimate via revenue share so the demo shows meaningful relative ordering.
       cvr: 0,
     }));
@@ -164,7 +282,11 @@ export default async function handler(req, res) {
   }
 
   try {
-    const result = await fetchAllOrders(range);
+    const [result, sessionsQl] = await Promise.all([
+      fetchAllOrders(range),
+      fetchSessionsByDayShopifyQL(range),
+    ]);
+
     if (!result.ok) {
       console.error('[shopify-metrics] live fetch failed:', result.error);
       // Scope errors mean the app isn't configured — treat like missing creds so the frontend can fall back to mock.
@@ -179,14 +301,19 @@ export default async function handler(req, res) {
     const totalRevenue = Math.round(orders.reduce((a, o) => a + parseFloat(o.totalPriceSet?.shopMoney?.amount || '0'), 0));
     const totalOrders = orders.length;
     const aov = totalOrders > 0 ? totalRevenue / totalOrders : 0;
+    let sessionsSource = 'estimated';
+    if (sessionsQl.ok) {
+      sessionsSource = 'shopifyql';
+      for (const d of timeseries) {
+        d.sessions = sessionsQl.map.get(d.date) ?? 0;
+      }
+    } else {
+      console.warn('[shopify-metrics] ShopifyQL sessions unavailable:', sessionsQl.error);
+      applyEstimatedSessions(timeseries, totalOrders, range);
+    }
 
-    // Sessions: Admin API cannot deliver this; use a 1.5% blended CVR estimate so the dashboard shows realistic shape.
-    const estSessions = totalOrders > 0 ? Math.round(totalOrders / 0.015) : 0;
-    timeseries.forEach((d) => {
-      d.sessions = d.orders > 0 ? Math.round((d.orders / 0.015)) : Math.round(estSessions / range);
-    });
-
-    const cvr = estSessions > 0 ? (totalOrders / estSessions) * 100 : 0;
+    const totalSessions = timeseries.reduce((a, d) => a + (d.sessions || 0), 0);
+    const cvr = totalSessions > 0 ? (totalOrders / totalSessions) * 100 : 0;
 
     const summary = {
       revenue: totalRevenue,
@@ -199,12 +326,13 @@ export default async function handler(req, res) {
       prevCvr: cvr * 0.93,
     };
 
-    const topProducts = estimateCvrForProducts(topProductsFromOrders(orders), totalOrders, estSessions);
+    const topProducts = estimateCvrForProducts(topProductsFromOrders(orders), totalOrders, totalSessions);
 
     res.status(200).json({
       isDemo: false,
       storeDomain: shopifyCreds().domain,
       range,
+      sessionsSource,
       summary,
       timeseries,
       topProducts,

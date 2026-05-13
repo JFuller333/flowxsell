@@ -82,7 +82,13 @@ export default function AnalyticsGenerate() {
     try {
       const r = await generateLandingPage(payload);
       setResult(r.result);
-      toast.success("Landing page generated");
+      if (r.llm === "mock") {
+        toast.message("Demo copy only", {
+          description: "Set ANTHROPIC_API_KEY in flowxsell/.env (server-side) and restart dev for live Claude.",
+        });
+      } else {
+        toast.success("Landing page generated");
+      }
     } catch (e) {
       toast.error((e as Error).message);
     } finally {

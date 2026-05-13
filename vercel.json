@@ -11,6 +11,12 @@
     },
     "api/raffle-delete.js": {
       "maxDuration": 15
+    },
+    "api/shopify-smoke.js": {
+      "maxDuration": 10
+    },
+    "api/generate-landing-page.js": {
+      "maxDuration": 60
     }
   },
   "rewrites": [

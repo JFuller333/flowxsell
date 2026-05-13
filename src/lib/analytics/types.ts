@@ -1,6 +1,6 @@
 // ─── Shared types for the /analytics surface ─────────────────────────────────
 
-export type RangeDays = 30 | 60 | 90;
+export type RangeDays = 30 | 60 | 90 | 180 | 270;
 
 export type MetricSummary = {
   revenue: number;
@@ -51,6 +51,8 @@ export type ShopifyMetricsResponse = {
   isDemo: boolean;
   storeDomain: string | null;
   range: RangeDays;
+  /** Present when live: `shopifyql` = Shopify Analytics sessions; `estimated` = derived from orders. */
+  sessionsSource?: "shopifyql" | "estimated";
   summary: MetricSummary;
   timeseries: TimeseriesPoint[];
   topProducts: TopProduct[];
@@ -95,4 +97,11 @@ export type LandingPageOutput = {
   layoutRecommendation: string;
   seoTitle: string;
   seoDescription: string;
+};
+
+export type GenerateLandingPageResponse = {
+  isDemo: boolean;
+  result: LandingPageOutput;
+  llm?: "mock" | "anthropic";
+  model?: string;
 };

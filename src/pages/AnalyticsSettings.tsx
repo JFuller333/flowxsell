@@ -83,12 +83,16 @@ export default function AnalyticsSettings() {
                 <li>In Shopify admin, open <strong>Apps → App and sales channel settings → Develop apps</strong>.</li>
                 <li>Create a new app, then open <strong>Configuration → Admin API access scopes</strong>.</li>
                 <li>
-                  Grant: <code>read_products</code>, <code>read_orders</code>, <code>read_analytics</code> (or <code>read_all_orders</code> if you need full history).
+                  Grant: <code>read_products</code> and <code>read_orders</code>. Add <code>read_all_orders</code> only if you need older order history than the default window allows.
                 </li>
                 <li>Install the app, then copy the Admin API access token from the API credentials tab.</li>
                 <li>
                   Paste it into <code>flowxsell/.env</code> as <code>SHOPIFY_ADMIN_API_TOKEN</code>, restart{" "}
                   <code>npm run dev:full</code>.
+                </li>
+                <li>
+                  Smoke test (direct to API, not Vite):{" "}
+                  <code className="break-all">curl -sS &quot;http://localhost:3001/api/shopify-smoke&quot;</code>
                 </li>
               </ol>
               <button
