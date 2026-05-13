@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { GoogleAnalyticsRouteListener } from "@/components/GoogleAnalyticsRouteListener";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -28,6 +28,7 @@ import FreeWebsiteRedesign from "./pages/FreeWebsiteRedesign";
 import AnalyticsDashboard from "./pages/AnalyticsDashboard";
 import AnalyticsGenerate from "./pages/AnalyticsGenerate";
 import AnalyticsSettings from "./pages/AnalyticsSettings";
+import AnalyticsBiAnalysis from "./pages/AnalyticsBiAnalysis";
 import { SiteBottomPromoBar } from "@/components/SiteBottomPromoBar";
 
 const queryClient = new QueryClient();
@@ -63,6 +64,8 @@ const App = () => (
           <Route path="/motion-graphics" element={<MotionGraphicsStudio />} />
           <Route path="/analytics" element={<AnalyticsDashboard />} />
           <Route path="/analytics/generate" element={<AnalyticsGenerate />} />
+          <Route path="/analytics/bi-analysis" element={<AnalyticsBiAnalysis />} />
+          <Route path="/analytics/industry-analysis" element={<Navigate to="/analytics/bi-analysis" replace />} />
           <Route path="/analytics/settings" element={<AnalyticsSettings />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

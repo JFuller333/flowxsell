@@ -86,7 +86,7 @@ export type GenerateRequest = {
   productId: string;
   goal: GoalKind;
   trafficSource: TrafficKind;
-  hypothesis?: string;
+  hypothesis?: string; // "Test/Notes" in Generate UI
 };
 
 export type LandingPageOutput = {
@@ -102,6 +102,47 @@ export type LandingPageOutput = {
 export type GenerateLandingPageResponse = {
   isDemo: boolean;
   result: LandingPageOutput;
+  llm?: "mock" | "anthropic";
+  model?: string;
+};
+
+export type BiFrameworkKind =
+  | "north_star"
+  | "funnel_conversion"
+  | "channel_mix"
+  | "incrementality_guardrails"
+  | "seasonality_baseline"
+  | "strategic_alignment"
+  | "executive_memo";
+
+export type BiAnalysisReport = {
+  executiveSummary: string;
+  truthAndDataQuality: string;
+  directionVsData: string;
+  risksAndGaps: string;
+  industryAndEmergingContext: string;
+  recommendations: string;
+};
+
+export type AnalyzeTrendsRequest = {
+  range: RangeDays;
+  framework: BiFrameworkKind;
+  industry?: string;
+  /** What we believe we're doing / who we're targeting — validated against data */
+  targetingClaim?: string;
+  question?: string;
+  ga4Paste?: string;
+  metaPaste?: string;
+  shopifySnapshot?: string;
+};
+
+export type AnalyzeTrendsResponse = {
+  result?: BiAnalysisReport;
+  /** Full markdown join of sections (for copy-all, email). */
+  analysis?: string;
+  shopifySource?: "live" | "client_demo" | "none";
+  framework?: BiFrameworkKind;
+  isDemo?: boolean;
   llm?: "mock" | "anthropic";
   model?: string;
 };

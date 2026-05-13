@@ -1,5 +1,7 @@
 import { buildMockMetrics, buildMockProducts } from "./mock-data";
 import type {
+  AnalyzeTrendsRequest,
+  AnalyzeTrendsResponse,
   GenerateLandingPageResponse,
   GenerateRequest,
   RangeDays,
@@ -31,6 +33,20 @@ export async function fetchShopifyProducts(): Promise<ShopifyProductsResponse> {
     throw new Error(`Products fetch failed (${res.status}): ${detail}`);
   }
   return data as unknown as ShopifyProductsResponse;
+}
+
+export async function analyzeTrends(payload: AnalyzeTrendsRequest): Promise<AnalyzeTrendsResponse> {
+  const res = await fetch(`/api/analyze-trends`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  const data = (await res.json().catch(() => ({}))) as Record<string, unknown>;
+  if (!res.ok) {
+    const detail = typeof data.error === "string" ? data.error : res.statusText;
+    throw new Error(detail || `Analyze failed: ${res.status}`);
+  }
+  return data as unknown as AnalyzeTrendsResponse;
 }
 
 export async function generateLandingPage(

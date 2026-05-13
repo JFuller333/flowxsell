@@ -161,7 +161,7 @@ export default function AnalyticsGenerate() {
               </div>
 
               <div>
-                <Label className="text-xs">Hypothesis / notes (optional)</Label>
+                <Label className="text-xs">Test/Notes (optional)</Label>
                 <Textarea
                   className="mt-1.5 min-h-[88px]"
                   placeholder="What angle, audience, or objection do you want this page to address?"

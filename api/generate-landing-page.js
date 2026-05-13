@@ -3,7 +3,7 @@ import { cleanEnv, shopifyCreds, shopifyGraphQL } from './_shopifyClient.js';
 
 // POST /api/generate-landing-page
 // Body: { productId, goal: "conversion"|"awareness"|"upsell",
-//         trafficSource: "organic"|"paid_social"|"email", hypothesis?: string }
+//         trafficSource: "organic"|"paid_social"|"email", hypothesis?: string }  // hypothesis = Test/Notes in UI
 //
 // Live: Anthropic Messages API + structured JSON (ANTHROPIC_API_KEY).
 // Without a key: returns static demo copy so /generate still works locally.
@@ -173,7 +173,7 @@ ${perfLine}
 
 Goal: ${goal} — ${goalContext}
 Traffic source: ${trafficSource} — ${sourceContext}
-${hypothesis ? `Marketer hypothesis / angle to test: ${hypothesis}` : ''}
+${hypothesis ? `Test/Notes (marketer input): ${hypothesis}` : ''}
 
 Return the JSON object now.`;
 }

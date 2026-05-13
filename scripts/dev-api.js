@@ -72,6 +72,10 @@ async function resolveHandler(urlPath) {
     const { default: handler } = await import('../api/generate-landing-page.js');
     return handler;
   }
+  if (pathOnly === '/api/analyze-trends') {
+    const { default: handler } = await import('../api/analyze-trends.js');
+    return handler;
+  }
   return null;
 }
 
@@ -155,6 +159,7 @@ server.listen(PORT, () => {
   console.log(`        GET  /api/shopify-products`);
   console.log(`        GET  /api/shopify-smoke`);
   console.log(`        POST /api/generate-landing-page`);
+  console.log(`        POST /api/analyze-trends`);
   console.log(
     `  [api] PAGESPEED_API_KEY: ${process.env.PAGESPEED_API_KEY ? 'loaded' : 'not set (PSI will use strict quotas)'}`
   );

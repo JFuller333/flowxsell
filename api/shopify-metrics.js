@@ -271,14 +271,18 @@ function buildInsights(topProducts, summary) {
   return insights.slice(0, 3);
 }
 
-export default async function handler(req, res) {
-  const range = parseDays(req);
-
-  // When Shopify isn't configured, signal the frontend to use its mock fixtures.
-  // We deliberately don't ship mock data from the server — the React app already has it.
+/**
+ * Live Shopify metrics payload (same shape as GET /api/shopify-metrics).
+ * @param {number} range
+ * @returns {Promise<{ ok: true, data: object } | { ok: false, status: number, body: object }>}
+ */
+export async function computeShopifyMetrics(range) {
   if (!shopifyCreds().configured) {
-    res.status(503).json({ error: 'not_configured', reason: 'SHOPIFY_ADMIN_API_TOKEN or SHOPIFY_STORE_DOMAIN missing' });
-    return;
+    return {
+      ok: false,
+      status: 503,
+      body: { error: 'not_configured', reason: 'SHOPIFY_ADMIN_API_TOKEN or SHOPIFY_STORE_DOMAIN missing' },
+    };
   }
 
   try {
@@ -289,11 +293,12 @@ export default async function handler(req, res) {
 
     if (!result.ok) {
       console.error('[shopify-metrics] live fetch failed:', result.error);
-      // Scope errors mean the app isn't configured — treat like missing creds so the frontend can fall back to mock.
       const isScopeError = /access denied|scope/i.test(result.error || '');
-      res.status(isScopeError ? 503 : (result.status || 502))
-         .json({ error: result.error, reason: isScopeError ? 'missing_scopes' : undefined });
-      return;
+      return {
+        ok: false,
+        status: isScopeError ? 503 : result.status || 502,
+        body: { error: result.error, reason: isScopeError ? 'missing_scopes' : undefined },
+      };
     }
 
     const orders = result.orders;
@@ -328,23 +333,33 @@ export default async function handler(req, res) {
 
     const topProducts = estimateCvrForProducts(topProductsFromOrders(orders), totalOrders, totalSessions);
 
-    res.status(200).json({
-      isDemo: false,
-      storeDomain: shopifyCreds().domain,
-      range,
-      sessionsSource,
-      summary,
-      timeseries,
-      topProducts,
-      // The Admin API does not expose page-level visits or traffic sources.
-      // The dashboard surfaces these as analytics-grade signals, so we mark
-      // them empty here and let the dashboard render a "data not available" hint.
-      topPages: [],
-      trafficSources: [],
-      insights: buildInsights(topProducts, summary),
-    });
+    return {
+      ok: true,
+      data: {
+        isDemo: false,
+        storeDomain: shopifyCreds().domain,
+        range,
+        sessionsSource,
+        summary,
+        timeseries,
+        topProducts,
+        topPages: [],
+        trafficSources: [],
+        insights: buildInsights(topProducts, summary),
+      },
+    };
   } catch (err) {
     console.error('[shopify-metrics] error:', err);
-    res.status(500).json({ error: err?.message || 'unknown error' });
+    return { ok: false, status: 500, body: { error: err?.message || 'unknown error' } };
   }
+}
+
+export default async function handler(req, res) {
+  const range = parseDays(req);
+  const out = await computeShopifyMetrics(range);
+  if (!out.ok) {
+    res.status(out.status).json(out.body);
+    return;
+  }
+  res.status(200).json(out.data);
 }

@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, Sparkles, Settings as SettingsIcon } from "lucide-react";
+import { LayoutDashboard, Sparkles, Settings as SettingsIcon, BarChart3 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV = [
   { to: "/analytics", label: "Dashboard", icon: LayoutDashboard, end: true },
   { to: "/analytics/generate", label: "Generate", icon: Sparkles, end: false },
+  { to: "/analytics/bi-analysis", label: "BI Analysis", icon: BarChart3, end: false },
   { to: "/analytics/settings", label: "Settings", icon: SettingsIcon, end: false },
 ];
 

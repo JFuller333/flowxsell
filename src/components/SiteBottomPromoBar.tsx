@@ -14,7 +14,7 @@ export function SiteBottomPromoBar() {
         "pointer-events-none fixed inset-x-0 bottom-0 z-50 flex justify-center px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2",
       )}
       role="region"
-      aria-label="Metrics to Message: turn live Shopify performance into landing-page copy you can ship"
+      aria-label="Metrics to Message: Interpret, Strategize, Ship in one place."
     >
       <Link
         to="/analytics/generate"
@@ -36,8 +36,7 @@ export function SiteBottomPromoBar() {
           </span>
         </div>
         <p className="text-[11px] leading-snug text-muted-foreground sm:text-xs">
-          For founders: reads what&apos;s already working in your Shopify data, then drafts landing-page copy you
-          can paste into a campaign today—no new tools to babysit.
+          Interpret, Strategize, Ship in one place.
         </p>
       </Link>
     </div>

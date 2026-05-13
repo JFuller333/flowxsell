@@ -17,6 +17,9 @@
     },
     "api/generate-landing-page.js": {
       "maxDuration": 60
+    },
+    "api/analyze-trends.js": {
+      "maxDuration": 60
     }
   },
   "rewrites": [

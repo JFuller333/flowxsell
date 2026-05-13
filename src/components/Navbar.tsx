@@ -1,17 +1,38 @@
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-const navLinks = [
+const navBeforeTools = [
   { title: "Home", url: "/" },
   { title: "Services", url: "/services" },
   { title: "Blog", url: "/blog" },
   { title: "Shopify Plus", url: "/shopify-plus-development" },
-  { title: "BMF Redesign", url: "/free-website-redesign" },
-  { title: "Contact", url: "/contact" },
 ];
+
+const contactLink = { title: "Contact", url: "/contact" };
+
+const toolLinks = [
+  { title: "Shopify CRO Audit", url: "/shopify-audit" },
+  { title: "Data Analysis", url: "/analytics" },
+  { title: "Landing Page Generator", url: "/analytics/generate" },
+  { title: "BMF Redesign", url: "/free-website-redesign" },
+];
+
+const toolsTriggerClass = (isSoft: boolean) =>
+  cn(
+    "inline-flex items-center gap-1 rounded-md px-0 py-0 text-sm font-semibold outline-none ring-offset-background transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+    isSoft
+      ? "text-[hsl(74,99%,49%)] hover:text-[hsl(74,99%,54%)]"
+      : "text-primary hover:text-primary/85",
+  );
 
 type NavbarProps = {
   variant?: "default" | "soft";
@@ -21,6 +42,11 @@ export const Navbar = ({ variant = "default" }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const isSoft = variant === "soft";
+
+  const linkClass = cn(
+    "text-sm transition-colors",
+    isSoft ? "text-white/65 hover:text-white" : "text-muted-foreground hover:text-foreground",
+  );
 
   return (
     <nav
@@ -45,18 +71,27 @@ export const Navbar = ({ variant = "default" }: NavbarProps) => {
         </Link>
 
         <div className="hidden items-center gap-6 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.url}
-              to={link.url}
-              className={cn(
-                "text-sm transition-colors",
-                isSoft ? "text-white/65 hover:text-white" : "text-muted-foreground hover:text-foreground",
-              )}
-            >
+          {navBeforeTools.map((link) => (
+            <Link key={link.url} to={link.url} className={linkClass}>
               {link.title}
             </Link>
           ))}
+          <DropdownMenu>
+            <DropdownMenuTrigger className={toolsTriggerClass(isSoft)}>
+              Tools
+              <ChevronDown className="h-3.5 w-3.5 shrink-0 opacity-80" aria-hidden />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="min-w-[14rem]">
+              {toolLinks.map((t) => (
+                <DropdownMenuItem key={t.url} asChild>
+                  <Link to={t.url}>{t.title}</Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Link to={contactLink.url} className={linkClass}>
+            {contactLink.title}
+          </Link>
           <Button
             size="sm"
             className={cn(
@@ -92,20 +127,55 @@ export const Navbar = ({ variant = "default" }: NavbarProps) => {
             isSoft ? "border-[hsla(74,99%,49%,0.2)] bg-[#0c0c0c]" : "border-primary/10 bg-background",
           )}
         >
-          <div className="space-y-3 px-4 py-4">
-            {navLinks.map((link) => (
+          <div className="space-y-1 px-4 py-4">
+            {navBeforeTools.map((link) => (
               <Link
                 key={link.url}
                 to={link.url}
                 onClick={() => setIsOpen(false)}
-                className={cn(
-                  "block py-2 transition-colors",
-                  isSoft ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground",
-                )}
+                className={cn("block py-2 transition-colors", linkClass)}
               >
                 {link.title}
               </Link>
             ))}
+            <div
+              className={cn(
+                "border-t pt-3 mt-2",
+                isSoft ? "border-white/10" : "border-border",
+              )}
+            >
+              <div
+                className={cn(
+                  "mb-2 text-xs font-semibold uppercase tracking-wider",
+                  isSoft ? "text-[hsl(74,99%,49%)]" : "text-primary",
+                )}
+              >
+                Tools
+              </div>
+              <div className="space-y-1 pl-1">
+                {toolLinks.map((t) => (
+                  <Link
+                    key={t.url}
+                    to={t.url}
+                    onClick={() => setIsOpen(false)}
+                    className={cn(
+                      "block border-l-2 py-2 pl-2 text-sm transition-colors",
+                      linkClass,
+                      isSoft ? "border-[hsla(74,99%,49%,0.35)]" : "border-primary/35",
+                    )}
+                  >
+                    {t.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+            <Link
+              to={contactLink.url}
+              onClick={() => setIsOpen(false)}
+              className={cn("block py-2 transition-colors", linkClass)}
+            >
+              {contactLink.title}
+            </Link>
             <Button
               size="sm"
               className={cn(
