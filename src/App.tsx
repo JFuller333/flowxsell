@@ -16,6 +16,7 @@ import YouTubeCallouts from "./pages/YouTubeCallouts";
 import Resume from "./pages/Resume";
 import FlowXsellQuiz from "./pages/FlowXsellQuiz";
 import Services from "./pages/Services";
+import Results from "./pages/Results";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
@@ -29,6 +30,8 @@ import AnalyticsDashboard from "./pages/AnalyticsDashboard";
 import AnalyticsGenerate from "./pages/AnalyticsGenerate";
 import AnalyticsSettings from "./pages/AnalyticsSettings";
 import AnalyticsBiAnalysis from "./pages/AnalyticsBiAnalysis";
+import AnalyticsSecurity from "./pages/AnalyticsSecurity";
+import AdminDashboard from "./pages/AdminDashboard";
 import { SiteBottomPromoBar } from "@/components/SiteBottomPromoBar";
 
 const queryClient = new QueryClient();
@@ -53,6 +56,7 @@ const App = () => (
           <Route path="/resume" element={<Resume />} />
           <Route path="/flowxsell-quiz" element={<FlowXsellQuiz />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/results" element={<Results />} />
           <Route path="/shopify-revenue-audit" element={<ShopifyRevenueAudit />} />
           <Route path="/shopify-audit" element={<ShopifyAuditTool />} />
           <Route path="/funnel-snapshot" element={<FunnelSnapshot />} />
@@ -66,7 +70,9 @@ const App = () => (
           <Route path="/analytics/generate" element={<AnalyticsGenerate />} />
           <Route path="/analytics/bi-analysis" element={<AnalyticsBiAnalysis />} />
           <Route path="/analytics/industry-analysis" element={<Navigate to="/analytics/bi-analysis" replace />} />
+          <Route path="/analytics/security" element={<AnalyticsSecurity />} />
           <Route path="/analytics/settings" element={<AnalyticsSettings />} />
+          <Route path="/admin" element={<AdminDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

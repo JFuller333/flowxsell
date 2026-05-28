@@ -5,6 +5,7 @@ import {
   Sparkles,
   Settings as SettingsIcon,
   BarChart3,
+  ShieldCheck,
   Menu,
   X,
   Home,
@@ -16,6 +17,7 @@ const NAV = [
   { to: "/analytics", label: "Dashboard", icon: LayoutDashboard, end: true },
   { to: "/analytics/generate", label: "Generate", icon: Sparkles, end: false },
   { to: "/analytics/bi-analysis", label: "BI Analysis", icon: BarChart3, end: false },
+  { to: "/analytics/security", label: "Security", icon: ShieldCheck, end: false },
   { to: "/analytics/settings", label: "Settings", icon: SettingsIcon, end: false },
 ];
 

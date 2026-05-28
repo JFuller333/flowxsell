@@ -8,7 +8,7 @@ type TierCard = {
   priceIntro: string;
   title: string;
   vibe: string;
-  youGet: [string, string, string];
+  youGet: string[];
 };
 
 /** Horizontal stroke, soft lime, quiet glow */
@@ -38,36 +38,36 @@ const tiers: TierCard[] = [
     label: "Starting",
     anchorPrice: "$500",
     priceIntro: "Starting at",
-    title: "Figure it out together",
-    vibe: "New to selling online-we map the basics in plain words.",
+    title: "You have a product. Now let's build the foundation to sell it online.",
+    vibe: "Get a clear audit of why your store isn't converting — or set one up that will",
     youGet: [
-      "Starter plan: offer · channel · sequencing",
-      "$150–500 calls, jargon-free",
-      "Short next-steps only",
+      "Your CRO audit identifies exactly what's broken or missing before you spend another dollar",
+      "Walk away with a structure that actually supports online sales",
+      "Hands-on help: consultation, setup, and a plan built around where you are now",
     ],
   },
   {
     label: "Growing",
     anchorPrice: "$2,500",
     priceIntro: "Starting at",
-    title: "Make sales steadier",
-    vibe: "You’ve got fans-product revenue just won’t behave.",
+    title: "You have traffic. Now let's turn it into consistent revenue.",
+    vibe: "Your CRO audit pinpoints where visitors are dropping off so we fix the right things first",
     youGet: [
-      "Offers · pricing · checkout tuned",
-      "Clearer buyer path",
-      "Shippable wins ($2K–4K tier)",
+      "A conversion-optimized landing page built to turn your traffic into buyers",
+      "Launch and optimize your store for conversions — not just visits",
+      "Stay optimized with ongoing updates and monthly maintenance",
     ],
   },
   {
     label: "Scaling",
     anchorPrice: "$5,000",
     priceIntro: "Starting at",
-    title: "Systems that hold volume",
-    vibe: "Big revenue, messy stack-checkout, APIs, workflows.",
+    title: "You have revenue and complexity. Now let's make the data work for you.",
+    vibe: "Understand what your numbers are actually telling you — without the guesswork",
     youGet: [
-      "Map: checkout · APIs · data · owners",
-      "Architecture that survives volume-not hacks",
-      "Plain specs-or hands-on build if engaged",
+      "Your BI analysis breaks down inventory, revenue trends, and growth signals so you make the right call every time",
+      "Make confident decisions backed by expert-level business intelligence",
+      "Integrate and align the systems you're already using so everything works together",
     ],
   },
 ];
@@ -170,16 +170,25 @@ const Services = () => {
           <header className="mx-auto mb-14 max-w-2xl text-center md:mb-16">
             <p className="mb-3 text-[12px] font-medium tracking-wide text-[hsl(74,38%,34%)]">Services</p>
             <h1 className="font-serif text-[2.125rem] font-medium leading-[1.14] tracking-tight text-[#121211] md:text-5xl md:leading-[1.1]">
-              Hi-pick what feels closest
+              Start Where Your Are.
             </h1>
             <p className="mx-auto mt-5 max-w-md text-[15px] leading-[1.65] text-[#4d4b46]">
-              Three rough stages. Selling online confused you? Same.{" "}
+              Every store is at a different point. Pick the one that sounds like you — and we'll figure out the rest from
+              there. Not sure?{" "}
               <Link
                 to="/contact"
                 className="font-semibold underline decoration-[hsla(74,99%,49%,0.55)] decoration-2 underline-offset-[5px] transition-colors hover:decoration-[hsl(74,99%,49%)]"
                 style={{ color: "hsl(74, 38%, 28%)" }}
               >
-                Or just write me.
+                Just reach out.
+              </Link>{" "}
+              Or start with a{" "}
+              <Link
+                to="/shopify-audit"
+                className="font-semibold underline decoration-[hsla(74,99%,49%,0.55)] decoration-2 underline-offset-[5px] transition-colors hover:decoration-[hsl(74,99%,49%)]"
+                style={{ color: "hsl(74, 38%, 28%)" }}
+              >
+                free Shopify audit.
               </Link>
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

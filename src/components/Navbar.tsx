@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 const navBeforeTools = [
   { title: "Home", url: "/" },
   { title: "Services", url: "/services" },
+  { title: "Results", url: "/results" },
   { title: "Blog", url: "/blog" },
   { title: "Shopify Plus", url: "/shopify-plus-development" },
 ];
